@@ -86,6 +86,18 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./node_modules/@babel/runtime/regenerator/index.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/@babel/runtime/regenerator/index.js ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(/*! regenerator-runtime */ "./node_modules/regenerator-runtime/runtime.js");
+
+
+/***/ }),
+
 /***/ "./node_modules/axios/index.js":
 /*!*************************************!*\
   !*** ./node_modules/axios/index.js ***!
@@ -2043,7 +2055,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_material_dist_components__WEBPACK_IMPORTED_MODULE_1__["MdApp"]);
@@ -2141,6 +2152,148 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {};
   }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/auth/Signin.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/auth/Signin.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var vuelidate__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuelidate */ "./node_modules/vuelidate/lib/index.js");
+/* harmony import */ var vuelidate__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(vuelidate__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vuelidate/lib/validators */ "./node_modules/vuelidate/lib/validators/index.js");
+/* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var vue_material_dist_components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vue-material/dist/components */ "./node_modules/vue-material/dist/components/index.js");
+/* harmony import */ var vue_material_dist_components__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(vue_material_dist_components__WEBPACK_IMPORTED_MODULE_4__);
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+ //VueX
+
+ //Validation with vuelidate
+
+
+ //Vue Material
+
+
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_material_dist_components__WEBPACK_IMPORTED_MODULE_4__["MdField"]);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_material_dist_components__WEBPACK_IMPORTED_MODULE_4__["MdCard"]);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_material_dist_components__WEBPACK_IMPORTED_MODULE_4__["MdProgress"]);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_material_dist_components__WEBPACK_IMPORTED_MODULE_4__["MdSnackbar"]);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_material_dist_components__WEBPACK_IMPORTED_MODULE_4__["MdButton"]);
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'Signin',
+  mixins: [vuelidate__WEBPACK_IMPORTED_MODULE_2__["validationMixin"]],
+  validations: {
+    form: {
+      email: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__["required"],
+        email: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__["email"]
+      },
+      password: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__["required"],
+        minLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__["minLength"])(6)
+      }
+    }
+  },
+  data: function data() {
+    return {
+      form: {
+        email: null,
+        password: null
+      },
+      sending: false,
+      success: false,
+      hasError: false,
+      error: null
+    };
+  },
+  methods: _objectSpread({
+    getValidationClass: function getValidationClass(fieldName) {
+      var field = this.$v.form[fieldName];
+
+      if (field) {
+        return {
+          'md-invalid': field.$invalid && field.$dirty
+        };
+      }
+    },
+    validateUser: function validateUser() {
+      this.$v.$touch();
+
+      if (!this.$v.$invalid) {
+        this.saveUser();
+      }
+    },
+    saveUser: function saveUser() {
+      var _this = this;
+
+      var app = this;
+      app.sending = true;
+      app.signIn(this.form).then(function () {
+        app.sending = false;
+        app.success = true;
+
+        _this.$router.replace({
+          name: 'example'
+        });
+      })["catch"](function (error) {
+        console.log("error!", error);
+        app.hasError = true;
+        app.error = error;
+        app.sending = false;
+      });
+    }
+  }, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapActions"])({
+    signIn: 'auth/signIn'
+  }))
 });
 
 /***/ }),
@@ -6689,6 +6842,25 @@ exports.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Rob
 
 // module
 exports.push([module.i, "@charset \"UTF-8\";\n/**\n * The complete material palette\n * ---\n * @access public\n * @type map\n * @group themes\n */\n/**\n * Theme any css property based on the current palette, accepting a themable\n * value that will give an contrasted\n * ---\n * Usage example:\n *\n * $foo-palette: (\n *   primary: md-get-palette-color(indigo, 500),\n *   accent: md-get-palette-color(pink, 500),\n *   theme: \"light\"\n * );\n *\n * ---\n * @access public\n * ---\n * @param {color} $type —  The desired color based on material palette\n * @param {string} $type —  A valid hue\n */\n/**\n * Get the current theme mode from the current theme\n * ---\n * Usage example:\n *\n * $theme-mode: md-get-theme-mode()\n *\n * ---\n * @access private\n */\n/**\n * Theme any css property based on the current palette, accepting a themable\n * value that will give an contrasted\n * ---\n * Usage example:\n *\n * .md-foo {\n *   min-width: 88px;\n *   height: 40px;\n *   background: md-theme(primary);\n * }\n *\n * ---\n * @access public\n * ---\n * @param {string} $type —  The themable value\n */\n/**\n * Get a color based on type by theme\n * ---\n * Usage example:\n *\n * $color: md-get-color-by-theme(dark, primary)\n *\n * ---\n * @access public\n * ---\n * @param {string} $color-theme —  The theme color | Accepts dark or light\n * @param {string} $type —  The color type\n */\n/**\n * Get a color based on type only\n * ---\n * Usage example:\n *\n * $color1: md-get-color-by-type(background, dark)\n * $color1: md-get-color-by-type(accent)\n *\n * ---\n * @access public\n * ---\n * @param {string} $type —  The color type\n * @param {string} $theme —  The fallback theme\n */\n/**\n * The default theme palette\n * primary: indigo 500 #3f51b5\n * accent: pink 500 #e91e63\n * theme: light\n *\n * It can be used just before importing the Vue Material stylesheet\n *\n * ---\n * @access public\n * @type colormap\n * @group themes\n */\n/**\n * Temporary variable to store all themable values\n * ---\n * @access private\n * @type map\n * @group themes\n */\n/**\n * Map variable to store all themes to be processed by each component\n * ---\n * @access private\n * @type map\n * @group themes\n */\n/**\n * Store the current theme name\n * ---\n * @access private\n * @type string\n * @group themes\n */\n/**\n * Store the newly registered theme name for comparison, used for checking just called md-register-theme's theme name\n * ---\n * @access private\n * @type string\n * @group themes\n */\n/**\n * The color contrast values\n * ---\n * @access private\n * @type map\n * @group themes\n */\n/**\n * Hightly based on: \"Using Sass to automatically pick text colors\"\n * https://medium.com/dev-channel/using-sass-to-automatically-pick-text-colors-4ba7645d2796\n */\n/**\n * Precomputed linear color channel values, for use in contrast calculations.\n * See https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests\n * ---\n *\n *  Algorithm, for c in 0 to 255:\n *  f(c) {\n *    c = c / 255;\n *    return c < 0.03928 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4);\n *  }\n *\n *  This lookup table is needed since there is no `pow` in SASS.\n *\n * ---\n * @access private\n * @type Map\n * @group themes\n */\n/**\n * Calculate the luminance for a color.\n * ---\n * @access private\n * ---\n * @param {string} $color —  The color to be analysed\n */\n/**\n * Calculate the contrast ratio between two colors.\n * ---\n * @access private\n * ---\n * @param {string} $bg —  The bg color\n * @param {string} $fg —  The fg color to be compared\n */\n/**\n * Determine whether to use dark or light text on top of given color.\n * Returns dark or light depending on the contrast ratio.\n * ---\n * @access private\n * ---\n * @param {string} $color —  The desired color to be compared\n */\n/**\n * Override extending the default palette giving new values. It will extend\n * the default values of the palette if has a property missing.\n * ---\n * Usage example:\n *\n * @include md-override-palette ((\n *   accent: blue,\n *   theme: \"dark\"\n * ))\n *\n * ---\n * @access public\n * @param {map} $palette —  The new palette\n */\n/**\n * Create a new theme based on a given palette. It will extend the default\n * values of the palette if has a property missing.\n * ---\n * Usage example:\n *\n * @include md-register-theme(\"alternative\", (\n *   primary: #212121,\n *   accent: #CDDC39,\n *   theme: dark\n * ));\n *\n * ---\n * @access public\n * @param {string} $name —  The theme name to be used with the Vue Material\n * @param {map} $palette [$md-default-palette] —  The theme palette\n */\n/**\n * Theme pieces of a given scss code for all pre registered themes.\n * ---\n * Usage example:\n *\n * .md-button {\n *   min-width: 88px;\n *   height: 40px;\n *   display: inline-block;\n *   border-radius: 2px;\n *   transition: .3s ease;\n *\n *   @include md-theme-component() {\n *     background: md-theme(primary);\n *     color: md-theme(text-primary);\n *   }\n *\n *   &.md-accent {\n *     @include md-theme-component() {\n *       background: md-theme(accent);\n *       color: md-theme(text-accent);\n *     };\n *   }\n * }\n */\n/**\n * Theme pieces of a given scss code for all pre registered themes based on parent.\n * ---\n * Usage example:\n *\n * .md-foo {\n *   @include md-theme-component-relative() {\n *     @include md-theme-property(background, primary);\n *   }\n * }\n */\n/**\n * Theme a single css property\n * ---\n * Usage example:\n *\n * .md-button {\n *   min-width: 88px;\n *   height: 40px;\n *   display: inline-block;\n *   border-radius: 2px;\n *   transition: .3s ease;\n *\n *   @include md-theme-component() {\n *     @include md-theme-property(background, primary);\n *     @include md-theme-property(color, text-primary, primary);\n *   }\n *\n *   &.md-accent {\n *     @include md-theme-component() {\n *       @include md-theme-property(background, accent);\n *       @include md-theme-property(color, text-primary, accent);\n *     }\n *   }\n * }\n *\n * ---\n * @access public\n * @param {string} $property —  The css property\n * @param {string} $type —  A palette type\n * @param {string} $background —  The background color to analyse contrast\n * @param {number} $opacity —  The opacity amount\n */\n/**\n * Theme a single css property darkening the color by a certain amount\n * ---\n * Usage example:\n *\n * .md-button {\n *   min-width: 88px;\n *   height: 40px;\n *   display: inline-block;\n *   border-radius: 2px;\n *   transition: .3s ease;\n *\n *   @include md-theme-component() {\n *     @include md-theme-property-darken(background, primary, background, 10%);\n *     @include md-theme-property(color, text-primary, primary);\n *   }\n * }\n *\n * ---\n * @access public\n * @param {string} $property —  The css property\n * @param {string} $type —  A palette type\n * @param {string} $background —  The background color to analyse contrast\n * @param {string} $darken —  The darken amount to apply to the color\n */\n/**\n * Theme a single css property by\n * ---\n * Usage example:\n *\n * .md-button {\n *   min-width: 88px;\n *   height: 40px;\n *   display: inline-block;\n *   border-radius: 2px;\n *   transition: .3s ease;\n *\n *   @include md-theme-component() {\n *     @include md-theme-property-by-hue(background, grey, 100, toolbar, background);\n *     @include md-theme-property(color, text-primary, background);\n *   }\n * }\n *\n * ---\n * @access public\n * @param {string} $property —  The css property\n * @param {string} $color —  A valid material palette color name\n * @param {string} $hue —  The hue amount to get the hex color\n * @param {string} $type —  The type of variable\n * @param {string} $variant —  The type of constrasted variable\n */\n:root {\n  --md-theme-default-primary: #5653fa ;\n  --md-theme-default-accent: #101422 ;\n  --md-theme-default-theme: dark ;\n}\n\n.md-theme-default :not(input):not(textarea)::-moz-selection {\n  background-color: #101422;\n  background-color: var(--md-theme-default-accent-on-background, #101422);\n  color: #fff;\n  color: var(--md-theme-default-text-primary-on-accent, #fff);\n}\n\n.md-theme-default :not(input):not(textarea)::selection {\n  background-color: #101422;\n  background-color: var(--md-theme-default-accent-on-background, #101422);\n  color: #fff;\n  color: var(--md-theme-default-text-primary-on-accent, #fff);\n}\n\n.md-theme-default a:not(.md-button) {\n  color: #5653fa;\n  color: var(--md-theme-default-primary-on-background, #5653fa);\n}\n.md-theme-default a:not(.md-button):hover {\n  color: rgba(86, 83, 250, 0.8);\n  color: var(--md-theme-default-primary-on-background, rgba(86, 83, 250, 0.8));\n}\n.md-theme-default a:not(.md-button).md-accent {\n  color: #101422;\n  color: var(--md-theme-default-accent-on-background, #101422);\n}\n.md-theme-default a:not(.md-button).md-accent:hover {\n  color: rgba(16, 20, 34, 0.8);\n  color: var(--md-theme-default-accent-on-background, rgba(16, 20, 34, 0.8));\n}\n\nhtml.md-theme-default {\n  background-color: #303030;\n  background-color: var(--md-theme-default-background-variant, #303030);\n  color: #fff;\n  color: var(--md-theme-default-text-primary-on-background-variant, #fff);\n}\n\n.md-theme-default .md-caption,\n.md-theme-default .md-display-1,\n.md-theme-default .md-display-2,\n.md-theme-default .md-display-3,\n.md-theme-default .md-display-4 {\n  color: rgba(255, 255, 255, 0.7);\n  color: var(--md-theme-default-text-accent-on-background-variant, rgba(255, 255, 255, 0.7));\n}\n\n.md-scrollbar.md-theme-default::-webkit-scrollbar-corner, .md-scrollbar.md-theme-default::-webkit-scrollbar-track {\n  background: #212121;\n  background: var(--md-theme-default-scrollbar-background-on-background-variant, #212121);\n}\n.md-scrollbar.md-theme-default::-webkit-scrollbar-thumb {\n  background: #9E9E9E;\n  background: var(--md-theme-default-scrollbar-on-background-variant, #9E9E9E);\n}\n\n.md-app:not(.md-overlap).md-theme-default {\n  background-color: #424242;\n  background-color: var(--md-theme-default-background, #424242);\n}\n\n.md-list.md-theme-default .md-autocomplete-items .md-highlight-text-match {\n  color: #5653fa;\n  color: var(--md-theme-default-primary-on-background, #5653fa);\n}\n.md-list.md-theme-default .md-autocomplete-loading {\n  background-color: rgba(66, 66, 66, 0.54);\n  background-color: var(--md-theme-default-background, rgba(66, 66, 66, 0.54));\n}\n\n.md-autocomplete.md-theme-default.md-autocomplete-box {\n  background-color: #424242;\n  background-color: var(--md-theme-default-background, #424242);\n}\n.md-autocomplete.md-theme-default.md-autocomplete-box.md-focused label {\n  color: rgba(255, 255, 255, 0.5);\n  color: var(--md-theme-default-text-hint-on-background, rgba(255, 255, 255, 0.5));\n}\n.md-toolbar .md-autocomplete.md-theme-default.md-autocomplete-box {\n  background-color: rgba(66, 66, 66, 0.12);\n  background-color: var(--md-theme-default-background, rgba(66, 66, 66, 0.12));\n}\n.md-toolbar .md-autocomplete.md-theme-default.md-autocomplete-box label,\n.md-toolbar .md-autocomplete.md-theme-default.md-autocomplete-box input {\n  color: #fff;\n  color: var(--md-theme-default-text-primary-on-primary, #fff);\n  -webkit-text-fill-color: #fff;\n  -webkit-text-fill-color: var(--md-theme-default-text-primary-on-primary, #fff);\n}\n.md-toolbar .md-autocomplete.md-theme-default.md-autocomplete-box svg {\n  fill: #fff;\n  fill: var(--md-theme-default-text-primary-on-primary, #fff);\n}\n.md-toolbar .md-autocomplete.md-theme-default.md-autocomplete-box.md-focused {\n  background-color: #424242;\n  background-color: var(--md-theme-default-background, #424242);\n}\n.md-toolbar .md-autocomplete.md-theme-default.md-autocomplete-box.md-focused label,\n.md-toolbar .md-autocomplete.md-theme-default.md-autocomplete-box.md-focused input {\n  color: rgba(255, 255, 255, 0.5);\n  color: var(--md-theme-default-text-hint-on-background, rgba(255, 255, 255, 0.5));\n  -webkit-text-fill-color: rgba(255, 255, 255, 0.5);\n  -webkit-text-fill-color: var(--md-theme-default-text-hint-on-background, rgba(255, 255, 255, 0.5));\n}\n.md-toolbar .md-autocomplete.md-theme-default.md-autocomplete-box.md-focused svg {\n  fill: rgba(255, 255, 255, 0.5);\n  fill: var(--md-theme-default-text-hint-on-background, rgba(255, 255, 255, 0.5));\n}\n\n.md-autocomplete-box-content.md-theme-default:after {\n  background-color: #424242;\n  background-color: var(--md-theme-default-background, #424242);\n  border-bottom-color: rgba(255, 255, 255, 0.12);\n  border-bottom-color: var(--md-theme-default-divider, rgba(255, 255, 255, 0.12));\n}\n\n.md-avatar.md-theme-default.md-avatar-icon {\n  background-color: rgba(255, 255, 255, 0.5);\n  background-color: var(--md-theme-default-icon-disabled, rgba(255, 255, 255, 0.5));\n  color: rgba(0, 0, 0, 0.87);\n  color: var(--md-theme-default-text-primary-on-icon-disabled, rgba(0, 0, 0, 0.87));\n}\n.md-avatar.md-theme-default.md-avatar-icon .md-icon {\n  color: rgba(0, 0, 0, 0.87);\n  color: var(--md-theme-default-text-primary-on-icon-disabled, rgba(0, 0, 0, 0.87));\n  fill: rgba(0, 0, 0, 0.87);\n  fill: var(--md-theme-default-text-primary-on-icon-disabled, rgba(0, 0, 0, 0.87));\n}\n.md-avatar.md-theme-default.md-primary {\n  background-color: #5653fa;\n  background-color: var(--md-theme-default-primary, #5653fa);\n}\n.md-avatar.md-theme-default.md-primary.md-avatar-icon {\n  background-color: #5653fa;\n  background-color: var(--md-theme-default-primary, #5653fa);\n  color: #fff;\n  color: var(--md-theme-default-text-primary-on-primary, #fff);\n}\n.md-avatar.md-theme-default.md-primary.md-avatar-icon .md-icon {\n  color: #fff;\n  color: var(--md-theme-default-text-primary-on-primary, #fff);\n  fill: #fff;\n  fill: var(--md-theme-default-text-primary-on-primary, #fff);\n}\n.md-avatar.md-theme-default.md-accent {\n  background-color: #101422;\n  background-color: var(--md-theme-default-accent, #101422);\n}\n.md-avatar.md-theme-default.md-accent.md-avatar-icon {\n  background-color: #101422;\n  background-color: var(--md-theme-default-accent, #101422);\n  color: #fff;\n  color: var(--md-theme-default-text-primary-on-accent, #fff);\n}\n.md-avatar.md-theme-default.md-accent.md-avatar-icon .md-icon {\n  color: #fff;\n  color: var(--md-theme-default-text-primary-on-accent, #fff);\n  fill: #fff;\n  fill: var(--md-theme-default-text-primary-on-accent, #fff);\n}\n\n.md-bottom-bar.md-theme-default.md-type-fixed {\n  background-color: #424242;\n  background-color: var(--md-theme-default-background, #424242);\n}\n.md-bottom-bar.md-theme-default.md-type-fixed .md-bottom-bar-item.md-active {\n  color: #5653fa;\n  color: var(--md-theme-default-primary-on-background, #5653fa);\n}\n.md-bottom-bar.md-theme-default.md-type-fixed .md-bottom-bar-item.md-active .md-icon {\n  color: #5653fa;\n  color: var(--md-theme-default-primary-on-background, #5653fa);\n}\n.md-bottom-bar.md-theme-default.md-type-fixed .md-bottom-bar-item.md-active .md-icon svg {\n  fill: #5653fa;\n  fill: var(--md-theme-default-primary-on-background, #5653fa);\n}\n.md-bottom-bar.md-theme-default.md-type-shift {\n  background-color: #5653fa;\n  background-color: var(--md-theme-default-primary, #5653fa);\n  color: rgba(255, 255, 255, 0.7);\n  color: var(--md-theme-default-text-primary-on-primary, rgba(255, 255, 255, 0.7));\n}\n.md-bottom-bar.md-theme-default.md-type-shift > .md-ripple .md-ripple-wave {\n  background-color: #2521f9;\n  background-color: var(--md-theme-default-primary-on-primary, #2521f9);\n}\n.md-bottom-bar.md-theme-default.md-type-shift .md-icon {\n  color: #fff;\n  color: var(--md-theme-default-icon-on-primary, #fff);\n}\n.md-bottom-bar.md-theme-default.md-type-shift .md-icon svg {\n  fill: #fff;\n  fill: var(--md-theme-default-icon-on-primary, #fff);\n}\n.md-bottom-bar.md-theme-default.md-type-shift .md-bottom-bar-item {\n  color: #fff;\n  color: var(--md-theme-default-text-primary-on-primary, #fff);\n}\n.md-bottom-bar.md-theme-default.md-type-shift .md-bottom-bar-item .md-active .md-icon {\n  color: #fff;\n  color: var(--md-theme-default-text-primary-on-primary, #fff);\n}\n.md-bottom-bar.md-theme-default.md-type-shift .md-bottom-bar-item .md-active .md-icon svg {\n  fill: #fff;\n  fill: var(--md-theme-default-text-primary-on-primary, #fff);\n}\n.md-bottom-bar.md-theme-default.md-accent.md-type-fixed {\n  background-color: #424242;\n  background-color: var(--md-theme-default-background, #424242);\n}\n.md-bottom-bar.md-theme-default.md-accent.md-type-fixed .md-bottom-bar-item.md-active {\n  color: #101422;\n  color: var(--md-theme-default-accent-on-background, #101422);\n}\n.md-bottom-bar.md-theme-default.md-accent.md-type-fixed .md-bottom-bar-item.md-active .md-icon {\n  color: #101422;\n  color: var(--md-theme-default-accent-on-background, #101422);\n}\n.md-bottom-bar.md-theme-default.md-accent.md-type-fixed .md-bottom-bar-item.md-active .md-icon svg {\n  fill: #101422;\n  fill: var(--md-theme-default-accent-on-background, #101422);\n}\n.md-bottom-bar.md-theme-default.md-accent.md-type-shift {\n  background-color: #101422;\n  background-color: var(--md-theme-default-accent, #101422);\n  color: rgba(255, 255, 255, 0.7);\n  color: var(--md-theme-default-text-primary-on-accent, rgba(255, 255, 255, 0.7));\n}\n.md-bottom-bar.md-theme-default.md-accent.md-type-shift > .md-ripple .md-ripple-wave {\n  background-color: black;\n  background-color: var(--md-theme-default-accent-on-accent, black);\n}\n.md-bottom-bar.md-theme-default.md-accent.md-type-shift .md-icon {\n  color: #fff;\n  color: var(--md-theme-default-icon-on-accent, #fff);\n}\n.md-bottom-bar.md-theme-default.md-accent.md-type-shift .md-icon svg {\n  fill: #fff;\n  fill: var(--md-theme-default-icon-on-accent, #fff);\n}\n.md-bottom-bar.md-theme-default.md-accent.md-type-shift .md-bottom-bar-item {\n  color: #fff;\n  color: var(--md-theme-default-text-primary-on-accent, #fff);\n}\n.md-bottom-bar.md-theme-default.md-accent.md-type-shift .md-bottom-bar-item .md-active .md-icon {\n  color: #fff;\n  color: var(--md-theme-default-text-primary-on-accent, #fff);\n}\n.md-bottom-bar.md-theme-default.md-accent.md-type-shift .md-bottom-bar-item .md-active .md-icon svg {\n  fill: #fff;\n  fill: var(--md-theme-default-text-primary-on-accent, #fff);\n}\n\n.md-button.md-theme-default {\n  color: #fff;\n  color: var(--md-theme-default-text-primary-on-background, #fff);\n}\n.md-button.md-theme-default.md-primary {\n  color: #5653fa;\n  color: var(--md-theme-default-primary-on-background, #5653fa);\n}\n.md-button.md-theme-default.md-primary .md-icon-font {\n  color: #5653fa;\n  color: var(--md-theme-default-primary-on-background, #5653fa);\n}\n.md-button.md-theme-default.md-primary .md-icon-image {\n  fill: #5653fa;\n  fill: var(--md-theme-default-primary-on-background, #5653fa);\n}\n.md-button.md-theme-default.md-accent {\n  color: #101422;\n  color: var(--md-theme-default-accent-on-background, #101422);\n}\n.md-button.md-theme-default.md-accent .md-icon-font {\n  color: #101422;\n  color: var(--md-theme-default-accent-on-background, #101422);\n}\n.md-button.md-theme-default.md-accent .md-icon-image {\n  fill: #101422;\n  fill: var(--md-theme-default-accent-on-background, #101422);\n}\n.md-button.md-theme-default.md-raised[disabled] {\n  background-color: rgba(255, 255, 255, 0.12);\n  background-color: var(--md-theme-default-disabled-background-on-background, rgba(255, 255, 255, 0.12));\n  color: rgba(255, 255, 255, 0.3);\n  color: var(--md-theme-default-disabled, rgba(255, 255, 255, 0.3));\n}\n.md-button.md-theme-default.md-raised:not([disabled]) {\n  background-color: #424242;\n  background-color: var(--md-theme-default-background, #424242);\n  color: #fff;\n  color: var(--md-theme-default-text-primary-on-background, #fff);\n}\n.md-button.md-theme-default.md-raised:not([disabled]).md-primary {\n  color: #fff;\n  color: var(--md-theme-default-text-primary-on-primary, #fff);\n  background-color: #5653fa;\n  background-color: var(--md-theme-default-primary, #5653fa);\n}\n.md-button.md-theme-default.md-raised:not([disabled]).md-primary .md-icon-font {\n  color: #fff;\n  color: var(--md-theme-default-text-primary-on-primary, #fff);\n}\n.md-button.md-theme-default.md-raised:not([disabled]).md-primary .md-icon-image {\n  fill: #fff;\n  fill: var(--md-theme-default-text-primary-on-primary, #fff);\n}\n.md-button.md-theme-default.md-raised:not([disabled]).md-accent {\n  color: #fff;\n  color: var(--md-theme-default-text-primary-on-accent, #fff);\n  background-color: #101422;\n  background-color: var(--md-theme-default-accent, #101422);\n}\n.md-button.md-theme-default.md-raised:not([disabled]).md-accent .md-icon-font {\n  color: #fff;\n  color: var(--md-theme-default-text-primary-on-accent, #fff);\n}\n.md-button.md-theme-default.md-raised:not([disabled]).md-accent .md-icon-image {\n  fill: #fff;\n  fill: var(--md-theme-default-text-primary-on-accent, #fff);\n}\n.md-button.md-theme-default.md-fab[disabled] {\n  background-color: rgba(255, 255, 255, 0.12);\n  background-color: var(--md-theme-default-disabled-background-on-background, rgba(255, 255, 255, 0.12));\n}\n.md-button.md-theme-default.md-fab:not([disabled]) {\n  background-color: #101422;\n  background-color: var(--md-theme-default-accent, #101422);\n}\n.md-button.md-theme-default.md-fab:not([disabled]) .md-icon-font {\n  color: #fff;\n  color: var(--md-theme-default-text-primary-on-accent, #fff);\n}\n.md-button.md-theme-default.md-fab:not([disabled]) .md-icon-image {\n  fill: #fff;\n  fill: var(--md-theme-default-text-primary-on-accent, #fff);\n}\n.md-button.md-theme-default.md-fab:not([disabled]).md-primary {\n  background-color: #5653fa;\n  background-color: var(--md-theme-default-primary, #5653fa);\n}\n.md-button.md-theme-default.md-fab:not([disabled]).md-primary .md-icon-font {\n  color: #fff;\n  color: var(--md-theme-default-text-primary-on-primary, #fff);\n}\n.md-button.md-theme-default.md-fab:not([disabled]).md-primary .md-icon-image {\n  fill: #fff;\n  fill: var(--md-theme-default-text-primary-on-primary, #fff);\n}\n.md-button.md-theme-default[disabled] {\n  color: rgba(255, 255, 255, 0.3);\n  color: var(--md-theme-default-disabled-on-background, rgba(255, 255, 255, 0.3));\n}\n.md-button.md-theme-default[disabled] .md-icon-font {\n  color: rgba(255, 255, 255, 0.5);\n  color: var(--md-theme-default-icon-disabled-on-background, rgba(255, 255, 255, 0.5));\n}\n.md-button.md-theme-default[disabled] .md-icon-image {\n  fill: rgba(255, 255, 255, 0.5);\n  fill: var(--md-theme-default-icon-disabled-on-background, rgba(255, 255, 255, 0.5));\n}\n\n.md-card.md-theme-default {\n  background-color: #424242;\n  background-color: var(--md-theme-default-background, #424242);\n  color: #fff;\n  color: var(--md-theme-default-text-primary-on-background, #fff);\n}\n.md-card.md-theme-default .md-card-expand .md-card-actions {\n  background-color: #424242;\n  background-color: var(--md-theme-default-background, #424242);\n}\n.md-card.md-theme-default .md-card-header .md-button:not(.md-primary):not(.md-accent),\n.md-card.md-theme-default .md-card-actions .md-button:not(.md-primary):not(.md-accent) {\n  color: #fff;\n  color: var(--md-theme-default-text-primary-on-background, #fff);\n}\n.md-card.md-theme-default .md-card-header .md-button:not(.md-primary):not(.md-accent).md-icon-button .md-icon,\n.md-card.md-theme-default .md-card-actions .md-button:not(.md-primary):not(.md-accent).md-icon-button .md-icon {\n  color: rgba(255, 255, 255, 0.54);\n  color: var(--md-theme-default-text-primary-on-background, rgba(255, 255, 255, 0.54));\n  fill: rgba(255, 255, 255, 0.54);\n  fill: var(--md-theme-default-text-primary-on-background, rgba(255, 255, 255, 0.54));\n}\n.md-card.md-theme-default > .md-card-area:after {\n  background-color: rgba(255, 255, 255, 0.12);\n  background-color: var(--md-theme-default-divider-on-background, rgba(255, 255, 255, 0.12));\n}\n.md-card.md-theme-default.md-primary {\n  background-color: #5653fa;\n  background-color: var(--md-theme-default-primary, #5653fa);\n  color: #fff;\n  color: var(--md-theme-default-text-primary-on-primary, #fff);\n}\n.md-card.md-theme-default.md-primary .md-card-expand .md-card-actions {\n  background-color: #5653fa;\n  background-color: var(--md-theme-default-primary, #5653fa);\n}\n.md-card.md-theme-default.md-primary .md-card-header .md-button:not(.md-primary):not(.md-accent),\n.md-card.md-theme-default.md-primary .md-card-actions .md-button:not(.md-primary):not(.md-accent) {\n  color: #fff;\n  color: var(--md-theme-default-text-primary-on-primary, #fff);\n}\n.md-card.md-theme-default.md-primary .md-card-header .md-button:not(.md-primary):not(.md-accent).md-icon-button .md-icon,\n.md-card.md-theme-default.md-primary .md-card-actions .md-button:not(.md-primary):not(.md-accent).md-icon-button .md-icon {\n  color: rgba(255, 255, 255, 0.54);\n  color: var(--md-theme-default-text-primary-on-primary, rgba(255, 255, 255, 0.54));\n  fill: rgba(255, 255, 255, 0.54);\n  fill: var(--md-theme-default-text-primary-on-primary, rgba(255, 255, 255, 0.54));\n}\n.md-card.md-theme-default.md-primary > .md-card-area:after {\n  background-color: rgba(255, 255, 255, 0.12);\n  background-color: var(--md-theme-default-divider-on-primary, rgba(255, 255, 255, 0.12));\n}\n.md-card.md-theme-default.md-accent {\n  background-color: #101422;\n  background-color: var(--md-theme-default-accent, #101422);\n  color: #fff;\n  color: var(--md-theme-default-text-primary-on-accent, #fff);\n}\n.md-card.md-theme-default.md-accent .md-card-expand .md-card-actions {\n  background-color: #101422;\n  background-color: var(--md-theme-default-accent, #101422);\n}\n.md-card.md-theme-default.md-accent .md-card-header .md-button:not(.md-primary):not(.md-accent),\n.md-card.md-theme-default.md-accent .md-card-actions .md-button:not(.md-primary):not(.md-accent) {\n  color: #fff;\n  color: var(--md-theme-default-text-primary-on-accent, #fff);\n}\n.md-card.md-theme-default.md-accent .md-card-header .md-button:not(.md-primary):not(.md-accent).md-icon-button .md-icon,\n.md-card.md-theme-default.md-accent .md-card-actions .md-button:not(.md-primary):not(.md-accent).md-icon-button .md-icon {\n  color: rgba(255, 255, 255, 0.54);\n  color: var(--md-theme-default-text-primary-on-accent, rgba(255, 255, 255, 0.54));\n  fill: rgba(255, 255, 255, 0.54);\n  fill: var(--md-theme-default-text-primary-on-accent, rgba(255, 255, 255, 0.54));\n}\n.md-card.md-theme-default.md-accent > .md-card-area:after {\n  background-color: rgba(255, 255, 255, 0.12);\n  background-color: var(--md-theme-default-divider-on-accent, rgba(255, 255, 255, 0.12));\n}\n\n.md-checkbox.md-theme-default.md-checked .md-checkbox-container {\n  background-color: #101422;\n  background-color: var(--md-theme-default-accent, #101422);\n  border-color: #101422;\n  border-color: var(--md-theme-default-accent, #101422);\n}\n.md-checkbox.md-theme-default.md-checked .md-checkbox-container:after {\n  border-color: #424242;\n  border-color: var(--md-theme-default-background, #424242);\n}\n.md-checkbox.md-theme-default.md-checked .md-ripple {\n  color: #101422;\n  color: var(--md-theme-default-accent, #101422);\n}\n.md-checkbox.md-theme-default.md-indeterminate .md-checkbox-container {\n  border-color: rgba(0, 0, 0, 0.54);\n  background-color: rgba(255, 255, 255, 0.3);\n}\n.md-checkbox.md-theme-default.md-indeterminate .md-checkbox-container:after {\n  border-color: rgba(0, 0, 0, 0.54);\n}\n.md-checkbox.md-theme-default.md-indeterminate .md-ripple {\n  color: rgba(0, 0, 0, 0.54);\n}\n.md-checkbox.md-theme-default.md-checked.md-primary .md-checkbox-container {\n  background-color: #5653fa;\n  background-color: var(--md-theme-default-primary, #5653fa);\n  border-color: #5653fa;\n  border-color: var(--md-theme-default-primary, #5653fa);\n}\n.md-checkbox.md-theme-default.md-checked.md-primary .md-ripple {\n  color: #5653fa;\n  color: var(--md-theme-default-primary, #5653fa);\n}\n.md-checkbox.md-theme-default.md-indeterminate .md-checkbox-container {\n  border-color: rgba(255, 255, 255, 0.7);\n  background-color: transparent;\n}\n.md-checkbox.md-theme-default.md-indeterminate .md-checkbox-container:after {\n  border-color: rgba(255, 255, 255, 0.7);\n}\n.md-checkbox.md-theme-default.md-indeterminate .md-ripple {\n  color: rgba(255, 255, 255, 0.7);\n}\n.md-checkbox.md-theme-default .md-checkbox-container {\n  border-color: rgba(255, 255, 255, 0.7);\n}\n.md-checkbox.md-theme-default.md-disabled .md-checkbox-container {\n  border-color: rgba(255, 255, 255, 0.3);\n}\n.md-checkbox.md-theme-default.md-disabled.md-checked .md-checkbox-container {\n  border-color: rgba(255, 255, 255, 0.3);\n  background-color: rgba(255, 255, 255, 0.3);\n}\n\n.md-chip.md-theme-default {\n  background-color: rgba(255, 255, 255, 0.12);\n  background-color: var(--md-theme-default-highlight, rgba(255, 255, 255, 0.12));\n  color: #fff;\n  color: var(--md-theme-default-text-primary, #fff);\n}\n.md-chip.md-theme-default .md-icon.md-icon-image svg {\n  color: #fff;\n  color: var(--md-theme-default-text-primary, #fff);\n  fill: #fff;\n  fill: var(--md-theme-default-text-primary, #fff);\n}\n.md-chip.md-theme-default.md-deletable:not(.md-disabled):hover, .md-chip.md-theme-default.md-clickable:not(.md-disabled):hover {\n  background-color: #fff;\n  background-color: var(--md-theme-default-icon, #fff);\n  color: rgba(0, 0, 0, 0.87);\n  color: var(--md-theme-default-text-primary-on-icon, rgba(0, 0, 0, 0.87));\n}\n.md-chip.md-theme-default.md-deletable:not(.md-disabled):hover .md-icon, .md-chip.md-theme-default.md-clickable:not(.md-disabled):hover .md-icon {\n  fill: rgba(0, 0, 0, 0.87);\n  fill: var(--md-theme-default-text-primary-on-icon, rgba(0, 0, 0, 0.87));\n}\n.md-chip.md-theme-default.md-deletable:not(.md-disabled):hover .md-input-action, .md-chip.md-theme-default.md-clickable:not(.md-disabled):hover .md-input-action {\n  background-color: rgba(66, 66, 66, 0.87);\n  background-color: var(--md-theme-default-background, rgba(66, 66, 66, 0.87));\n  color: #fff;\n  color: var(--md-theme-default-icon-on-background, #fff);\n}\n.md-chip.md-theme-default.md-deletable:not(.md-disabled):hover .md-input-action .md-icon svg, .md-chip.md-theme-default.md-clickable:not(.md-disabled):hover .md-input-action .md-icon svg {\n  fill: #fff;\n  fill: var(--md-theme-default-icon-on-background, #fff);\n  color: #fff;\n  color: var(--md-theme-default-icon-on-background, #fff);\n}\n.md-chip.md-theme-default.md-primary {\n  background-color: #5653fa;\n  background-color: var(--md-theme-default-primary, #5653fa);\n  color: #fff;\n  color: var(--md-theme-default-text-primary-on-primary, #fff);\n}\n.md-chip.md-theme-default.md-primary .md-input-action {\n  color: rgba(0, 0, 0, 0.54);\n  color: var(--md-theme-default-icon-on-disabled, rgba(0, 0, 0, 0.54));\n  background-color: rgba(0, 0, 0, 0.26);\n  background-color: var(--md-theme-default-disabled-on-disabled, rgba(0, 0, 0, 0.26));\n}\n.md-chip.md-theme-default.md-primary.md-deletable:not(.md-disabled):hover, .md-chip.md-theme-default.md-primary.md-clickable:not(.md-disabled):hover {\n  color: rgba(0, 0, 0, 0.87);\n  color: var(--md-theme-default-text-primary-on-icon, rgba(0, 0, 0, 0.87));\n  background-color: #fff;\n  background-color: var(--md-theme-default-icon, #fff);\n}\n.md-chip.md-theme-default.md-primary.md-deletable:not(.md-disabled):hover .md-input-action, .md-chip.md-theme-default.md-primary.md-clickable:not(.md-disabled):hover .md-input-action {\n  background-color: rgba(66, 66, 66, 0.87);\n  background-color: var(--md-theme-default-background, rgba(66, 66, 66, 0.87));\n}\n.md-chip.md-theme-default.md-accent, .md-chip.md-theme-default.md-duplicated {\n  background-color: #101422;\n  background-color: var(--md-theme-default-accent, #101422);\n  color: #fff;\n  color: var(--md-theme-default-text-primary-on-accent, #fff);\n}\n.md-chip.md-theme-default.md-accent .md-input-action, .md-chip.md-theme-default.md-duplicated .md-input-action {\n  color: rgba(0, 0, 0, 0.54);\n  color: var(--md-theme-default-icon-on-disabled, rgba(0, 0, 0, 0.54));\n  background-color: rgba(0, 0, 0, 0.26);\n  background-color: var(--md-theme-default-disabled-on-disabled, rgba(0, 0, 0, 0.26));\n}\n.md-chip.md-theme-default.md-accent.md-deletable:not(.md-disabled):hover, .md-chip.md-theme-default.md-accent.md-clickable:not(.md-disabled):hover, .md-chip.md-theme-default.md-duplicated.md-deletable:not(.md-disabled):hover, .md-chip.md-theme-default.md-duplicated.md-clickable:not(.md-disabled):hover {\n  background-color: #fff;\n  background-color: var(--md-theme-default-icon, #fff);\n  color: rgba(0, 0, 0, 0.87);\n  color: var(--md-theme-default-text-primary-on-icon, rgba(0, 0, 0, 0.87));\n}\n.md-chip.md-theme-default.md-accent.md-deletable:not(.md-disabled):hover .md-input-action, .md-chip.md-theme-default.md-accent.md-clickable:not(.md-disabled):hover .md-input-action, .md-chip.md-theme-default.md-duplicated.md-deletable:not(.md-disabled):hover .md-input-action, .md-chip.md-theme-default.md-duplicated.md-clickable:not(.md-disabled):hover .md-input-action {\n  background-color: rgba(66, 66, 66, 0.87);\n  background-color: var(--md-theme-default-background, rgba(66, 66, 66, 0.87));\n}\n.md-chip.md-theme-default.md-disabled {\n  background-color: rgba(255, 255, 255, 0.1);\n  background-color: var(--md-theme-default-highlight, rgba(255, 255, 255, 0.1));\n  color: rgba(255, 255, 255, 0.7);\n  color: var(--md-theme-default-text-accent, rgba(255, 255, 255, 0.7));\n}\n\n.md-chips.md-theme-default .md-clear {\n  background-color: rgba(255, 255, 255, 0.2);\n}\n\n.md-content.md-theme-default {\n  background-color: #424242;\n  background-color: var(--md-theme-default-background, #424242);\n  color: #fff;\n  color: var(--md-theme-default-text-primary-on-background, #fff);\n}\n.md-content.md-theme-default.md-primary {\n  background-color: #5653fa;\n  background-color: var(--md-theme-default-primary, #5653fa);\n  color: #fff;\n  color: var(--md-theme-default-text-primary-on-primary, #fff);\n}\n.md-content.md-theme-default.md-accent {\n  background-color: #101422;\n  background-color: var(--md-theme-default-accent, #101422);\n  color: #fff;\n  color: var(--md-theme-default-text-primary-on-accent, #fff);\n}\n.md-app .md-content.md-theme-default {\n  border-left-color: rgba(255, 255, 255, 0.12);\n  border-left-color: var(--md-theme-default-divider-on-background, rgba(255, 255, 255, 0.12));\n  border-right-color: rgba(255, 255, 255, 0.12);\n  border-right-color: var(--md-theme-default-divider-on-background, rgba(255, 255, 255, 0.12));\n}\n\n.md-datepicker-dialog.md-theme-default {\n  background-color: #424242;\n  background-color: var(--md-theme-default-background, #424242);\n  color: #fff;\n  color: var(--md-theme-default-text-primary-on-background, #fff);\n}\n.md-datepicker-dialog.md-theme-default .md-datepicker-header {\n  background-color: rgba(255, 255, 255, 0.06);\n  background-color: var(--md-theme-default-text-primary, rgba(255, 255, 255, 0.06));\n  color: #fff;\n  color: var(--md-theme-default-text-primary-on-background, #fff);\n}\n.md-datepicker-dialog.md-theme-default .md-datepicker-body-header:after, .md-datepicker-dialog.md-theme-default .md-datepicker-body-header:before {\n  background-color: #424242;\n  background-color: var(--md-theme-default-background, #424242);\n}\n.md-datepicker-dialog.md-theme-default .md-datepicker-body-footer {\n  background-color: #424242;\n  background-color: var(--md-theme-default-background, #424242);\n  color: #fff;\n  color: var(--md-theme-default-text-primary-on-background, #fff);\n}\n.md-datepicker-dialog.md-theme-default .md-datepicker-week {\n  color: rgba(255, 255, 255, 0.7);\n  color: var(--md-theme-default-text-accent-on-background, rgba(255, 255, 255, 0.7));\n}\n.md-datepicker-dialog.md-theme-default .md-datepicker-disabled {\n  color: rgba(255, 255, 255, 0.3);\n  color: var(--md-theme-default-disabled-on-background, rgba(255, 255, 255, 0.3));\n}\n.md-datepicker-dialog.md-theme-default .md-datepicker-today {\n  color: #5653fa;\n  color: var(--md-theme-default-primary-on-background, #5653fa);\n}\n.md-datepicker-dialog.md-theme-default .md-datepicker-day-button:hover,\n.md-datepicker-dialog.md-theme-default .md-datepicker-month-button:hover,\n.md-datepicker-dialog.md-theme-default .md-datepicker-year-button:hover {\n  background-color: rgba(255, 255, 255, 0.12);\n  background-color: var(--md-theme-default-divider, rgba(255, 255, 255, 0.12));\n}\n.md-datepicker-dialog.md-theme-default .md-datepicker-day-button.md-datepicker-selected {\n  background-color: #5653fa;\n  background-color: var(--md-theme-default-primary, #5653fa);\n  color: #fff;\n  color: var(--md-theme-default-text-primary-on-primary, #fff);\n}\n.md-datepicker-dialog.md-theme-default .md-datepicker-month-button.md-datepicker-selected,\n.md-datepicker-dialog.md-theme-default .md-datepicker-year-button.md-datepicker-selected {\n  color: #5653fa;\n  color: var(--md-theme-default-primary-on-background, #5653fa);\n}\n.md-datepicker-dialog.md-theme-default .md-datepicker-year-selector {\n  border-bottom-color: rgba(255, 255, 255, 0.12);\n  border-bottom-color: var(--md-theme-default-divider-on-background, rgba(255, 255, 255, 0.12));\n}\n\n.md-dialog.md-theme-default {\n  background-color: #424242;\n  background-color: var(--md-theme-default-background, #424242);\n  color: #fff;\n  color: var(--md-theme-default-text-primary-on-background, #fff);\n}\n\n.md-divider.md-theme-default {\n  background-color: rgba(255, 255, 255, 0.12);\n  background-color: var(--md-theme-default-divider, rgba(255, 255, 255, 0.12));\n}\n\n.md-drawer.md-theme-default {\n  background-color: #424242;\n  background-color: var(--md-theme-default-background, #424242);\n  color: #fff;\n  color: var(--md-theme-default-text-primary-on-background, #fff);\n}\n.md-drawer.md-theme-default.md-persistent-mini.md-left {\n  border-right-color: rgba(255, 255, 255, 0.12);\n  border-right-color: var(--md-theme-default-divider-on-background, rgba(255, 255, 255, 0.12));\n}\n.md-drawer.md-theme-default.md-persistent-mini.md-right {\n  border-left-color: rgba(255, 255, 255, 0.12);\n  border-left-color: var(--md-theme-default-divider-on-background, rgba(255, 255, 255, 0.12));\n}\n\n.md-empty-state.md-theme-default .md-empty-state-icon.md-icon-image svg {\n  fill: rgba(255, 255, 255, 0.3);\n  fill: var(--md-theme-default-disabled-on-background, rgba(255, 255, 255, 0.3));\n}\n.md-empty-state.md-theme-default .md-empty-state-icon.md-icon-font {\n  color: rgba(255, 255, 255, 0.3);\n  color: var(--md-theme-default-disabled-on-background, rgba(255, 255, 255, 0.3));\n}\n.md-empty-state.md-theme-default.md-rounded {\n  background-color: rgba(255, 255, 255, 0.06);\n  background-color: var(--md-theme-default-disabled, rgba(255, 255, 255, 0.06));\n}\n.md-empty-state.md-theme-default.md-primary .md-empty-state-icon.md-icon-image svg {\n  fill: #5653fa;\n  fill: var(--md-theme-default-primary-on-background, #5653fa);\n}\n.md-empty-state.md-theme-default.md-primary .md-empty-state-icon.md-icon-font {\n  color: #5653fa;\n  color: var(--md-theme-default-primary-on-background, #5653fa);\n}\n.md-empty-state.md-theme-default.md-accent .md-empty-state-icon.md-icon-image svg {\n  fill: #101422;\n  fill: var(--md-theme-default-accent-on-background, #101422);\n}\n.md-empty-state.md-theme-default.md-accent .md-empty-state-icon.md-icon-font {\n  color: #101422;\n  color: var(--md-theme-default-accent-on-background, #101422);\n}\n\n.md-field.md-theme-default:after {\n  background-color: rgba(255, 255, 255, 0.7);\n}\n.md-field.md-theme-default:before {\n  background-color: #5653fa;\n  background-color: var(--md-theme-default-primary, #5653fa);\n}\n.md-field.md-theme-default .md-helper-text,\n.md-field.md-theme-default .md-count,\n.md-field.md-theme-default label {\n  color: rgba(255, 255, 255, 0.7);\n}\n.md-field.md-theme-default .md-suffix, .md-field.md-theme-default .md-prefix {\n  color: rgba(255, 255, 255, 0.7);\n}\n.md-field.md-theme-default .md-input::-webkit-input-placeholder,\n.md-field.md-theme-default .md-textarea::-webkit-input-placeholder {\n  color: rgba(255, 255, 255, 0.7);\n}\n.md-field.md-theme-default.md-focused .md-input,\n.md-field.md-theme-default.md-focused .md-textarea, .md-field.md-theme-default.md-has-value .md-input,\n.md-field.md-theme-default.md-has-value .md-textarea {\n  -webkit-text-fill-color: #fff;\n}\n.md-field.md-theme-default.md-has-textarea:not(.md-autogrow):after {\n  border-color: #fff;\n}\n.md-field.md-theme-default.md-has-textarea:not(.md-autogrow):before {\n  border-color: #5653fa;\n  border-color: var(--md-theme-default-primary, #5653fa);\n}\n.md-field.md-theme-default.md-disabled:after {\n  background-image: -webkit-gradient(linear, left top, right top, from(rgba(255, 255, 255, 0.7)), color-stop(33%, rgba(255, 255, 255, 0.7)), color-stop(0%, transparent));\n  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.7) 33%, transparent 0%);\n}\n.md-field.md-theme-default.md-disabled label,\n.md-field.md-theme-default.md-disabled .md-input,\n.md-field.md-theme-default.md-disabled .md-textarea {\n  color: rgba(255, 255, 255, 0.5);\n}\n.md-field.md-theme-default > .md-icon:after {\n  background-color: #303030;\n  background-color: var(--md-theme-default-background-variant, #303030);\n}\n.md-field.md-theme-default.md-invalid:after {\n  background-color: #ff1744;\n  background-color: var(--md-theme-default-fieldvariant, #ff1744);\n}\n.md-field.md-theme-default.md-invalid.md-has-textarea:not(.md-autogrow):before {\n  border-color: #ff1744;\n  border-color: var(--md-theme-default-fieldvariant, #ff1744);\n}\n.md-field.md-theme-default.md-invalid label {\n  color: #ff1744;\n  color: var(--md-theme-default-fieldvariant, #ff1744);\n}\n.md-field.md-theme-default.md-invalid .md-error {\n  color: #ff1744;\n  color: var(--md-theme-default-fieldvariant, #ff1744);\n}\n.md-field.md-theme-default.md-invalid .md-date-icon,\n.md-field.md-theme-default.md-invalid .md-date-icon svg {\n  color: #ff1744;\n  color: var(--md-theme-default-fieldvariant, #ff1744);\n  fill: #ff1744;\n  fill: var(--md-theme-default-fieldvariant, #ff1744);\n}\n.md-field.md-theme-default.md-focused .md-input,\n.md-field.md-theme-default.md-focused .md-textarea, .md-field.md-theme-default.md-highlight .md-input,\n.md-field.md-theme-default.md-highlight .md-textarea {\n  color: #5653fa;\n  color: var(--md-theme-default-primary-on-background, #5653fa);\n}\n.md-field.md-theme-default.md-focused > .md-icon, .md-field.md-theme-default.md-highlight > .md-icon {\n  color: #5653fa;\n  color: var(--md-theme-default-primary-on-background, #5653fa);\n  fill: #5653fa;\n  fill: var(--md-theme-default-primary-on-background, #5653fa);\n}\n.md-field.md-theme-default.md-focused label {\n  color: #5653fa;\n  color: var(--md-theme-default-primary-on-background, #5653fa);\n}\n.md-field.md-theme-default.md-disabled .md-icon svg {\n  fill: rgba(255, 255, 255, 0.3);\n  fill: var(--md-theme-default-disabled-on-background, rgba(255, 255, 255, 0.3));\n}\n\n.md-icon.md-theme-default.md-icon-image svg {\n  fill: #fff;\n  fill: var(--md-theme-default-icon-on-background, #fff);\n}\n.md-icon.md-theme-default.md-icon-image svg.md-primary {\n  fill: #5653fa;\n  fill: var(--md-theme-default-primary-on-background, #5653fa);\n}\n.md-icon.md-theme-default.md-icon-image svg.md-accent {\n  fill: #101422;\n  fill: var(--md-theme-default-accent-on-background, #101422);\n}\n.md-icon.md-theme-default.md-icon-font {\n  color: #fff;\n  color: var(--md-theme-default-icon-on-background, #fff);\n}\n.md-icon.md-theme-default.md-icon-font.md-primary {\n  color: #5653fa;\n  color: var(--md-theme-default-primary-on-background, #5653fa);\n}\n.md-icon.md-theme-default.md-icon-font.md-accent {\n  color: #101422;\n  color: var(--md-theme-default-accent-on-background, #101422);\n}\n\n.md-list.md-theme-default {\n  background-color: #424242;\n  background-color: var(--md-theme-default-background, #424242);\n  color: #fff;\n  color: var(--md-theme-default-text-primary-on-background, #fff);\n}\n.md-list.md-theme-default.md-double-line .md-list-item-text :nth-child(2) {\n  color: rgba(255, 255, 255, 0.7);\n  color: var(--md-theme-default-text-accent-on-background, rgba(255, 255, 255, 0.7));\n}\n.md-list.md-theme-default.md-triple-line .md-list-item-text :nth-child(3) {\n  color: rgba(255, 255, 255, 0.7);\n  color: var(--md-theme-default-text-accent-on-background, rgba(255, 255, 255, 0.7));\n}\n.md-list.md-theme-default .md-highlight .md-list-item-container {\n  background-color: rgba(255, 255, 255, 0.12);\n  background-color: var(--md-theme-default-divider-on-background, rgba(255, 255, 255, 0.12));\n}\n.md-list.md-theme-default .md-list-item-container {\n  color: #fff;\n  color: var(--md-theme-default-text-primary-on-background, #fff);\n}\n.md-list.md-theme-default .md-list-item-container:not(.md-list-item-default):not(.md-list-item-expand):not([disabled]):hover {\n  background-color: rgba(255, 255, 255, 0.12);\n  background-color: var(--md-theme-default-divider-on-background, rgba(255, 255, 255, 0.12));\n  color: #fff;\n  color: var(--md-theme-default-text-primary-on-background, #fff);\n}\n.md-list.md-theme-default [disabled] {\n  color: rgba(255, 255, 255, 0.3);\n  color: var(--md-theme-default-disabled-on-background, rgba(255, 255, 255, 0.3));\n}\n.md-list.md-theme-default .md-selected .md-list-item-content,\n.md-list.md-theme-default .router-link-active .md-list-item-content {\n  color: #5653fa;\n  color: var(--md-theme-default-primary-on-background, #5653fa);\n}\n.md-list.md-theme-default .md-list-item-expand.md-active {\n  border-color: rgba(255, 255, 255, 0.12);\n  border-color: var(--md-theme-default-divider-on-background, rgba(255, 255, 255, 0.12));\n}\n.md-list.md-theme-default .md-list-item-expand:not(.md-list-item-default):not([disabled]) > .md-list-item-content:hover {\n  background-color: rgba(255, 255, 255, 0.12);\n  background-color: var(--md-theme-default-divider-on-background, rgba(255, 255, 255, 0.12));\n  color: #fff;\n  color: var(--md-theme-default-text-primary-on-background, #fff);\n}\n\n.md-menu-item.md-theme-default.md-primary .md-list-item-link,\n.md-menu-item.md-theme-default.md-primary .md-list-item-router,\n.md-menu-item.md-theme-default.md-primary .md-list-item-button {\n  color: #5653fa;\n  color: var(--md-theme-default-primary-on-background, #5653fa);\n}\n.md-menu-item.md-theme-default.md-accent .md-list-item-link,\n.md-menu-item.md-theme-default.md-accent .md-list-item-router,\n.md-menu-item.md-theme-default.md-accent .md-list-item-button {\n  color: #101422;\n  color: var(--md-theme-default-accent-on-background, #101422);\n}\n\n.md-progress-bar.md-theme-default.md-indeterminate, .md-progress-bar.md-theme-default.md-query {\n  background-color: rgba(86, 83, 250, 0.38);\n  background-color: var(--md-theme-default-primary-on-, rgba(86, 83, 250, 0.38));\n}\n.md-progress-bar.md-theme-default.md-indeterminate .md-progress-bar-track:after,\n.md-progress-bar.md-theme-default.md-indeterminate .md-progress-bar-fill:after, .md-progress-bar.md-theme-default.md-query .md-progress-bar-track:after,\n.md-progress-bar.md-theme-default.md-query .md-progress-bar-fill:after {\n  background-color: #5653fa;\n  background-color: var(--md-theme-default-primary, #5653fa);\n}\n.md-progress-bar.md-theme-default.md-indeterminate.md-accent, .md-progress-bar.md-theme-default.md-query.md-accent {\n  background-color: rgba(16, 20, 34, 0.38);\n  background-color: var(--md-theme-default-accent-on-, rgba(16, 20, 34, 0.38));\n}\n.md-progress-bar.md-theme-default.md-indeterminate.md-accent .md-progress-bar-track:after,\n.md-progress-bar.md-theme-default.md-indeterminate.md-accent .md-progress-bar-fill:after, .md-progress-bar.md-theme-default.md-query.md-accent .md-progress-bar-track:after,\n.md-progress-bar.md-theme-default.md-query.md-accent .md-progress-bar-fill:after {\n  background-color: #101422;\n  background-color: var(--md-theme-default-accent, #101422);\n}\n.md-progress-bar.md-theme-default.md-determinate {\n  background-color: rgba(86, 83, 250, 0.38);\n  background-color: var(--md-theme-default-primary-on-, rgba(86, 83, 250, 0.38));\n}\n.md-progress-bar.md-theme-default.md-determinate .md-progress-bar-fill {\n  background-color: #5653fa;\n  background-color: var(--md-theme-default-primary, #5653fa);\n}\n.md-progress-bar.md-theme-default.md-determinate.md-accent {\n  background-color: rgba(16, 20, 34, 0.38);\n  background-color: var(--md-theme-default-accent-on-, rgba(16, 20, 34, 0.38));\n}\n.md-progress-bar.md-theme-default.md-determinate.md-accent .md-progress-bar-fill {\n  background-color: #101422;\n  background-color: var(--md-theme-default-accent, #101422);\n}\n.md-progress-bar.md-theme-default.md-buffer .md-progress-bar-fill {\n  background-color: #5653fa;\n  background-color: var(--md-theme-default-primary, #5653fa);\n}\n.md-progress-bar.md-theme-default.md-buffer .md-progress-bar-track {\n  background-color: rgba(86, 83, 250, 0.38);\n  background-color: var(--md-theme-default-primary-on-, rgba(86, 83, 250, 0.38));\n}\n.md-progress-bar.md-theme-default.md-buffer .md-progress-bar-buffer {\n  border-color: rgba(86, 83, 250, 0.38);\n  border-color: var(--md-theme-default-primary-on-, rgba(86, 83, 250, 0.38));\n}\n.md-progress-bar.md-theme-default.md-buffer.md-accent .md-progress-bar-fill {\n  background-color: #101422;\n  background-color: var(--md-theme-default-accent, #101422);\n}\n.md-progress-bar.md-theme-default.md-buffer.md-accent .md-progress-bar-track {\n  background-color: rgba(16, 20, 34, 0.38);\n  background-color: var(--md-theme-default-accent-on-, rgba(16, 20, 34, 0.38));\n}\n.md-progress-bar.md-theme-default.md-buffer.md-accent .md-progress-bar-buffer {\n  border-color: rgba(16, 20, 34, 0.38);\n  border-color: var(--md-theme-default-accent-on-, rgba(16, 20, 34, 0.38));\n}\n\n.md-progress-spinner.md-theme-default .md-progress-spinner-circle {\n  stroke: #5653fa;\n  stroke: var(--md-theme-default-primary, #5653fa);\n}\n.md-progress-spinner.md-theme-default.md-accent .md-progress-spinner-circle {\n  stroke: #101422;\n  stroke: var(--md-theme-default-accent, #101422);\n}\n\n.md-radio.md-theme-default.md-checked .md-radio-container {\n  border-color: #101422;\n  border-color: var(--md-theme-default-accent, #101422);\n}\n.md-radio.md-theme-default.md-checked .md-radio-container:after {\n  background-color: #101422;\n  background-color: var(--md-theme-default-accent, #101422);\n}\n.md-radio.md-theme-default.md-checked .md-ripple {\n  color: #101422;\n  color: var(--md-theme-default-accent, #101422);\n}\n.md-radio.md-theme-default.md-checked.md-primary .md-radio-container {\n  border-color: #5653fa;\n  border-color: var(--md-theme-default-primary, #5653fa);\n}\n.md-radio.md-theme-default.md-checked.md-primary .md-radio-container:after {\n  background-color: #5653fa;\n  background-color: var(--md-theme-default-primary, #5653fa);\n}\n.md-radio.md-theme-default.md-checked.md-primary .md-ripple {\n  color: #5653fa;\n  color: var(--md-theme-default-primary, #5653fa);\n}\n.md-radio.md-theme-default .md-radio-container {\n  border-color: rgba(255, 255, 255, 0.7);\n}\n.md-radio.md-theme-default.md-disabled .md-radio-container {\n  border-color: rgba(255, 255, 255, 0.3);\n}\n.md-radio.md-theme-default.md-disabled.md-checked .md-radio-container {\n  border-color: rgba(255, 255, 255, 0.3);\n}\n.md-radio.md-theme-default.md-disabled.md-checked .md-radio-container:after {\n  background-color: rgba(255, 255, 255, 0.3);\n}\n\n.md-snackbar.md-theme-default {\n  color: rgba(0, 0, 0, 0.87);\n  color: var(--md-theme-default-text-primary-on-text-primary, rgba(0, 0, 0, 0.87));\n  background-color: #fff;\n}\n\n.md-steppers.md-theme-default {\n  background-color: #424242;\n  background-color: var(--md-theme-default-background, #424242);\n  color: #fff;\n  color: var(--md-theme-default-text-primary-on-background, #fff);\n}\n.md-steppers.md-theme-default .md-stepper-icon:after, .md-steppers.md-theme-default .md-stepper-icon:before,\n.md-steppers.md-theme-default .md-stepper-number:after,\n.md-steppers.md-theme-default .md-stepper-number:before,\n.md-steppers.md-theme-default .md-stepper:after,\n.md-steppers.md-theme-default .md-stepper:before {\n  background-color: rgba(255, 255, 255, 0.12);\n  background-color: var(--md-theme-default-divider-on-background, rgba(255, 255, 255, 0.12));\n}\n.md-steppers.md-theme-default .md-stepper-number {\n  background-color: rgba(255, 255, 255, 0.5);\n  background-color: var(--md-theme-default-text-hint-on-background, rgba(255, 255, 255, 0.5));\n  color: rgba(0, 0, 0, 0.87);\n  color: var(--md-theme-default-text-primary-on-text-hint, rgba(0, 0, 0, 0.87));\n}\n.md-steppers.md-theme-default .md-stepper-number svg {\n  color: rgba(0, 0, 0, 0.87);\n  color: var(--md-theme-default-text-primary-on-text-hint, rgba(0, 0, 0, 0.87));\n  fill: rgba(0, 0, 0, 0.87);\n  fill: var(--md-theme-default-text-primary-on-text-hint, rgba(0, 0, 0, 0.87));\n}\n.md-steppers.md-theme-default .md-stepper-header .md-button-content {\n  color: rgba(255, 255, 255, 0.5);\n  color: var(--md-theme-default-text-hint-on-background, rgba(255, 255, 255, 0.5));\n}\n.md-steppers.md-theme-default .md-stepper-header .md-button-content:after, .md-steppers.md-theme-default .md-stepper-header .md-button-content:before {\n  background-color: rgba(255, 255, 255, 0.12);\n  background-color: var(--md-theme-default-divider-on-background, rgba(255, 255, 255, 0.12));\n}\n.md-steppers.md-theme-default .md-stepper-header.md-active .md-button-content, .md-steppers.md-theme-default .md-stepper-header.md-done .md-button-content {\n  color: #fff;\n  color: var(--md-theme-default-text-primary-on-background, #fff);\n}\n.md-steppers.md-theme-default .md-stepper-header.md-active .md-stepper-number, .md-steppers.md-theme-default .md-stepper-header.md-done .md-stepper-number {\n  background-color: #5653fa;\n  background-color: var(--md-theme-default-primary-on-background, #5653fa);\n  color: #fff;\n  color: var(--md-theme-default-text-primary-on-primary, #fff);\n}\n.md-steppers.md-theme-default .md-stepper-header.md-active .md-stepper-number svg, .md-steppers.md-theme-default .md-stepper-header.md-done .md-stepper-number svg {\n  color: #fff;\n  color: var(--md-theme-default-text-primary-on-primary, #fff);\n  fill: #fff;\n  fill: var(--md-theme-default-text-primary-on-primary, #fff);\n}\n.md-steppers.md-theme-default .md-stepper-header.md-error .md-button-content {\n  color: #ff1744;\n  color: var(--md-theme-default-steppervariant, #ff1744);\n}\n.md-steppers.md-theme-default .md-stepper-header.md-error .md-icon svg {\n  color: #ff1744;\n  color: var(--md-theme-default-steppervariant, #ff1744);\n  fill: #ff1744;\n  fill: var(--md-theme-default-steppervariant, #ff1744);\n}\n\n.md-subheader.md-theme-default {\n  color: rgba(255, 255, 255, 0.7);\n  color: var(--md-theme-default-text-accent-on-background, rgba(255, 255, 255, 0.7));\n}\n.md-subheader.md-theme-default.md-primary {\n  color: #5653fa;\n  color: var(--md-theme-default-primary-on-background, #5653fa);\n}\n\n.md-switch.md-theme-default.md-checked .md-switch-container {\n  background-color: rgba(16, 20, 34, 0.38);\n  background-color: var(--md-theme-default-accent-on-, rgba(16, 20, 34, 0.38));\n}\n.md-switch.md-theme-default.md-checked .md-switch-thumb {\n  background-color: #101422;\n  background-color: var(--md-theme-default-accent, #101422);\n}\n.md-switch.md-theme-default.md-checked .md-ripple {\n  color: #101422;\n  color: var(--md-theme-default-accent, #101422);\n}\n.md-switch.md-theme-default.md-checked.md-primary .md-switch-container {\n  background-color: rgba(86, 83, 250, 0.38);\n  background-color: var(--md-theme-default-primary-on-, rgba(86, 83, 250, 0.38));\n}\n.md-switch.md-theme-default.md-checked.md-primary .md-switch-thumb {\n  background-color: #5653fa;\n  background-color: var(--md-theme-default-primary, #5653fa);\n}\n.md-switch.md-theme-default.md-checked.md-primary .md-ripple {\n  color: #5653fa;\n  color: var(--md-theme-default-primary, #5653fa);\n}\n.md-switch.md-theme-default .md-switch-container {\n  background-color: rgba(255, 255, 255, 0.3);\n}\n.md-switch.md-theme-default .md-switch-thumb {\n  background-color: #bdbdbd;\n  background-color: var(--md-theme-default-switchvariant, #bdbdbd);\n}\n.md-switch.md-theme-default.md-disabled .md-switch-container {\n  background-color: rgba(255, 255, 255, 0.1);\n}\n.md-switch.md-theme-default.md-disabled .md-switch-thumb {\n  background-color: #424242;\n  background-color: var(--md-theme-default-switchvariant, #424242);\n}\n\n.md-table.md-theme-default .md-table-content,\n.md-table.md-theme-default .md-table-alternate-header {\n  background-color: #424242;\n  background-color: var(--md-theme-default-background, #424242);\n}\n.md-table.md-theme-default .md-table-alternate-header .md-table-toolbar {\n  color: #fff;\n  color: var(--md-theme-default-text-primary-on-background, #fff);\n  background-color: rgba(16, 20, 34, 0.2);\n  background-color: var(--md-theme-default-accent-on-, rgba(16, 20, 34, 0.2));\n}\n.md-table.md-theme-default .md-table-row:hover:not(.md-header-row) .md-table-cell {\n  background-color: rgba(255, 255, 255, 0.08);\n  background-color: var(--md-theme-default-highlight-on-background, rgba(255, 255, 255, 0.08));\n}\n.md-table.md-theme-default .md-table-row.md-selected, .md-table.md-theme-default .md-table-row.md-selected-single {\n  background-color: #616161;\n  background-color: var(--md-theme-default-rowvariant, #616161);\n}\n.md-table.md-theme-default .md-table-row.md-selected.md-primary, .md-table.md-theme-default .md-table-row.md-selected-single.md-primary {\n  background-color: #5653fa;\n  background-color: var(--md-theme-default-primary-on-background, #5653fa);\n  color: #fff;\n  color: var(--md-theme-default-text-primary-on-primary, #fff);\n}\n.md-table.md-theme-default .md-table-row.md-selected.md-primary .md-ripple, .md-table.md-theme-default .md-table-row.md-selected-single.md-primary .md-ripple {\n  color: #fff;\n}\n.md-table.md-theme-default .md-table-row.md-selected.md-primary .md-checkbox-container, .md-table.md-theme-default .md-table-row.md-selected-single.md-primary .md-checkbox-container {\n  background-color: #fff;\n  border-color: #fff;\n}\n.md-table.md-theme-default .md-table-row.md-selected.md-primary .md-checkbox-container:after, .md-table.md-theme-default .md-table-row.md-selected-single.md-primary .md-checkbox-container:after {\n  border-color: #5653fa;\n  border-color: var(--md-theme-default-primary, #5653fa);\n}\n.md-table.md-theme-default .md-table-row.md-selected.md-accent, .md-table.md-theme-default .md-table-row.md-selected-single.md-accent {\n  background-color: #101422;\n  background-color: var(--md-theme-default-accent-on-background, #101422);\n  color: #fff;\n  color: var(--md-theme-default-text-primary-on-accent, #fff);\n}\n.md-table.md-theme-default .md-table-row.md-selected.md-accent .md-ripple, .md-table.md-theme-default .md-table-row.md-selected-single.md-accent .md-ripple {\n  color: #fff;\n}\n.md-table.md-theme-default .md-table-row.md-selected.md-accent .md-checkbox-container, .md-table.md-theme-default .md-table-row.md-selected-single.md-accent .md-checkbox-container {\n  background-color: #fff;\n  border-color: #fff;\n}\n.md-table.md-theme-default .md-table-row.md-selected.md-accent .md-checkbox-container:after, .md-table.md-theme-default .md-table-row.md-selected-single.md-accent .md-checkbox-container:after {\n  border-color: #101422;\n  border-color: var(--md-theme-default-accent, #101422);\n}\n.md-table.md-theme-default .md-table-row td {\n  border-top-color: rgba(255, 255, 255, 0.12);\n  border-top-color: var(--md-theme-default-divider-on-background, rgba(255, 255, 255, 0.12));\n}\n.md-table.md-theme-default .md-table-head {\n  color: rgba(255, 255, 255, 0.7);\n  color: var(--md-theme-default-text-accent-on-background, rgba(255, 255, 255, 0.7));\n}\n.md-table.md-theme-default .md-table-fixed-header-active {\n  border-bottom-color: rgba(255, 255, 255, 0.12);\n  border-bottom-color: var(--md-theme-default-divider-on-background, rgba(255, 255, 255, 0.12));\n}\n.md-table.md-theme-default .md-sortable:hover, .md-table.md-theme-default .md-sortable.md-sorted {\n  color: #fff;\n  color: var(--md-theme-default-text-primary-on-background, #fff);\n}\n.md-table.md-theme-default .md-sortable:hover svg, .md-table.md-theme-default .md-sortable.md-sorted svg {\n  color: #fff;\n  color: var(--md-theme-default-text-primary-on-background, #fff);\n  fill: #fff;\n  fill: var(--md-theme-default-text-primary-on-background, #fff);\n}\n.md-table.md-theme-default .md-table-pagination {\n  border-top-color: rgba(255, 255, 255, 0.12);\n  border-top-color: var(--md-theme-default-divider-on-background, rgba(255, 255, 255, 0.12));\n}\n\n.md-tabs.md-theme-default .md-tabs-navigation {\n  background-color: #424242;\n  background-color: var(--md-theme-default-background-on-background, #424242);\n}\n.md-tabs.md-theme-default .md-tabs-navigation .md-button {\n  color: rgba(255, 255, 255, 0.7);\n  color: var(--md-theme-default-text-primary-on-background, rgba(255, 255, 255, 0.7));\n}\n.md-tabs.md-theme-default .md-tabs-navigation .md-button[disabled] {\n  color: rgba(255, 255, 255, 0.38);\n  color: var(--md-theme-default-text-primary-on-background, rgba(255, 255, 255, 0.38));\n}\n.md-tabs.md-theme-default .md-tabs-navigation .md-button .md-icon {\n  color: rgba(255, 255, 255, 0.7);\n  color: var(--md-theme-default-text-primary-on-background, rgba(255, 255, 255, 0.7));\n}\n.md-tabs.md-theme-default .md-tabs-navigation .md-button .md-icon svg {\n  fill: rgba(255, 255, 255, 0.7);\n  fill: var(--md-theme-default-text-primary-on-background, rgba(255, 255, 255, 0.7));\n}\n.md-tabs.md-theme-default .md-tabs-navigation .md-button.md-active {\n  color: #5653fa;\n  color: var(--md-theme-default-primary-on-background, #5653fa);\n}\n.md-tabs.md-theme-default .md-tabs-navigation .md-button.md-active .md-icon {\n  color: #5653fa;\n  color: var(--md-theme-default-primary-on-background, #5653fa);\n}\n.md-tabs.md-theme-default .md-tabs-navigation .md-button.md-active .md-icon svg {\n  fill: #5653fa;\n  fill: var(--md-theme-default-primary-on-background, #5653fa);\n}\n.md-tabs.md-theme-default .md-tabs-indicator {\n  background-color: #5653fa;\n  background-color: var(--md-theme-default-primary-on-background, #5653fa);\n}\n.md-tabs.md-theme-default.md-primary .md-tabs-navigation {\n  background-color: #5653fa;\n  background-color: var(--md-theme-default-primary-on-background, #5653fa);\n}\n.md-tabs.md-theme-default.md-primary .md-tabs-navigation .md-button {\n  color: rgba(255, 255, 255, 0.7);\n  color: var(--md-theme-default-text-primary-on-primary, rgba(255, 255, 255, 0.7));\n}\n.md-tabs.md-theme-default.md-primary .md-tabs-navigation .md-button[disabled] {\n  color: rgba(255, 255, 255, 0.38);\n  color: var(--md-theme-default-text-primary-on-primary, rgba(255, 255, 255, 0.38));\n}\n.md-tabs.md-theme-default.md-primary .md-tabs-navigation .md-button .md-icon {\n  color: rgba(255, 255, 255, 0.7);\n  color: var(--md-theme-default-text-primary-on-primary, rgba(255, 255, 255, 0.7));\n}\n.md-tabs.md-theme-default.md-primary .md-tabs-navigation .md-button .md-icon svg {\n  fill: rgba(255, 255, 255, 0.7);\n  fill: var(--md-theme-default-text-primary-on-primary, rgba(255, 255, 255, 0.7));\n}\n.md-tabs.md-theme-default.md-primary .md-tabs-navigation .md-button.md-active {\n  color: #fff;\n  color: var(--md-theme-default-text-primary-on-primary, #fff);\n}\n.md-tabs.md-theme-default.md-primary .md-tabs-navigation .md-button.md-active .md-icon {\n  color: #fff;\n  color: var(--md-theme-default-text-primary-on-primary, #fff);\n}\n.md-tabs.md-theme-default.md-primary .md-tabs-navigation .md-button.md-active .md-icon svg {\n  fill: #fff;\n  fill: var(--md-theme-default-text-primary-on-primary, #fff);\n}\n.md-tabs.md-theme-default.md-primary .md-tabs-indicator {\n  background-color: #fff;\n  background-color: var(--md-theme-default-text-primary-on-primary, #fff);\n}\n.md-tabs.md-theme-default.md-accent .md-tabs-navigation {\n  background-color: #101422;\n  background-color: var(--md-theme-default-accent-on-background, #101422);\n}\n.md-tabs.md-theme-default.md-accent .md-tabs-navigation .md-button {\n  color: rgba(255, 255, 255, 0.7);\n  color: var(--md-theme-default-text-primary-on-accent, rgba(255, 255, 255, 0.7));\n}\n.md-tabs.md-theme-default.md-accent .md-tabs-navigation .md-button[disabled] {\n  color: rgba(255, 255, 255, 0.38);\n  color: var(--md-theme-default-text-primary-on-accent, rgba(255, 255, 255, 0.38));\n}\n.md-tabs.md-theme-default.md-accent .md-tabs-navigation .md-button .md-icon {\n  color: rgba(255, 255, 255, 0.7);\n  color: var(--md-theme-default-text-primary-on-accent, rgba(255, 255, 255, 0.7));\n}\n.md-tabs.md-theme-default.md-accent .md-tabs-navigation .md-button .md-icon svg {\n  fill: rgba(255, 255, 255, 0.7);\n  fill: var(--md-theme-default-text-primary-on-accent, rgba(255, 255, 255, 0.7));\n}\n.md-tabs.md-theme-default.md-accent .md-tabs-navigation .md-button.md-active {\n  color: #fff;\n  color: var(--md-theme-default-text-primary-on-accent, #fff);\n}\n.md-tabs.md-theme-default.md-accent .md-tabs-navigation .md-button.md-active .md-icon {\n  color: #fff;\n  color: var(--md-theme-default-text-primary-on-accent, #fff);\n}\n.md-tabs.md-theme-default.md-accent .md-tabs-navigation .md-button.md-active .md-icon svg {\n  fill: #fff;\n  fill: var(--md-theme-default-text-primary-on-accent, #fff);\n}\n.md-tabs.md-theme-default.md-accent .md-tabs-indicator {\n  background-color: #fff;\n  background-color: var(--md-theme-default-text-primary-on-accent, #fff);\n}\n\n.md-toolbar.md-theme-default {\n  color: #fff;\n  color: var(--md-theme-default-text-primary-on-background-variant, #fff);\n  background-color: #212121;\n  background-color: var(--md-theme-default-toolbarvariant, #212121);\n}\n.md-toolbar.md-theme-default .md-icon {\n  color: #fff;\n  color: var(--md-theme-default-text-primary-on-background-variant, #fff);\n}\n.md-toolbar.md-theme-default .md-icon svg {\n  fill: #fff;\n  fill: var(--md-theme-default-text-primary-on-background-variant, #fff);\n}\n.md-toolbar.md-theme-default .md-title,\n.md-toolbar.md-theme-default .md-display-1,\n.md-toolbar.md-theme-default .md-display-2 {\n  color: #fff;\n  color: var(--md-theme-default-text-primary-on-background-variant, #fff);\n}\n.md-toolbar.md-theme-default.md-primary {\n  background-color: #5653fa;\n  background-color: var(--md-theme-default-primary, #5653fa);\n  color: #fff;\n  color: var(--md-theme-default-text-primary-on-primary, #fff);\n}\n.md-toolbar.md-theme-default.md-primary .md-icon {\n  color: #fff;\n  color: var(--md-theme-default-text-primary-on-primary, #fff);\n}\n.md-toolbar.md-theme-default.md-primary .md-icon svg {\n  fill: #fff;\n  fill: var(--md-theme-default-text-primary-on-primary, #fff);\n}\n.md-toolbar.md-theme-default.md-primary .md-button:not([disabled]):not(.md-raised) {\n  color: #fff;\n  color: var(--md-theme-default-text-primary-on-primary, #fff);\n}\n.md-toolbar.md-theme-default.md-primary .md-title,\n.md-toolbar.md-theme-default.md-primary .md-display-1,\n.md-toolbar.md-theme-default.md-primary .md-display-2 {\n  color: #fff;\n  color: var(--md-theme-default-text-primary-on-primary, #fff);\n}\n.md-toolbar.md-theme-default.md-accent {\n  background-color: #101422;\n  background-color: var(--md-theme-default-accent, #101422);\n  color: #fff;\n  color: var(--md-theme-default-text-primary-on-accent, #fff);\n}\n.md-toolbar.md-theme-default.md-accent .md-icon {\n  color: #fff;\n  color: var(--md-theme-default-text-primary-on-accent, #fff);\n}\n.md-toolbar.md-theme-default.md-accent .md-icon svg {\n  fill: #fff;\n  fill: var(--md-theme-default-text-primary-on-accent, #fff);\n}\n.md-toolbar.md-theme-default.md-accent .md-button:not([disabled]):not(.md-raised) {\n  color: #fff;\n  color: var(--md-theme-default-text-primary-on-accent, #fff);\n}\n.md-toolbar.md-theme-default.md-accent .md-title,\n.md-toolbar.md-theme-default.md-accent .md-display-1,\n.md-toolbar.md-theme-default.md-accent .md-display-2 {\n  color: #fff;\n  color: var(--md-theme-default-text-primary-on-accent, #fff);\n}\n.md-toolbar.md-theme-default.md-transparent {\n  background-color: transparent;\n  color: #fff;\n  color: var(--md-theme-default-text-primary-on-background, #fff);\n}\n.md-toolbar.md-theme-default.md-transparent .md-icon {\n  color: #fff;\n  color: var(--md-theme-default-text-primary-on-background, #fff);\n}\n.md-toolbar.md-theme-default.md-transparent .md-icon svg {\n  fill: #fff;\n  fill: var(--md-theme-default-text-primary-on-background, #fff);\n}\n.md-toolbar.md-theme-default.md-transparent .md-title,\n.md-toolbar.md-theme-default.md-transparent .md-display-1,\n.md-toolbar.md-theme-default.md-transparent .md-display-2 {\n  color: #fff;\n  color: var(--md-theme-default-text-primary-on-background, #fff);\n}\n\n.md-tooltip.md-theme-default {\n  color: rgba(0, 0, 0, 0.87);\n  color: var(--md-theme-default-text-primary-on-tooltip, rgba(0, 0, 0, 0.87));\n  background-color: rgba(255, 255, 255, 0.9);\n  background-color: var(--md-theme-default-tooltip-on-background, rgba(255, 255, 255, 0.9));\n}\n\n.md-badge.md-theme-default {\n  color: #fff;\n  color: var(--md-theme-default-text-primary-on-accent, #fff);\n  background-color: #101422;\n  background-color: var(--md-theme-default-accent, #101422);\n}\n.md-badge.md-theme-default.md-primary {\n  color: #fff;\n  color: var(--md-theme-default-text-primary-on-primary, #fff);\n  background-color: #5653fa;\n  background-color: var(--md-theme-default-primary, #5653fa);\n}", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/auth/Signin.vue?vue&type=style&index=0&id=2717254c&lang=scss&scoped=true&":
+/*!****************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/auth/Signin.vue?vue&type=style&index=0&id=2717254c&lang=scss&scoped=true& ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".signin[data-v-2717254c] {\n  max-width: 80%;\n  margin: 50px auto;\n}\n.md-progress-bar[data-v-2717254c] {\n  position: absolute;\n  top: 0;\n  right: 0;\n  left: 0;\n}", ""]);
 
 // exports
 
@@ -37352,6 +37524,743 @@ process.umask = function() { return 0; };
 
 /***/ }),
 
+/***/ "./node_modules/regenerator-runtime/runtime.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/regenerator-runtime/runtime.js ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/**
+ * Copyright (c) 2014-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+var runtime = (function (exports) {
+  "use strict";
+
+  var Op = Object.prototype;
+  var hasOwn = Op.hasOwnProperty;
+  var undefined; // More compressible than void 0.
+  var $Symbol = typeof Symbol === "function" ? Symbol : {};
+  var iteratorSymbol = $Symbol.iterator || "@@iterator";
+  var asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator";
+  var toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag";
+
+  function wrap(innerFn, outerFn, self, tryLocsList) {
+    // If outerFn provided and outerFn.prototype is a Generator, then outerFn.prototype instanceof Generator.
+    var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator;
+    var generator = Object.create(protoGenerator.prototype);
+    var context = new Context(tryLocsList || []);
+
+    // The ._invoke method unifies the implementations of the .next,
+    // .throw, and .return methods.
+    generator._invoke = makeInvokeMethod(innerFn, self, context);
+
+    return generator;
+  }
+  exports.wrap = wrap;
+
+  // Try/catch helper to minimize deoptimizations. Returns a completion
+  // record like context.tryEntries[i].completion. This interface could
+  // have been (and was previously) designed to take a closure to be
+  // invoked without arguments, but in all the cases we care about we
+  // already have an existing method we want to call, so there's no need
+  // to create a new function object. We can even get away with assuming
+  // the method takes exactly one argument, since that happens to be true
+  // in every case, so we don't have to touch the arguments object. The
+  // only additional allocation required is the completion record, which
+  // has a stable shape and so hopefully should be cheap to allocate.
+  function tryCatch(fn, obj, arg) {
+    try {
+      return { type: "normal", arg: fn.call(obj, arg) };
+    } catch (err) {
+      return { type: "throw", arg: err };
+    }
+  }
+
+  var GenStateSuspendedStart = "suspendedStart";
+  var GenStateSuspendedYield = "suspendedYield";
+  var GenStateExecuting = "executing";
+  var GenStateCompleted = "completed";
+
+  // Returning this object from the innerFn has the same effect as
+  // breaking out of the dispatch switch statement.
+  var ContinueSentinel = {};
+
+  // Dummy constructor functions that we use as the .constructor and
+  // .constructor.prototype properties for functions that return Generator
+  // objects. For full spec compliance, you may wish to configure your
+  // minifier not to mangle the names of these two functions.
+  function Generator() {}
+  function GeneratorFunction() {}
+  function GeneratorFunctionPrototype() {}
+
+  // This is a polyfill for %IteratorPrototype% for environments that
+  // don't natively support it.
+  var IteratorPrototype = {};
+  IteratorPrototype[iteratorSymbol] = function () {
+    return this;
+  };
+
+  var getProto = Object.getPrototypeOf;
+  var NativeIteratorPrototype = getProto && getProto(getProto(values([])));
+  if (NativeIteratorPrototype &&
+      NativeIteratorPrototype !== Op &&
+      hasOwn.call(NativeIteratorPrototype, iteratorSymbol)) {
+    // This environment has a native %IteratorPrototype%; use it instead
+    // of the polyfill.
+    IteratorPrototype = NativeIteratorPrototype;
+  }
+
+  var Gp = GeneratorFunctionPrototype.prototype =
+    Generator.prototype = Object.create(IteratorPrototype);
+  GeneratorFunction.prototype = Gp.constructor = GeneratorFunctionPrototype;
+  GeneratorFunctionPrototype.constructor = GeneratorFunction;
+  GeneratorFunctionPrototype[toStringTagSymbol] =
+    GeneratorFunction.displayName = "GeneratorFunction";
+
+  // Helper for defining the .next, .throw, and .return methods of the
+  // Iterator interface in terms of a single ._invoke method.
+  function defineIteratorMethods(prototype) {
+    ["next", "throw", "return"].forEach(function(method) {
+      prototype[method] = function(arg) {
+        return this._invoke(method, arg);
+      };
+    });
+  }
+
+  exports.isGeneratorFunction = function(genFun) {
+    var ctor = typeof genFun === "function" && genFun.constructor;
+    return ctor
+      ? ctor === GeneratorFunction ||
+        // For the native GeneratorFunction constructor, the best we can
+        // do is to check its .name property.
+        (ctor.displayName || ctor.name) === "GeneratorFunction"
+      : false;
+  };
+
+  exports.mark = function(genFun) {
+    if (Object.setPrototypeOf) {
+      Object.setPrototypeOf(genFun, GeneratorFunctionPrototype);
+    } else {
+      genFun.__proto__ = GeneratorFunctionPrototype;
+      if (!(toStringTagSymbol in genFun)) {
+        genFun[toStringTagSymbol] = "GeneratorFunction";
+      }
+    }
+    genFun.prototype = Object.create(Gp);
+    return genFun;
+  };
+
+  // Within the body of any async function, `await x` is transformed to
+  // `yield regeneratorRuntime.awrap(x)`, so that the runtime can test
+  // `hasOwn.call(value, "__await")` to determine if the yielded value is
+  // meant to be awaited.
+  exports.awrap = function(arg) {
+    return { __await: arg };
+  };
+
+  function AsyncIterator(generator) {
+    function invoke(method, arg, resolve, reject) {
+      var record = tryCatch(generator[method], generator, arg);
+      if (record.type === "throw") {
+        reject(record.arg);
+      } else {
+        var result = record.arg;
+        var value = result.value;
+        if (value &&
+            typeof value === "object" &&
+            hasOwn.call(value, "__await")) {
+          return Promise.resolve(value.__await).then(function(value) {
+            invoke("next", value, resolve, reject);
+          }, function(err) {
+            invoke("throw", err, resolve, reject);
+          });
+        }
+
+        return Promise.resolve(value).then(function(unwrapped) {
+          // When a yielded Promise is resolved, its final value becomes
+          // the .value of the Promise<{value,done}> result for the
+          // current iteration.
+          result.value = unwrapped;
+          resolve(result);
+        }, function(error) {
+          // If a rejected Promise was yielded, throw the rejection back
+          // into the async generator function so it can be handled there.
+          return invoke("throw", error, resolve, reject);
+        });
+      }
+    }
+
+    var previousPromise;
+
+    function enqueue(method, arg) {
+      function callInvokeWithMethodAndArg() {
+        return new Promise(function(resolve, reject) {
+          invoke(method, arg, resolve, reject);
+        });
+      }
+
+      return previousPromise =
+        // If enqueue has been called before, then we want to wait until
+        // all previous Promises have been resolved before calling invoke,
+        // so that results are always delivered in the correct order. If
+        // enqueue has not been called before, then it is important to
+        // call invoke immediately, without waiting on a callback to fire,
+        // so that the async generator function has the opportunity to do
+        // any necessary setup in a predictable way. This predictability
+        // is why the Promise constructor synchronously invokes its
+        // executor callback, and why async functions synchronously
+        // execute code before the first await. Since we implement simple
+        // async functions in terms of async generators, it is especially
+        // important to get this right, even though it requires care.
+        previousPromise ? previousPromise.then(
+          callInvokeWithMethodAndArg,
+          // Avoid propagating failures to Promises returned by later
+          // invocations of the iterator.
+          callInvokeWithMethodAndArg
+        ) : callInvokeWithMethodAndArg();
+    }
+
+    // Define the unified helper method that is used to implement .next,
+    // .throw, and .return (see defineIteratorMethods).
+    this._invoke = enqueue;
+  }
+
+  defineIteratorMethods(AsyncIterator.prototype);
+  AsyncIterator.prototype[asyncIteratorSymbol] = function () {
+    return this;
+  };
+  exports.AsyncIterator = AsyncIterator;
+
+  // Note that simple async functions are implemented on top of
+  // AsyncIterator objects; they just return a Promise for the value of
+  // the final result produced by the iterator.
+  exports.async = function(innerFn, outerFn, self, tryLocsList) {
+    var iter = new AsyncIterator(
+      wrap(innerFn, outerFn, self, tryLocsList)
+    );
+
+    return exports.isGeneratorFunction(outerFn)
+      ? iter // If outerFn is a generator, return the full iterator.
+      : iter.next().then(function(result) {
+          return result.done ? result.value : iter.next();
+        });
+  };
+
+  function makeInvokeMethod(innerFn, self, context) {
+    var state = GenStateSuspendedStart;
+
+    return function invoke(method, arg) {
+      if (state === GenStateExecuting) {
+        throw new Error("Generator is already running");
+      }
+
+      if (state === GenStateCompleted) {
+        if (method === "throw") {
+          throw arg;
+        }
+
+        // Be forgiving, per 25.3.3.3.3 of the spec:
+        // https://people.mozilla.org/~jorendorff/es6-draft.html#sec-generatorresume
+        return doneResult();
+      }
+
+      context.method = method;
+      context.arg = arg;
+
+      while (true) {
+        var delegate = context.delegate;
+        if (delegate) {
+          var delegateResult = maybeInvokeDelegate(delegate, context);
+          if (delegateResult) {
+            if (delegateResult === ContinueSentinel) continue;
+            return delegateResult;
+          }
+        }
+
+        if (context.method === "next") {
+          // Setting context._sent for legacy support of Babel's
+          // function.sent implementation.
+          context.sent = context._sent = context.arg;
+
+        } else if (context.method === "throw") {
+          if (state === GenStateSuspendedStart) {
+            state = GenStateCompleted;
+            throw context.arg;
+          }
+
+          context.dispatchException(context.arg);
+
+        } else if (context.method === "return") {
+          context.abrupt("return", context.arg);
+        }
+
+        state = GenStateExecuting;
+
+        var record = tryCatch(innerFn, self, context);
+        if (record.type === "normal") {
+          // If an exception is thrown from innerFn, we leave state ===
+          // GenStateExecuting and loop back for another invocation.
+          state = context.done
+            ? GenStateCompleted
+            : GenStateSuspendedYield;
+
+          if (record.arg === ContinueSentinel) {
+            continue;
+          }
+
+          return {
+            value: record.arg,
+            done: context.done
+          };
+
+        } else if (record.type === "throw") {
+          state = GenStateCompleted;
+          // Dispatch the exception by looping back around to the
+          // context.dispatchException(context.arg) call above.
+          context.method = "throw";
+          context.arg = record.arg;
+        }
+      }
+    };
+  }
+
+  // Call delegate.iterator[context.method](context.arg) and handle the
+  // result, either by returning a { value, done } result from the
+  // delegate iterator, or by modifying context.method and context.arg,
+  // setting context.delegate to null, and returning the ContinueSentinel.
+  function maybeInvokeDelegate(delegate, context) {
+    var method = delegate.iterator[context.method];
+    if (method === undefined) {
+      // A .throw or .return when the delegate iterator has no .throw
+      // method always terminates the yield* loop.
+      context.delegate = null;
+
+      if (context.method === "throw") {
+        // Note: ["return"] must be used for ES3 parsing compatibility.
+        if (delegate.iterator["return"]) {
+          // If the delegate iterator has a return method, give it a
+          // chance to clean up.
+          context.method = "return";
+          context.arg = undefined;
+          maybeInvokeDelegate(delegate, context);
+
+          if (context.method === "throw") {
+            // If maybeInvokeDelegate(context) changed context.method from
+            // "return" to "throw", let that override the TypeError below.
+            return ContinueSentinel;
+          }
+        }
+
+        context.method = "throw";
+        context.arg = new TypeError(
+          "The iterator does not provide a 'throw' method");
+      }
+
+      return ContinueSentinel;
+    }
+
+    var record = tryCatch(method, delegate.iterator, context.arg);
+
+    if (record.type === "throw") {
+      context.method = "throw";
+      context.arg = record.arg;
+      context.delegate = null;
+      return ContinueSentinel;
+    }
+
+    var info = record.arg;
+
+    if (! info) {
+      context.method = "throw";
+      context.arg = new TypeError("iterator result is not an object");
+      context.delegate = null;
+      return ContinueSentinel;
+    }
+
+    if (info.done) {
+      // Assign the result of the finished delegate to the temporary
+      // variable specified by delegate.resultName (see delegateYield).
+      context[delegate.resultName] = info.value;
+
+      // Resume execution at the desired location (see delegateYield).
+      context.next = delegate.nextLoc;
+
+      // If context.method was "throw" but the delegate handled the
+      // exception, let the outer generator proceed normally. If
+      // context.method was "next", forget context.arg since it has been
+      // "consumed" by the delegate iterator. If context.method was
+      // "return", allow the original .return call to continue in the
+      // outer generator.
+      if (context.method !== "return") {
+        context.method = "next";
+        context.arg = undefined;
+      }
+
+    } else {
+      // Re-yield the result returned by the delegate method.
+      return info;
+    }
+
+    // The delegate iterator is finished, so forget it and continue with
+    // the outer generator.
+    context.delegate = null;
+    return ContinueSentinel;
+  }
+
+  // Define Generator.prototype.{next,throw,return} in terms of the
+  // unified ._invoke helper method.
+  defineIteratorMethods(Gp);
+
+  Gp[toStringTagSymbol] = "Generator";
+
+  // A Generator should always return itself as the iterator object when the
+  // @@iterator function is called on it. Some browsers' implementations of the
+  // iterator prototype chain incorrectly implement this, causing the Generator
+  // object to not be returned from this call. This ensures that doesn't happen.
+  // See https://github.com/facebook/regenerator/issues/274 for more details.
+  Gp[iteratorSymbol] = function() {
+    return this;
+  };
+
+  Gp.toString = function() {
+    return "[object Generator]";
+  };
+
+  function pushTryEntry(locs) {
+    var entry = { tryLoc: locs[0] };
+
+    if (1 in locs) {
+      entry.catchLoc = locs[1];
+    }
+
+    if (2 in locs) {
+      entry.finallyLoc = locs[2];
+      entry.afterLoc = locs[3];
+    }
+
+    this.tryEntries.push(entry);
+  }
+
+  function resetTryEntry(entry) {
+    var record = entry.completion || {};
+    record.type = "normal";
+    delete record.arg;
+    entry.completion = record;
+  }
+
+  function Context(tryLocsList) {
+    // The root entry object (effectively a try statement without a catch
+    // or a finally block) gives us a place to store values thrown from
+    // locations where there is no enclosing try statement.
+    this.tryEntries = [{ tryLoc: "root" }];
+    tryLocsList.forEach(pushTryEntry, this);
+    this.reset(true);
+  }
+
+  exports.keys = function(object) {
+    var keys = [];
+    for (var key in object) {
+      keys.push(key);
+    }
+    keys.reverse();
+
+    // Rather than returning an object with a next method, we keep
+    // things simple and return the next function itself.
+    return function next() {
+      while (keys.length) {
+        var key = keys.pop();
+        if (key in object) {
+          next.value = key;
+          next.done = false;
+          return next;
+        }
+      }
+
+      // To avoid creating an additional object, we just hang the .value
+      // and .done properties off the next function object itself. This
+      // also ensures that the minifier will not anonymize the function.
+      next.done = true;
+      return next;
+    };
+  };
+
+  function values(iterable) {
+    if (iterable) {
+      var iteratorMethod = iterable[iteratorSymbol];
+      if (iteratorMethod) {
+        return iteratorMethod.call(iterable);
+      }
+
+      if (typeof iterable.next === "function") {
+        return iterable;
+      }
+
+      if (!isNaN(iterable.length)) {
+        var i = -1, next = function next() {
+          while (++i < iterable.length) {
+            if (hasOwn.call(iterable, i)) {
+              next.value = iterable[i];
+              next.done = false;
+              return next;
+            }
+          }
+
+          next.value = undefined;
+          next.done = true;
+
+          return next;
+        };
+
+        return next.next = next;
+      }
+    }
+
+    // Return an iterator with no values.
+    return { next: doneResult };
+  }
+  exports.values = values;
+
+  function doneResult() {
+    return { value: undefined, done: true };
+  }
+
+  Context.prototype = {
+    constructor: Context,
+
+    reset: function(skipTempReset) {
+      this.prev = 0;
+      this.next = 0;
+      // Resetting context._sent for legacy support of Babel's
+      // function.sent implementation.
+      this.sent = this._sent = undefined;
+      this.done = false;
+      this.delegate = null;
+
+      this.method = "next";
+      this.arg = undefined;
+
+      this.tryEntries.forEach(resetTryEntry);
+
+      if (!skipTempReset) {
+        for (var name in this) {
+          // Not sure about the optimal order of these conditions:
+          if (name.charAt(0) === "t" &&
+              hasOwn.call(this, name) &&
+              !isNaN(+name.slice(1))) {
+            this[name] = undefined;
+          }
+        }
+      }
+    },
+
+    stop: function() {
+      this.done = true;
+
+      var rootEntry = this.tryEntries[0];
+      var rootRecord = rootEntry.completion;
+      if (rootRecord.type === "throw") {
+        throw rootRecord.arg;
+      }
+
+      return this.rval;
+    },
+
+    dispatchException: function(exception) {
+      if (this.done) {
+        throw exception;
+      }
+
+      var context = this;
+      function handle(loc, caught) {
+        record.type = "throw";
+        record.arg = exception;
+        context.next = loc;
+
+        if (caught) {
+          // If the dispatched exception was caught by a catch block,
+          // then let that catch block handle the exception normally.
+          context.method = "next";
+          context.arg = undefined;
+        }
+
+        return !! caught;
+      }
+
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+        var record = entry.completion;
+
+        if (entry.tryLoc === "root") {
+          // Exception thrown outside of any try block that could handle
+          // it, so set the completion value of the entire function to
+          // throw the exception.
+          return handle("end");
+        }
+
+        if (entry.tryLoc <= this.prev) {
+          var hasCatch = hasOwn.call(entry, "catchLoc");
+          var hasFinally = hasOwn.call(entry, "finallyLoc");
+
+          if (hasCatch && hasFinally) {
+            if (this.prev < entry.catchLoc) {
+              return handle(entry.catchLoc, true);
+            } else if (this.prev < entry.finallyLoc) {
+              return handle(entry.finallyLoc);
+            }
+
+          } else if (hasCatch) {
+            if (this.prev < entry.catchLoc) {
+              return handle(entry.catchLoc, true);
+            }
+
+          } else if (hasFinally) {
+            if (this.prev < entry.finallyLoc) {
+              return handle(entry.finallyLoc);
+            }
+
+          } else {
+            throw new Error("try statement without catch or finally");
+          }
+        }
+      }
+    },
+
+    abrupt: function(type, arg) {
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+        if (entry.tryLoc <= this.prev &&
+            hasOwn.call(entry, "finallyLoc") &&
+            this.prev < entry.finallyLoc) {
+          var finallyEntry = entry;
+          break;
+        }
+      }
+
+      if (finallyEntry &&
+          (type === "break" ||
+           type === "continue") &&
+          finallyEntry.tryLoc <= arg &&
+          arg <= finallyEntry.finallyLoc) {
+        // Ignore the finally entry if control is not jumping to a
+        // location outside the try/catch block.
+        finallyEntry = null;
+      }
+
+      var record = finallyEntry ? finallyEntry.completion : {};
+      record.type = type;
+      record.arg = arg;
+
+      if (finallyEntry) {
+        this.method = "next";
+        this.next = finallyEntry.finallyLoc;
+        return ContinueSentinel;
+      }
+
+      return this.complete(record);
+    },
+
+    complete: function(record, afterLoc) {
+      if (record.type === "throw") {
+        throw record.arg;
+      }
+
+      if (record.type === "break" ||
+          record.type === "continue") {
+        this.next = record.arg;
+      } else if (record.type === "return") {
+        this.rval = this.arg = record.arg;
+        this.method = "return";
+        this.next = "end";
+      } else if (record.type === "normal" && afterLoc) {
+        this.next = afterLoc;
+      }
+
+      return ContinueSentinel;
+    },
+
+    finish: function(finallyLoc) {
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+        if (entry.finallyLoc === finallyLoc) {
+          this.complete(entry.completion, entry.afterLoc);
+          resetTryEntry(entry);
+          return ContinueSentinel;
+        }
+      }
+    },
+
+    "catch": function(tryLoc) {
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+        if (entry.tryLoc === tryLoc) {
+          var record = entry.completion;
+          if (record.type === "throw") {
+            var thrown = record.arg;
+            resetTryEntry(entry);
+          }
+          return thrown;
+        }
+      }
+
+      // The context.catch method must only be called with a location
+      // argument that corresponds to a known catch block.
+      throw new Error("illegal catch attempt");
+    },
+
+    delegateYield: function(iterable, resultName, nextLoc) {
+      this.delegate = {
+        iterator: values(iterable),
+        resultName: resultName,
+        nextLoc: nextLoc
+      };
+
+      if (this.method === "next") {
+        // Deliberately forget the last sent value so that we don't
+        // accidentally pass it on to the delegate.
+        this.arg = undefined;
+      }
+
+      return ContinueSentinel;
+    }
+  };
+
+  // Regardless of whether this script is executing as a CommonJS module
+  // or not, return the runtime object so that we can declare the variable
+  // regeneratorRuntime in the outer scope, which allows this module to be
+  // injected easily by `bin/regenerator --include-runtime script.js`.
+  return exports;
+
+}(
+  // If this script is executing as a CommonJS module, use module.exports
+  // as the regeneratorRuntime namespace. Otherwise create a new empty
+  // object. Either way, the resulting object will be used to initialize
+  // the regeneratorRuntime variable at the top of this file.
+   true ? module.exports : undefined
+));
+
+try {
+  regeneratorRuntime = runtime;
+} catch (accidentalStrictMode) {
+  // This module should not be running in strict mode, so the above
+  // assignment should always work unless something is misconfigured. Just
+  // in case runtime.js accidentally runs in strict mode, we can escape
+  // strict mode using a global Function call. This could conceivably fail
+  // if a Content Security Policy forbids using Function, but in that case
+  // the proper solution is to fix the accidental strict mode problem. If
+  // you've misconfigured your bundler to force strict mode and applied a
+  // CSP to forbid Function, and you're not willing to fix either of those
+  // problems, please detail your unique predicament in a GitHub issue.
+  Function("r", "regeneratorRuntime = r")(runtime);
+}
+
+
+/***/ }),
+
 /***/ "./node_modules/setimmediate/setImmediate.js":
 /*!***************************************************!*\
   !*** ./node_modules/setimmediate/setImmediate.js ***!
@@ -37547,6 +38456,36 @@ process.umask = function() { return 0; };
 }(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self));
 
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js"), __webpack_require__(/*! ./../process/browser.js */ "./node_modules/process/browser.js")))
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/auth/Signin.vue?vue&type=style&index=0&id=2717254c&lang=scss&scoped=true&":
+/*!********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/auth/Signin.vue?vue&type=style&index=0&id=2717254c&lang=scss&scoped=true& ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../node_modules/css-loader!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--7-2!../../../../node_modules/sass-loader/dist/cjs.js??ref--7-3!../../../../node_modules/vue-loader/lib??vue-loader-options!./Signin.vue?vue&type=style&index=0&id=2717254c&lang=scss&scoped=true& */ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/auth/Signin.vue?vue&type=style&index=0&id=2717254c&lang=scss&scoped=true&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
 
 /***/ }),
 
@@ -38245,22 +39184,11 @@ var render = function() {
                 }),
                 _vm._v(" "),
                 _c("md-tab", {
-                  attrs: { id: "tab-about", "md-label": "About", to: "/about" }
-                }),
-                _vm._v(" "),
-                _c("md-tab", {
                   attrs: {
-                    id: "tab-portfolio",
-                    "md-label": "Portfolio",
-                    to: "/portfolio"
-                  }
-                }),
-                _vm._v(" "),
-                _c("md-tab", {
-                  attrs: {
-                    id: "tab-contact",
-                    "md-label": "Contact",
-                    to: "/contact"
+                    id: "tab-example",
+                    "md-label": "Example",
+                    to: "/example",
+                    exact: ""
                   }
                 })
               ],
@@ -38357,6 +39285,189 @@ var render = function() {
     [
       _vm._v("\n  This is the Index page\n  "),
       _c("router-link", { attrs: { to: "/example" } }, [_vm._v("Link")])
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/auth/Signin.vue?vue&type=template&id=2717254c&scoped=true&":
+/*!*********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/auth/Signin.vue?vue&type=template&id=2717254c&scoped=true& ***!
+  \*********************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "form",
+    {
+      staticClass: "signin md-layout",
+      attrs: { novalidate: "" },
+      on: {
+        submit: function($event) {
+          $event.preventDefault()
+          return _vm.validateUser($event)
+        }
+      }
+    },
+    [
+      _c(
+        "md-card",
+        { staticClass: "md-layout-item md-size-50 md-small-size-100" },
+        [
+          _c("md-card-header", [
+            _c("div", { staticClass: "md-title" }, [_vm._v("Login")])
+          ]),
+          _vm._v(" "),
+          _c("md-card-content", [
+            _c(
+              "div",
+              { staticClass: "md-layout md-gutter" },
+              [
+                _c(
+                  "md-field",
+                  { class: _vm.getValidationClass("email") },
+                  [
+                    _c("label", { attrs: { for: "email" } }, [_vm._v("Email")]),
+                    _vm._v(" "),
+                    _c("md-input", {
+                      attrs: {
+                        type: "email",
+                        name: "email",
+                        id: "email",
+                        autocomplete: "email",
+                        disabled: _vm.sending
+                      },
+                      model: {
+                        value: _vm.form.email,
+                        callback: function($$v) {
+                          _vm.$set(_vm.form, "email", $$v)
+                        },
+                        expression: "form.email"
+                      }
+                    }),
+                    _vm._v(" "),
+                    !_vm.$v.form.email.required
+                      ? _c("span", { staticClass: "md-error" }, [
+                          _vm._v("The email is required")
+                        ])
+                      : !_vm.$v.form.email.email
+                      ? _c("span", { staticClass: "md-error" }, [
+                          _vm._v("Invalid email")
+                        ])
+                      : _vm._e()
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "md-field",
+                  { class: _vm.getValidationClass("password") },
+                  [
+                    _c("label", { attrs: { for: "password" } }, [
+                      _vm._v("Password")
+                    ]),
+                    _vm._v(" "),
+                    _c("md-input", {
+                      attrs: {
+                        type: "password",
+                        name: "password",
+                        id: "password",
+                        autocomplete: "password",
+                        disabled: _vm.sending
+                      },
+                      model: {
+                        value: _vm.form.password,
+                        callback: function($$v) {
+                          _vm.$set(_vm.form, "password", $$v)
+                        },
+                        expression: "form.password"
+                      }
+                    }),
+                    _vm._v(" "),
+                    !_vm.$v.form.password.required
+                      ? _c("span", { staticClass: "md-error" }, [
+                          _vm._v("The password is required")
+                        ])
+                      : !_vm.$v.form.password.password
+                      ? _c("span", { staticClass: "md-error" }, [
+                          _vm._v("Invalid password")
+                        ])
+                      : _vm._e()
+                  ],
+                  1
+                )
+              ],
+              1
+            )
+          ]),
+          _vm._v(" "),
+          _vm.sending
+            ? _c("md-progress-bar", { attrs: { "md-mode": "indeterminate" } })
+            : _vm._e(),
+          _vm._v(" "),
+          _c(
+            "md-card-actions",
+            [
+              _c(
+                "md-button",
+                {
+                  staticClass: "md-primary",
+                  attrs: { type: "submit", disabled: _vm.sending }
+                },
+                [_vm._v("Login")]
+              )
+            ],
+            1
+          )
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "md-snackbar",
+        {
+          attrs: { "md-active": _vm.success },
+          on: {
+            "update:mdActive": function($event) {
+              _vm.success = $event
+            },
+            "update:md-active": function($event) {
+              _vm.success = $event
+            }
+          }
+        },
+        [_vm._v("Signed in!")]
+      ),
+      _vm._v(" "),
+      _c(
+        "md-snackbar",
+        {
+          attrs: { "md-active": _vm.hasError },
+          on: {
+            "update:mdActive": function($event) {
+              _vm.hasError = $event
+            },
+            "update:md-active": function($event) {
+              _vm.hasError = $event
+            }
+          }
+        },
+        [_vm._v(_vm._s(_vm.error))]
+      )
     ],
     1
   )
@@ -53438,6 +54549,3021 @@ if (false) {} else {
 
 /***/ }),
 
+/***/ "./node_modules/vuelidate/lib/index.js":
+/*!*********************************************!*\
+  !*** ./node_modules/vuelidate/lib/index.js ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Vuelidate = Vuelidate;
+Object.defineProperty(exports, "withParams", {
+  enumerable: true,
+  get: function get() {
+    return _params.withParams;
+  }
+});
+exports.default = exports.validationMixin = void 0;
+
+var _vval = __webpack_require__(/*! ./vval */ "./node_modules/vuelidate/lib/vval.js");
+
+var _params = __webpack_require__(/*! ./params */ "./node_modules/vuelidate/lib/params.js");
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+var NIL = function NIL() {
+  return null;
+};
+
+var buildFromKeys = function buildFromKeys(keys, fn, keyFn) {
+  return keys.reduce(function (build, key) {
+    build[keyFn ? keyFn(key) : key] = fn(key);
+    return build;
+  }, {});
+};
+
+function isFunction(val) {
+  return typeof val === 'function';
+}
+
+function isObject(val) {
+  return val !== null && (_typeof(val) === 'object' || isFunction(val));
+}
+
+function isPromise(object) {
+  return isObject(object) && isFunction(object.then);
+}
+
+var getPath = function getPath(ctx, obj, path, fallback) {
+  if (typeof path === 'function') {
+    return path.call(ctx, obj, fallback);
+  }
+
+  path = Array.isArray(path) ? path : path.split('.');
+
+  for (var i = 0; i < path.length; i++) {
+    if (obj && _typeof(obj) === 'object') {
+      obj = obj[path[i]];
+    } else {
+      return fallback;
+    }
+  }
+
+  return typeof obj === 'undefined' ? fallback : obj;
+};
+
+var __isVuelidateAsyncVm = '__isVuelidateAsyncVm';
+
+function makePendingAsyncVm(Vue, promise) {
+  var asyncVm = new Vue({
+    data: {
+      p: true,
+      v: false
+    }
+  });
+  promise.then(function (value) {
+    asyncVm.p = false;
+    asyncVm.v = value;
+  }, function (error) {
+    asyncVm.p = false;
+    asyncVm.v = false;
+    throw error;
+  });
+  asyncVm[__isVuelidateAsyncVm] = true;
+  return asyncVm;
+}
+
+var validationGetters = {
+  $invalid: function $invalid() {
+    var _this = this;
+
+    var proxy = this.proxy;
+    return this.nestedKeys.some(function (nested) {
+      return _this.refProxy(nested).$invalid;
+    }) || this.ruleKeys.some(function (rule) {
+      return !proxy[rule];
+    });
+  },
+  $dirty: function $dirty() {
+    var _this2 = this;
+
+    if (this.dirty) {
+      return true;
+    }
+
+    if (this.nestedKeys.length === 0) {
+      return false;
+    }
+
+    return this.nestedKeys.every(function (key) {
+      return _this2.refProxy(key).$dirty;
+    });
+  },
+  $anyDirty: function $anyDirty() {
+    var _this3 = this;
+
+    if (this.dirty) {
+      return true;
+    }
+
+    if (this.nestedKeys.length === 0) {
+      return false;
+    }
+
+    return this.nestedKeys.some(function (key) {
+      return _this3.refProxy(key).$anyDirty;
+    });
+  },
+  $error: function $error() {
+    return this.$dirty && !this.$pending && this.$invalid;
+  },
+  $anyError: function $anyError() {
+    var _this4 = this;
+
+    if (this.$error) return true;
+    return this.nestedKeys.some(function (key) {
+      return _this4.refProxy(key).$anyError;
+    });
+  },
+  $pending: function $pending() {
+    var _this5 = this;
+
+    return this.ruleKeys.some(function (key) {
+      return _this5.getRef(key).$pending;
+    }) || this.nestedKeys.some(function (key) {
+      return _this5.refProxy(key).$pending;
+    });
+  },
+  $params: function $params() {
+    var _this6 = this;
+
+    var vals = this.validations;
+    return _objectSpread({}, buildFromKeys(this.nestedKeys, function (key) {
+      return vals[key] && vals[key].$params || null;
+    }), {}, buildFromKeys(this.ruleKeys, function (key) {
+      return _this6.getRef(key).$params;
+    }));
+  }
+};
+
+function setDirtyRecursive(newState) {
+  this.dirty = newState;
+  var proxy = this.proxy;
+  var method = newState ? '$touch' : '$reset';
+  this.nestedKeys.forEach(function (key) {
+    proxy[key][method]();
+  });
+}
+
+var validationMethods = {
+  $touch: function $touch() {
+    setDirtyRecursive.call(this, true);
+  },
+  $reset: function $reset() {
+    setDirtyRecursive.call(this, false);
+  },
+  $flattenParams: function $flattenParams() {
+    var proxy = this.proxy;
+    var params = [];
+
+    for (var key in this.$params) {
+      if (this.isNested(key)) {
+        var childParams = proxy[key].$flattenParams();
+
+        for (var j = 0; j < childParams.length; j++) {
+          childParams[j].path.unshift(key);
+        }
+
+        params = params.concat(childParams);
+      } else {
+        params.push({
+          path: [],
+          name: key,
+          params: this.$params[key]
+        });
+      }
+    }
+
+    return params;
+  }
+};
+var getterNames = Object.keys(validationGetters);
+var methodNames = Object.keys(validationMethods);
+var _cachedComponent = null;
+
+var getComponent = function getComponent(Vue) {
+  if (_cachedComponent) {
+    return _cachedComponent;
+  }
+
+  var VBase = Vue.extend({
+    computed: {
+      refs: function refs() {
+        var oldVval = this._vval;
+        this._vval = this.children;
+        (0, _vval.patchChildren)(oldVval, this._vval);
+        var refs = {};
+
+        this._vval.forEach(function (c) {
+          refs[c.key] = c.vm;
+        });
+
+        return refs;
+      }
+    },
+    beforeCreate: function beforeCreate() {
+      this._vval = null;
+    },
+    beforeDestroy: function beforeDestroy() {
+      if (this._vval) {
+        (0, _vval.patchChildren)(this._vval);
+        this._vval = null;
+      }
+    },
+    methods: {
+      getModel: function getModel() {
+        return this.lazyModel ? this.lazyModel(this.prop) : this.model;
+      },
+      getModelKey: function getModelKey(key) {
+        var model = this.getModel();
+
+        if (model) {
+          return model[key];
+        }
+      },
+      hasIter: function hasIter() {
+        return false;
+      }
+    }
+  });
+  var ValidationRule = VBase.extend({
+    data: function data() {
+      return {
+        rule: null,
+        lazyModel: null,
+        model: null,
+        lazyParentModel: null,
+        rootModel: null
+      };
+    },
+    methods: {
+      runRule: function runRule(parent) {
+        var model = this.getModel();
+        (0, _params.pushParams)();
+        var rawOutput = this.rule.call(this.rootModel, model, parent);
+        var output = isPromise(rawOutput) ? makePendingAsyncVm(Vue, rawOutput) : rawOutput;
+        var rawParams = (0, _params.popParams)();
+        var params = rawParams && rawParams.$sub ? rawParams.$sub.length > 1 ? rawParams : rawParams.$sub[0] : null;
+        return {
+          output: output,
+          params: params
+        };
+      }
+    },
+    computed: {
+      run: function run() {
+        var _this7 = this;
+
+        var parent = this.lazyParentModel();
+
+        var isArrayDependant = Array.isArray(parent) && parent.__ob__;
+
+        if (isArrayDependant) {
+          var arrayDep = parent.__ob__.dep;
+          arrayDep.depend();
+          var target = arrayDep.constructor.target;
+
+          if (!this._indirectWatcher) {
+            var Watcher = target.constructor;
+            this._indirectWatcher = new Watcher(this, function () {
+              return _this7.runRule(parent);
+            }, null, {
+              lazy: true
+            });
+          }
+
+          var model = this.getModel();
+
+          if (!this._indirectWatcher.dirty && this._lastModel === model) {
+            this._indirectWatcher.depend();
+
+            return target.value;
+          }
+
+          this._lastModel = model;
+
+          this._indirectWatcher.evaluate();
+
+          this._indirectWatcher.depend();
+        } else if (this._indirectWatcher) {
+          this._indirectWatcher.teardown();
+
+          this._indirectWatcher = null;
+        }
+
+        return this._indirectWatcher ? this._indirectWatcher.value : this.runRule(parent);
+      },
+      $params: function $params() {
+        return this.run.params;
+      },
+      proxy: function proxy() {
+        var output = this.run.output;
+
+        if (output[__isVuelidateAsyncVm]) {
+          return !!output.v;
+        }
+
+        return !!output;
+      },
+      $pending: function $pending() {
+        var output = this.run.output;
+
+        if (output[__isVuelidateAsyncVm]) {
+          return output.p;
+        }
+
+        return false;
+      }
+    },
+    destroyed: function destroyed() {
+      if (this._indirectWatcher) {
+        this._indirectWatcher.teardown();
+
+        this._indirectWatcher = null;
+      }
+    }
+  });
+  var Validation = VBase.extend({
+    data: function data() {
+      return {
+        dirty: false,
+        validations: null,
+        lazyModel: null,
+        model: null,
+        prop: null,
+        lazyParentModel: null,
+        rootModel: null
+      };
+    },
+    methods: _objectSpread({}, validationMethods, {
+      refProxy: function refProxy(key) {
+        return this.getRef(key).proxy;
+      },
+      getRef: function getRef(key) {
+        return this.refs[key];
+      },
+      isNested: function isNested(key) {
+        return typeof this.validations[key] !== 'function';
+      }
+    }),
+    computed: _objectSpread({}, validationGetters, {
+      nestedKeys: function nestedKeys() {
+        return this.keys.filter(this.isNested);
+      },
+      ruleKeys: function ruleKeys() {
+        var _this8 = this;
+
+        return this.keys.filter(function (k) {
+          return !_this8.isNested(k);
+        });
+      },
+      keys: function keys() {
+        return Object.keys(this.validations).filter(function (k) {
+          return k !== '$params';
+        });
+      },
+      proxy: function proxy() {
+        var _this9 = this;
+
+        var keyDefs = buildFromKeys(this.keys, function (key) {
+          return {
+            enumerable: true,
+            configurable: true,
+            get: function get() {
+              return _this9.refProxy(key);
+            }
+          };
+        });
+        var getterDefs = buildFromKeys(getterNames, function (key) {
+          return {
+            enumerable: true,
+            configurable: true,
+            get: function get() {
+              return _this9[key];
+            }
+          };
+        });
+        var methodDefs = buildFromKeys(methodNames, function (key) {
+          return {
+            enumerable: false,
+            configurable: true,
+            get: function get() {
+              return _this9[key];
+            }
+          };
+        });
+        var iterDefs = this.hasIter() ? {
+          $iter: {
+            enumerable: true,
+            value: Object.defineProperties({}, _objectSpread({}, keyDefs))
+          }
+        } : {};
+        return Object.defineProperties({}, _objectSpread({}, keyDefs, {}, iterDefs, {
+          $model: {
+            enumerable: true,
+            get: function get() {
+              var parent = _this9.lazyParentModel();
+
+              if (parent != null) {
+                return parent[_this9.prop];
+              } else {
+                return null;
+              }
+            },
+            set: function set(value) {
+              var parent = _this9.lazyParentModel();
+
+              if (parent != null) {
+                parent[_this9.prop] = value;
+
+                _this9.$touch();
+              }
+            }
+          }
+        }, getterDefs, {}, methodDefs));
+      },
+      children: function children() {
+        var _this10 = this;
+
+        return [].concat(_toConsumableArray(this.nestedKeys.map(function (key) {
+          return renderNested(_this10, key);
+        })), _toConsumableArray(this.ruleKeys.map(function (key) {
+          return renderRule(_this10, key);
+        }))).filter(Boolean);
+      }
+    })
+  });
+  var GroupValidation = Validation.extend({
+    methods: {
+      isNested: function isNested(key) {
+        return typeof this.validations[key]() !== 'undefined';
+      },
+      getRef: function getRef(key) {
+        var vm = this;
+        return {
+          get proxy() {
+            return vm.validations[key]() || false;
+          }
+
+        };
+      }
+    }
+  });
+  var EachValidation = Validation.extend({
+    computed: {
+      keys: function keys() {
+        var model = this.getModel();
+
+        if (isObject(model)) {
+          return Object.keys(model);
+        } else {
+          return [];
+        }
+      },
+      tracker: function tracker() {
+        var _this11 = this;
+
+        var trackBy = this.validations.$trackBy;
+        return trackBy ? function (key) {
+          return "".concat(getPath(_this11.rootModel, _this11.getModelKey(key), trackBy));
+        } : function (x) {
+          return "".concat(x);
+        };
+      },
+      getModelLazy: function getModelLazy() {
+        var _this12 = this;
+
+        return function () {
+          return _this12.getModel();
+        };
+      },
+      children: function children() {
+        var _this13 = this;
+
+        var def = this.validations;
+        var model = this.getModel();
+
+        var validations = _objectSpread({}, def);
+
+        delete validations['$trackBy'];
+        var usedTracks = {};
+        return this.keys.map(function (key) {
+          var track = _this13.tracker(key);
+
+          if (usedTracks.hasOwnProperty(track)) {
+            return null;
+          }
+
+          usedTracks[track] = true;
+          return (0, _vval.h)(Validation, track, {
+            validations: validations,
+            prop: key,
+            lazyParentModel: _this13.getModelLazy,
+            model: model[key],
+            rootModel: _this13.rootModel
+          });
+        }).filter(Boolean);
+      }
+    },
+    methods: {
+      isNested: function isNested() {
+        return true;
+      },
+      getRef: function getRef(key) {
+        return this.refs[this.tracker(key)];
+      },
+      hasIter: function hasIter() {
+        return true;
+      }
+    }
+  });
+
+  var renderNested = function renderNested(vm, key) {
+    if (key === '$each') {
+      return (0, _vval.h)(EachValidation, key, {
+        validations: vm.validations[key],
+        lazyParentModel: vm.lazyParentModel,
+        prop: key,
+        lazyModel: vm.getModel,
+        rootModel: vm.rootModel
+      });
+    }
+
+    var validations = vm.validations[key];
+
+    if (Array.isArray(validations)) {
+      var root = vm.rootModel;
+      var refVals = buildFromKeys(validations, function (path) {
+        return function () {
+          return getPath(root, root.$v, path);
+        };
+      }, function (v) {
+        return Array.isArray(v) ? v.join('.') : v;
+      });
+      return (0, _vval.h)(GroupValidation, key, {
+        validations: refVals,
+        lazyParentModel: NIL,
+        prop: key,
+        lazyModel: NIL,
+        rootModel: root
+      });
+    }
+
+    return (0, _vval.h)(Validation, key, {
+      validations: validations,
+      lazyParentModel: vm.getModel,
+      prop: key,
+      lazyModel: vm.getModelKey,
+      rootModel: vm.rootModel
+    });
+  };
+
+  var renderRule = function renderRule(vm, key) {
+    return (0, _vval.h)(ValidationRule, key, {
+      rule: vm.validations[key],
+      lazyParentModel: vm.lazyParentModel,
+      lazyModel: vm.getModel,
+      rootModel: vm.rootModel
+    });
+  };
+
+  _cachedComponent = {
+    VBase: VBase,
+    Validation: Validation
+  };
+  return _cachedComponent;
+};
+
+var _cachedVue = null;
+
+function getVue(rootVm) {
+  if (_cachedVue) return _cachedVue;
+  var Vue = rootVm.constructor;
+
+  while (Vue.super) {
+    Vue = Vue.super;
+  }
+
+  _cachedVue = Vue;
+  return Vue;
+}
+
+var validateModel = function validateModel(model, validations) {
+  var Vue = getVue(model);
+
+  var _getComponent = getComponent(Vue),
+      Validation = _getComponent.Validation,
+      VBase = _getComponent.VBase;
+
+  var root = new VBase({
+    computed: {
+      children: function children() {
+        var vals = typeof validations === 'function' ? validations.call(model) : validations;
+        return [(0, _vval.h)(Validation, '$v', {
+          validations: vals,
+          lazyParentModel: NIL,
+          prop: '$v',
+          model: model,
+          rootModel: model
+        })];
+      }
+    }
+  });
+  return root;
+};
+
+var validationMixin = {
+  data: function data() {
+    var vals = this.$options.validations;
+
+    if (vals) {
+      this._vuelidate = validateModel(this, vals);
+    }
+
+    return {};
+  },
+  beforeCreate: function beforeCreate() {
+    var options = this.$options;
+    var vals = options.validations;
+    if (!vals) return;
+    if (!options.computed) options.computed = {};
+    if (options.computed.$v) return;
+
+    options.computed.$v = function () {
+      return this._vuelidate ? this._vuelidate.refs.$v.proxy : null;
+    };
+  },
+  beforeDestroy: function beforeDestroy() {
+    if (this._vuelidate) {
+      this._vuelidate.$destroy();
+
+      this._vuelidate = null;
+    }
+  }
+};
+exports.validationMixin = validationMixin;
+
+function Vuelidate(Vue) {
+  Vue.mixin(validationMixin);
+}
+
+var _default = Vuelidate;
+exports.default = _default;
+
+/***/ }),
+
+/***/ "./node_modules/vuelidate/lib/params.js":
+/*!**********************************************!*\
+  !*** ./node_modules/vuelidate/lib/params.js ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.pushParams = pushParams;
+exports.popParams = popParams;
+exports.withParams = withParams;
+exports._setTarget = exports.target = void 0;
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+var stack = [];
+var target = null;
+exports.target = target;
+
+var _setTarget = function _setTarget(x) {
+  exports.target = target = x;
+};
+
+exports._setTarget = _setTarget;
+
+function pushParams() {
+  if (target !== null) {
+    stack.push(target);
+  }
+
+  exports.target = target = {};
+}
+
+function popParams() {
+  var lastTarget = target;
+  var newTarget = exports.target = target = stack.pop() || null;
+
+  if (newTarget) {
+    if (!Array.isArray(newTarget.$sub)) {
+      newTarget.$sub = [];
+    }
+
+    newTarget.$sub.push(lastTarget);
+  }
+
+  return lastTarget;
+}
+
+function addParams(params) {
+  if (_typeof(params) === 'object' && !Array.isArray(params)) {
+    exports.target = target = _objectSpread({}, target, {}, params);
+  } else {
+    throw new Error('params must be an object');
+  }
+}
+
+function withParamsDirect(params, validator) {
+  return withParamsClosure(function (add) {
+    return function () {
+      add(params);
+
+      for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+        args[_key] = arguments[_key];
+      }
+
+      return validator.apply(this, args);
+    };
+  });
+}
+
+function withParamsClosure(closure) {
+  var validator = closure(addParams);
+  return function () {
+    pushParams();
+
+    try {
+      for (var _len2 = arguments.length, args = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+        args[_key2] = arguments[_key2];
+      }
+
+      return validator.apply(this, args);
+    } finally {
+      popParams();
+    }
+  };
+}
+
+function withParams(paramsOrClosure, maybeValidator) {
+  if (_typeof(paramsOrClosure) === 'object' && maybeValidator !== undefined) {
+    return withParamsDirect(paramsOrClosure, maybeValidator);
+  }
+
+  return withParamsClosure(paramsOrClosure);
+}
+
+/***/ }),
+
+/***/ "./node_modules/vuelidate/lib/validators/alpha.js":
+/*!********************************************************!*\
+  !*** ./node_modules/vuelidate/lib/validators/alpha.js ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _common = __webpack_require__(/*! ./common */ "./node_modules/vuelidate/lib/validators/common.js");
+
+var _default = (0, _common.regex)('alpha', /^[a-zA-Z]*$/);
+
+exports.default = _default;
+
+/***/ }),
+
+/***/ "./node_modules/vuelidate/lib/validators/alphaNum.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/vuelidate/lib/validators/alphaNum.js ***!
+  \***********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _common = __webpack_require__(/*! ./common */ "./node_modules/vuelidate/lib/validators/common.js");
+
+var _default = (0, _common.regex)('alphaNum', /^[a-zA-Z0-9]*$/);
+
+exports.default = _default;
+
+/***/ }),
+
+/***/ "./node_modules/vuelidate/lib/validators/and.js":
+/*!******************************************************!*\
+  !*** ./node_modules/vuelidate/lib/validators/and.js ***!
+  \******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _common = __webpack_require__(/*! ./common */ "./node_modules/vuelidate/lib/validators/common.js");
+
+var _default = function _default() {
+  for (var _len = arguments.length, validators = new Array(_len), _key = 0; _key < _len; _key++) {
+    validators[_key] = arguments[_key];
+  }
+
+  return (0, _common.withParams)({
+    type: 'and'
+  }, function () {
+    var _this = this;
+
+    for (var _len2 = arguments.length, args = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+      args[_key2] = arguments[_key2];
+    }
+
+    return validators.length > 0 && validators.reduce(function (valid, fn) {
+      return valid && fn.apply(_this, args);
+    }, true);
+  });
+};
+
+exports.default = _default;
+
+/***/ }),
+
+/***/ "./node_modules/vuelidate/lib/validators/between.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/vuelidate/lib/validators/between.js ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _common = __webpack_require__(/*! ./common */ "./node_modules/vuelidate/lib/validators/common.js");
+
+var _default = function _default(min, max) {
+  return (0, _common.withParams)({
+    type: 'between',
+    min: min,
+    max: max
+  }, function (value) {
+    return !(0, _common.req)(value) || (!/\s/.test(value) || value instanceof Date) && +min <= +value && +max >= +value;
+  });
+};
+
+exports.default = _default;
+
+/***/ }),
+
+/***/ "./node_modules/vuelidate/lib/validators/common.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/vuelidate/lib/validators/common.js ***!
+  \*********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+Object.defineProperty(exports, "withParams", {
+  enumerable: true,
+  get: function get() {
+    return _withParams.default;
+  }
+});
+exports.regex = exports.ref = exports.len = exports.req = void 0;
+
+var _withParams = _interopRequireDefault(__webpack_require__(/*! ../withParams */ "./node_modules/vuelidate/lib/withParams.js"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+var req = function req(value) {
+  if (Array.isArray(value)) return !!value.length;
+
+  if (value === undefined || value === null) {
+    return false;
+  }
+
+  if (value === false) {
+    return true;
+  }
+
+  if (value instanceof Date) {
+    return !isNaN(value.getTime());
+  }
+
+  if (_typeof(value) === 'object') {
+    for (var _ in value) {
+      return true;
+    }
+
+    return false;
+  }
+
+  return !!String(value).length;
+};
+
+exports.req = req;
+
+var len = function len(value) {
+  if (Array.isArray(value)) return value.length;
+
+  if (_typeof(value) === 'object') {
+    return Object.keys(value).length;
+  }
+
+  return String(value).length;
+};
+
+exports.len = len;
+
+var ref = function ref(reference, vm, parentVm) {
+  return typeof reference === 'function' ? reference.call(vm, parentVm) : parentVm[reference];
+};
+
+exports.ref = ref;
+
+var regex = function regex(type, expr) {
+  return (0, _withParams.default)({
+    type: type
+  }, function (value) {
+    return !req(value) || expr.test(value);
+  });
+};
+
+exports.regex = regex;
+
+/***/ }),
+
+/***/ "./node_modules/vuelidate/lib/validators/decimal.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/vuelidate/lib/validators/decimal.js ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _common = __webpack_require__(/*! ./common */ "./node_modules/vuelidate/lib/validators/common.js");
+
+var _default = (0, _common.regex)('decimal', /^[-]?\d*(\.\d+)?$/);
+
+exports.default = _default;
+
+/***/ }),
+
+/***/ "./node_modules/vuelidate/lib/validators/email.js":
+/*!********************************************************!*\
+  !*** ./node_modules/vuelidate/lib/validators/email.js ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _common = __webpack_require__(/*! ./common */ "./node_modules/vuelidate/lib/validators/common.js");
+
+var emailRegex = /(^$|^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$)/;
+
+var _default = (0, _common.regex)('email', emailRegex);
+
+exports.default = _default;
+
+/***/ }),
+
+/***/ "./node_modules/vuelidate/lib/validators/index.js":
+/*!********************************************************!*\
+  !*** ./node_modules/vuelidate/lib/validators/index.js ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+Object.defineProperty(exports, "alpha", {
+  enumerable: true,
+  get: function get() {
+    return _alpha.default;
+  }
+});
+Object.defineProperty(exports, "alphaNum", {
+  enumerable: true,
+  get: function get() {
+    return _alphaNum.default;
+  }
+});
+Object.defineProperty(exports, "numeric", {
+  enumerable: true,
+  get: function get() {
+    return _numeric.default;
+  }
+});
+Object.defineProperty(exports, "between", {
+  enumerable: true,
+  get: function get() {
+    return _between.default;
+  }
+});
+Object.defineProperty(exports, "email", {
+  enumerable: true,
+  get: function get() {
+    return _email.default;
+  }
+});
+Object.defineProperty(exports, "ipAddress", {
+  enumerable: true,
+  get: function get() {
+    return _ipAddress.default;
+  }
+});
+Object.defineProperty(exports, "macAddress", {
+  enumerable: true,
+  get: function get() {
+    return _macAddress.default;
+  }
+});
+Object.defineProperty(exports, "maxLength", {
+  enumerable: true,
+  get: function get() {
+    return _maxLength.default;
+  }
+});
+Object.defineProperty(exports, "minLength", {
+  enumerable: true,
+  get: function get() {
+    return _minLength.default;
+  }
+});
+Object.defineProperty(exports, "required", {
+  enumerable: true,
+  get: function get() {
+    return _required.default;
+  }
+});
+Object.defineProperty(exports, "requiredIf", {
+  enumerable: true,
+  get: function get() {
+    return _requiredIf.default;
+  }
+});
+Object.defineProperty(exports, "requiredUnless", {
+  enumerable: true,
+  get: function get() {
+    return _requiredUnless.default;
+  }
+});
+Object.defineProperty(exports, "sameAs", {
+  enumerable: true,
+  get: function get() {
+    return _sameAs.default;
+  }
+});
+Object.defineProperty(exports, "url", {
+  enumerable: true,
+  get: function get() {
+    return _url.default;
+  }
+});
+Object.defineProperty(exports, "or", {
+  enumerable: true,
+  get: function get() {
+    return _or.default;
+  }
+});
+Object.defineProperty(exports, "and", {
+  enumerable: true,
+  get: function get() {
+    return _and.default;
+  }
+});
+Object.defineProperty(exports, "not", {
+  enumerable: true,
+  get: function get() {
+    return _not.default;
+  }
+});
+Object.defineProperty(exports, "minValue", {
+  enumerable: true,
+  get: function get() {
+    return _minValue.default;
+  }
+});
+Object.defineProperty(exports, "maxValue", {
+  enumerable: true,
+  get: function get() {
+    return _maxValue.default;
+  }
+});
+Object.defineProperty(exports, "integer", {
+  enumerable: true,
+  get: function get() {
+    return _integer.default;
+  }
+});
+Object.defineProperty(exports, "decimal", {
+  enumerable: true,
+  get: function get() {
+    return _decimal.default;
+  }
+});
+exports.helpers = void 0;
+
+var _alpha = _interopRequireDefault(__webpack_require__(/*! ./alpha */ "./node_modules/vuelidate/lib/validators/alpha.js"));
+
+var _alphaNum = _interopRequireDefault(__webpack_require__(/*! ./alphaNum */ "./node_modules/vuelidate/lib/validators/alphaNum.js"));
+
+var _numeric = _interopRequireDefault(__webpack_require__(/*! ./numeric */ "./node_modules/vuelidate/lib/validators/numeric.js"));
+
+var _between = _interopRequireDefault(__webpack_require__(/*! ./between */ "./node_modules/vuelidate/lib/validators/between.js"));
+
+var _email = _interopRequireDefault(__webpack_require__(/*! ./email */ "./node_modules/vuelidate/lib/validators/email.js"));
+
+var _ipAddress = _interopRequireDefault(__webpack_require__(/*! ./ipAddress */ "./node_modules/vuelidate/lib/validators/ipAddress.js"));
+
+var _macAddress = _interopRequireDefault(__webpack_require__(/*! ./macAddress */ "./node_modules/vuelidate/lib/validators/macAddress.js"));
+
+var _maxLength = _interopRequireDefault(__webpack_require__(/*! ./maxLength */ "./node_modules/vuelidate/lib/validators/maxLength.js"));
+
+var _minLength = _interopRequireDefault(__webpack_require__(/*! ./minLength */ "./node_modules/vuelidate/lib/validators/minLength.js"));
+
+var _required = _interopRequireDefault(__webpack_require__(/*! ./required */ "./node_modules/vuelidate/lib/validators/required.js"));
+
+var _requiredIf = _interopRequireDefault(__webpack_require__(/*! ./requiredIf */ "./node_modules/vuelidate/lib/validators/requiredIf.js"));
+
+var _requiredUnless = _interopRequireDefault(__webpack_require__(/*! ./requiredUnless */ "./node_modules/vuelidate/lib/validators/requiredUnless.js"));
+
+var _sameAs = _interopRequireDefault(__webpack_require__(/*! ./sameAs */ "./node_modules/vuelidate/lib/validators/sameAs.js"));
+
+var _url = _interopRequireDefault(__webpack_require__(/*! ./url */ "./node_modules/vuelidate/lib/validators/url.js"));
+
+var _or = _interopRequireDefault(__webpack_require__(/*! ./or */ "./node_modules/vuelidate/lib/validators/or.js"));
+
+var _and = _interopRequireDefault(__webpack_require__(/*! ./and */ "./node_modules/vuelidate/lib/validators/and.js"));
+
+var _not = _interopRequireDefault(__webpack_require__(/*! ./not */ "./node_modules/vuelidate/lib/validators/not.js"));
+
+var _minValue = _interopRequireDefault(__webpack_require__(/*! ./minValue */ "./node_modules/vuelidate/lib/validators/minValue.js"));
+
+var _maxValue = _interopRequireDefault(__webpack_require__(/*! ./maxValue */ "./node_modules/vuelidate/lib/validators/maxValue.js"));
+
+var _integer = _interopRequireDefault(__webpack_require__(/*! ./integer */ "./node_modules/vuelidate/lib/validators/integer.js"));
+
+var _decimal = _interopRequireDefault(__webpack_require__(/*! ./decimal */ "./node_modules/vuelidate/lib/validators/decimal.js"));
+
+var helpers = _interopRequireWildcard(__webpack_require__(/*! ./common */ "./node_modules/vuelidate/lib/validators/common.js"));
+
+exports.helpers = helpers;
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/***/ }),
+
+/***/ "./node_modules/vuelidate/lib/validators/integer.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/vuelidate/lib/validators/integer.js ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _common = __webpack_require__(/*! ./common */ "./node_modules/vuelidate/lib/validators/common.js");
+
+var _default = (0, _common.regex)('integer', /(^[0-9]*$)|(^-[0-9]+$)/);
+
+exports.default = _default;
+
+/***/ }),
+
+/***/ "./node_modules/vuelidate/lib/validators/ipAddress.js":
+/*!************************************************************!*\
+  !*** ./node_modules/vuelidate/lib/validators/ipAddress.js ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _common = __webpack_require__(/*! ./common */ "./node_modules/vuelidate/lib/validators/common.js");
+
+var _default = (0, _common.withParams)({
+  type: 'ipAddress'
+}, function (value) {
+  if (!(0, _common.req)(value)) {
+    return true;
+  }
+
+  if (typeof value !== 'string') {
+    return false;
+  }
+
+  var nibbles = value.split('.');
+  return nibbles.length === 4 && nibbles.every(nibbleValid);
+});
+
+exports.default = _default;
+
+var nibbleValid = function nibbleValid(nibble) {
+  if (nibble.length > 3 || nibble.length === 0) {
+    return false;
+  }
+
+  if (nibble[0] === '0' && nibble !== '0') {
+    return false;
+  }
+
+  if (!nibble.match(/^\d+$/)) {
+    return false;
+  }
+
+  var numeric = +nibble | 0;
+  return numeric >= 0 && numeric <= 255;
+};
+
+/***/ }),
+
+/***/ "./node_modules/vuelidate/lib/validators/macAddress.js":
+/*!*************************************************************!*\
+  !*** ./node_modules/vuelidate/lib/validators/macAddress.js ***!
+  \*************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _common = __webpack_require__(/*! ./common */ "./node_modules/vuelidate/lib/validators/common.js");
+
+var _default = function _default() {
+  var separator = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : ':';
+  return (0, _common.withParams)({
+    type: 'macAddress'
+  }, function (value) {
+    if (!(0, _common.req)(value)) {
+      return true;
+    }
+
+    if (typeof value !== 'string') {
+      return false;
+    }
+
+    var parts = typeof separator === 'string' && separator !== '' ? value.split(separator) : value.length === 12 || value.length === 16 ? value.match(/.{2}/g) : null;
+    return parts !== null && (parts.length === 6 || parts.length === 8) && parts.every(hexValid);
+  });
+};
+
+exports.default = _default;
+
+var hexValid = function hexValid(hex) {
+  return hex.toLowerCase().match(/^[0-9a-f]{2}$/);
+};
+
+/***/ }),
+
+/***/ "./node_modules/vuelidate/lib/validators/maxLength.js":
+/*!************************************************************!*\
+  !*** ./node_modules/vuelidate/lib/validators/maxLength.js ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _common = __webpack_require__(/*! ./common */ "./node_modules/vuelidate/lib/validators/common.js");
+
+var _default = function _default(length) {
+  return (0, _common.withParams)({
+    type: 'maxLength',
+    max: length
+  }, function (value) {
+    return !(0, _common.req)(value) || (0, _common.len)(value) <= length;
+  });
+};
+
+exports.default = _default;
+
+/***/ }),
+
+/***/ "./node_modules/vuelidate/lib/validators/maxValue.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/vuelidate/lib/validators/maxValue.js ***!
+  \***********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _common = __webpack_require__(/*! ./common */ "./node_modules/vuelidate/lib/validators/common.js");
+
+var _default = function _default(max) {
+  return (0, _common.withParams)({
+    type: 'maxValue',
+    max: max
+  }, function (value) {
+    return !(0, _common.req)(value) || (!/\s/.test(value) || value instanceof Date) && +value <= +max;
+  });
+};
+
+exports.default = _default;
+
+/***/ }),
+
+/***/ "./node_modules/vuelidate/lib/validators/minLength.js":
+/*!************************************************************!*\
+  !*** ./node_modules/vuelidate/lib/validators/minLength.js ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _common = __webpack_require__(/*! ./common */ "./node_modules/vuelidate/lib/validators/common.js");
+
+var _default = function _default(length) {
+  return (0, _common.withParams)({
+    type: 'minLength',
+    min: length
+  }, function (value) {
+    return !(0, _common.req)(value) || (0, _common.len)(value) >= length;
+  });
+};
+
+exports.default = _default;
+
+/***/ }),
+
+/***/ "./node_modules/vuelidate/lib/validators/minValue.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/vuelidate/lib/validators/minValue.js ***!
+  \***********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _common = __webpack_require__(/*! ./common */ "./node_modules/vuelidate/lib/validators/common.js");
+
+var _default = function _default(min) {
+  return (0, _common.withParams)({
+    type: 'minValue',
+    min: min
+  }, function (value) {
+    return !(0, _common.req)(value) || (!/\s/.test(value) || value instanceof Date) && +value >= +min;
+  });
+};
+
+exports.default = _default;
+
+/***/ }),
+
+/***/ "./node_modules/vuelidate/lib/validators/not.js":
+/*!******************************************************!*\
+  !*** ./node_modules/vuelidate/lib/validators/not.js ***!
+  \******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _common = __webpack_require__(/*! ./common */ "./node_modules/vuelidate/lib/validators/common.js");
+
+var _default = function _default(validator) {
+  return (0, _common.withParams)({
+    type: 'not'
+  }, function (value, vm) {
+    return !(0, _common.req)(value) || !validator.call(this, value, vm);
+  });
+};
+
+exports.default = _default;
+
+/***/ }),
+
+/***/ "./node_modules/vuelidate/lib/validators/numeric.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/vuelidate/lib/validators/numeric.js ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _common = __webpack_require__(/*! ./common */ "./node_modules/vuelidate/lib/validators/common.js");
+
+var _default = (0, _common.regex)('numeric', /^[0-9]*$/);
+
+exports.default = _default;
+
+/***/ }),
+
+/***/ "./node_modules/vuelidate/lib/validators/or.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/vuelidate/lib/validators/or.js ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _common = __webpack_require__(/*! ./common */ "./node_modules/vuelidate/lib/validators/common.js");
+
+var _default = function _default() {
+  for (var _len = arguments.length, validators = new Array(_len), _key = 0; _key < _len; _key++) {
+    validators[_key] = arguments[_key];
+  }
+
+  return (0, _common.withParams)({
+    type: 'or'
+  }, function () {
+    var _this = this;
+
+    for (var _len2 = arguments.length, args = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+      args[_key2] = arguments[_key2];
+    }
+
+    return validators.length > 0 && validators.reduce(function (valid, fn) {
+      return valid || fn.apply(_this, args);
+    }, false);
+  });
+};
+
+exports.default = _default;
+
+/***/ }),
+
+/***/ "./node_modules/vuelidate/lib/validators/required.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/vuelidate/lib/validators/required.js ***!
+  \***********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _common = __webpack_require__(/*! ./common */ "./node_modules/vuelidate/lib/validators/common.js");
+
+var _default = (0, _common.withParams)({
+  type: 'required'
+}, function (value) {
+  if (typeof value === 'string') {
+    return (0, _common.req)(value.trim());
+  }
+
+  return (0, _common.req)(value);
+});
+
+exports.default = _default;
+
+/***/ }),
+
+/***/ "./node_modules/vuelidate/lib/validators/requiredIf.js":
+/*!*************************************************************!*\
+  !*** ./node_modules/vuelidate/lib/validators/requiredIf.js ***!
+  \*************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _common = __webpack_require__(/*! ./common */ "./node_modules/vuelidate/lib/validators/common.js");
+
+var _default = function _default(prop) {
+  return (0, _common.withParams)({
+    type: 'requiredIf',
+    prop: prop
+  }, function (value, parentVm) {
+    return (0, _common.ref)(prop, this, parentVm) ? (0, _common.req)(value) : true;
+  });
+};
+
+exports.default = _default;
+
+/***/ }),
+
+/***/ "./node_modules/vuelidate/lib/validators/requiredUnless.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/vuelidate/lib/validators/requiredUnless.js ***!
+  \*****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _common = __webpack_require__(/*! ./common */ "./node_modules/vuelidate/lib/validators/common.js");
+
+var _default = function _default(prop) {
+  return (0, _common.withParams)({
+    type: 'requiredUnless',
+    prop: prop
+  }, function (value, parentVm) {
+    return !(0, _common.ref)(prop, this, parentVm) ? (0, _common.req)(value) : true;
+  });
+};
+
+exports.default = _default;
+
+/***/ }),
+
+/***/ "./node_modules/vuelidate/lib/validators/sameAs.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/vuelidate/lib/validators/sameAs.js ***!
+  \*********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _common = __webpack_require__(/*! ./common */ "./node_modules/vuelidate/lib/validators/common.js");
+
+var _default = function _default(equalTo) {
+  return (0, _common.withParams)({
+    type: 'sameAs',
+    eq: equalTo
+  }, function (value, parentVm) {
+    return value === (0, _common.ref)(equalTo, this, parentVm);
+  });
+};
+
+exports.default = _default;
+
+/***/ }),
+
+/***/ "./node_modules/vuelidate/lib/validators/url.js":
+/*!******************************************************!*\
+  !*** ./node_modules/vuelidate/lib/validators/url.js ***!
+  \******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _common = __webpack_require__(/*! ./common */ "./node_modules/vuelidate/lib/validators/common.js");
+
+var urlRegex = /^(?:(?:https?|ftp):\/\/)(?:\S+(?::\S*)?@)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:[/?#]\S*)?$/i;
+
+var _default = (0, _common.regex)('url', urlRegex);
+
+exports.default = _default;
+
+/***/ }),
+
+/***/ "./node_modules/vuelidate/lib/vval.js":
+/*!********************************************!*\
+  !*** ./node_modules/vuelidate/lib/vval.js ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.patchChildren = patchChildren;
+exports.h = h;
+
+function isUndef(v) {
+  return v === null || v === undefined;
+}
+
+function isDef(v) {
+  return v !== null && v !== undefined;
+}
+
+function sameVval(oldVval, vval) {
+  return vval.tag === oldVval.tag && vval.key === oldVval.key;
+}
+
+function createVm(vval) {
+  var Vm = vval.tag;
+  vval.vm = new Vm({
+    data: vval.args
+  });
+}
+
+function updateVval(vval) {
+  var keys = Object.keys(vval.args);
+
+  for (var i = 0; i < keys.length; i++) {
+    keys.forEach(function (k) {
+      vval.vm[k] = vval.args[k];
+    });
+  }
+}
+
+function createKeyToOldIdx(children, beginIdx, endIdx) {
+  var i, key;
+  var map = {};
+
+  for (i = beginIdx; i <= endIdx; ++i) {
+    key = children[i].key;
+    if (isDef(key)) map[key] = i;
+  }
+
+  return map;
+}
+
+function updateChildren(oldCh, newCh) {
+  var oldStartIdx = 0;
+  var newStartIdx = 0;
+  var oldEndIdx = oldCh.length - 1;
+  var oldStartVval = oldCh[0];
+  var oldEndVval = oldCh[oldEndIdx];
+  var newEndIdx = newCh.length - 1;
+  var newStartVval = newCh[0];
+  var newEndVval = newCh[newEndIdx];
+  var oldKeyToIdx, idxInOld, elmToMove;
+
+  while (oldStartIdx <= oldEndIdx && newStartIdx <= newEndIdx) {
+    if (isUndef(oldStartVval)) {
+      oldStartVval = oldCh[++oldStartIdx];
+    } else if (isUndef(oldEndVval)) {
+      oldEndVval = oldCh[--oldEndIdx];
+    } else if (sameVval(oldStartVval, newStartVval)) {
+      patchVval(oldStartVval, newStartVval);
+      oldStartVval = oldCh[++oldStartIdx];
+      newStartVval = newCh[++newStartIdx];
+    } else if (sameVval(oldEndVval, newEndVval)) {
+      patchVval(oldEndVval, newEndVval);
+      oldEndVval = oldCh[--oldEndIdx];
+      newEndVval = newCh[--newEndIdx];
+    } else if (sameVval(oldStartVval, newEndVval)) {
+      patchVval(oldStartVval, newEndVval);
+      oldStartVval = oldCh[++oldStartIdx];
+      newEndVval = newCh[--newEndIdx];
+    } else if (sameVval(oldEndVval, newStartVval)) {
+      patchVval(oldEndVval, newStartVval);
+      oldEndVval = oldCh[--oldEndIdx];
+      newStartVval = newCh[++newStartIdx];
+    } else {
+      if (isUndef(oldKeyToIdx)) oldKeyToIdx = createKeyToOldIdx(oldCh, oldStartIdx, oldEndIdx);
+      idxInOld = isDef(newStartVval.key) ? oldKeyToIdx[newStartVval.key] : null;
+
+      if (isUndef(idxInOld)) {
+        createVm(newStartVval);
+        newStartVval = newCh[++newStartIdx];
+      } else {
+        elmToMove = oldCh[idxInOld];
+
+        if (sameVval(elmToMove, newStartVval)) {
+          patchVval(elmToMove, newStartVval);
+          oldCh[idxInOld] = undefined;
+          newStartVval = newCh[++newStartIdx];
+        } else {
+          createVm(newStartVval);
+          newStartVval = newCh[++newStartIdx];
+        }
+      }
+    }
+  }
+
+  if (oldStartIdx > oldEndIdx) {
+    addVvals(newCh, newStartIdx, newEndIdx);
+  } else if (newStartIdx > newEndIdx) {
+    removeVvals(oldCh, oldStartIdx, oldEndIdx);
+  }
+}
+
+function addVvals(vvals, startIdx, endIdx) {
+  for (; startIdx <= endIdx; ++startIdx) {
+    createVm(vvals[startIdx]);
+  }
+}
+
+function removeVvals(vvals, startIdx, endIdx) {
+  for (; startIdx <= endIdx; ++startIdx) {
+    var ch = vvals[startIdx];
+
+    if (isDef(ch)) {
+      ch.vm.$destroy();
+      ch.vm = null;
+    }
+  }
+}
+
+function patchVval(oldVval, vval) {
+  if (oldVval === vval) {
+    return;
+  }
+
+  vval.vm = oldVval.vm;
+  updateVval(vval);
+}
+
+function patchChildren(oldCh, ch) {
+  if (isDef(oldCh) && isDef(ch)) {
+    if (oldCh !== ch) updateChildren(oldCh, ch);
+  } else if (isDef(ch)) {
+    addVvals(ch, 0, ch.length - 1);
+  } else if (isDef(oldCh)) {
+    removeVvals(oldCh, 0, oldCh.length - 1);
+  }
+}
+
+function h(tag, key, args) {
+  return {
+    tag: tag,
+    key: key,
+    args: args
+  };
+}
+
+/***/ }),
+
+/***/ "./node_modules/vuelidate/lib/withParams.js":
+/*!**************************************************!*\
+  !*** ./node_modules/vuelidate/lib/withParams.js ***!
+  \**************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(process) {
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var withParams = process.env.BUILD === 'web' ? __webpack_require__(/*! ./withParamsBrowser */ "./node_modules/vuelidate/lib/withParamsBrowser.js").withParams : __webpack_require__(/*! ./params */ "./node_modules/vuelidate/lib/params.js").withParams;
+var _default = withParams;
+exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../process/browser.js */ "./node_modules/process/browser.js")))
+
+/***/ }),
+
+/***/ "./node_modules/vuelidate/lib/withParamsBrowser.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/vuelidate/lib/withParamsBrowser.js ***!
+  \*********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(global) {
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.withParams = void 0;
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+var root = typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : {};
+
+var fakeWithParams = function fakeWithParams(paramsOrClosure, maybeValidator) {
+  if (_typeof(paramsOrClosure) === 'object' && maybeValidator !== undefined) {
+    return maybeValidator;
+  }
+
+  return paramsOrClosure(function () {});
+};
+
+var withParams = root.vuelidate ? root.vuelidate.withParams : fakeWithParams;
+exports.withParams = withParams;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js")))
+
+/***/ }),
+
+/***/ "./node_modules/vuex/dist/vuex.esm.js":
+/*!********************************************!*\
+  !*** ./node_modules/vuex/dist/vuex.esm.js ***!
+  \********************************************/
+/*! exports provided: default, Store, install, mapState, mapMutations, mapGetters, mapActions, createNamespacedHelpers */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* WEBPACK VAR INJECTION */(function(global) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Store", function() { return Store; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "install", function() { return install; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mapState", function() { return mapState; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mapMutations", function() { return mapMutations; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mapGetters", function() { return mapGetters; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mapActions", function() { return mapActions; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createNamespacedHelpers", function() { return createNamespacedHelpers; });
+/**
+ * vuex v3.1.2
+ * (c) 2019 Evan You
+ * @license MIT
+ */
+function applyMixin (Vue) {
+  var version = Number(Vue.version.split('.')[0]);
+
+  if (version >= 2) {
+    Vue.mixin({ beforeCreate: vuexInit });
+  } else {
+    // override init and inject vuex init procedure
+    // for 1.x backwards compatibility.
+    var _init = Vue.prototype._init;
+    Vue.prototype._init = function (options) {
+      if ( options === void 0 ) options = {};
+
+      options.init = options.init
+        ? [vuexInit].concat(options.init)
+        : vuexInit;
+      _init.call(this, options);
+    };
+  }
+
+  /**
+   * Vuex init hook, injected into each instances init hooks list.
+   */
+
+  function vuexInit () {
+    var options = this.$options;
+    // store injection
+    if (options.store) {
+      this.$store = typeof options.store === 'function'
+        ? options.store()
+        : options.store;
+    } else if (options.parent && options.parent.$store) {
+      this.$store = options.parent.$store;
+    }
+  }
+}
+
+var target = typeof window !== 'undefined'
+  ? window
+  : typeof global !== 'undefined'
+    ? global
+    : {};
+var devtoolHook = target.__VUE_DEVTOOLS_GLOBAL_HOOK__;
+
+function devtoolPlugin (store) {
+  if (!devtoolHook) { return }
+
+  store._devtoolHook = devtoolHook;
+
+  devtoolHook.emit('vuex:init', store);
+
+  devtoolHook.on('vuex:travel-to-state', function (targetState) {
+    store.replaceState(targetState);
+  });
+
+  store.subscribe(function (mutation, state) {
+    devtoolHook.emit('vuex:mutation', mutation, state);
+  });
+}
+
+/**
+ * Get the first item that pass the test
+ * by second argument function
+ *
+ * @param {Array} list
+ * @param {Function} f
+ * @return {*}
+ */
+
+/**
+ * forEach for object
+ */
+function forEachValue (obj, fn) {
+  Object.keys(obj).forEach(function (key) { return fn(obj[key], key); });
+}
+
+function isObject (obj) {
+  return obj !== null && typeof obj === 'object'
+}
+
+function isPromise (val) {
+  return val && typeof val.then === 'function'
+}
+
+function assert (condition, msg) {
+  if (!condition) { throw new Error(("[vuex] " + msg)) }
+}
+
+function partial (fn, arg) {
+  return function () {
+    return fn(arg)
+  }
+}
+
+// Base data struct for store's module, package with some attribute and method
+var Module = function Module (rawModule, runtime) {
+  this.runtime = runtime;
+  // Store some children item
+  this._children = Object.create(null);
+  // Store the origin module object which passed by programmer
+  this._rawModule = rawModule;
+  var rawState = rawModule.state;
+
+  // Store the origin module's state
+  this.state = (typeof rawState === 'function' ? rawState() : rawState) || {};
+};
+
+var prototypeAccessors = { namespaced: { configurable: true } };
+
+prototypeAccessors.namespaced.get = function () {
+  return !!this._rawModule.namespaced
+};
+
+Module.prototype.addChild = function addChild (key, module) {
+  this._children[key] = module;
+};
+
+Module.prototype.removeChild = function removeChild (key) {
+  delete this._children[key];
+};
+
+Module.prototype.getChild = function getChild (key) {
+  return this._children[key]
+};
+
+Module.prototype.update = function update (rawModule) {
+  this._rawModule.namespaced = rawModule.namespaced;
+  if (rawModule.actions) {
+    this._rawModule.actions = rawModule.actions;
+  }
+  if (rawModule.mutations) {
+    this._rawModule.mutations = rawModule.mutations;
+  }
+  if (rawModule.getters) {
+    this._rawModule.getters = rawModule.getters;
+  }
+};
+
+Module.prototype.forEachChild = function forEachChild (fn) {
+  forEachValue(this._children, fn);
+};
+
+Module.prototype.forEachGetter = function forEachGetter (fn) {
+  if (this._rawModule.getters) {
+    forEachValue(this._rawModule.getters, fn);
+  }
+};
+
+Module.prototype.forEachAction = function forEachAction (fn) {
+  if (this._rawModule.actions) {
+    forEachValue(this._rawModule.actions, fn);
+  }
+};
+
+Module.prototype.forEachMutation = function forEachMutation (fn) {
+  if (this._rawModule.mutations) {
+    forEachValue(this._rawModule.mutations, fn);
+  }
+};
+
+Object.defineProperties( Module.prototype, prototypeAccessors );
+
+var ModuleCollection = function ModuleCollection (rawRootModule) {
+  // register root module (Vuex.Store options)
+  this.register([], rawRootModule, false);
+};
+
+ModuleCollection.prototype.get = function get (path) {
+  return path.reduce(function (module, key) {
+    return module.getChild(key)
+  }, this.root)
+};
+
+ModuleCollection.prototype.getNamespace = function getNamespace (path) {
+  var module = this.root;
+  return path.reduce(function (namespace, key) {
+    module = module.getChild(key);
+    return namespace + (module.namespaced ? key + '/' : '')
+  }, '')
+};
+
+ModuleCollection.prototype.update = function update$1 (rawRootModule) {
+  update([], this.root, rawRootModule);
+};
+
+ModuleCollection.prototype.register = function register (path, rawModule, runtime) {
+    var this$1 = this;
+    if ( runtime === void 0 ) runtime = true;
+
+  if (true) {
+    assertRawModule(path, rawModule);
+  }
+
+  var newModule = new Module(rawModule, runtime);
+  if (path.length === 0) {
+    this.root = newModule;
+  } else {
+    var parent = this.get(path.slice(0, -1));
+    parent.addChild(path[path.length - 1], newModule);
+  }
+
+  // register nested modules
+  if (rawModule.modules) {
+    forEachValue(rawModule.modules, function (rawChildModule, key) {
+      this$1.register(path.concat(key), rawChildModule, runtime);
+    });
+  }
+};
+
+ModuleCollection.prototype.unregister = function unregister (path) {
+  var parent = this.get(path.slice(0, -1));
+  var key = path[path.length - 1];
+  if (!parent.getChild(key).runtime) { return }
+
+  parent.removeChild(key);
+};
+
+function update (path, targetModule, newModule) {
+  if (true) {
+    assertRawModule(path, newModule);
+  }
+
+  // update target module
+  targetModule.update(newModule);
+
+  // update nested modules
+  if (newModule.modules) {
+    for (var key in newModule.modules) {
+      if (!targetModule.getChild(key)) {
+        if (true) {
+          console.warn(
+            "[vuex] trying to add a new module '" + key + "' on hot reloading, " +
+            'manual reload is needed'
+          );
+        }
+        return
+      }
+      update(
+        path.concat(key),
+        targetModule.getChild(key),
+        newModule.modules[key]
+      );
+    }
+  }
+}
+
+var functionAssert = {
+  assert: function (value) { return typeof value === 'function'; },
+  expected: 'function'
+};
+
+var objectAssert = {
+  assert: function (value) { return typeof value === 'function' ||
+    (typeof value === 'object' && typeof value.handler === 'function'); },
+  expected: 'function or object with "handler" function'
+};
+
+var assertTypes = {
+  getters: functionAssert,
+  mutations: functionAssert,
+  actions: objectAssert
+};
+
+function assertRawModule (path, rawModule) {
+  Object.keys(assertTypes).forEach(function (key) {
+    if (!rawModule[key]) { return }
+
+    var assertOptions = assertTypes[key];
+
+    forEachValue(rawModule[key], function (value, type) {
+      assert(
+        assertOptions.assert(value),
+        makeAssertionMessage(path, key, type, value, assertOptions.expected)
+      );
+    });
+  });
+}
+
+function makeAssertionMessage (path, key, type, value, expected) {
+  var buf = key + " should be " + expected + " but \"" + key + "." + type + "\"";
+  if (path.length > 0) {
+    buf += " in module \"" + (path.join('.')) + "\"";
+  }
+  buf += " is " + (JSON.stringify(value)) + ".";
+  return buf
+}
+
+var Vue; // bind on install
+
+var Store = function Store (options) {
+  var this$1 = this;
+  if ( options === void 0 ) options = {};
+
+  // Auto install if it is not done yet and `window` has `Vue`.
+  // To allow users to avoid auto-installation in some cases,
+  // this code should be placed here. See #731
+  if (!Vue && typeof window !== 'undefined' && window.Vue) {
+    install(window.Vue);
+  }
+
+  if (true) {
+    assert(Vue, "must call Vue.use(Vuex) before creating a store instance.");
+    assert(typeof Promise !== 'undefined', "vuex requires a Promise polyfill in this browser.");
+    assert(this instanceof Store, "store must be called with the new operator.");
+  }
+
+  var plugins = options.plugins; if ( plugins === void 0 ) plugins = [];
+  var strict = options.strict; if ( strict === void 0 ) strict = false;
+
+  // store internal state
+  this._committing = false;
+  this._actions = Object.create(null);
+  this._actionSubscribers = [];
+  this._mutations = Object.create(null);
+  this._wrappedGetters = Object.create(null);
+  this._modules = new ModuleCollection(options);
+  this._modulesNamespaceMap = Object.create(null);
+  this._subscribers = [];
+  this._watcherVM = new Vue();
+  this._makeLocalGettersCache = Object.create(null);
+
+  // bind commit and dispatch to self
+  var store = this;
+  var ref = this;
+  var dispatch = ref.dispatch;
+  var commit = ref.commit;
+  this.dispatch = function boundDispatch (type, payload) {
+    return dispatch.call(store, type, payload)
+  };
+  this.commit = function boundCommit (type, payload, options) {
+    return commit.call(store, type, payload, options)
+  };
+
+  // strict mode
+  this.strict = strict;
+
+  var state = this._modules.root.state;
+
+  // init root module.
+  // this also recursively registers all sub-modules
+  // and collects all module getters inside this._wrappedGetters
+  installModule(this, state, [], this._modules.root);
+
+  // initialize the store vm, which is responsible for the reactivity
+  // (also registers _wrappedGetters as computed properties)
+  resetStoreVM(this, state);
+
+  // apply plugins
+  plugins.forEach(function (plugin) { return plugin(this$1); });
+
+  var useDevtools = options.devtools !== undefined ? options.devtools : Vue.config.devtools;
+  if (useDevtools) {
+    devtoolPlugin(this);
+  }
+};
+
+var prototypeAccessors$1 = { state: { configurable: true } };
+
+prototypeAccessors$1.state.get = function () {
+  return this._vm._data.$$state
+};
+
+prototypeAccessors$1.state.set = function (v) {
+  if (true) {
+    assert(false, "use store.replaceState() to explicit replace store state.");
+  }
+};
+
+Store.prototype.commit = function commit (_type, _payload, _options) {
+    var this$1 = this;
+
+  // check object-style commit
+  var ref = unifyObjectStyle(_type, _payload, _options);
+    var type = ref.type;
+    var payload = ref.payload;
+    var options = ref.options;
+
+  var mutation = { type: type, payload: payload };
+  var entry = this._mutations[type];
+  if (!entry) {
+    if (true) {
+      console.error(("[vuex] unknown mutation type: " + type));
+    }
+    return
+  }
+  this._withCommit(function () {
+    entry.forEach(function commitIterator (handler) {
+      handler(payload);
+    });
+  });
+  this._subscribers.forEach(function (sub) { return sub(mutation, this$1.state); });
+
+  if (
+     true &&
+    options && options.silent
+  ) {
+    console.warn(
+      "[vuex] mutation type: " + type + ". Silent option has been removed. " +
+      'Use the filter functionality in the vue-devtools'
+    );
+  }
+};
+
+Store.prototype.dispatch = function dispatch (_type, _payload) {
+    var this$1 = this;
+
+  // check object-style dispatch
+  var ref = unifyObjectStyle(_type, _payload);
+    var type = ref.type;
+    var payload = ref.payload;
+
+  var action = { type: type, payload: payload };
+  var entry = this._actions[type];
+  if (!entry) {
+    if (true) {
+      console.error(("[vuex] unknown action type: " + type));
+    }
+    return
+  }
+
+  try {
+    this._actionSubscribers
+      .filter(function (sub) { return sub.before; })
+      .forEach(function (sub) { return sub.before(action, this$1.state); });
+  } catch (e) {
+    if (true) {
+      console.warn("[vuex] error in before action subscribers: ");
+      console.error(e);
+    }
+  }
+
+  var result = entry.length > 1
+    ? Promise.all(entry.map(function (handler) { return handler(payload); }))
+    : entry[0](payload);
+
+  return result.then(function (res) {
+    try {
+      this$1._actionSubscribers
+        .filter(function (sub) { return sub.after; })
+        .forEach(function (sub) { return sub.after(action, this$1.state); });
+    } catch (e) {
+      if (true) {
+        console.warn("[vuex] error in after action subscribers: ");
+        console.error(e);
+      }
+    }
+    return res
+  })
+};
+
+Store.prototype.subscribe = function subscribe (fn) {
+  return genericSubscribe(fn, this._subscribers)
+};
+
+Store.prototype.subscribeAction = function subscribeAction (fn) {
+  var subs = typeof fn === 'function' ? { before: fn } : fn;
+  return genericSubscribe(subs, this._actionSubscribers)
+};
+
+Store.prototype.watch = function watch (getter, cb, options) {
+    var this$1 = this;
+
+  if (true) {
+    assert(typeof getter === 'function', "store.watch only accepts a function.");
+  }
+  return this._watcherVM.$watch(function () { return getter(this$1.state, this$1.getters); }, cb, options)
+};
+
+Store.prototype.replaceState = function replaceState (state) {
+    var this$1 = this;
+
+  this._withCommit(function () {
+    this$1._vm._data.$$state = state;
+  });
+};
+
+Store.prototype.registerModule = function registerModule (path, rawModule, options) {
+    if ( options === void 0 ) options = {};
+
+  if (typeof path === 'string') { path = [path]; }
+
+  if (true) {
+    assert(Array.isArray(path), "module path must be a string or an Array.");
+    assert(path.length > 0, 'cannot register the root module by using registerModule.');
+  }
+
+  this._modules.register(path, rawModule);
+  installModule(this, this.state, path, this._modules.get(path), options.preserveState);
+  // reset store to update getters...
+  resetStoreVM(this, this.state);
+};
+
+Store.prototype.unregisterModule = function unregisterModule (path) {
+    var this$1 = this;
+
+  if (typeof path === 'string') { path = [path]; }
+
+  if (true) {
+    assert(Array.isArray(path), "module path must be a string or an Array.");
+  }
+
+  this._modules.unregister(path);
+  this._withCommit(function () {
+    var parentState = getNestedState(this$1.state, path.slice(0, -1));
+    Vue.delete(parentState, path[path.length - 1]);
+  });
+  resetStore(this);
+};
+
+Store.prototype.hotUpdate = function hotUpdate (newOptions) {
+  this._modules.update(newOptions);
+  resetStore(this, true);
+};
+
+Store.prototype._withCommit = function _withCommit (fn) {
+  var committing = this._committing;
+  this._committing = true;
+  fn();
+  this._committing = committing;
+};
+
+Object.defineProperties( Store.prototype, prototypeAccessors$1 );
+
+function genericSubscribe (fn, subs) {
+  if (subs.indexOf(fn) < 0) {
+    subs.push(fn);
+  }
+  return function () {
+    var i = subs.indexOf(fn);
+    if (i > -1) {
+      subs.splice(i, 1);
+    }
+  }
+}
+
+function resetStore (store, hot) {
+  store._actions = Object.create(null);
+  store._mutations = Object.create(null);
+  store._wrappedGetters = Object.create(null);
+  store._modulesNamespaceMap = Object.create(null);
+  var state = store.state;
+  // init all modules
+  installModule(store, state, [], store._modules.root, true);
+  // reset vm
+  resetStoreVM(store, state, hot);
+}
+
+function resetStoreVM (store, state, hot) {
+  var oldVm = store._vm;
+
+  // bind store public getters
+  store.getters = {};
+  // reset local getters cache
+  store._makeLocalGettersCache = Object.create(null);
+  var wrappedGetters = store._wrappedGetters;
+  var computed = {};
+  forEachValue(wrappedGetters, function (fn, key) {
+    // use computed to leverage its lazy-caching mechanism
+    // direct inline function use will lead to closure preserving oldVm.
+    // using partial to return function with only arguments preserved in closure environment.
+    computed[key] = partial(fn, store);
+    Object.defineProperty(store.getters, key, {
+      get: function () { return store._vm[key]; },
+      enumerable: true // for local getters
+    });
+  });
+
+  // use a Vue instance to store the state tree
+  // suppress warnings just in case the user has added
+  // some funky global mixins
+  var silent = Vue.config.silent;
+  Vue.config.silent = true;
+  store._vm = new Vue({
+    data: {
+      $$state: state
+    },
+    computed: computed
+  });
+  Vue.config.silent = silent;
+
+  // enable strict mode for new vm
+  if (store.strict) {
+    enableStrictMode(store);
+  }
+
+  if (oldVm) {
+    if (hot) {
+      // dispatch changes in all subscribed watchers
+      // to force getter re-evaluation for hot reloading.
+      store._withCommit(function () {
+        oldVm._data.$$state = null;
+      });
+    }
+    Vue.nextTick(function () { return oldVm.$destroy(); });
+  }
+}
+
+function installModule (store, rootState, path, module, hot) {
+  var isRoot = !path.length;
+  var namespace = store._modules.getNamespace(path);
+
+  // register in namespace map
+  if (module.namespaced) {
+    if (store._modulesNamespaceMap[namespace] && "development" !== 'production') {
+      console.error(("[vuex] duplicate namespace " + namespace + " for the namespaced module " + (path.join('/'))));
+    }
+    store._modulesNamespaceMap[namespace] = module;
+  }
+
+  // set state
+  if (!isRoot && !hot) {
+    var parentState = getNestedState(rootState, path.slice(0, -1));
+    var moduleName = path[path.length - 1];
+    store._withCommit(function () {
+      if (true) {
+        if (moduleName in parentState) {
+          console.warn(
+            ("[vuex] state field \"" + moduleName + "\" was overridden by a module with the same name at \"" + (path.join('.')) + "\"")
+          );
+        }
+      }
+      Vue.set(parentState, moduleName, module.state);
+    });
+  }
+
+  var local = module.context = makeLocalContext(store, namespace, path);
+
+  module.forEachMutation(function (mutation, key) {
+    var namespacedType = namespace + key;
+    registerMutation(store, namespacedType, mutation, local);
+  });
+
+  module.forEachAction(function (action, key) {
+    var type = action.root ? key : namespace + key;
+    var handler = action.handler || action;
+    registerAction(store, type, handler, local);
+  });
+
+  module.forEachGetter(function (getter, key) {
+    var namespacedType = namespace + key;
+    registerGetter(store, namespacedType, getter, local);
+  });
+
+  module.forEachChild(function (child, key) {
+    installModule(store, rootState, path.concat(key), child, hot);
+  });
+}
+
+/**
+ * make localized dispatch, commit, getters and state
+ * if there is no namespace, just use root ones
+ */
+function makeLocalContext (store, namespace, path) {
+  var noNamespace = namespace === '';
+
+  var local = {
+    dispatch: noNamespace ? store.dispatch : function (_type, _payload, _options) {
+      var args = unifyObjectStyle(_type, _payload, _options);
+      var payload = args.payload;
+      var options = args.options;
+      var type = args.type;
+
+      if (!options || !options.root) {
+        type = namespace + type;
+        if ( true && !store._actions[type]) {
+          console.error(("[vuex] unknown local action type: " + (args.type) + ", global type: " + type));
+          return
+        }
+      }
+
+      return store.dispatch(type, payload)
+    },
+
+    commit: noNamespace ? store.commit : function (_type, _payload, _options) {
+      var args = unifyObjectStyle(_type, _payload, _options);
+      var payload = args.payload;
+      var options = args.options;
+      var type = args.type;
+
+      if (!options || !options.root) {
+        type = namespace + type;
+        if ( true && !store._mutations[type]) {
+          console.error(("[vuex] unknown local mutation type: " + (args.type) + ", global type: " + type));
+          return
+        }
+      }
+
+      store.commit(type, payload, options);
+    }
+  };
+
+  // getters and state object must be gotten lazily
+  // because they will be changed by vm update
+  Object.defineProperties(local, {
+    getters: {
+      get: noNamespace
+        ? function () { return store.getters; }
+        : function () { return makeLocalGetters(store, namespace); }
+    },
+    state: {
+      get: function () { return getNestedState(store.state, path); }
+    }
+  });
+
+  return local
+}
+
+function makeLocalGetters (store, namespace) {
+  if (!store._makeLocalGettersCache[namespace]) {
+    var gettersProxy = {};
+    var splitPos = namespace.length;
+    Object.keys(store.getters).forEach(function (type) {
+      // skip if the target getter is not match this namespace
+      if (type.slice(0, splitPos) !== namespace) { return }
+
+      // extract local getter type
+      var localType = type.slice(splitPos);
+
+      // Add a port to the getters proxy.
+      // Define as getter property because
+      // we do not want to evaluate the getters in this time.
+      Object.defineProperty(gettersProxy, localType, {
+        get: function () { return store.getters[type]; },
+        enumerable: true
+      });
+    });
+    store._makeLocalGettersCache[namespace] = gettersProxy;
+  }
+
+  return store._makeLocalGettersCache[namespace]
+}
+
+function registerMutation (store, type, handler, local) {
+  var entry = store._mutations[type] || (store._mutations[type] = []);
+  entry.push(function wrappedMutationHandler (payload) {
+    handler.call(store, local.state, payload);
+  });
+}
+
+function registerAction (store, type, handler, local) {
+  var entry = store._actions[type] || (store._actions[type] = []);
+  entry.push(function wrappedActionHandler (payload) {
+    var res = handler.call(store, {
+      dispatch: local.dispatch,
+      commit: local.commit,
+      getters: local.getters,
+      state: local.state,
+      rootGetters: store.getters,
+      rootState: store.state
+    }, payload);
+    if (!isPromise(res)) {
+      res = Promise.resolve(res);
+    }
+    if (store._devtoolHook) {
+      return res.catch(function (err) {
+        store._devtoolHook.emit('vuex:error', err);
+        throw err
+      })
+    } else {
+      return res
+    }
+  });
+}
+
+function registerGetter (store, type, rawGetter, local) {
+  if (store._wrappedGetters[type]) {
+    if (true) {
+      console.error(("[vuex] duplicate getter key: " + type));
+    }
+    return
+  }
+  store._wrappedGetters[type] = function wrappedGetter (store) {
+    return rawGetter(
+      local.state, // local state
+      local.getters, // local getters
+      store.state, // root state
+      store.getters // root getters
+    )
+  };
+}
+
+function enableStrictMode (store) {
+  store._vm.$watch(function () { return this._data.$$state }, function () {
+    if (true) {
+      assert(store._committing, "do not mutate vuex store state outside mutation handlers.");
+    }
+  }, { deep: true, sync: true });
+}
+
+function getNestedState (state, path) {
+  return path.length
+    ? path.reduce(function (state, key) { return state[key]; }, state)
+    : state
+}
+
+function unifyObjectStyle (type, payload, options) {
+  if (isObject(type) && type.type) {
+    options = payload;
+    payload = type;
+    type = type.type;
+  }
+
+  if (true) {
+    assert(typeof type === 'string', ("expects string as the type, but found " + (typeof type) + "."));
+  }
+
+  return { type: type, payload: payload, options: options }
+}
+
+function install (_Vue) {
+  if (Vue && _Vue === Vue) {
+    if (true) {
+      console.error(
+        '[vuex] already installed. Vue.use(Vuex) should be called only once.'
+      );
+    }
+    return
+  }
+  Vue = _Vue;
+  applyMixin(Vue);
+}
+
+/**
+ * Reduce the code which written in Vue.js for getting the state.
+ * @param {String} [namespace] - Module's namespace
+ * @param {Object|Array} states # Object's item can be a function which accept state and getters for param, you can do something for state and getters in it.
+ * @param {Object}
+ */
+var mapState = normalizeNamespace(function (namespace, states) {
+  var res = {};
+  if ( true && !isValidMap(states)) {
+    console.error('[vuex] mapState: mapper parameter must be either an Array or an Object');
+  }
+  normalizeMap(states).forEach(function (ref) {
+    var key = ref.key;
+    var val = ref.val;
+
+    res[key] = function mappedState () {
+      var state = this.$store.state;
+      var getters = this.$store.getters;
+      if (namespace) {
+        var module = getModuleByNamespace(this.$store, 'mapState', namespace);
+        if (!module) {
+          return
+        }
+        state = module.context.state;
+        getters = module.context.getters;
+      }
+      return typeof val === 'function'
+        ? val.call(this, state, getters)
+        : state[val]
+    };
+    // mark vuex getter for devtools
+    res[key].vuex = true;
+  });
+  return res
+});
+
+/**
+ * Reduce the code which written in Vue.js for committing the mutation
+ * @param {String} [namespace] - Module's namespace
+ * @param {Object|Array} mutations # Object's item can be a function which accept `commit` function as the first param, it can accept anthor params. You can commit mutation and do any other things in this function. specially, You need to pass anthor params from the mapped function.
+ * @return {Object}
+ */
+var mapMutations = normalizeNamespace(function (namespace, mutations) {
+  var res = {};
+  if ( true && !isValidMap(mutations)) {
+    console.error('[vuex] mapMutations: mapper parameter must be either an Array or an Object');
+  }
+  normalizeMap(mutations).forEach(function (ref) {
+    var key = ref.key;
+    var val = ref.val;
+
+    res[key] = function mappedMutation () {
+      var args = [], len = arguments.length;
+      while ( len-- ) args[ len ] = arguments[ len ];
+
+      // Get the commit method from store
+      var commit = this.$store.commit;
+      if (namespace) {
+        var module = getModuleByNamespace(this.$store, 'mapMutations', namespace);
+        if (!module) {
+          return
+        }
+        commit = module.context.commit;
+      }
+      return typeof val === 'function'
+        ? val.apply(this, [commit].concat(args))
+        : commit.apply(this.$store, [val].concat(args))
+    };
+  });
+  return res
+});
+
+/**
+ * Reduce the code which written in Vue.js for getting the getters
+ * @param {String} [namespace] - Module's namespace
+ * @param {Object|Array} getters
+ * @return {Object}
+ */
+var mapGetters = normalizeNamespace(function (namespace, getters) {
+  var res = {};
+  if ( true && !isValidMap(getters)) {
+    console.error('[vuex] mapGetters: mapper parameter must be either an Array or an Object');
+  }
+  normalizeMap(getters).forEach(function (ref) {
+    var key = ref.key;
+    var val = ref.val;
+
+    // The namespace has been mutated by normalizeNamespace
+    val = namespace + val;
+    res[key] = function mappedGetter () {
+      if (namespace && !getModuleByNamespace(this.$store, 'mapGetters', namespace)) {
+        return
+      }
+      if ( true && !(val in this.$store.getters)) {
+        console.error(("[vuex] unknown getter: " + val));
+        return
+      }
+      return this.$store.getters[val]
+    };
+    // mark vuex getter for devtools
+    res[key].vuex = true;
+  });
+  return res
+});
+
+/**
+ * Reduce the code which written in Vue.js for dispatch the action
+ * @param {String} [namespace] - Module's namespace
+ * @param {Object|Array} actions # Object's item can be a function which accept `dispatch` function as the first param, it can accept anthor params. You can dispatch action and do any other things in this function. specially, You need to pass anthor params from the mapped function.
+ * @return {Object}
+ */
+var mapActions = normalizeNamespace(function (namespace, actions) {
+  var res = {};
+  if ( true && !isValidMap(actions)) {
+    console.error('[vuex] mapActions: mapper parameter must be either an Array or an Object');
+  }
+  normalizeMap(actions).forEach(function (ref) {
+    var key = ref.key;
+    var val = ref.val;
+
+    res[key] = function mappedAction () {
+      var args = [], len = arguments.length;
+      while ( len-- ) args[ len ] = arguments[ len ];
+
+      // get dispatch function from store
+      var dispatch = this.$store.dispatch;
+      if (namespace) {
+        var module = getModuleByNamespace(this.$store, 'mapActions', namespace);
+        if (!module) {
+          return
+        }
+        dispatch = module.context.dispatch;
+      }
+      return typeof val === 'function'
+        ? val.apply(this, [dispatch].concat(args))
+        : dispatch.apply(this.$store, [val].concat(args))
+    };
+  });
+  return res
+});
+
+/**
+ * Rebinding namespace param for mapXXX function in special scoped, and return them by simple object
+ * @param {String} namespace
+ * @return {Object}
+ */
+var createNamespacedHelpers = function (namespace) { return ({
+  mapState: mapState.bind(null, namespace),
+  mapGetters: mapGetters.bind(null, namespace),
+  mapMutations: mapMutations.bind(null, namespace),
+  mapActions: mapActions.bind(null, namespace)
+}); };
+
+/**
+ * Normalize the map
+ * normalizeMap([1, 2, 3]) => [ { key: 1, val: 1 }, { key: 2, val: 2 }, { key: 3, val: 3 } ]
+ * normalizeMap({a: 1, b: 2, c: 3}) => [ { key: 'a', val: 1 }, { key: 'b', val: 2 }, { key: 'c', val: 3 } ]
+ * @param {Array|Object} map
+ * @return {Object}
+ */
+function normalizeMap (map) {
+  if (!isValidMap(map)) {
+    return []
+  }
+  return Array.isArray(map)
+    ? map.map(function (key) { return ({ key: key, val: key }); })
+    : Object.keys(map).map(function (key) { return ({ key: key, val: map[key] }); })
+}
+
+/**
+ * Validate whether given map is valid or not
+ * @param {*} map
+ * @return {Boolean}
+ */
+function isValidMap (map) {
+  return Array.isArray(map) || isObject(map)
+}
+
+/**
+ * Return a function expect two param contains namespace and map. it will normalize the namespace and then the param's function will handle the new namespace and the map.
+ * @param {Function} fn
+ * @return {Function}
+ */
+function normalizeNamespace (fn) {
+  return function (namespace, map) {
+    if (typeof namespace !== 'string') {
+      map = namespace;
+      namespace = '';
+    } else if (namespace.charAt(namespace.length - 1) !== '/') {
+      namespace += '/';
+    }
+    return fn(namespace, map)
+  }
+}
+
+/**
+ * Search a special module from store by namespace. if module not exist, print error message.
+ * @param {Object} store
+ * @param {String} helper
+ * @param {String} namespace
+ * @return {Object}
+ */
+function getModuleByNamespace (store, helper, namespace) {
+  var module = store._modulesNamespaceMap[namespace];
+  if ( true && !module) {
+    console.error(("[vuex] module namespace not found in " + helper + "(): " + namespace));
+  }
+  return module
+}
+
+var index_esm = {
+  Store: Store,
+  install: install,
+  version: '3.1.2',
+  mapState: mapState,
+  mapMutations: mapMutations,
+  mapGetters: mapGetters,
+  mapActions: mapActions,
+  createNamespacedHelpers: createNamespacedHelpers
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (index_esm);
+
+
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js")))
+
+/***/ }),
+
 /***/ "./node_modules/webpack/buildin/global.js":
 /*!***********************************!*\
   !*** (webpack)/buildin/global.js ***!
@@ -53584,11 +57710,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _App_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./App.vue */ "./resources/js/App.vue");
 /* harmony import */ var _router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./router */ "./resources/js/router.js");
-/* harmony import */ var vue_material_dist_vue_material_min_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vue-material/dist/vue-material.min.css */ "./node_modules/vue-material/dist/vue-material.min.css");
-/* harmony import */ var vue_material_dist_vue_material_min_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(vue_material_dist_vue_material_min_css__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _sass_theme_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./../sass/theme.scss */ "./resources/sass/theme.scss");
-/* harmony import */ var _sass_theme_scss__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_sass_theme_scss__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _store_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./store/index */ "./resources/js/store/index.js");
+/* harmony import */ var vue_material_dist_vue_material_min_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vue-material/dist/vue-material.min.css */ "./node_modules/vue-material/dist/vue-material.min.css");
+/* harmony import */ var vue_material_dist_vue_material_min_css__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(vue_material_dist_vue_material_min_css__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _sass_theme_scss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./../sass/theme.scss */ "./resources/sass/theme.scss");
+/* harmony import */ var _sass_theme_scss__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_sass_theme_scss__WEBPACK_IMPORTED_MODULE_5__);
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
+
 
 
 
@@ -53598,6 +57726,7 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   router: _router__WEBPACK_IMPORTED_MODULE_2__["default"],
+  store: _store_index__WEBPACK_IMPORTED_MODULE_3__["default"],
   render: function render(h) {
     return h(_App_vue__WEBPACK_IMPORTED_MODULE_1__["default"]);
   }
@@ -53800,27 +57929,228 @@ __webpack_require__.r(__webpack_exports__);
 /* WEBPACK VAR INJECTION */(function(process) {/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
-/* harmony import */ var _views_Index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./views/Index */ "./resources/js/views/Index.vue");
-/* harmony import */ var _views_Example__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./views/Example */ "./resources/js/views/Example.vue");
+/* harmony import */ var _store_index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./store/index */ "./resources/js/store/index.js");
+/* harmony import */ var _views_Index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./views/Index */ "./resources/js/views/Index.vue");
+/* harmony import */ var _views_Example__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./views/Example */ "./resources/js/views/Example.vue");
+/* harmony import */ var _views_auth_Signin__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./views/auth/Signin */ "./resources/js/views/auth/Signin.vue");
+
+
 
 
 
 
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]);
+/*
+ * Checks if the user is authenticated in the store
+ * if not redirect to signin
+ */
+
+function _beforeEnter(to, from, next) {
+  if (!_store_index__WEBPACK_IMPORTED_MODULE_2__["default"].getters['auth/authenticated']) {
+    return next({
+      name: 'signin'
+    });
+  }
+
+  next();
+}
+
 /* harmony default export */ __webpack_exports__["default"] = (new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   mode: 'history',
   base: process.env.BASE_URL,
   routes: [{
     path: '/',
     name: 'index',
-    component: _views_Index__WEBPACK_IMPORTED_MODULE_2__["default"]
+    component: _views_Index__WEBPACK_IMPORTED_MODULE_3__["default"]
+  }, {
+    path: '/signin',
+    name: 'signin',
+    component: _views_auth_Signin__WEBPACK_IMPORTED_MODULE_5__["default"]
   }, {
     path: '/example',
     name: 'example',
-    component: _views_Example__WEBPACK_IMPORTED_MODULE_3__["default"]
+    component: _views_Example__WEBPACK_IMPORTED_MODULE_4__["default"],
+    beforeEnter: function beforeEnter(to, from, next) {
+      return _beforeEnter(to, from, next);
+    }
   }]
 }));
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../node_modules/process/browser.js */ "./node_modules/process/browser.js")))
+
+/***/ }),
+
+/***/ "./resources/js/store/auth.js":
+/*!************************************!*\
+  !*** ./resources/js/store/auth.js ***!
+  \************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  namespaced: true,
+  state: {
+    token: null,
+    user: {
+      name: null,
+      email: null
+    }
+  },
+  getters: {
+    authenticated: function authenticated(state) {
+      return state.token && state.user;
+    },
+    user: function user(state) {
+      return state.user;
+    },
+    token: function token(state) {
+      return state.token ? "".concat(state.token_type && state.token) : false;
+    }
+  },
+  mutations: {
+    SET_TOKEN: function SET_TOKEN(state, token) {
+      if (!token) {
+        state.token = null;
+        window.axios.defaults.headers.common['Authorization'] = '';
+      } else {
+        state.token = token;
+        window.axios.defaults.headers.common['Authorization'] = "Bearer ".concat(token);
+      }
+    },
+    SET_USER: function SET_USER(state, data) {
+      state.user.name = data.name;
+      state.user.email = data.email;
+    }
+  },
+  actions: {
+    signIn: function () {
+      var _signIn = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(_ref, credentials) {
+        var dispatch, response;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                dispatch = _ref.dispatch;
+                _context.prev = 1;
+                _context.next = 4;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/login', credentials);
+
+              case 4:
+                response = _context.sent;
+                dispatch('attempt', response.data);
+                _context.next = 12;
+                break;
+
+              case 8:
+                _context.prev = 8;
+                _context.t0 = _context["catch"](1);
+                console.log("error store", _context.t0);
+                throw _context.t0;
+
+              case 12:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, null, [[1, 8]]);
+      }));
+
+      function signIn(_x, _x2) {
+        return _signIn.apply(this, arguments);
+      }
+
+      return signIn;
+    }(),
+    attempt: function () {
+      var _attempt = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2(_ref2, data) {
+        var commit;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                commit = _ref2.commit;
+
+                if (data.token) {
+                  commit('SET_TOKEN', data.token);
+                  commit('SET_USER', {
+                    name: data.name,
+                    email: data.email
+                  });
+                } else {
+                  commit('SET_TOKEN', null);
+                  commit('SET_USER', null);
+                }
+
+              case 2:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
+      }));
+
+      function attempt(_x3, _x4) {
+        return _attempt.apply(this, arguments);
+      }
+
+      return attempt;
+    }(),
+    signOut: function signOut(_ref3) {
+      var commit = _ref3.commit;
+      return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/auth/logout').then(function () {
+        commit('SET_TOKEN', null);
+        commit('SET_USER', null);
+      });
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./resources/js/store/index.js":
+/*!*************************************!*\
+  !*** ./resources/js/store/index.js ***!
+  \*************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var _auth__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./auth */ "./resources/js/store/auth.js");
+
+
+
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__["default"]);
+/* harmony default export */ __webpack_exports__["default"] = (new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
+  state: {//
+  },
+  mutations: {//
+  },
+  actions: {//
+  },
+  modules: {
+    auth: _auth__WEBPACK_IMPORTED_MODULE_2__["default"]
+  }
+}));
 
 /***/ }),
 
@@ -53957,6 +58287,93 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Index_vue_vue_type_template_id_494d9643___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Index_vue_vue_type_template_id_494d9643___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/views/auth/Signin.vue":
+/*!********************************************!*\
+  !*** ./resources/js/views/auth/Signin.vue ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Signin_vue_vue_type_template_id_2717254c_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Signin.vue?vue&type=template&id=2717254c&scoped=true& */ "./resources/js/views/auth/Signin.vue?vue&type=template&id=2717254c&scoped=true&");
+/* harmony import */ var _Signin_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Signin.vue?vue&type=script&lang=js& */ "./resources/js/views/auth/Signin.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _Signin_vue_vue_type_style_index_0_id_2717254c_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Signin.vue?vue&type=style&index=0&id=2717254c&lang=scss&scoped=true& */ "./resources/js/views/auth/Signin.vue?vue&type=style&index=0&id=2717254c&lang=scss&scoped=true&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _Signin_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Signin_vue_vue_type_template_id_2717254c_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Signin_vue_vue_type_template_id_2717254c_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "2717254c",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/views/auth/Signin.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/views/auth/Signin.vue?vue&type=script&lang=js&":
+/*!*********************************************************************!*\
+  !*** ./resources/js/views/auth/Signin.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Signin_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./Signin.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/auth/Signin.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Signin_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/views/auth/Signin.vue?vue&type=style&index=0&id=2717254c&lang=scss&scoped=true&":
+/*!******************************************************************************************************!*\
+  !*** ./resources/js/views/auth/Signin.vue?vue&type=style&index=0&id=2717254c&lang=scss&scoped=true& ***!
+  \******************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_Signin_vue_vue_type_style_index_0_id_2717254c_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader!../../../../node_modules/css-loader!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--7-2!../../../../node_modules/sass-loader/dist/cjs.js??ref--7-3!../../../../node_modules/vue-loader/lib??vue-loader-options!./Signin.vue?vue&type=style&index=0&id=2717254c&lang=scss&scoped=true& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/auth/Signin.vue?vue&type=style&index=0&id=2717254c&lang=scss&scoped=true&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_Signin_vue_vue_type_style_index_0_id_2717254c_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_Signin_vue_vue_type_style_index_0_id_2717254c_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_Signin_vue_vue_type_style_index_0_id_2717254c_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_Signin_vue_vue_type_style_index_0_id_2717254c_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_Signin_vue_vue_type_style_index_0_id_2717254c_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./resources/js/views/auth/Signin.vue?vue&type=template&id=2717254c&scoped=true&":
+/*!***************************************************************************************!*\
+  !*** ./resources/js/views/auth/Signin.vue?vue&type=template&id=2717254c&scoped=true& ***!
+  \***************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Signin_vue_vue_type_template_id_2717254c_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./Signin.vue?vue&type=template&id=2717254c&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/auth/Signin.vue?vue&type=template&id=2717254c&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Signin_vue_vue_type_template_id_2717254c_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Signin_vue_vue_type_template_id_2717254c_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

@@ -31,9 +31,8 @@
             <div class="md-toolbar-row">
                 <md-tabs class="md-primary">
                     <md-tab id="tab-home" md-label="Home" to="/" exact></md-tab>
-                    <md-tab id="tab-about" md-label="About" to="/about"></md-tab>
-                    <md-tab id="tab-portfolio" md-label="Portfolio" to="/portfolio"></md-tab>
-                    <md-tab id="tab-contact" md-label="Contact" to="/contact"></md-tab>
+                    <md-tab id="tab-example" md-label="Example" to="/example" exact></md-tab>
+                    
                 </md-tabs>
             </div>
         </md-app-toolbar>
