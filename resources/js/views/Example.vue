@@ -41,9 +41,7 @@ export default {
     },
     getCourses() {
       let app = this;
-      axios.get('/api/courses', {
-        headers: { Authorization: 'Bearer ' + this.token}
-      })
+      axios.get('/api/courses')
       .then(function (response) {
          console.log(response.data);
         app.courses = response.data

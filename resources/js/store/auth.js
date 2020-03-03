@@ -14,7 +14,7 @@ export default {
 
     getters: {
         authenticated (state) {
-            return state.token && state.user
+            return state.token
         },
 
         user (state) {
@@ -65,6 +65,14 @@ export default {
                 commit('SET_USER', null)
             }
         
+        },
+
+        async attemptToken ({ commit }, data) {
+            if(data !== null) {
+                commit('SET_TOKEN', data)
+            } else {
+                commit('SET_TOKEN', null)
+            }
         },
 
         signOut ({ commit }) {

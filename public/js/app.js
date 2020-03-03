@@ -2115,11 +2115,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     getCourses: function getCourses() {
       var app = this;
-      axios.get('/api/courses', {
-        headers: {
-          Authorization: 'Bearer ' + this.token
-        }
-      }).then(function (response) {
+      axios.get('/api/courses').then(function (response) {
         console.log(response.data);
         app.courses = response.data;
       })["catch"](function (error) {
@@ -57719,18 +57715,30 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
 
-
- //Material UI minfied css and custom theme
-
+ //VueX Store
 
 
-new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
-  router: _router__WEBPACK_IMPORTED_MODULE_2__["default"],
-  store: _store_index__WEBPACK_IMPORTED_MODULE_3__["default"],
-  render: function render(h) {
-    return h(_App_vue__WEBPACK_IMPORTED_MODULE_1__["default"]);
-  }
-}).$mount('#app');
+
+__webpack_require__(/*! ./store/subscriber */ "./resources/js/store/subscriber.js"); //Material UI minfied css and custom theme
+
+
+
+
+var token = localStorage.getItem('access_token');
+
+if (token !== null) {
+  window.axios.defaults.headers.common['Authorization'] = "Bearer ".concat(token);
+}
+
+_store_index__WEBPACK_IMPORTED_MODULE_3__["default"].dispatch('auth/attemptToken', token).then(function () {
+  new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
+    router: _router__WEBPACK_IMPORTED_MODULE_2__["default"],
+    store: _store_index__WEBPACK_IMPORTED_MODULE_3__["default"],
+    render: function render(h) {
+      return h(_App_vue__WEBPACK_IMPORTED_MODULE_1__["default"]);
+    }
+  }).$mount('#app');
+});
 
 /***/ }),
 
@@ -58010,7 +58018,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   getters: {
     authenticated: function authenticated(state) {
-      return state.token && state.user;
+      return state.token;
     },
     user: function user(state) {
       return state.user;
@@ -58111,8 +58119,39 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       return attempt;
     }(),
-    signOut: function signOut(_ref3) {
-      var commit = _ref3.commit;
+    attemptToken: function () {
+      var _attemptToken = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3(_ref3, data) {
+        var commit;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                commit = _ref3.commit;
+
+                if (data !== null) {
+                  commit('SET_TOKEN', data);
+                } else {
+                  commit('SET_TOKEN', null);
+                }
+
+              case 2:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3);
+      }));
+
+      function attemptToken(_x5, _x6) {
+        return _attemptToken.apply(this, arguments);
+      }
+
+      return attemptToken;
+    }(),
+    signOut: function signOut(_ref4) {
+      var commit = _ref4.commit;
       return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/auth/logout').then(function () {
         commit('SET_TOKEN', null);
         commit('SET_USER', null);
@@ -58151,6 +58190,54 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__
     auth: _auth__WEBPACK_IMPORTED_MODULE_2__["default"]
   }
 }));
+
+/***/ }),
+
+/***/ "./resources/js/store/subscriber.js":
+/*!******************************************!*\
+  !*** ./resources/js/store/subscriber.js ***!
+  \******************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _index__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index */ "./resources/js/store/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/*
+ * --------------------
+ * Author Name: Eoan O'Dea
+ * Author Email: eoan@wspace.ie
+ * Date Created: Wednesday January 15th 2020 12:36:07 pm
+ * --------------------
+ * Project Name: IADTY3PPClientMangementSystem
+ * Version: 1.0.0
+ * --------------------
+ * File Name: subscriber.js
+ * Last Modified: Wednesday January 15th 2020 12:57:55 pm
+ * --------------------
+ * Copyright (c) 2020 WebSpace
+ * --------------------
+ */
+
+
+_index__WEBPACK_IMPORTED_MODULE_0__["default"].subscribe(function (mutation) {
+  console.log('runnning switch subscribe!!', mutation);
+
+  switch (mutation.type) {
+    case 'auth/SET_TOKEN':
+      if (mutation.payload) {
+        axios__WEBPACK_IMPORTED_MODULE_1___default.a.defaults.headers.common['Authorization'] = "Bearer ".concat(mutation.payload);
+        localStorage.setItem('access_token', mutation.payload);
+      } else {
+        axios__WEBPACK_IMPORTED_MODULE_1___default.a.defaults.headers.common['Authorization'] = null;
+        localStorage.removeItem('access_token');
+      }
+
+      break;
+  }
+});
 
 /***/ }),
 
