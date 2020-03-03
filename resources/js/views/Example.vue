@@ -5,6 +5,8 @@
     <br>
     Test courses <br>
     <button @click="getCourses()"> Get Courses </button>
+
+    {{courses}}
   </div>
 </template>
 <script>
@@ -18,7 +20,8 @@ export default {
       email: "sam@bloggs.com",
       password: "secret",
       name: "",
-      courses: []
+      courses: [],
+      token: null
     }
   },
   methods: {
@@ -29,6 +32,7 @@ export default {
         password: app.password
       })
       .then(function(response) {
+        app.token = response.data.token
         console.log('response!', response)
       })
       .catch(function(error) {
@@ -36,11 +40,13 @@ export default {
       })
     },
     getCourses() {
+      let app = this;
       axios.get('/api/courses', {
-        headers: { Authorization: 'Bearer ' + token}
+        headers: { Authorization: 'Bearer ' + this.token}
       })
       .then(function (response) {
          console.log(response.data);
+        app.courses = response.data
       })
       .catch(function (error) {
          console.log(error);

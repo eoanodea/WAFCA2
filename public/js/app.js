@@ -1966,6 +1966,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'example',
   components: {},
@@ -1974,7 +1976,8 @@ __webpack_require__.r(__webpack_exports__);
       email: "sam@bloggs.com",
       password: "secret",
       name: "",
-      courses: []
+      courses: [],
+      token: null
     };
   },
   methods: {
@@ -1984,18 +1987,21 @@ __webpack_require__.r(__webpack_exports__);
         email: app.email,
         password: app.password
       }).then(function (response) {
+        app.token = response.data.token;
         console.log('response!', response);
       })["catch"](function (error) {
         console.log('Error!', error);
       });
     },
     getCourses: function getCourses() {
+      var app = this;
       axios.get('/api/courses', {
         headers: {
-          Authorization: 'Bearer ' + token
+          Authorization: 'Bearer ' + this.token
         }
       }).then(function (response) {
         console.log(response.data);
+        app.courses = response.data;
       })["catch"](function (error) {
         console.log(error);
       });
@@ -38092,7 +38098,8 @@ var render = function() {
         }
       },
       [_vm._v(" Get Courses ")]
-    )
+    ),
+    _vm._v("\n\n  " + _vm._s(_vm.courses) + "\n")
   ])
 }
 var staticRenderFns = []
