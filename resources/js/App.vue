@@ -1,21 +1,26 @@
 <template>
   <div>
-    This is the App component
-    <router-view />
+    <Header/>
+    <router-view></router-view>
+    <Footer/>
   </div>
 </template>
 <script>
-export default {
-  name: 'app',
-  components: {
+  import Header from './components/layout/Header'
+  import Footer from './components/layout/Footer'
 
-  },
-  data() {
-    return {
+  export default {
+    name: 'app',
+    components: {
+      Header,
+      Footer
+    },
+    data() {
+      return {
 
+      }
     }
   }
-}
 </script>
 <style>
 </style>
