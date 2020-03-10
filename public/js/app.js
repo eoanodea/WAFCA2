@@ -1944,8 +1944,12 @@ module.exports = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _components_layout_Header__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/layout/Header */ "./resources/js/components/layout/Header.vue");
-/* harmony import */ var _components_layout_Footer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/layout/Footer */ "./resources/js/components/layout/Footer.vue");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vue_material_dist_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-material/dist/components */ "./node_modules/vue-material/dist/components/index.js");
+/* harmony import */ var vue_material_dist_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue_material_dist_components__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _components_layout_Header__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/layout/Header */ "./resources/js/components/layout/Header.vue");
+/* harmony import */ var _components_layout_Footer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/layout/Footer */ "./resources/js/components/layout/Footer.vue");
 //
 //
 //
@@ -1955,11 +1959,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 
 
+
+
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_material_dist_components__WEBPACK_IMPORTED_MODULE_1__["MdApp"]);
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'app',
   components: {
-    Header: _components_layout_Header__WEBPACK_IMPORTED_MODULE_0__["default"],
-    Footer: _components_layout_Footer__WEBPACK_IMPORTED_MODULE_1__["default"]
+    Header: _components_layout_Header__WEBPACK_IMPORTED_MODULE_2__["default"],
+    Footer: _components_layout_Footer__WEBPACK_IMPORTED_MODULE_3__["default"]
   },
   data: function data() {
     return {};
@@ -2016,6 +2023,28 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_material_dist_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-material/dist/components */ "./node_modules/vue-material/dist/components/index.js");
 /* harmony import */ var vue_material_dist_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue_material_dist_components__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _SideDrawer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./SideDrawer */ "./resources/js/components/layout/SideDrawer.vue");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2059,11 +2088,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_material_dist_components__WEBPACK_IMPORTED_MODULE_1__["MdApp"]);
+
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_material_dist_components__WEBPACK_IMPORTED_MODULE_1__["MdList"]);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_material_dist_components__WEBPACK_IMPORTED_MODULE_1__["MdTabs"]);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_material_dist_components__WEBPACK_IMPORTED_MODULE_1__["MdToolbar"]);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_material_dist_components__WEBPACK_IMPORTED_MODULE_1__["MdButton"]);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_material_dist_components__WEBPACK_IMPORTED_MODULE_1__["MdIcon"]);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_material_dist_components__WEBPACK_IMPORTED_MODULE_1__["MdDrawer"]);
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Header',
   data: function data() {
@@ -2073,7 +2104,22 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_material_dist_components__WEB
   },
   components: {
     SideDrawer: _SideDrawer__WEBPACK_IMPORTED_MODULE_2__["default"]
-  }
+  },
+  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_3__["mapActions"])({
+    signOutAction: 'auth/signOut'
+  }), {
+    signOut: function signOut() {
+      var _this = this;
+
+      this.signOutAction().then(function () {
+        _this.open = false;
+
+        _this.$router.replace({
+          name: 'signin'
+        });
+      });
+    }
+  })
 });
 
 /***/ }),
@@ -39189,11 +39235,9 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "md-app",
+    "header",
     [
-      _c("p", [_vm._v("hello header")]),
-      _vm._v(" "),
-      _c("md-app-toolbar", { staticClass: "md-large md-dense md-primary" }, [
+      _c("md-toolbar", { staticClass: "md-large md-dense md-primary" }, [
         _c("div", { staticClass: "md-toolbar-row" }, [
           _c("div", { staticClass: "md-toolbar-section-start" }, [
             _c("span", { staticClass: "md-title" }, [_vm._v("My Title")])
@@ -39254,7 +39298,65 @@ var render = function() {
         )
       ]),
       _vm._v(" "),
-      _c("SideDrawer", { attrs: { open: _vm.open } })
+      _c(
+        "md-drawer",
+        {
+          staticClass: "md-right",
+          attrs: { "md-active": _vm.open },
+          on: {
+            "update:mdActive": function($event) {
+              _vm.open = $event
+            },
+            "update:md-active": function($event) {
+              _vm.open = $event
+            }
+          }
+        },
+        [
+          _c(
+            "md-toolbar",
+            { staticClass: "md-transparent", attrs: { "md-elevation": "0" } },
+            [_c("span", { staticClass: "md-title" }, [_vm._v("Menu")])]
+          ),
+          _vm._v(" "),
+          _c(
+            "md-list",
+            [
+              _c(
+                "md-list-item",
+                { attrs: { to: "/" } },
+                [
+                  _c("md-icon", { staticClass: "md-primary" }, [
+                    _vm._v("home")
+                  ]),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "md-list-item-text" }, [
+                    _vm._v("Home")
+                  ])
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "md-list-item",
+                { on: { click: _vm.signOut } },
+                [
+                  _c("md-icon", { staticClass: "md-primary" }, [
+                    _vm._v("exit_to_app")
+                  ]),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "md-list-item-text" }, [
+                    _vm._v("Sign Out")
+                  ])
+                ],
+                1
+              )
+            ],
+            1
+          )
+        ],
+        1
+      )
     ],
     1
   )
@@ -58409,7 +58511,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     }(),
     signOut: function signOut(_ref4) {
       var commit = _ref4.commit;
-      return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/auth/logout').then(function () {
+      return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/logout').then(function () {
         commit('SET_TOKEN', null);
         commit('SET_USER', null);
       });

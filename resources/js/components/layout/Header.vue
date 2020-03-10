@@ -15,9 +15,8 @@
 
 
 <template>
-    <md-app>
-        <p>hello header</p>
-        <md-app-toolbar class="md-large md-dense md-primary">
+    <header>
+        <md-toolbar class="md-large md-dense md-primary">
             <div class="md-toolbar-row">
                 <div class="md-toolbar-section-start">
                     <span class="md-title">My Title</span>
@@ -34,20 +33,38 @@
                     <md-tab id="tab-example" md-label="Example" to="/example" exact></md-tab>
                 </md-tabs>
             </div>
-        </md-app-toolbar>
-        <SideDrawer v-bind:open="open" />
-    </md-app>
+        </md-toolbar>
+        <md-drawer class="md-right" :md-active.sync="open">
+            <md-toolbar class="md-transparent" md-elevation="0">
+                <span class="md-title">Menu</span>
+            </md-toolbar>
+
+            <md-list>
+                <md-list-item to="/">
+                    <md-icon class="md-primary">home</md-icon>
+                    <span class="md-list-item-text">Home</span>
+                </md-list-item>
+
+                <md-list-item @click="signOut">
+                    <md-icon class="md-primary">exit_to_app</md-icon>
+                    <span class="md-list-item-text">Sign Out</span>
+                </md-list-item>
+            </md-list>
+        </md-drawer>
+    </header>
 </template>
 <script>
     import Vue from 'vue'
-    import { MdApp, MdToolbar, MdTabs, MdButton, MdIcon } from 'vue-material/dist/components'
+    import { MdList, MdDrawer, MdToolbar, MdTabs, MdButton, MdIcon } from 'vue-material/dist/components'
     import SideDrawer from './SideDrawer'
+    import { mapActions } from 'vuex'
 
-    Vue.use(MdApp)
+    Vue.use(MdList)
     Vue.use(MdTabs)
     Vue.use(MdToolbar)
     Vue.use(MdButton)
     Vue.use(MdIcon)
+    Vue.use(MdDrawer)
 
     export default {
         name: 'Header',   
@@ -58,6 +75,19 @@
         },
         components: {
             SideDrawer
+        },
+        methods: {
+            ...mapActions({
+                signOutAction: 'auth/signOut'
+            }),
+            signOut() {
+                this.signOutAction().then(() => {
+                    this.open = false
+                    this.$router.replace({
+                        name: 'signin'
+                    })
+                })
+            },
         }
     }
 </script>
