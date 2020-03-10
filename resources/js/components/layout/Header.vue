@@ -5,7 +5,7 @@
  * File Created: Tuesday, 11th February 2020 2:01:27 pm
  * Author: Eoan O'Dea - eoan@wspace.ie
  * ---------------
- * File Description: Application Header
+ * File Description: Application Header and side drawer
  * Last Modified: Tuesday, 11th February 2020 2:08:14 pm
  * Modified By: Eoan O'Dea - eoan@wspace.ie
  * ---------------
@@ -34,7 +34,8 @@
                             v-bind:key="i" 
                             :id="`tab-${route.name}`" 
                             :md-label="route.name" 
-                            :to="route.path" 
+                            :to="route.path"
+                            :md-icon="route.icon ? route.icon : null"
                             exact
                         />
                 </md-tabs>

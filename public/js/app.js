@@ -2110,6 +2110,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 
 
 
@@ -39331,6 +39332,7 @@ var render = function() {
                     id: "tab-" + route.name,
                     "md-label": route.name,
                     to: route.path,
+                    "md-icon": route.icon ? route.icon : null,
                     exact: ""
                   }
                 })
@@ -58191,15 +58193,18 @@ function _beforeEnter(to, from, next) {
   routes: [{
     path: '/',
     name: 'home',
-    component: _views_Home__WEBPACK_IMPORTED_MODULE_3__["default"]
+    component: _views_Home__WEBPACK_IMPORTED_MODULE_3__["default"],
+    icon: "home"
   }, {
     path: '/signin',
-    name: 'signin',
-    component: _views_auth_Signin__WEBPACK_IMPORTED_MODULE_5__["default"]
+    name: 'Profile',
+    component: _views_auth_Signin__WEBPACK_IMPORTED_MODULE_5__["default"],
+    icon: "account_circle"
   }, {
     path: '/course',
     name: 'courses',
     component: _views_Example__WEBPACK_IMPORTED_MODULE_4__["default"],
+    icon: "menu_book",
     beforeEnter: function beforeEnter(to, from, next) {
       return _beforeEnter(to, from, next);
     }

@@ -28,17 +28,20 @@ export default new Router({
     {
       path: '/',
       name: 'home',
-      component: Home
+      component: Home,
+      icon: "home"
     },
     {
       path: '/signin',
-      name: 'signin',
-      component: Signin
+      name: 'Profile',
+      component: Signin,
+      icon: "account_circle"
     },
     {
       path: '/course',
       name: 'courses',
       component: Example,
+      icon: "menu_book",
       beforeEnter: (to, from, next) => beforeEnter(to, from, next)
     },
   ]
