@@ -29,8 +29,14 @@
             </div>
             <div class="md-toolbar-row">
                 <md-tabs class="md-primary">
-                    <md-tab id="tab-home" md-label="Home" to="/" exact></md-tab>
-                    <md-tab id="tab-example" md-label="Example" to="/example" exact></md-tab>
+                        <md-tab 
+                            v-for="(route, i) in routes" 
+                            v-bind:key="i" 
+                            :id="`tab-${route.name}`" 
+                            :md-label="route.name" 
+                            :to="route.path" 
+                            exact
+                        />
                 </md-tabs>
             </div>
         </md-toolbar>
@@ -70,7 +76,8 @@
         name: 'Header',   
         data() {
             return {
-                open: false
+                open: false,
+                routes: this.$router.options.routes
             }
         },
         components: {
@@ -99,6 +106,9 @@
                     })
                 })
             },
+            tabIsActive(path) {
+                return this.$route.path === path
+            }
         }
     }
 </script>

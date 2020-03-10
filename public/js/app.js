@@ -2085,6 +2085,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 
@@ -2099,7 +2105,8 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_material_dist_components__WEB
   name: 'Header',
   data: function data() {
     return {
-      open: false
+      open: false,
+      routes: this.$router.options.routes
     };
   },
   components: {
@@ -2130,6 +2137,9 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_material_dist_components__WEB
           name: 'signin'
         });
       });
+    },
+    tabIsActive: function tabIsActive(path) {
+      return this.$route.path === path;
     }
   })
 });
@@ -39284,25 +39294,17 @@ var render = function() {
             _c(
               "md-tabs",
               { staticClass: "md-primary" },
-              [
-                _c("md-tab", {
+              _vm._l(_vm.routes, function(route, i) {
+                return _c("md-tab", {
+                  key: i,
                   attrs: {
-                    id: "tab-home",
-                    "md-label": "Home",
-                    to: "/",
-                    exact: ""
-                  }
-                }),
-                _vm._v(" "),
-                _c("md-tab", {
-                  attrs: {
-                    id: "tab-example",
-                    "md-label": "Example",
-                    to: "/example",
+                    id: "tab-" + route.name,
+                    "md-label": route.name,
+                    to: route.path,
                     exact: ""
                   }
                 })
-              ],
+              }),
               1
             )
           ],
@@ -58319,7 +58321,7 @@ function _beforeEnter(to, from, next) {
   base: process.env.BASE_URL,
   routes: [{
     path: '/',
-    name: 'index',
+    name: 'home',
     component: _views_Index__WEBPACK_IMPORTED_MODULE_3__["default"]
   }, {
     path: '/signin',
