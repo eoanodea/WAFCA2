@@ -36,10 +36,10 @@ export default new Router({
       component: Signin
     },
     {
-      path: '/example',
-      name: 'example',
+      path: '/course',
+      name: 'courses',
       component: Example,
       beforeEnter: (to, from, next) => beforeEnter(to, from, next)
-    }
+    },
   ]
 })

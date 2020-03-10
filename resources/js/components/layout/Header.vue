@@ -62,7 +62,6 @@
 <script>
     import Vue from 'vue'
     import { MdList, MdDrawer, MdToolbar, MdTabs, MdButton, MdIcon } from 'vue-material/dist/components'
-    import SideDrawer from './SideDrawer'
     import { mapActions } from 'vuex'
 
     Vue.use(MdList)
@@ -81,7 +80,7 @@
             }
         },
         components: {
-            SideDrawer
+            //
         },
         /**
          * Check if the drawer is open on route change
