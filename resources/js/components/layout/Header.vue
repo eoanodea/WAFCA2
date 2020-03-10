@@ -76,6 +76,17 @@
         components: {
             SideDrawer
         },
+        /**
+         * Check if the drawer is open on route change
+         * if so close the drawer
+         */
+        watch: {
+            '$route' (to, from, options) {
+                if(this.open) {
+                    this.open = false 
+                }
+            }
+        },
         methods: {
             ...mapActions({
                 signOutAction: 'auth/signOut'

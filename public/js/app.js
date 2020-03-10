@@ -2105,6 +2105,18 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_material_dist_components__WEB
   components: {
     SideDrawer: _SideDrawer__WEBPACK_IMPORTED_MODULE_2__["default"]
   },
+
+  /**
+   * Check if the drawer is open on route change
+   * if so close the drawer
+   */
+  watch: {
+    '$route': function $route(to, from, options) {
+      if (this.open) {
+        this.open = false;
+      }
+    }
+  },
   methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_3__["mapActions"])({
     signOutAction: 'auth/signOut'
   }), {
