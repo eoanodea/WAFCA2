@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import store from './store/index'
 
-import Index from './views/Index'
+import Home from './views/Home'
 import Example from './views/Example'
 import Signin from './views/auth/Signin'
 
@@ -28,7 +28,7 @@ export default new Router({
     {
       path: '/',
       name: 'home',
-      component: Index
+      component: Home
     },
     {
       path: '/signin',
