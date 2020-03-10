@@ -15,10 +15,11 @@ const token = localStorage.getItem('access_token')
 
 if(token !== null) {
   window.axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
+  window.axios.defaults.headers.common['Accept'] = `application/json`
 }
 
 
-store.dispatch('auth/attemptToken', token).then(() => {
+store.dispatch('auth/verifyToken', token).then(() => {
   new Vue({
     router,
     store,

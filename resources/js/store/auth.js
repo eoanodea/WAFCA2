@@ -34,11 +34,17 @@ export default {
             } else {
                 state.token = token
                 window.axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
+                window.axios.defaults.headers.common['Accept'] = `application/json`
             }
         },
         SET_USER (state, data) {
-            state.user.name = data.name
-            state.user.email = data.email
+            if(data) {
+                state.user.name = data.name
+                state.user.email = data.email
+            } else {
+                state.user.name = null
+                state.user.email = null
+            }
         }
     },
 
@@ -52,12 +58,28 @@ export default {
                 console.log("error store", error)
                 throw error
             }
-            
+        },
 
+        async verifyToken({ dispatch }, token) {
+            try {
+                const response = await axios.get('/api/user')
+                const payload = 
+                {
+                    name: response.data.user.name,
+                    email: response.data.user.email,
+                    token: token
+                }
+
+
+                dispatch('attempt', payload)
+            } catch(error) {
+                console.log("error verifying", error)
+                dispatch('attempt', null)
+            }
         },
 
         async attempt ({ commit }, data) {
-            if(data.token) {
+            if(data && data.token) {
                 commit('SET_TOKEN', data.token)
                 commit('SET_USER', {name: data.name, email: data.email})
             } else {
@@ -65,14 +87,6 @@ export default {
                 commit('SET_USER', null)
             }
         
-        },
-
-        async attemptToken ({ commit }, data) {
-            if(data !== null) {
-                commit('SET_TOKEN', data)
-            } else {
-                commit('SET_TOKEN', null)
-            }
         },
 
         signOut ({ commit }) {

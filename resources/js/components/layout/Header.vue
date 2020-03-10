@@ -23,7 +23,7 @@
                     <span class="md-title">My Title</span>
                 </div>
                 <div class="md-toolbar-section-end">
-                    <md-button class="md-icon-button md-primary">
+                    <md-button class="md-icon-button md-primary" @click="open = !open">
                         <md-icon>menu</md-icon>
                     </md-button>
                 </div>
@@ -32,15 +32,16 @@
                 <md-tabs class="md-primary">
                     <md-tab id="tab-home" md-label="Home" to="/" exact></md-tab>
                     <md-tab id="tab-example" md-label="Example" to="/example" exact></md-tab>
-                    
                 </md-tabs>
             </div>
         </md-app-toolbar>
+        <SideDrawer v-bind:open="open" />
     </md-app>
 </template>
 <script>
     import Vue from 'vue'
     import { MdApp, MdToolbar, MdTabs, MdButton, MdIcon } from 'vue-material/dist/components'
+    import SideDrawer from './SideDrawer'
 
     Vue.use(MdApp)
     Vue.use(MdTabs)
@@ -50,5 +51,13 @@
 
     export default {
         name: 'Header',   
+        data() {
+            return {
+                open: false
+            }
+        },
+        components: {
+            SideDrawer
+        }
     }
 </script>

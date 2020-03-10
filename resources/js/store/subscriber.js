@@ -19,7 +19,6 @@ import store from './index'
 import axios from 'axios'
 
 store.subscribe((mutation) => {
-    console.log('runnning switch subscribe!!', mutation)
     switch(mutation.type) {
         case 'auth/SET_TOKEN':
             if(mutation.payload) {
