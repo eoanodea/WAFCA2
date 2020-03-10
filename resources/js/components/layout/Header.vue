@@ -77,7 +77,7 @@
         data() {
             return {
                 open: false,
-                routes: this.$router.options.routes
+                routes: this.$router.options.routes.filter(dat => dat.display === "top")
             }
         },
         components: {
