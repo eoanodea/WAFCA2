@@ -6,7 +6,7 @@ export default {
     state: {
         courses: [],
         course: {},
-        loading: false,
+        loading: true,
         error: null
     },
 

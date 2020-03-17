@@ -1,16 +1,23 @@
 <template>
-    <h2>loading</h2>
-    <!-- <md-progress-spinner md-mode="indeterminate"></md-progress-spinner> -->
+    <div class="progress-container">
+        <md-progress-spinner class="progress" :md-diameter="80" md-mode="indeterminate"></md-progress-spinner>
+    </div>
 </template>
 <script>
     import Vue from 'vue'
-    import { MdProgressSpinner } from 'vue-material/dist/components'
+    import { MdProgress } from 'vue-material/dist/components'
 
-    Vue.use(MdProgressSpinner)
+    Vue.use(MdProgress)
 
     export default {
         name: 'loading-indicator',
     }
 </script>
-<style>
+<style lang="scss" scoped>
+    .progress-container {
+        text-align: center;
+    }
+    .progress {
+        margin: 100px auto;
+    }
 </style>
