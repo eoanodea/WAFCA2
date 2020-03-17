@@ -15,7 +15,7 @@
 
 
 <template>
-    <header>
+    <header class="header-container">
         <md-toolbar class="md-large md-dense md-primary">
             <div class="md-toolbar-row">
                 <div class="md-toolbar-section-start">
@@ -126,3 +126,8 @@
         }
     }
 </script>
+<style lang="scss">
+    .header-container, html {
+        overflow: hidden;
+    }
+</style>

@@ -64,7 +64,7 @@
                 this.$store.dispatch('course/loadCourses').then(() => {
                     this.searched = this.courses
                 })
-            }
+            } else this.searched = this.courses
         },
         components: {
             LoadingIndicator,
