@@ -46,6 +46,13 @@
                     </div>
                 </md-list-item>
                 <md-list-item>
+                    <md-icon class="md-primary">face</md-icon>
+                    <div class="md-list-item-text">
+                        <span>{{course.enrolments.length}}</span>
+                        <span>Enrolments</span>
+                    </div>
+                </md-list-item>
+                <md-list-item>
                     <md-icon class="md-primary">work</md-icon>
                     <div class="md-list-item-text">
                         <span>{{course.points}}</span>

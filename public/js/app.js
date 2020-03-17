@@ -2997,6 +2997,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
 
 
 
@@ -3055,6 +3057,7 @@ var searchByName = function searchByName(items, term) {
         app.deleting = false;
       })["finally"](function () {
         app.deletingMessage = "Refreshing data...";
+        app.deleting = false;
         app.$store.dispatch('course/loadCourses').then(function () {
           app.searched = app.courses;
         });
@@ -3117,6 +3120,13 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -41694,27 +41704,140 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm.loading
-    ? _c("loading-indicator")
-    : !_vm.error && _vm.searched
-    ? _c(
-        "md-table",
-        {
-          attrs: {
-            "md-sort": "name",
-            "md-sort-order": "asc",
-            "md-card": "",
-            "md-fixed-header": ""
-          },
-          on: { "md-selected": _vm.onSelect },
-          scopedSlots: _vm._u([
+  return _c(
+    "div",
+    [
+      _vm.loading
+        ? _c("loading-indicator")
+        : !_vm.error && _vm.searched
+        ? _c(
+            "md-table",
             {
-              key: "md-table-alternate-header",
-              fn: function(ref) {
-                var count = ref.count
-                return _c("md-table-toolbar", { staticClass: "md-primary" }, [
+              attrs: {
+                "md-sort": "name",
+                "md-sort-order": "asc",
+                "md-card": "",
+                "md-fixed-header": ""
+              },
+              on: { "md-selected": _vm.onSelect },
+              scopedSlots: _vm._u([
+                {
+                  key: "md-table-alternate-header",
+                  fn: function(ref) {
+                    var count = ref.count
+                    return _c(
+                      "md-table-toolbar",
+                      { staticClass: "md-primary" },
+                      [
+                        _c("div", { staticClass: "md-toolbar-section-start" }, [
+                          _vm._v(_vm._s(_vm.getAlternateLabel(count)))
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "md-toolbar-section-end" },
+                          [
+                            _c(
+                              "md-button",
+                              {
+                                staticClass: "md-fab md-accent",
+                                attrs: { disabled: _vm.deleting },
+                                on: { click: _vm.bulkDelete }
+                              },
+                              [_c("md-icon", [_vm._v("delete")])],
+                              1
+                            )
+                          ],
+                          1
+                        )
+                      ]
+                    )
+                  }
+                },
+                {
+                  key: "md-table-row",
+                  fn: function(ref) {
+                    var item = ref.item
+                    return _c(
+                      "md-table-row",
+                      {
+                        attrs: { "md-selectable": "multiple" },
+                        on: {
+                          click: function($event) {
+                            return _vm.showDetail(item)
+                          }
+                        }
+                      },
+                      [
+                        _c(
+                          "md-table-cell",
+                          {
+                            attrs: {
+                              "md-label": "ID",
+                              "md-sort-by": "id",
+                              "md-numeric": ""
+                            }
+                          },
+                          [_vm._v(_vm._s(item.id))]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "md-table-cell",
+                          {
+                            attrs: {
+                              "md-label": "Title",
+                              "md-sort-by": "title"
+                            }
+                          },
+                          [_vm._v(_vm._s(item.title))]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "md-table-cell",
+                          {
+                            attrs: {
+                              "md-label": "Points",
+                              "md-sort-by": "points"
+                            }
+                          },
+                          [_vm._v(_vm._s(item.points))]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "md-table-cell",
+                          {
+                            attrs: {
+                              "md-label": "Enrolments",
+                              "md-sort-by": "enrolments.length"
+                            }
+                          },
+                          [
+                            _vm._v(
+                              _vm._s(
+                                item.enrolments ? item.enrolments.length : 0
+                              )
+                            )
+                          ]
+                        )
+                      ],
+                      1
+                    )
+                  }
+                }
+              ]),
+              model: {
+                value: _vm.searched,
+                callback: function($$v) {
+                  _vm.searched = $$v
+                },
+                expression: "searched"
+              }
+            },
+            [
+              _c("md-table-toolbar", [
+                _c("div", { staticClass: "md-toolbar-row" }, [
                   _c("div", { staticClass: "md-toolbar-section-start" }, [
-                    _vm._v(_vm._s(_vm.getAlternateLabel(count)))
+                    _c("h1", { staticClass: "md-title" }, [_vm._v("Courses")])
                   ]),
                   _vm._v(" "),
                   _c(
@@ -41724,189 +41847,97 @@ var render = function() {
                       _c(
                         "md-button",
                         {
-                          staticClass: "md-fab md-accent",
-                          attrs: { disabled: _vm.deleting },
-                          on: { click: _vm.bulkDelete }
+                          staticClass: "md-fab md-primary",
+                          attrs: { to: "/course/new" }
                         },
-                        [_c("md-icon", [_vm._v("delete")])],
+                        [_c("md-icon", [_vm._v("add")])],
                         1
                       )
                     ],
                     1
                   )
-                ])
-              }
-            },
-            {
-              key: "md-table-row",
-              fn: function(ref) {
-                var item = ref.item
-                return _c(
-                  "md-table-row",
-                  {
-                    attrs: { "md-selectable": "multiple" },
-                    on: {
-                      click: function($event) {
-                        return _vm.showDetail(item)
-                      }
-                    }
-                  },
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "md-toolbar-row md-toolbar-offset" },
                   [
                     _c(
-                      "md-table-cell",
-                      {
-                        attrs: {
-                          "md-label": "ID",
-                          "md-sort-by": "id",
-                          "md-numeric": ""
-                        }
-                      },
-                      [_vm._v(_vm._s(item.id))]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "md-table-cell",
-                      { attrs: { "md-label": "Title", "md-sort-by": "title" } },
-                      [_vm._v(_vm._s(item.title))]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "md-table-cell",
-                      {
-                        attrs: { "md-label": "Points", "md-sort-by": "points" }
-                      },
-                      [_vm._v(_vm._s(item.points))]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "md-table-cell",
-                      {
-                        attrs: {
-                          "md-label": "Enrolments",
-                          "md-sort-by": "enrolments.length"
-                        }
-                      },
+                      "md-field",
+                      { attrs: { "md-clearable": "" } },
                       [
-                        _vm._v(
-                          _vm._s(item.enrolments ? item.enrolments.length : 0)
-                        )
-                      ]
+                        _c("md-icon", [_vm._v("search")]),
+                        _vm._v(" "),
+                        _c("md-input", {
+                          attrs: { placeholder: "Search by name..." },
+                          on: { input: _vm.searchOnTable },
+                          model: {
+                            value: _vm.search,
+                            callback: function($$v) {
+                              _vm.search = $$v
+                            },
+                            expression: "search"
+                          }
+                        })
+                      ],
+                      1
                     )
                   ],
                   1
                 )
-              }
-            }
-          ]),
-          model: {
-            value: _vm.searched,
-            callback: function($$v) {
-              _vm.searched = $$v
-            },
-            expression: "searched"
-          }
-        },
-        [
-          _c("md-table-toolbar", [
-            _c("div", { staticClass: "md-toolbar-row" }, [
-              _c("div", { staticClass: "md-toolbar-section-start" }, [
-                _c("h1", { staticClass: "md-title" }, [_vm._v("Courses")])
               ]),
               _vm._v(" "),
+              _vm.deleting
+                ? _c("md-progress-bar", {
+                    attrs: { "md-mode": "indeterminate" }
+                  })
+                : _vm._e(),
+              _vm._v(" "),
+              _vm._v(" "),
               _c(
-                "div",
-                { staticClass: "md-toolbar-section-end" },
+                "md-table-empty-state",
+                {
+                  attrs: {
+                    "md-label": "No courses found",
+                    "md-description":
+                      "No courses found for this search query. Try a different search term or create a new course."
+                  }
+                },
                 [
                   _c(
                     "md-button",
                     {
-                      staticClass: "md-fab md-primary",
+                      staticClass: "md-primary md-raised",
                       attrs: { to: "/course/new" }
                     },
-                    [_c("md-icon", [_vm._v("add")])],
-                    1
+                    [_vm._v("Create New Course")]
                   )
                 ],
                 1
               )
-            ]),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "md-toolbar-row md-toolbar-offset" },
-              [
-                _c(
-                  "md-field",
-                  { attrs: { "md-clearable": "" } },
-                  [
-                    _c("md-icon", [_vm._v("search")]),
-                    _vm._v(" "),
-                    _c("md-input", {
-                      attrs: { placeholder: "Search by name..." },
-                      on: { input: _vm.searchOnTable },
-                      model: {
-                        value: _vm.search,
-                        callback: function($$v) {
-                          _vm.search = $$v
-                        },
-                        expression: "search"
-                      }
-                    })
-                  ],
-                  1
-                )
-              ],
-              1
-            )
-          ]),
-          _vm._v(" "),
-          _vm.deleting
-            ? _c("md-progress-bar", { attrs: { "md-mode": "indeterminate" } })
-            : _vm._e(),
-          _vm._v(" "),
-          _vm._v(" "),
-          _c(
-            "md-table-empty-state",
-            {
-              attrs: {
-                "md-label": "No courses found",
-                "md-description":
-                  "No courses found for this search query. Try a different search term or create a new course."
-              }
-            },
-            [
-              _c(
-                "md-button",
-                {
-                  staticClass: "md-primary md-raised",
-                  attrs: { to: "/course/new" }
-                },
-                [_vm._v("Create New Course")]
-              )
             ],
             1
-          ),
-          _vm._v(" "),
-          _vm._v(" "),
-          _c(
-            "md-snackbar",
-            {
-              attrs: { "md-active": _vm.deleting },
-              on: {
-                "update:mdActive": function($event) {
-                  _vm.deleting = $event
-                },
-                "update:md-active": function($event) {
-                  _vm.deleting = $event
-                }
-              }
-            },
-            [_vm._v(_vm._s(_vm.deletingMessage))]
           )
-        ],
-        1
+        : _c("error-state", { attrs: { error: _vm.error } }),
+      _vm._v(" "),
+      _c(
+        "md-snackbar",
+        {
+          attrs: { "md-active": _vm.deleting },
+          on: {
+            "update:mdActive": function($event) {
+              _vm.deleting = $event
+            },
+            "update:md-active": function($event) {
+              _vm.deleting = $event
+            }
+          }
+        },
+        [_vm._v(_vm._s(_vm.deletingMessage))]
       )
-    : _c("error-state", { attrs: { error: _vm.error } })
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -42053,6 +42084,24 @@ var render = function() {
                         _c("span", [_vm._v(_vm._s(_vm.course.id))]),
                         _vm._v(" "),
                         _c("span", [_vm._v("Course ID")])
+                      ])
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "md-list-item",
+                    [
+                      _c("md-icon", { staticClass: "md-primary" }, [
+                        _vm._v("face")
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "md-list-item-text" }, [
+                        _c("span", [
+                          _vm._v(_vm._s(_vm.course.enrolments.length))
+                        ]),
+                        _vm._v(" "),
+                        _c("span", [_vm._v("Enrolments")])
                       ])
                     ],
                     1
@@ -61411,21 +61460,20 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 response = _context5.sent;
                 commit('REMOVE_COURSE', id);
                 commit('SET_COURSE', null);
-                _context5.next = 13;
-                break;
+                return _context5.abrupt("return", response);
 
-              case 9:
-                _context5.prev = 9;
+              case 10:
+                _context5.prev = 10;
                 _context5.t0 = _context5["catch"](1);
                 console.log('Error deleteCourse', null);
                 throw _context5.t0;
 
-              case 13:
+              case 14:
               case "end":
                 return _context5.stop();
             }
           }
-        }, _callee5, null, [[1, 9]]);
+        }, _callee5, null, [[1, 10]]);
       }));
 
       function deleteCourse(_x8, _x9) {
@@ -61442,59 +61490,31 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
      * @param {commit} commit
      * @param {ids} ids 
      */
-    bulkDeleteCourse: function () {
-      var _bulkDeleteCourse = _asyncToGenerator(
-      /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee6(_ref6, ids) {
-        var commit, dispatch, errors, deletes;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee6$(_context6) {
-          while (1) {
-            switch (_context6.prev = _context6.next) {
-              case 0:
-                commit = _ref6.commit, dispatch = _ref6.dispatch;
+    bulkDeleteCourse: function bulkDeleteCourse(_ref6, ids) {
+      var commit = _ref6.commit,
+          dispatch = _ref6.dispatch;
 
-                if (!(ids.length > 0)) {
-                  _context6.next = 9;
-                  break;
-                }
-
-                errors = 0, deletes = 0;
-                console.log('Commencing bulk delete', ids.length);
-                ids.map(function (dat, i) {
-                  console.log("[".concat(i, "] Deleting.."));
-
-                  try {
-                    dispatch('deleteCourse', dat.id);
-                    deletes++;
-                    console.log("[".concat(i, "] Deleting Successful"));
-                  } catch (err) {
-                    errors++;
-                    console.log("[".concat(i, "] Error deleting: ").concat(err));
-                  }
-                });
-                console.log('Bulk delete completed: \n', "".concat(deletes, " deletes \n ").concat(errors, " errors"));
-                return _context6.abrupt("return", {
-                  deletes: deletes,
-                  errors: errors
-                });
-
-              case 9:
-                console.log('no ids provided');
-
-              case 10:
-              case "end":
-                return _context6.stop();
-            }
-          }
-        }, _callee6);
-      }));
-
-      function bulkDeleteCourse(_x10, _x11) {
-        return _bulkDeleteCourse.apply(this, arguments);
-      }
-
-      return bulkDeleteCourse;
-    }()
+      if (ids.length > 0) {
+        var errors = 0,
+            deletes = 0;
+        console.log('Commencing bulk delete', ids.length);
+        ids.map(function (dat, i) {
+          console.log("[".concat(i, "] Deleting.."));
+          dispatch('deleteCourse', dat.id).then(function (res) {
+            console.log("[".concat(i, "] Deleting Successful"));
+            deletes++;
+          })["catch"](function (err) {
+            errors++;
+            console.log("[".concat(i, "] Error deleting: ").concat(err));
+          });
+        });
+        console.log('Bulk delete completed: \n', "".concat(deletes, " deletes \n ").concat(errors, " errors"));
+        return {
+          deletes: deletes,
+          errors: errors
+        };
+      } else console.log('no ids provided');
+    }
   }
 });
 

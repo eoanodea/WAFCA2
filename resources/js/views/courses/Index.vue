@@ -1,60 +1,62 @@
 <template>
-    <loading-indicator v-if="loading" />
-    <md-table 
-        v-else-if="!error && searched" 
-        v-model="searched" 
-        md-sort="name" 
-        md-sort-order="asc" 
-        md-card 
-        md-fixed-header
-        @md-selected="onSelect"
-    >
-      <md-table-toolbar>
-        <div class="md-toolbar-row">
-        <div class="md-toolbar-section-start">
-          <h1 class="md-title">Courses</h1>
-        </div>
-        <div class="md-toolbar-section-end">
-            <md-button class="md-fab md-primary" to="/course/new">
-                <md-icon>add</md-icon>
+    <div>
+        <loading-indicator v-if="loading" />
+        <md-table 
+            v-else-if="!error && searched" 
+            v-model="searched" 
+            md-sort="name" 
+            md-sort-order="asc" 
+            md-card 
+            md-fixed-header
+            @md-selected="onSelect"
+        >
+        <md-table-toolbar>
+            <div class="md-toolbar-row">
+            <div class="md-toolbar-section-start">
+            <h1 class="md-title">Courses</h1>
+            </div>
+            <div class="md-toolbar-section-end">
+                <md-button class="md-fab md-primary" to="/course/new">
+                    <md-icon>add</md-icon>
+                </md-button>
+            </div>
+            </div>
+
+            <div class="md-toolbar-row md-toolbar-offset">
+                <md-field md-clearable>
+                    <md-icon>search</md-icon>
+                    <md-input placeholder="Search by name..." v-model="search" @input="searchOnTable" />
+                </md-field>      
+            </div>  
+        </md-table-toolbar>
+
+        <md-progress-bar md-mode="indeterminate" v-if="deleting" />
+        <md-table-toolbar slot="md-table-alternate-header" class="md-primary" slot-scope="{ count }">
+            <div class="md-toolbar-section-start">{{ getAlternateLabel(count) }}</div>
+
+            <div class="md-toolbar-section-end">
+            <md-button class="md-fab md-accent" :disabled="deleting" @click="bulkDelete">
+                <md-icon>delete</md-icon>
             </md-button>
-        </div>
-        </div>
+            </div>
+        </md-table-toolbar>
 
-        <div class="md-toolbar-row md-toolbar-offset">
-            <md-field md-clearable>
-                <md-icon>search</md-icon>
-                <md-input placeholder="Search by name..." v-model="search" @input="searchOnTable" />
-            </md-field>      
-        </div>  
-      </md-table-toolbar>
+        <md-table-empty-state
+            md-label="No courses found"
+            :md-description="`No courses found for this search query. Try a different search term or create a new course.`">
+            <md-button class="md-primary md-raised" to="/course/new">Create New Course</md-button>
+        </md-table-empty-state>
 
-    <md-progress-bar md-mode="indeterminate" v-if="deleting" />
-    <md-table-toolbar slot="md-table-alternate-header" class="md-primary" slot-scope="{ count }">
-        <div class="md-toolbar-section-start">{{ getAlternateLabel(count) }}</div>
-
-        <div class="md-toolbar-section-end">
-          <md-button class="md-fab md-accent" :disabled="deleting" @click="bulkDelete">
-            <md-icon>delete</md-icon>
-          </md-button>
-        </div>
-    </md-table-toolbar>
-
-      <md-table-empty-state
-        md-label="No courses found"
-        :md-description="`No courses found for this search query. Try a different search term or create a new course.`">
-        <md-button class="md-primary md-raised" to="/course/new">Create New Course</md-button>
-      </md-table-empty-state>
-
-      <md-table-row slot="md-table-row" slot-scope="{ item }" md-selectable="multiple" @click="showDetail(item)">
-        <md-table-cell md-label="ID" md-sort-by="id" md-numeric>{{ item.id }}</md-table-cell>
-        <md-table-cell md-label="Title" md-sort-by="title">{{ item.title }}</md-table-cell>
-        <md-table-cell md-label="Points" md-sort-by="points">{{ item.points }}</md-table-cell>
-        <md-table-cell md-label="Enrolments" md-sort-by="enrolments.length">{{ item.enrolments ? item.enrolments.length : 0 }}</md-table-cell>
-      </md-table-row>
-      <md-snackbar :md-active.sync="deleting">{{deletingMessage}}</md-snackbar>
-    </md-table>
-    <error-state v-else :error="error" />
+        <md-table-row slot="md-table-row" slot-scope="{ item }" md-selectable="multiple" @click="showDetail(item)">
+            <md-table-cell md-label="ID" md-sort-by="id" md-numeric>{{ item.id }}</md-table-cell>
+            <md-table-cell md-label="Title" md-sort-by="title">{{ item.title }}</md-table-cell>
+            <md-table-cell md-label="Points" md-sort-by="points">{{ item.points }}</md-table-cell>
+            <md-table-cell md-label="Enrolments" md-sort-by="enrolments.length">{{ item.enrolments ? item.enrolments.length : 0 }}</md-table-cell>
+        </md-table-row>
+        </md-table>
+        <error-state v-else :error="error" />
+        <md-snackbar :md-active.sync="deleting">{{deletingMessage}}</md-snackbar>
+    </div>
 </template>
 
 <script>
@@ -117,6 +119,7 @@
                 })
                 .finally(() => {
                     app.deletingMessage = `Refreshing data...`
+                    app.deleting = false
                     app.$store.dispatch('course/loadCourses').then(() => {
                         app.searched = app.courses
                     })
