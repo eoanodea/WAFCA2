@@ -111,14 +111,15 @@ export default {
             commit('SET_LOADING', true)
             try {
                 
-                let response = await axios.post('/api/course/new', course) 
+                let response = await axios.post('/api/courses', course) 
                 commit('SET_COURSE', response.data.data)
                 commit('SET_LOADING', false)
-                return response.data.course.id
+                return response.data.data.id
             } catch(error) {
-                console.log('Error getCourse', error);
+                console.log('Error addCourse', error);
                 commit('SET_ERROR', error) 
                 commit('SET_LOADING', false)
+                throw error
             }
         },
         /**
@@ -131,15 +132,16 @@ export default {
         async updateCourse({commit}, param) {
             commit('SET_LOADING', true)
             try {
-                let response = await axios.put('/api/course/' + param[0], param[1]) 
+                let response = await axios.put('/api/courses/' + param[0], param[1]) 
                 
                 commit('SET_COURSE', response.data.data)
                 commit('SET_LOADING', false)
-                return response.data.course.id
+                return response.data.data.id
             } catch(error) {
-                console.log('Error getCourse', error);
+                console.log('Error updateCourse', error);
                 commit('SET_ERROR', error) 
                 commit('SET_LOADING', false)
+                throw error
             }
         },
         /**
@@ -152,7 +154,7 @@ export default {
         async deleteCourse({commit}, id) {
             commit('SET_LOADING', true)
             try {
-                let response = await axios.delete('/api/course/' + id) 
+                let response = await axios.delete('/api/courses/' + id) 
                 if(response.status === 'success') {
                     console.log('response good!')
                     this.loadCourses({commit})
@@ -160,7 +162,7 @@ export default {
                 commit('SET_COURSE', null)
                 commit('SET_LOADING', false)
             } catch(error) {
-                console.log('Error getCourse', null);
+                console.log('Error deleteCourse', null);
                 commit('SET_ERROR', error) 
                 commit('SET_LOADING', false)
             }

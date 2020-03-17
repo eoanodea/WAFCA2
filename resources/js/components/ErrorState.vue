@@ -1,11 +1,11 @@
 <template>
   <div>
     <md-empty-state
-        md-rounded
-        class="md-error"
-        md-icon="error"
-        md-label="Error"
-      :md-description="error"
+      md-rounded
+      class="md-error"
+      md-icon="error"
+      md-label="Error"
+      :md-description="error.toString()"
     />
   </div>
 </template>
