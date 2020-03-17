@@ -3,7 +3,7 @@ import Router from 'vue-router'
 import store from './store/index'
 
 import Home from './views/Home'
-import Example from './views/Example'
+import CourseIndex from './views/courses/index'
 import Signin from './views/auth/Signin'
 import User from './views/auth/User'
 
@@ -35,7 +35,7 @@ export default new Router({
     },
     {
       path: '/signin',
-      name: 'sign_in',
+      name: 'signin',
       component: Signin,
       icon: "input",
     },
@@ -44,12 +44,13 @@ export default new Router({
       name: 'profile',
       component: User,
       icon: "account_circle",
-      display: 'top'
+      display: 'top',
+      beforeEnter: (to, from, next) => beforeEnter(to, from, next)
     },
     {
       path: '/course',
       name: 'courses',
-      component: Example,
+      component: CourseIndex,
       icon: "menu_book",
       display: 'top',
       beforeEnter: (to, from, next) => beforeEnter(to, from, next)

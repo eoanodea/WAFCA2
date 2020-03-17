@@ -30,7 +30,7 @@
             <div class="md-toolbar-row">
                 <md-tabs class="md-primary">
                         <md-tab 
-                            v-for="(route, i) in routes" 
+                            v-for="(route, i) in renderRoutes()" 
                             v-bind:key="i" 
                             :id="`tab-${route.name}`" 
                             :md-label="route.name" 
@@ -63,7 +63,7 @@
 <script>
     import Vue from 'vue'
     import { MdList, MdDrawer, MdToolbar, MdTabs, MdButton, MdIcon } from 'vue-material/dist/components'
-    import { mapActions } from 'vuex'
+    import { mapActions, mapGetters } from 'vuex'
 
     Vue.use(MdList)
     Vue.use(MdTabs)
@@ -77,7 +77,7 @@
         data() {
             return {
                 open: false,
-                routes: this.$router.options.routes.filter(dat => dat.display === "top")
+                routes: this.$router.options.routes
             }
         },
         components: {
@@ -94,10 +94,24 @@
                 }
             }
         },
+        computed: {
+            ...mapGetters({
+                user: 'auth/user'
+            })
+        },
         methods: {
             ...mapActions({
                 signOutAction: 'auth/signOut'
             }),
+            renderRoutes() {
+                const {routes, user} = this
+
+                const renderedRoutes = (user && user.name)
+                ? routes.filter(dat => dat.display === "top" && dat.name !== "signin")
+                : routes.filter(dat => !dat.beforeEnter)
+
+                return renderedRoutes
+            },
             signOut() {
                 this.signOutAction().then(() => {
                     this.open = false

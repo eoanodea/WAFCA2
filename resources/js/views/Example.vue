@@ -27,6 +27,7 @@ export default {
       .then(function (response) {
           console.log(response.data);
           app.courses = response.data
+          console.log()
       })
       .catch(function (error) {
           console.log(error);

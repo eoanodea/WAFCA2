@@ -1,9 +1,11 @@
 <template>
   <div>
     <Header/>
-    <transition :name="transitionName">
-      <router-view></router-view>
-    </transition>
+    <div class="router-container">
+      <transition :name="transitionName" mode="out-in">
+        <router-view></router-view>
+      </transition>
+    </div>
     <Footer/>
   </div>
 </template>
@@ -48,6 +50,10 @@
   }
 </script>
 <style lang="scss" scoped>
+  .router-container {
+    margin: 40px 0;
+  }
+
   .slide-left-enter-active,
   .slide-left-leave-active,
   .slide-right-enter-active,

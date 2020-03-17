@@ -109,7 +109,7 @@
                     app.sending = false
                     app.success = true
                     this.$router.replace({
-                        name: 'example'
+                        name: 'profile'
                     })
                 })
                 .catch(function(error) {
