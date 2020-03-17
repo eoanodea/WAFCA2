@@ -38,8 +38,6 @@
         </div>
         </md-card-content>
 
-        
-
         <md-card-actions>
             <md-button class="md-raised md-accent" :disabled="sending" @click="resetForm()">Reset</md-button>
             <md-button type="submit" class="md-raised md-primary" :disabled="sending">Save</md-button>

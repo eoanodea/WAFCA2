@@ -155,8 +155,8 @@ export default {
          * Delete a course 
          * from the database
          * 
-         * @param {commit} param
-         * @param {page} page 
+         * @param {commit} commit
+         * @param {id} id
          */
         async deleteCourse({commit}, id) {
             try {
@@ -168,6 +168,35 @@ export default {
                 console.log('Error deleteCourse', null);
                 throw error
             }
+        },
+        /**
+         * Delete a set of courses
+         * Takes in an array of IDs
+         * 
+         * @param {commit} commit
+         * @param {ids} ids 
+         */
+        async bulkDeleteCourse({commit, dispatch}, ids) {
+            if(ids.length > 0) {
+                let errors = 0, deletes = 0
+                console.log('Commencing bulk delete', ids.length)
+                ids.map((dat, i) => {
+                    console.log(`[${i}] Deleting..`)
+                    try {
+                        dispatch('deleteCourse', dat.id);
+                        deletes++;
+                        console.log(`[${i}] Deleting Successful`)
+                    } catch(err) {
+                        errors++;
+                        console.log(`[${i}] Error deleting: ${err}`)
+                    }
+                })
+                console.log('Bulk delete completed: \n', `${deletes} deletes \n ${errors} errors`)
+                return {
+                    deletes,
+                    errors
+                }
+            } else console.log('no ids provided')
         }
     }
 }

@@ -2795,8 +2795,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
  //VueX
 
  //Validation with vuelidate
@@ -2997,6 +2995,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
 
 
 
@@ -3027,10 +3027,12 @@ var searchByName = function searchByName(items, term) {
     return {
       search: null,
       searched: [],
-      selected: []
+      selected: [],
+      deletingMessage: null,
+      deleting: false
     };
   },
-  methods: {
+  methods: _objectSpread({
     searchOnTable: function searchOnTable() {
       this.searched = searchByName(this.courses, this.search);
     },
@@ -3042,6 +3044,22 @@ var searchByName = function searchByName(items, term) {
         path: "/course/show/".concat(item.id)
       });
     },
+    bulkDelete: function bulkDelete() {
+      var app = this;
+      app.deletingMessage = "Commencing bulk delete";
+      app.deleting = true;
+      app.bulkDeleteCourse(app.selected).then(function (obj) {
+        app.deletingMessage = "Bulk delete complete: ".concat(obj.deletes, " deletes, ").concat(obj.errors, " errors");
+      })["catch"](function (error) {
+        console.log("error!", error);
+        app.deleting = false;
+      })["finally"](function () {
+        app.deletingMessage = "Refreshing data...";
+        app.$store.dispatch('course/loadCourses').then(function () {
+          app.searched = app.courses;
+        });
+      });
+    },
     getAlternateLabel: function getAlternateLabel(count) {
       var plural = '';
 
@@ -3051,7 +3069,9 @@ var searchByName = function searchByName(items, term) {
 
       return "".concat(count, " course").concat(plural, " selected");
     }
-  },
+  }, Object(vuex__WEBPACK_IMPORTED_MODULE_2__["mapActions"])({
+    bulkDeleteCourse: 'course/bulkDeleteCourse'
+  })),
   created: function created() {
     var _this = this;
 
@@ -41703,7 +41723,11 @@ var render = function() {
                     [
                       _c(
                         "md-button",
-                        { staticClass: "md-fab md-accent" },
+                        {
+                          staticClass: "md-fab md-accent",
+                          attrs: { disabled: _vm.deleting },
+                          on: { click: _vm.bulkDelete }
+                        },
                         [_c("md-icon", [_vm._v("delete")])],
                         1
                       )
@@ -41836,6 +41860,10 @@ var render = function() {
             )
           ]),
           _vm._v(" "),
+          _vm.deleting
+            ? _c("md-progress-bar", { attrs: { "md-mode": "indeterminate" } })
+            : _vm._e(),
+          _vm._v(" "),
           _vm._v(" "),
           _c(
             "md-table-empty-state",
@@ -41857,6 +41885,23 @@ var render = function() {
               )
             ],
             1
+          ),
+          _vm._v(" "),
+          _vm._v(" "),
+          _c(
+            "md-snackbar",
+            {
+              attrs: { "md-active": _vm.deleting },
+              on: {
+                "update:mdActive": function($event) {
+                  _vm.deleting = $event
+                },
+                "update:md-active": function($event) {
+                  _vm.deleting = $event
+                }
+              }
+            },
+            [_vm._v(_vm._s(_vm.deletingMessage))]
           )
         ],
         1
@@ -61345,8 +61390,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
      * Delete a course 
      * from the database
      * 
-     * @param {commit} param
-     * @param {page} page 
+     * @param {commit} commit
+     * @param {id} id
      */
     deleteCourse: function () {
       var _deleteCourse = _asyncToGenerator(
@@ -61388,6 +61433,67 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }
 
       return deleteCourse;
+    }(),
+
+    /**
+     * Delete a set of courses
+     * Takes in an array of IDs
+     * 
+     * @param {commit} commit
+     * @param {ids} ids 
+     */
+    bulkDeleteCourse: function () {
+      var _bulkDeleteCourse = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee6(_ref6, ids) {
+        var commit, dispatch, errors, deletes;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee6$(_context6) {
+          while (1) {
+            switch (_context6.prev = _context6.next) {
+              case 0:
+                commit = _ref6.commit, dispatch = _ref6.dispatch;
+
+                if (!(ids.length > 0)) {
+                  _context6.next = 9;
+                  break;
+                }
+
+                errors = 0, deletes = 0;
+                console.log('Commencing bulk delete', ids.length);
+                ids.map(function (dat, i) {
+                  console.log("[".concat(i, "] Deleting.."));
+
+                  try {
+                    dispatch('deleteCourse', dat.id);
+                    deletes++;
+                    console.log("[".concat(i, "] Deleting Successful"));
+                  } catch (err) {
+                    errors++;
+                    console.log("[".concat(i, "] Error deleting: ").concat(err));
+                  }
+                });
+                console.log('Bulk delete completed: \n', "".concat(deletes, " deletes \n ").concat(errors, " errors"));
+                return _context6.abrupt("return", {
+                  deletes: deletes,
+                  errors: errors
+                });
+
+              case 9:
+                console.log('no ids provided');
+
+              case 10:
+              case "end":
+                return _context6.stop();
+            }
+          }
+        }, _callee6);
+      }));
+
+      function bulkDeleteCourse(_x10, _x11) {
+        return _bulkDeleteCourse.apply(this, arguments);
+      }
+
+      return bulkDeleteCourse;
     }()
   }
 });

@@ -29,11 +29,12 @@
         </div>  
       </md-table-toolbar>
 
+    <md-progress-bar md-mode="indeterminate" v-if="deleting" />
     <md-table-toolbar slot="md-table-alternate-header" class="md-primary" slot-scope="{ count }">
         <div class="md-toolbar-section-start">{{ getAlternateLabel(count) }}</div>
 
         <div class="md-toolbar-section-end">
-          <md-button class="md-fab md-accent">
+          <md-button class="md-fab md-accent" :disabled="deleting" @click="bulkDelete">
             <md-icon>delete</md-icon>
           </md-button>
         </div>
@@ -51,6 +52,7 @@
         <md-table-cell md-label="Points" md-sort-by="points">{{ item.points }}</md-table-cell>
         <md-table-cell md-label="Enrolments" md-sort-by="enrolments.length">{{ item.enrolments ? item.enrolments.length : 0 }}</md-table-cell>
       </md-table-row>
+      <md-snackbar :md-active.sync="deleting">{{deletingMessage}}</md-snackbar>
     </md-table>
     <error-state v-else :error="error" />
 </template>
@@ -58,7 +60,7 @@
 <script>
     import Vue from 'vue'
     import {MdTable, MdContent, MdRipple, MdCheckbox}  from 'vue-material/dist/components'
-    import { mapGetters } from 'vuex'
+    import { mapGetters, mapActions } from 'vuex'
     import LoadingIndicator from './../../components/LoadingIndicator'
     import ErrorState from './../../components/ErrorState'
 
@@ -85,7 +87,9 @@
         data: () => ({
             search: null,
             searched: [],
-            selected: []
+            selected: [],
+            deletingMessage: null,
+            deleting: false
         }),
         methods: {
             searchOnTable () {
@@ -99,6 +103,25 @@
                     path: `/course/show/${item.id}`
                 })
             },
+            bulkDelete() {
+                let app = this
+                app.deletingMessage = "Commencing bulk delete"
+                app.deleting = true
+                app.bulkDeleteCourse(app.selected)
+                .then((obj) => {
+                    app.deletingMessage = `Bulk delete complete: ${obj.deletes} deletes, ${obj.errors} errors`
+                })
+                .catch(function(error) {
+                    console.log("error!", error)
+                    app.deleting = false
+                })
+                .finally(() => {
+                    app.deletingMessage = `Refreshing data...`
+                    app.$store.dispatch('course/loadCourses').then(() => {
+                        app.searched = app.courses
+                    })
+                })
+            },
             getAlternateLabel (count) {
                 let plural = ''
 
@@ -107,7 +130,10 @@
                 }
 
                 return `${count} course${plural} selected`
-            }
+            },
+            ...mapActions({
+                bulkDeleteCourse: 'course/bulkDeleteCourse'
+            })
         },
         created() {
             if(this.courses.length < 1) {
