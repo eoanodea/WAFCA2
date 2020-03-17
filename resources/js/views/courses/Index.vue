@@ -1,6 +1,6 @@
 <template>
     <loading-indicator v-if="loading" />
-    <md-table v-else v-model="searched" md-sort="name" md-sort-order="asc" md-card md-fixed-header>
+    <md-table v-else-if="!error && searched" v-model="searched" md-sort="name" md-sort-order="asc" md-card md-fixed-header>
       <md-table-toolbar>
         <div class="md-toolbar-section-start">
           <h1 class="md-title">Courses</h1>
@@ -20,9 +20,9 @@
       <md-table-row slot="md-table-row" slot-scope="{ item }">
         <md-table-cell md-label="ID" md-sort-by="id" md-numeric>{{ item.id }}</md-table-cell>
         <md-table-cell md-label="Title" md-sort-by="title">{{ item.title }}</md-table-cell>
-
       </md-table-row>
     </md-table>
+    <error-state v-else :error="error" />
 </template>
 
 <script>
@@ -30,6 +30,7 @@
     import {MdTable, MdContent, MdRipple}  from 'vue-material/dist/components'
     import { mapGetters } from 'vuex'
     import LoadingIndicator from './../../components/LoadingIndicator'
+    import ErrorState from './../../components/ErrorState'
 
     Vue.use(MdTable)
     Vue.use(MdContent)
@@ -66,7 +67,8 @@
             }
         },
         components: {
-            LoadingIndicator
+            LoadingIndicator,
+            ErrorState
         },
         computed: {
             ...mapGetters({
