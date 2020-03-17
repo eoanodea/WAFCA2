@@ -37,6 +37,10 @@ export default {
             state.course = course
         },
 
+        PUSH_COURSE(state, course) {
+            state.courses.push(course)
+        },
+
         REMOVE_COURSE(state, id) {
             state.courses = state.courses.filter(dat => dat.id !== id)
         },
@@ -58,8 +62,7 @@ export default {
          * Makes an API request to the 
          * server for a list of courses
          * 
-         * @param {commit} param0 
-         * @param {page} page 
+         * @param {commit} commit  
          */
         async loadCourses({commit}) {
             commit('SET_LOADING', true)
@@ -80,7 +83,7 @@ export default {
          * server for a single course
          * 
          * @param {commit} param0 
-         * @param {page} page 
+         * @param {id} id 
          */
         async loadCourse({commit}, id) {
             commit('SET_LOADING', true)
@@ -104,16 +107,18 @@ export default {
         /**
          * Create a new course
          * 
-         * @param {commit} param0 
-         * @param {page} page 
+         * @param {commit} commit 
+         * @param {course} course 
          */
         async addCourse({commit}, course) {
             commit('SET_LOADING', true)
             try {
-                
                 let response = await axios.post('/api/courses', course) 
+
                 commit('SET_COURSE', response.data.data)
+                commit('PUSH_COURSE', response.data.data)
                 commit('SET_LOADING', false)
+
                 return response.data.data.id
             } catch(error) {
                 console.log('Error addCourse', error);
@@ -123,11 +128,12 @@ export default {
             }
         },
         /**
-         * Makes an API request to the 
-         * server for a single course
+         * Update a course in the 
+         * database
          * 
-         * @param {commit} param0 
-         * @param {page} page 
+         * @param {commit} commit 
+         * @param {param0} id 
+         * @param {param1} courseBody
          */
         async updateCourse({commit}, param) {
             commit('SET_LOADING', true)
@@ -136,6 +142,7 @@ export default {
                 
                 commit('SET_COURSE', response.data.data)
                 commit('SET_LOADING', false)
+
                 return response.data.data.id
             } catch(error) {
                 console.log('Error updateCourse', error);
@@ -152,19 +159,14 @@ export default {
          * @param {page} page 
          */
         async deleteCourse({commit}, id) {
-            commit('SET_LOADING', true)
             try {
                 let response = await axios.delete('/api/courses/' + id) 
-                if(response.status === 'success') {
-                    console.log('response good!')
-                    this.loadCourses({commit})
-                }
+                
+                commit('REMOVE_COURSE', id)
                 commit('SET_COURSE', null)
-                commit('SET_LOADING', false)
             } catch(error) {
                 console.log('Error deleteCourse', null);
-                commit('SET_ERROR', error) 
-                commit('SET_LOADING', false)
+                throw error
             }
         }
     }

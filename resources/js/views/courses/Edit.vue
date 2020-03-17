@@ -38,7 +38,7 @@
         </div>
         </md-card-content>
 
-        <md-progress-bar md-mode="indeterminate" v-if="sending" />
+        
 
         <md-card-actions>
             <md-button class="md-raised md-accent" :disabled="sending" @click="resetForm()">Reset</md-button>
@@ -47,7 +47,7 @@
 
         </md-card>
         <md-snackbar :md-active.sync="success">Update Successful!</md-snackbar>
-        <md-snackbar :md-active.sync="hasError">{{error}}</md-snackbar>
+        <md-snackbar :md-active.sync="hasError">{{formError}}</md-snackbar>
     </form>
     
 </template>
@@ -159,13 +159,13 @@
                     app.sending = false
                     app.success = true
                     this.$router.replace({
-                        path: `/course/${id}`
+                        path: `/course/show/${id}`
                     })
                 })
                 .catch(function(error) {
                         console.log("error!", error)
                         app.hasError = true
-                        app.formError = app.error
+                        app.formError = error
                         app.sending = false
                 })
             },
@@ -177,7 +177,6 @@
             ...mapGetters({
                 course: 'course/course',
                 loading: 'course/loading',
-                error: 'course/error'
             })
         }
     }

@@ -5,6 +5,7 @@ import store from './store/index'
 import Home from './views/Home'
 import CourseIndex from './views/courses/Index'
 import CourseShow from './views/courses/Show'
+import CourseCreate from './views/courses/Create'
 import CourseEdit from './views/courses/Edit'
 import Signin from './views/auth/Signin'
 import User from './views/auth/User'
@@ -58,9 +59,16 @@ export default new Router({
       beforeEnter: (to, from, next) => beforeEnter(to, from, next)
     },
     {
-      path: '/course/:id',
+      path: '/course/show/:id',
       name: 'course',
       component: CourseShow,
+      icon: "menu_book",
+      beforeEnter: (to, from, next) => beforeEnter(to, from, next)
+    },
+    {
+      path: '/course/new',
+      name: 'courseCreate',
+      component: CourseCreate,
       icon: "menu_book",
       beforeEnter: (to, from, next) => beforeEnter(to, from, next)
     },

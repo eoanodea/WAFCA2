@@ -5,7 +5,7 @@
       class="md-error"
       md-icon="error"
       md-label="Error"
-      :md-description="error.toString()"
+      :md-description="convertError()"
     />
   </div>
 </template>
@@ -20,6 +20,11 @@
     name: 'error-state',
     components: {
 
+    },
+    methods: {
+      convertError() {
+        return typeof error !== 'string' ? error.toString() : error
+      }
     },
     data() {
       return {

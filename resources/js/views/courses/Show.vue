@@ -1,6 +1,6 @@
 <template>
     <loading-indicator v-if="loading" />
-    <div v-else-if="!error" class="md-layout md-gutter md-alignment-top-space-between">
+    <div v-else-if="course && !error" class="md-layout md-gutter md-alignment-top-space-between show-grid">
         
         <md-card class="md-layout-item md-medium-size-45 md-small-size-45 md-xsmall-size-100">
             <md-card-header>
@@ -24,7 +24,7 @@
                         <span>Edit Course</span>
                     </div>
                 </md-list-item>
-                <md-list-item button>
+                <md-list-item @click="handleDialog()">
                     <md-icon class="md-primary">delete</md-icon>
                     <div class="md-list-item-text">
                         <span>Delete Course</span>
@@ -34,6 +34,9 @@
         </md-card>
 
         <md-card class="md-layout-item md-medium-size-45 md-small-size-45 md-xsmall-size-100">
+            <md-card-header>
+                <div class="md-title">Course Information</div>
+            </md-card-header>
             <md-list>
                 <md-list-item>
                     <md-icon class="md-primary">info</md-icon>
@@ -65,9 +68,13 @@
                 </md-list-item>
             </md-list>
         </md-card>
-
+        <course-delete 
+            :showDialog="showDialog" 
+            :id="course.id" 
+            v-on:handle-dialog="handleDialog"
+        />
     </div>
-    <error-state v-else :error="error" />
+    <error-state v-else-if="error" :error="error" />
 </template>
 <script>
     import Vue from 'vue'
@@ -75,6 +82,7 @@
     import LoadingIndicator from './../../components/LoadingIndicator'
     import ErrorState from './../../components/ErrorState'
     import {MdCard, MdList} from 'vue-material/dist/components'
+    import CourseDelete from './Delete'
 
     Vue.use(MdCard)
     Vue.use(MdList)
@@ -82,7 +90,7 @@
     export default {
         name: 'course',
         data: () => ({
-            //
+            showDialog: false
         }),
         /**
          * Check if course is null
@@ -93,9 +101,15 @@
                 this.$store.dispatch('course/loadCourse', parseInt(this.$route.params.id))
             }
         },
+        methods: {
+            handleDialog() {
+                this.showDialog = !this.showDialog
+            }
+        },
         components: {
             LoadingIndicator,
-            ErrorState
+            ErrorState,
+            CourseDelete
         },
         computed: {
             ...mapGetters({
@@ -107,6 +121,14 @@
     }
 </script>
 <style lang="scss" scoped>
+    .show-grid {
+        margin: 20px!important;   
+    }
+    .show-grid div {
+        @media (max-width: 600px) {
+            margin: 10px;
+        }
+    }
     .md-card {
         width: 320px;
         margin: 4px;
