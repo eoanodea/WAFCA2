@@ -1,6 +1,14 @@
 <template>
     <loading-indicator v-if="loading" />
-    <md-table v-else-if="!error && searched" v-model="searched" md-sort="name" md-sort-order="asc" md-card md-fixed-header>
+    <md-table 
+        v-else-if="!error && searched" 
+        v-model="searched" 
+        md-sort="name" 
+        md-sort-order="asc" 
+        md-card 
+        md-fixed-header
+        @md-selected="onSelect"
+    >
       <md-table-toolbar>
         <div class="md-toolbar-section-start">
           <h1 class="md-title">Courses</h1>
@@ -17,9 +25,11 @@
         <md-button class="md-primary md-raised">Create New Course</md-button>
       </md-table-empty-state>
 
-      <md-table-row slot="md-table-row" slot-scope="{ item }">
+      <md-table-row slot="md-table-row" slot-scope="{ item }" md-selectable="single">
         <md-table-cell md-label="ID" md-sort-by="id" md-numeric>{{ item.id }}</md-table-cell>
         <md-table-cell md-label="Title" md-sort-by="title">{{ item.title }}</md-table-cell>
+        <md-table-cell md-label="Points" md-sort-by="points">{{ item.points }}</md-table-cell>
+        <md-table-cell md-label="Enrolments" md-sort-by="enrolments.length">{{ item.enrolments.length }}</md-table-cell>
       </md-table-row>
     </md-table>
     <error-state v-else :error="error" />
@@ -57,6 +67,11 @@
         methods: {
             searchOnTable () {
                 this.searched = searchByName(this.courses, this.search)
+            },
+            onSelect (item) {
+                this.$router.replace({
+                    path: `/course/${item.id}`
+                })
             }
         },
         created() {

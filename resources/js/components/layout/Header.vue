@@ -128,6 +128,6 @@
 </script>
 <style lang="scss">
     .header-container, html {
-        overflow: hidden;
+        overflow-x: hidden;
     }
 </style>

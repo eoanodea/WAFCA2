@@ -5,7 +5,7 @@ export default {
 
     state: {
         courses: [],
-        course: {},
+        course: null,
         loading: true,
         error: null
     },
@@ -88,7 +88,7 @@ export default {
                 try {
                     let response = await axios.get('/api/courses/' + id) 
                     
-                    commit('SET_COURSE', response.data.course)
+                    commit('SET_COURSE', response.data.data)
                     commit('SET_LOADING', false)
                 } catch(error) {
                     console.log('Error getCourse', error);
@@ -112,7 +112,7 @@ export default {
             try {
                 
                 let response = await axios.post('/api/course/new', course) 
-                commit('SET_COURSE', response.data.course)
+                commit('SET_COURSE', response.data.data)
                 commit('SET_LOADING', false)
                 return response.data.course.id
             } catch(error) {
@@ -133,7 +133,7 @@ export default {
             try {
                 let response = await axios.put('/api/course/' + param[0], param[1]) 
                 
-                commit('SET_COURSE', response.data.course)
+                commit('SET_COURSE', response.data.data)
                 commit('SET_LOADING', false)
                 return response.data.course.id
             } catch(error) {
