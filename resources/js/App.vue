@@ -51,7 +51,9 @@
 </script>
 <style lang="scss" scoped>
   .router-container {
-    margin: 40px 0;
+    margin: 40px auto;
+    display: flex;
+    justify-content: center;
   }
 
   .slide-left-enter-active,
