@@ -28,10 +28,10 @@
                 </div>
             </div>
             <div class="md-toolbar-row">
-                <md-tabs class="md-primary">
+                <md-tabs class="md-primary" md-sync-route>
                         <md-tab 
-                            v-for="(route, i) in renderRoutes()" 
-                            v-bind:key="i" 
+                            v-for="route in renderRoutes()" 
+                            v-bind:key="`tab-${route.name}`" 
                             :id="`tab-${route.name}`" 
                             :md-label="route.name" 
                             :to="route.path"
@@ -111,6 +111,11 @@
                 : routes.filter(dat => !dat.beforeEnter)
 
                 return renderedRoutes
+            },
+            cleanRoutes() {
+                this.routes = (this.user && this.user.name)
+                ? this.$router.options.routes.filter(dat => dat.display === "top" && dat.name !== "signin")
+                : this.$router.options.routes.filter(dat => !dat.beforeEnter)
             },
             signOut() {
                 this.signOutAction().then(() => {
