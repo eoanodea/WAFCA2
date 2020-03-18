@@ -51,7 +51,7 @@
 </script>
 <style lang="scss" scoped>
   .router-container {
-    margin: 40px auto;
+    margin: 40px auto 100px auto;
     display: flex;
     justify-content: center;
   }

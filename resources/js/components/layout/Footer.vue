@@ -28,7 +28,6 @@
             :id="`tab-${route.name}`" 
             :md-label="route.name" 
             :to="route.path"
-            @click="updateIndex"
             :md-icon="route.icon ? route.icon : null"
         />
 

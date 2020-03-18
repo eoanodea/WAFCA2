@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="md-layout md-gutter md-alignment-center-space-around index-container">
         <loading-indicator v-if="loading" />
         <md-table 
             v-else-if="!error && searched" 
@@ -8,6 +8,7 @@
             md-sort-order="asc" 
             md-card 
             md-fixed-header
+            class="md-layout-item md-medium-size-100 md-small-size-90 md-xsmall-size-90"
             @md-selected="onSelect"
         >
         <md-table-toolbar>
@@ -48,7 +49,6 @@
         </md-table-empty-state>
 
         <md-table-row slot="md-table-row" slot-scope="{ item }" md-selectable="multiple" @click="showDetail(item)">
-            <md-table-cell md-label="ID" md-sort-by="id" md-numeric>{{ item.id }}</md-table-cell>
             <md-table-cell md-label="Title" md-sort-by="title">{{ item.title }}</md-table-cell>
             <md-table-cell md-label="Points" md-sort-by="points">{{ item.points }}</md-table-cell>
             <md-table-cell md-label="Enrolments" md-sort-by="enrolments.length">{{ item.enrolments ? item.enrolments.length : 0 }}</md-table-cell>
@@ -159,7 +159,15 @@
     }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
+    .index-container {
+                max-width: 90%;
+    }
+    @media(min-width: 600px) {
+        .index-container {
+                width: 90%;
+        }
+    }
     .md-table-row {
         cursor: pointer;
     }
