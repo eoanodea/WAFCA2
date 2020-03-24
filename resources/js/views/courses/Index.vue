@@ -48,14 +48,20 @@
             <md-button class="md-primary md-raised" to="/course/new">Create New Course</md-button>
         </md-table-empty-state>
 
-        <md-table-row slot="md-table-row" slot-scope="{ item }" md-selectable="multiple" @click="showDetail(item)">
+        <md-table-row 
+            slot="md-table-row" 
+            slot-scope="{ item }" 
+            md-selectable="multiple" 
+            @click="showDetail(item)"
+            :md-disabled="item.enrolments.length > 0"
+        >
             <md-table-cell md-label="Title" md-sort-by="title">{{ item.title }}</md-table-cell>
             <md-table-cell md-label="Points" md-sort-by="points">{{ item.points }}</md-table-cell>
             <md-table-cell md-label="Enrolments" md-sort-by="enrolments.length">{{ item.enrolments ? item.enrolments.length : 0 }}</md-table-cell>
         </md-table-row>
         </md-table>
         <error-state v-else :error="error" />
-        <md-snackbar :md-active.sync="deleting">{{deletingMessage}}</md-snackbar>
+        <md-snackbar :md-active.sync="deleting" :md-duration="Infinity">{{deletingMessage}}</md-snackbar>
     </div>
 </template>
 
@@ -105,25 +111,34 @@
                     path: `/course/show/${item.id}`
                 })
             },
-            bulkDelete() {
+            async bulkDelete() {
                 let app = this
-                app.deletingMessage = "Commencing bulk delete"
+
+                app.deletingMessage = `Bulk deleting ${app.selected.length} item${app.selected.length > 1 ? "s" : ""}`
                 app.deleting = true
-                app.bulkDeleteCourse(app.selected)
-                .then((obj) => {
-                    app.deletingMessage = `Bulk delete complete: ${obj.deletes} deletes, ${obj.errors} errors`
-                })
-                .catch(function(error) {
-                    console.log("error!", error)
+                try {
+                    const res = await app.bulkDeleteCourse(app.selected)
+                   
+                    app.deletingMessage = `Bulk delete successful: ${res.deletes} deletes`
+                    app.searched = app.courses
+                } catch(err) {
+                    app.deletingMessage = `Bulk delete error: ${err.deletes} deletes, ${err.errors} errors`
+                    app.searched = app.courses
+                }
+                app.timeOutLabel()
+            },
+            /**
+             * Delays set deleting to false by 4000 miliseconds,
+             * 
+             * so the snackbar displays a completion message to the user
+             */
+            timeOutLabel() {
+                let app = this
+
+                setTimeout(function() {
                     app.deleting = false
-                })
-                .finally(() => {
-                    app.deletingMessage = `Refreshing data...`
-                    app.deleting = false
-                    app.$store.dispatch('course/loadCourses').then(() => {
-                        app.searched = app.courses
-                    })
-                })
+                    app.deletingMessage = null
+                }, 4000)
             },
             getAlternateLabel (count) {
                 let plural = ''

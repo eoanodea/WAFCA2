@@ -3002,13 +3002,21 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_material_dist_components__WEB
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var vue_material_dist_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-material/dist/components */ "./node_modules/vue-material/dist/components/index.js");
-/* harmony import */ var vue_material_dist_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue_material_dist_components__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
-/* harmony import */ var _components_LoadingIndicator__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./../../components/LoadingIndicator */ "./resources/js/components/LoadingIndicator.vue");
-/* harmony import */ var _components_ErrorState__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./../../components/ErrorState */ "./resources/js/components/ErrorState.vue");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var vue_material_dist_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue-material/dist/components */ "./node_modules/vue-material/dist/components/index.js");
+/* harmony import */ var vue_material_dist_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(vue_material_dist_components__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var _components_LoadingIndicator__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./../../components/LoadingIndicator */ "./resources/js/components/LoadingIndicator.vue");
+/* harmony import */ var _components_ErrorState__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./../../components/ErrorState */ "./resources/js/components/ErrorState.vue");
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -3076,15 +3084,21 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 
 
 
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_material_dist_components__WEBPACK_IMPORTED_MODULE_1__["MdTable"]);
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_material_dist_components__WEBPACK_IMPORTED_MODULE_1__["MdContent"]);
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_material_dist_components__WEBPACK_IMPORTED_MODULE_1__["MdRipple"]);
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_material_dist_components__WEBPACK_IMPORTED_MODULE_1__["MdCheckbox"]);
+vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vue_material_dist_components__WEBPACK_IMPORTED_MODULE_2__["MdTable"]);
+vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vue_material_dist_components__WEBPACK_IMPORTED_MODULE_2__["MdContent"]);
+vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vue_material_dist_components__WEBPACK_IMPORTED_MODULE_2__["MdRipple"]);
+vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vue_material_dist_components__WEBPACK_IMPORTED_MODULE_2__["MdCheckbox"]);
 
 var toLower = function toLower(text) {
   return text.toString().toLowerCase();
@@ -3124,21 +3138,57 @@ var searchByName = function searchByName(items, term) {
       });
     },
     bulkDelete: function bulkDelete() {
+      var _this = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+        var app, res;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                app = _this;
+                app.deletingMessage = "Bulk deleting ".concat(app.selected.length, " item").concat(app.selected.length > 1 ? "s" : "");
+                app.deleting = true;
+                _context.prev = 3;
+                _context.next = 6;
+                return app.bulkDeleteCourse(app.selected);
+
+              case 6:
+                res = _context.sent;
+                app.deletingMessage = "Bulk delete successful: ".concat(res.deletes, " deletes");
+                app.searched = app.courses;
+                _context.next = 15;
+                break;
+
+              case 11:
+                _context.prev = 11;
+                _context.t0 = _context["catch"](3);
+                app.deletingMessage = "Bulk delete error: ".concat(_context.t0.deletes, " deletes, ").concat(_context.t0.errors, " errors");
+                app.searched = app.courses;
+
+              case 15:
+                app.timeOutLabel();
+
+              case 16:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, null, [[3, 11]]);
+      }))();
+    },
+
+    /**
+     * Delays set deleting to false by 4000 miliseconds,
+     * 
+     * so the snackbar displays a completion message to the user
+     */
+    timeOutLabel: function timeOutLabel() {
       var app = this;
-      app.deletingMessage = "Commencing bulk delete";
-      app.deleting = true;
-      app.bulkDeleteCourse(app.selected).then(function (obj) {
-        app.deletingMessage = "Bulk delete complete: ".concat(obj.deletes, " deletes, ").concat(obj.errors, " errors");
-      })["catch"](function (error) {
-        console.log("error!", error);
+      setTimeout(function () {
         app.deleting = false;
-      })["finally"](function () {
-        app.deletingMessage = "Refreshing data...";
-        app.deleting = false;
-        app.$store.dispatch('course/loadCourses').then(function () {
-          app.searched = app.courses;
-        });
-      });
+        app.deletingMessage = null;
+      }, 4000);
     },
     getAlternateLabel: function getAlternateLabel(count) {
       var plural = '';
@@ -3149,23 +3199,23 @@ var searchByName = function searchByName(items, term) {
 
       return "".concat(count, " course").concat(plural, " selected");
     }
-  }, Object(vuex__WEBPACK_IMPORTED_MODULE_2__["mapActions"])({
+  }, Object(vuex__WEBPACK_IMPORTED_MODULE_3__["mapActions"])({
     bulkDeleteCourse: 'course/bulkDeleteCourse'
   })),
   created: function created() {
-    var _this = this;
+    var _this2 = this;
 
     if (this.courses.length < 1) {
       this.$store.dispatch('course/loadCourses').then(function () {
-        _this.searched = _this.courses;
+        _this2.searched = _this2.courses;
       });
     } else this.searched = this.courses;
   },
   components: {
-    LoadingIndicator: _components_LoadingIndicator__WEBPACK_IMPORTED_MODULE_3__["default"],
-    ErrorState: _components_ErrorState__WEBPACK_IMPORTED_MODULE_4__["default"]
+    LoadingIndicator: _components_LoadingIndicator__WEBPACK_IMPORTED_MODULE_4__["default"],
+    ErrorState: _components_ErrorState__WEBPACK_IMPORTED_MODULE_5__["default"]
   },
-  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_2__["mapGetters"])({
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_3__["mapGetters"])({
     courses: 'course/courses',
     loading: 'course/loading',
     error: 'course/error'
@@ -41918,7 +41968,10 @@ var render = function() {
                     return _c(
                       "md-table-row",
                       {
-                        attrs: { "md-selectable": "multiple" },
+                        attrs: {
+                          "md-selectable": "multiple",
+                          "md-disabled": item.enrolments.length > 0
+                        },
                         on: {
                           click: function($event) {
                             return _vm.showDetail(item)
@@ -42068,7 +42121,7 @@ var render = function() {
       _c(
         "md-snackbar",
         {
-          attrs: { "md-active": _vm.deleting },
+          attrs: { "md-active": _vm.deleting, "md-duration": Infinity },
           on: {
             "update:mdActive": function($event) {
               _vm.deleting = $event
@@ -61338,7 +61391,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       state.course = course;
     },
     PUSH_COURSE: function PUSH_COURSE(state, course) {
-      state.courses.push(course);
+      var newCourse = course;
+      newCourse.enrolments = [];
+      state.courses.push(newCourse);
     },
     REMOVE_COURSE: function REMOVE_COURSE(state, id) {
       state.courses = state.courses.filter(function (dat) {
@@ -61592,32 +61647,102 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     bulkDeleteCourse: function bulkDeleteCourse(_ref6, ids) {
       var commit = _ref6.commit,
           dispatch = _ref6.dispatch;
+      return new Promise( /*#__PURE__*/function () {
+        var _ref7 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee7(resolve, reject) {
+          var errors, deletes, lengthOfIds;
+          return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee7$(_context7) {
+            while (1) {
+              switch (_context7.prev = _context7.next) {
+                case 0:
+                  if (!(ids.length > 0)) {
+                    _context7.next = 6;
+                    break;
+                  }
 
-      if (ids.length > 0) {
-        var errors = 0,
-            deletes = 0,
-            lengthOfIds = ids.length,
-            running = true;
-        console.log('Commencing bulk delete', ids.length);
-        ids.map(function (dat, i) {
-          console.log("[".concat(i, "] Deleting.."));
-          dispatch('deleteCourse', dat.id).then(function (res) {
-            console.log("[".concat(i, "] Deleting Successful: ").concat(res.status));
-            deletes++;
-          })["catch"](function (err) {
-            errors++;
-            console.log("[".concat(i, "] Error deleting: ").concat(err));
-          })["finally"](function () {
-            if (lengthOfIds >= i) {//
+                  errors = 0, deletes = 0, lengthOfIds = ids.length;
+                  console.log('Commencing bulk delete', ids.length);
+                  ids.map( /*#__PURE__*/function () {
+                    var _ref8 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee6(dat, i) {
+                      var res, response;
+                      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee6$(_context6) {
+                        while (1) {
+                          switch (_context6.prev = _context6.next) {
+                            case 0:
+                              console.log("[".concat(i, "] Deleting.."));
+                              _context6.prev = 1;
+                              _context6.next = 4;
+                              return dispatch('deleteCourse', dat.id);
+
+                            case 4:
+                              res = _context6.sent;
+                              console.log("[".concat(i, "] Deleting Successful: ").concat(res.status));
+                              deletes++;
+
+                              if (!(i == lengthOfIds - 1)) {
+                                _context6.next = 14;
+                                break;
+                              }
+
+                              console.log("[".concat(i, "] Final Delete ").concat(lengthOfIds, " "));
+                              console.log('Bulk delete completed: \n', "".concat(deletes, " deletes \n ").concat(errors, " errors"));
+                              response = {
+                                deletes: deletes,
+                                errors: errors
+                              };
+
+                              if (!(errors > 0)) {
+                                _context6.next = 13;
+                                break;
+                              }
+
+                              return _context6.abrupt("return", reject(response));
+
+                            case 13:
+                              return _context6.abrupt("return", resolve(response));
+
+                            case 14:
+                              _context6.next = 20;
+                              break;
+
+                            case 16:
+                              _context6.prev = 16;
+                              _context6.t0 = _context6["catch"](1);
+                              errors++;
+                              console.log("[".concat(i, "] Error deleting: ").concat(_context6.t0));
+
+                            case 20:
+                            case "end":
+                              return _context6.stop();
+                          }
+                        }
+                      }, _callee6, null, [[1, 16]]);
+                    }));
+
+                    return function (_x3, _x4) {
+                      return _ref8.apply(this, arguments);
+                    };
+                  }());
+                  _context7.next = 7;
+                  break;
+
+                case 6:
+                  return _context7.abrupt("return", reject({
+                    deletes: 0,
+                    errors: ids.length
+                  }));
+
+                case 7:
+                case "end":
+                  return _context7.stop();
+              }
             }
-          });
-        });
-        console.log('Bulk delete completed: \n', "".concat(deletes, " deletes \n ").concat(errors, " errors"));
-        return {
-          deletes: deletes,
-          errors: errors
+          }, _callee7);
+        }));
+
+        return function (_x, _x2) {
+          return _ref7.apply(this, arguments);
         };
-      } else console.log('no ids provided');
+      }());
     }
   }
 });

@@ -38,7 +38,10 @@ export default {
         },
 
         PUSH_COURSE(state, course) {
-            state.courses.push(course)
+            let newCourse = course
+            newCourse.enrolments = []
+
+            state.courses.push(newCourse)
         },
 
         REMOVE_COURSE(state, id) {
@@ -179,31 +182,37 @@ export default {
          * @param {ids} ids 
          */
         bulkDeleteCourse({commit, dispatch}, ids) {
-            if(ids.length > 0) {
-                let errors = 0, deletes = 0, lengthOfIds = ids.length, running = true
-                console.log('Commencing bulk delete', ids.length)
+            return new Promise(async function(resolve, reject) {
+                if(ids.length > 0) {
+                    let errors = 0, deletes = 0, lengthOfIds = ids.length
+                    console.log('Commencing bulk delete', ids.length)
 
-                ids.map((dat, i) => {
-                    console.log(`[${i}] Deleting..`)
+                    ids.map(async (dat, i) => {
+                        console.log(`[${i}] Deleting..`)
+                        try {
+                            const res = await dispatch('deleteCourse', dat.id)
 
-                    dispatch('deleteCourse', dat.id).then((res) => {
-                        console.log(`[${i}] Deleting Successful: ${res.status}`)
-                        deletes++;
-                    }).catch(function(err) {
-                        errors++;    
-                        console.log(`[${i}] Error deleting: ${err}`)
-                    }).finally(function() {
-                        if(lengthOfIds >= i) {
-                            //
+                            console.log(`[${i}] Deleting Successful: ${res.status}`)
+                            deletes++;
+                            
+                            if(i == (lengthOfIds -1)) {
+                                console.log(`[${i}] Final Delete ${lengthOfIds} `)
+                                console.log('Bulk delete completed: \n', `${deletes} deletes \n ${errors} errors`)
+                                const response = {
+                                    deletes,
+                                    errors
+                                }
+
+                                if(errors > 0) return reject(response)
+                                return resolve(response)
+                            }
+                        } catch(err) {
+                            errors++;    
+                            console.log(`[${i}] Error deleting: ${err}`)
                         }
                     })
-                })
-                console.log('Bulk delete completed: \n', `${deletes} deletes \n ${errors} errors`)
-                return {
-                    deletes,
-                    errors
-                }
-            } else console.log('no ids provided')
+                } else return reject({deletes: 0, errors: ids.length})
+            })
         }
     }
 }
