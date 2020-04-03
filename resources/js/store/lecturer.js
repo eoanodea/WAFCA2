@@ -4,19 +4,19 @@ export default {
     namespaced: true,
 
     state: {
-        courses: [],
-        course: null,
+        lecturers: [],
+        lecturer: null,
         loading: true,
         error: null
     },
 
     getters: {
-        courses(state) {
-            return state.courses
+        lecturers(state) {
+            return state.lecturers
         },
 
-        course(state) {
-            return state.course
+        lecturer(state) {
+            return state.lecturer
         },
 
         loading(state) {
@@ -29,23 +29,23 @@ export default {
     },
 
     mutations: {
-        SET_COURSES(state, courses) {
-            state.courses = courses
+        SET_LECTURERS(state, lecturers) {
+            state.lecturers = lecturers
         },
 
-        SET_COURSE(state, course) {
-            state.course = course
+        SET_LECTURER(state, lecturer) {
+            state.lecturer = lecturer
         },
 
-        PUSH_COURSE(state, course) {
-            let newCourse = course
-            newCourse.enrolments = []
+        PUSH_LECTURER(state, lecturer) {
+            let newLecturer = lecturer
+            newLecturer.enrolments = []
 
-            state.courses.push(newCourse)
+            state.lecturers.push(newLecturer)
         },
 
-        REMOVE_COURSE(state, id) {
-            state.courses = state.courses.filter(dat => dat.id !== id)
+        REMOVE_LECTURER(state, id) {
+            state.lecturers = state.lecturers.filter(dat => dat.id !== id)
         },
 
         SET_LOADING(state, loading) {
@@ -63,125 +63,125 @@ export default {
     actions: {
         /**
          * Makes an API request to the 
-         * server for a list of courses
+         * server for a list of lecturers
          * 
          * @param {commit} commit  
          */
-        async loadCourses({commit}) {
+        async loadLecturers({commit}) {
             commit('SET_LOADING', true)
             
             try {
-                let response = await axios.get('/api/courses') 
+                let response = await axios.get('/api/lecturers') 
 
-                commit('SET_COURSES', response.data.data)
+                commit('SET_LECTURERS', response.data.data)
                 commit('SET_LOADING', false)
             } catch (error) {
-                console.log('Error loadCourses!', error)
+                console.log('Error loadLecturers!', error)
                 commit('SET_ERROR', error) 
                 commit('SET_LOADING', false)
             }
         },
         /**
          * Makes an API request to the 
-         * server for a single course
+         * server for a single lecturer
          * 
          * @param {commit} param0 
          * @param {id} id 
          */
-        async loadCourse({commit}, id) {
+        async loadLecturer({commit}, id) {
             commit('SET_LOADING', true)
             if(id) {
                 try {
-                    let response = await axios.get('/api/courses/' + id) 
+                    let response = await axios.get('/api/lecturers/' + id) 
                     
-                    commit('SET_COURSE', response.data.data)
+                    commit('SET_LECTURER', response.data.data)
                     commit('SET_LOADING', false)
                 } catch(error) {
-                    console.log('Error getCourse', error);
+                    console.log('Error getLecturer', error);
                     commit('SET_ERROR', error) 
                     commit('SET_LOADING', false)
                     throw error
                 }
             } else {
-                commit('SET_COURSE', null)
+                commit('SET_LECTURER', null)
                 commit('SET_LOADING', false)
             }
         },
         /**
-         * Create a new course
+         * Create a new lecturer
          * 
          * @param {commit} commit 
-         * @param {course} course 
+         * @param {lecturer} lecturer 
          */
-        async addCourse({commit}, course) {
+        async addLecturer({commit}, lecturer) {
             commit('SET_LOADING', true)
             try {
-                let response = await axios.post('/api/courses', course) 
+                let response = await axios.post('/api/lecturers', lecturer) 
 
-                commit('SET_COURSE', response.data.data)
-                commit('PUSH_COURSE', response.data.data)
+                commit('SET_LECTURER', response.data.data)
+                commit('PUSH_LECTURER', response.data.data)
                 commit('SET_LOADING', false)
 
                 return response.data.data.id
             } catch(error) {
-                console.log('Error addCourse', error);
+                console.log('Error addLecturer', error);
                 commit('SET_ERROR', error) 
                 commit('SET_LOADING', false)
                 throw error
             }
         },
         /**
-         * Update a course in the 
+         * Update a lecturer in the 
          * database
          * 
          * @param {commit} commit 
          * @param {param0} id 
-         * @param {param1} courseBody
+         * @param {param1} lecturerBody
          */
-        async updateCourse({commit}, param) {
+        async updateLecturer({commit}, param) {
             commit('SET_LOADING', true)
             try {
-                let response = await axios.put('/api/courses/' + param[0], param[1]) 
+                let response = await axios.put('/api/lecturers/' + param[0], param[1]) 
                 
-                commit('SET_COURSE', response.data.data)
+                commit('SET_LECTURER', response.data.data)
                 commit('SET_LOADING', false)
 
                 return response.data.data.id
             } catch(error) {
-                console.log('Error updateCourse', error);
+                console.log('Error updateLecturer', error);
                 commit('SET_ERROR', error) 
                 commit('SET_LOADING', false)
                 throw error
             }
         },
         /**
-         * Delete a course 
+         * Delete a lecturer 
          * from the database
          * 
          * @param {commit} commit
          * @param {id} id
          */
-        async deleteCourse({commit}, id) {
+        async deleteLecturer({commit}, id) {
             try {
-                let response = await axios.delete('/api/courses/' + id) 
+                let response = await axios.delete('/api/lecturers/' + id) 
                 
-                commit('REMOVE_COURSE', id)
-                commit('SET_COURSE', null)
+                commit('REMOVE_LECTURER', id)
+                commit('SET_LECTURER', null)
 
                 return response.data
             } catch(error) {
-                console.log('Error deleteCourse', null);
+                console.log('Error deleteLecturer', null);
                 throw error
             }
         },
         /**
-         * Delete a set of courses
+         * Delete a set of lecturers
          * Takes in an array of IDs
          * 
          * @param {commit} commit
          * @param {ids} ids 
          */
-        bulkDeleteCourse({commit, dispatch}, ids) {
+        bulkDeleteLecturer({commit, dispatch}, ids) {
             return new Promise(async function(resolve, reject) {
                 /**
                  * Only run if the IDs array length is greater than 0
@@ -196,9 +196,9 @@ export default {
                         console.log(`[${i}] Deleting..`)
                         try {
                             /**
-                             * Run the delete course function on an ID and await it's result
+                             * Run the delete lecturer function on an ID and await it's result
                              */
-                            const res = await dispatch('deleteCourse', dat.id)
+                            const res = await dispatch('deleteLecturer', dat.id)
 
                             console.log(`[${i}] Deleting Successful: ${res.status}`)
                             /**
