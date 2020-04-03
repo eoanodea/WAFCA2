@@ -6,31 +6,30 @@
         </md-card-header>
         <md-card-content>
         <div class="md-layout md-gutter">
-            <md-field :class="getValidationClass('name')">
-                <label for="name">Name</label>
-                <md-input type="text" name="name" id="name" autocomplete="name" v-model="form.name" :disabled="sending" />
-                <span class="md-error" v-if="!$v.form.name.required">The name is required</span>
-                <span class="md-error" v-else-if="!$v.form.name.maxLength">Name cannot be over {{$v.form.name.$params.maxLength.max}} characters</span>
+                <md-datepicker 
+                    color="md-accent"
+                    v-model="form.date" 
+                    :md-disabled-dates="disabledDates"
+                    md-immediately
+                    :class="getValidationClass('date')"
+                >
+                <label>Date</label>
+                <span class="md-error" v-if="!$v.form.date.minValue">Date must be greater than today</span>
+                </md-datepicker>
+            <md-field :class="getValidationClass('time')">
+                <label for="time">Time</label>
+                <md-input type="time" name="time" id="time" autocomplete="time" v-model="form.time" :disabled="sending" />
+                <span class="md-error" v-if="!$v.form.time.withParams">Time cannot be later than 19:00</span>
             </md-field>
-            <md-field :class="getValidationClass('email')">
-                <label for="email">Email</label>
-                <md-input type="email" name="email" id="email" autocomplete="email" v-model="form.email" :disabled="sending" />
-                <span class="md-error" v-if="!$v.form.email.required">Email is required</span>
-                <span class="md-error" v-else-if="!$v.form.email.email">Invalid email</span>
-                <span class="md-error" v-else-if="!$v.form.email.maxLength">Email cannot be over {{$v.form.email.$params.maxLength.max}} characters</span>
-            </md-field>
-            <md-field :class="getValidationClass('phone')">
-                <label for="phone">Phone</label>
-                <md-input type="text" name="phone" id="phone" autocomplete="phone" v-model="form.phone" :disabled="sending" />
-                <span class="md-error" v-if="!$v.form.phone.required">The phone is required</span>
-                <span class="md-error" v-else-if="!$v.form.address.maxLength">Phone cannot be over {{$v.form.phone.$params.maxLength.max}} characters</span>
-            </md-field>
-            <md-field :class="getValidationClass('address')">
-                <label for="address">Address</label>
-                <md-textarea name="address" id="address" autocomplete="address" v-model="form.address" :disabled="sending" />
-                <span class="md-error" v-if="!$v.form.address.required">Address is required</span>
-                <span class="md-error" v-else-if="!$v.form.address.maxLength">Address cannot be over {{$v.form.address.$params.maxLength.max}} characters</span>
-            </md-field>
+            <md-autocomplete v-model="form.status" :md-options="statusOptions" :md-open-on-focus="false" :class="getValidationClass('status')">
+                <label>Status</label>
+                <template slot="md-autocomplete-item" slot-scope="{ item, term }">
+                    <md-highlight-text :md-term="term" style="text-transform: capitalize">{{ item.replace('_', ' ') }}</md-highlight-text>
+                </template>
+                <span class="md-error" v-if="$v.form.status.minLength">Status must be at least {{$v.form.status.$params.minLength.min}} characters</span>
+            </md-autocomplete>
+            <course-autocomplete v-on:item-selected="onSelect" />
+            <lecturer-autocomplete v-on:item-selected="onSelect" />
         </div>
         </md-card-content>
 
@@ -55,7 +54,9 @@
     import {
         required,
         maxLength,
-        email
+        minLength,
+        minValue,
+        withParams
     } from 'vuelidate/lib/validators'
     //Vue Material
     import {
@@ -63,52 +64,85 @@
         MdCard,
         MdProgress,
         MdSnackbar,
-        MdButton
+        MdButton,
+        MdDatepicker,
+        MdAutocomplete,
+        MdMenu
     } from 'vue-material/dist/components'
+
+    import CourseAutocomplete from './autocomplete/CourseAutocomplete'
+    import LecturerAutocomplete from './autocomplete/LecturerAutocomplete'
 
     Vue.use(MdField)
     Vue.use(MdCard)
     Vue.use(MdProgress)
     Vue.use(MdSnackbar)
     Vue.use(MdButton)
+    Vue.use(MdDatepicker)
+    Vue.use(MdAutocomplete)
+    Vue.use(MdMenu)
+    Vue.use(MdAutocomplete)
+
+    const today = Date.now()
 
     export default {
+        
         name: 'enrolmentAdd',
         mixins: [validationMixin],
         validations: {
             form: {
-                name: {
+                status: {
                     required,
+                    minLength: minLength(4),
                     maxLength: maxLength(50)
                 },
-                address: {
+                date: {
                     required,
-                    maxLength: maxLength(100)
+                    minValue: value => {
+                        if(value >= today) return true
+                        
+                        return false
+                    }
                 },
-                phone: {
+                time: {
                     required,
-                    maxLength: maxLength(20)
-                },
-                email: {
-                    required,
-                    email,
-                    maxLength: maxLength(50)
+                    withParams: value => {
+                        return /^([0-1][0-9]):([0-5][0-9])$/.test(value)
+                    }
                 }
             }
         },
         data: () => ({
             form: {
-                name: "",
-                address: "",
-                phone: "",
-                email: "",
+                date: new Date(today),
+                time: "00:00",
+                status: "",
+                course_id: 0,
+                lecturer_id: null
             },
+            /**
+             * Disables weekends in date picker
+             */
+            disabledDates: date => {
+                const day = date.getDay()
+        
+                return day === 6 || day === 0
+            },
+            statusOptions: [
+                'interested',
+                'assigned',
+                'associate',
+                'career_break'
+            ],
             sending: false,
             success: false,
             hasError: false,
             formError: null
         }),
         methods: {
+            onSelect(id, type) {
+                this.form[type] = id
+            },
             getValidationClass (fieldName) {
                 const field = this.$v.form[fieldName]
 
@@ -146,6 +180,20 @@
             ...mapActions({
                 addEnrolment: 'enrolment/addEnrolment'
             })
+        },
+        computed: {
+            ...mapGetters({
+                courses: 'course/courses',
+                courseLoading: 'course/loading',
+                courseError: 'course/error',
+                lecturers: 'lecturer/lecturers',
+                lecturerLoading: 'lecturer/loading',
+                lecturerError: 'lecturer/error'
+            })
+        },
+        components: {
+            CourseAutocomplete,
+            LecturerAutocomplete
         }
     }
 </script>
@@ -160,5 +208,8 @@
         top: 0;
         right: 0;
         left: 0;
+    } 
+    .md-highlight-text {
+        text-transform: capitalize;
     }
 </style>

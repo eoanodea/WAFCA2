@@ -3394,13 +3394,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var vue_material_dist_components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vue-material/dist/components */ "./node_modules/vue-material/dist/components/index.js");
 /* harmony import */ var vue_material_dist_components__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(vue_material_dist_components__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _autocomplete_CourseAutocomplete__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./autocomplete/CourseAutocomplete */ "./resources/js/views/enrolments/autocomplete/CourseAutocomplete.vue");
+/* harmony import */ var _autocomplete_LecturerAutocomplete__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./autocomplete/LecturerAutocomplete */ "./resources/js/views/enrolments/autocomplete/LecturerAutocomplete.vue");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-//
 //
 //
 //
@@ -3456,43 +3457,61 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
  //Vue Material
 
 
+
+
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_material_dist_components__WEBPACK_IMPORTED_MODULE_4__["MdField"]);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_material_dist_components__WEBPACK_IMPORTED_MODULE_4__["MdCard"]);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_material_dist_components__WEBPACK_IMPORTED_MODULE_4__["MdProgress"]);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_material_dist_components__WEBPACK_IMPORTED_MODULE_4__["MdSnackbar"]);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_material_dist_components__WEBPACK_IMPORTED_MODULE_4__["MdButton"]);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_material_dist_components__WEBPACK_IMPORTED_MODULE_4__["MdDatepicker"]);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_material_dist_components__WEBPACK_IMPORTED_MODULE_4__["MdAutocomplete"]);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_material_dist_components__WEBPACK_IMPORTED_MODULE_4__["MdMenu"]);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_material_dist_components__WEBPACK_IMPORTED_MODULE_4__["MdAutocomplete"]);
+var today = Date.now();
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'enrolmentAdd',
   mixins: [vuelidate__WEBPACK_IMPORTED_MODULE_2__["validationMixin"]],
   validations: {
     form: {
-      name: {
+      status: {
         required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__["required"],
+        minLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__["minLength"])(4),
         maxLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__["maxLength"])(50)
       },
-      address: {
+      date: {
         required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__["required"],
-        maxLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__["maxLength"])(100)
+        minValue: function minValue(value) {
+          if (value >= today) return true;
+          return false;
+        }
       },
-      phone: {
+      time: {
         required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__["required"],
-        maxLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__["maxLength"])(20)
-      },
-      email: {
-        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__["required"],
-        email: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__["email"],
-        maxLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__["maxLength"])(50)
+        withParams: function withParams(value) {
+          return /^([0-1][0-9]):([0-5][0-9])$/.test(value);
+        }
       }
     }
   },
   data: function data() {
     return {
       form: {
-        name: "",
-        address: "",
-        phone: "",
-        email: ""
+        date: new Date(today),
+        time: "00:00",
+        status: "",
+        course_id: 0,
+        lecturer_id: null
       },
+
+      /**
+       * Disables weekends in date picker
+       */
+      disabledDates: function disabledDates(date) {
+        var day = date.getDay();
+        return day === 6 || day === 0;
+      },
+      statusOptions: ['interested', 'assigned', 'associate', 'career_break'],
       sending: false,
       success: false,
       hasError: false,
@@ -3500,6 +3519,9 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_material_dist_components__WEB
     };
   },
   methods: _objectSpread({
+    onSelect: function onSelect(id, type) {
+      this.form[type] = id;
+    },
     getValidationClass: function getValidationClass(fieldName) {
       var field = this.$v.form[fieldName];
 
@@ -3537,7 +3559,19 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_material_dist_components__WEB
     }
   }, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapActions"])({
     addEnrolment: 'enrolment/addEnrolment'
-  }))
+  })),
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapGetters"])({
+    courses: 'course/courses',
+    courseLoading: 'course/loading',
+    courseError: 'course/error',
+    lecturers: 'lecturer/lecturers',
+    lecturerLoading: 'lecturer/loading',
+    lecturerError: 'lecturer/error'
+  })),
+  components: {
+    CourseAutocomplete: _autocomplete_CourseAutocomplete__WEBPACK_IMPORTED_MODULE_5__["default"],
+    LecturerAutocomplete: _autocomplete_LecturerAutocomplete__WEBPACK_IMPORTED_MODULE_6__["default"]
+  }
 });
 
 /***/ }),
@@ -4200,6 +4234,196 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_material_dist_components__WEB
     enrolment: 'enrolment/enrolment',
     loading: 'enrolment/loading',
     error: 'enrolment/error'
+  }))
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/enrolments/autocomplete/CourseAutocomplete.vue?vue&type=script&lang=js&":
+/*!************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/enrolments/autocomplete/CourseAutocomplete.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vue_material_dist_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-material/dist/components */ "./node_modules/vue-material/dist/components/index.js");
+/* harmony import */ var vue_material_dist_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue_material_dist_components__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+ //Vue Material
+
+ //VueX
+
+
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_material_dist_components__WEBPACK_IMPORTED_MODULE_1__["MdAutocomplete"]);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_material_dist_components__WEBPACK_IMPORTED_MODULE_1__["MdHighlightText"]);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_material_dist_components__WEBPACK_IMPORTED_MODULE_1__["MdMenu"]);
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      selectedCourse: null,
+      filteredCourses: []
+    };
+  },
+  methods: {
+    selectCourse: function selectCourse() {
+      var selectedCourse = this.selectedCourse;
+      this.selectedCourse = selectedCourse.title;
+      this.$emit('item-selected', selectedCourse.id, 'course_id');
+    },
+    getCourses: function getCourses(searchTerm) {
+      var _this = this;
+
+      this.filteredCourses = new Promise(function (resolve) {
+        window.setTimeout(function () {
+          if (_this.courses.length < 1) {
+            _this.$store.dispatch('course/loadCourses').then(function () {
+              if (!searchTerm) return resolve(_this.courses);
+              var term = searchTerm.toLowerCase();
+              resolve(_this.courses.filter(function (_ref) {
+                var title = _ref.title;
+                return title.toLowerCase().includes(term);
+              }));
+            });
+          } else {
+            if (!searchTerm) return resolve(_this.courses);
+            var term = searchTerm.toLowerCase();
+            resolve(_this.courses.filter(function (_ref2) {
+              var title = _ref2.title;
+              return title.toLowerCase().includes(term);
+            }));
+          }
+        }, 500);
+      });
+    }
+  },
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_2__["mapGetters"])({
+    courses: 'course/courses',
+    courseLoading: 'course/loading',
+    courseError: 'course/error'
+  }))
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/enrolments/autocomplete/LecturerAutocomplete.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/enrolments/autocomplete/LecturerAutocomplete.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vue_material_dist_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-material/dist/components */ "./node_modules/vue-material/dist/components/index.js");
+/* harmony import */ var vue_material_dist_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue_material_dist_components__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+ //Vue Material
+
+ //VueX
+
+
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_material_dist_components__WEBPACK_IMPORTED_MODULE_1__["MdAutocomplete"]);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_material_dist_components__WEBPACK_IMPORTED_MODULE_1__["MdHighlightText"]);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_material_dist_components__WEBPACK_IMPORTED_MODULE_1__["MdMenu"]);
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      selectedLecturer: null,
+      filteredLecturers: []
+    };
+  },
+  methods: {
+    selectLecturer: function selectLecturer() {
+      var selectedLecturer = this.selectedLecturer;
+      this.selectedLecturer = selectedLecturer.name;
+      this.$emit('item-selected', selectedLecturer.id, 'lecturer_id');
+    },
+    getLecturers: function getLecturers(searchTerm) {
+      var _this = this;
+
+      this.filteredLecturers = new Promise(function (resolve) {
+        window.setTimeout(function () {
+          if (_this.lecturers.length < 1) {
+            _this.$store.dispatch('lecturer/loadLecturers').then(function () {
+              if (!searchTerm) return resolve(_this.lecturers);
+              var term = searchTerm.toLowerCase();
+              resolve(_this.lecturers.filter(function (_ref) {
+                var title = _ref.title;
+                return title.toLowerCase().includes(term);
+              }));
+            });
+          } else {
+            if (!searchTerm) return resolve(_this.lecturers);
+            var term = searchTerm.toLowerCase();
+            resolve(_this.lecturers.filter(function (_ref2) {
+              var title = _ref2.title;
+              return title.toLowerCase().includes(term);
+            }));
+          }
+        }, 500);
+      });
+    }
+  },
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_2__["mapGetters"])({
+    lecturers: 'lecturer/lecturers',
+    lecturerLoading: 'lecturer/loading',
+    lecturerError: 'lecturer/error'
   }))
 });
 
@@ -9787,7 +10011,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".signin[data-v-60c7c02d] {\n  max-width: 80%;\n  margin: 50px auto;\n}\n.md-progress-bar[data-v-60c7c02d] {\n  position: absolute;\n  top: 0;\n  right: 0;\n  left: 0;\n}", ""]);
+exports.push([module.i, ".signin[data-v-60c7c02d] {\n  max-width: 80%;\n  margin: 50px auto;\n}\n.md-progress-bar[data-v-60c7c02d] {\n  position: absolute;\n  top: 0;\n  right: 0;\n  left: 0;\n}\n.md-highlight-text[data-v-60c7c02d] {\n  text-transform: capitalize;\n}", ""]);
 
 // exports
 
@@ -44476,39 +44700,59 @@ var render = function() {
               { staticClass: "md-layout md-gutter" },
               [
                 _c(
-                  "md-field",
-                  { class: _vm.getValidationClass("name") },
+                  "md-datepicker",
+                  {
+                    class: _vm.getValidationClass("date"),
+                    attrs: {
+                      color: "md-accent",
+                      "md-disabled-dates": _vm.disabledDates,
+                      "md-immediately": ""
+                    },
+                    model: {
+                      value: _vm.form.date,
+                      callback: function($$v) {
+                        _vm.$set(_vm.form, "date", $$v)
+                      },
+                      expression: "form.date"
+                    }
+                  },
                   [
-                    _c("label", { attrs: { for: "name" } }, [_vm._v("Name")]),
+                    _c("label", [_vm._v("Date")]),
+                    _vm._v(" "),
+                    !_vm.$v.form.date.minValue
+                      ? _c("span", { staticClass: "md-error" }, [
+                          _vm._v("Date must be greater than today")
+                        ])
+                      : _vm._e()
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "md-field",
+                  { class: _vm.getValidationClass("time") },
+                  [
+                    _c("label", { attrs: { for: "time" } }, [_vm._v("Time")]),
                     _vm._v(" "),
                     _c("md-input", {
                       attrs: {
-                        type: "text",
-                        name: "name",
-                        id: "name",
-                        autocomplete: "name",
+                        type: "time",
+                        name: "time",
+                        id: "time",
+                        autocomplete: "time",
                         disabled: _vm.sending
                       },
                       model: {
-                        value: _vm.form.name,
+                        value: _vm.form.time,
                         callback: function($$v) {
-                          _vm.$set(_vm.form, "name", $$v)
+                          _vm.$set(_vm.form, "time", $$v)
                         },
-                        expression: "form.name"
+                        expression: "form.time"
                       }
                     }),
                     _vm._v(" "),
-                    !_vm.$v.form.name.required
+                    !_vm.$v.form.time.withParams
                       ? _c("span", { staticClass: "md-error" }, [
-                          _vm._v("The name is required")
-                        ])
-                      : !_vm.$v.form.name.maxLength
-                      ? _c("span", { staticClass: "md-error" }, [
-                          _vm._v(
-                            "Name cannot be over " +
-                              _vm._s(_vm.$v.form.name.$params.maxLength.max) +
-                              " characters"
-                          )
+                          _vm._v("Time cannot be later than 19:00")
                         ])
                       : _vm._e()
                   ],
@@ -44516,131 +44760,63 @@ var render = function() {
                 ),
                 _vm._v(" "),
                 _c(
-                  "md-field",
-                  { class: _vm.getValidationClass("email") },
-                  [
-                    _c("label", { attrs: { for: "email" } }, [_vm._v("Email")]),
-                    _vm._v(" "),
-                    _c("md-input", {
-                      attrs: {
-                        type: "email",
-                        name: "email",
-                        id: "email",
-                        autocomplete: "email",
-                        disabled: _vm.sending
-                      },
-                      model: {
-                        value: _vm.form.email,
-                        callback: function($$v) {
-                          _vm.$set(_vm.form, "email", $$v)
-                        },
-                        expression: "form.email"
+                  "md-autocomplete",
+                  {
+                    class: _vm.getValidationClass("status"),
+                    attrs: {
+                      "md-options": _vm.statusOptions,
+                      "md-open-on-focus": false
+                    },
+                    scopedSlots: _vm._u([
+                      {
+                        key: "md-autocomplete-item",
+                        fn: function(ref) {
+                          var item = ref.item
+                          var term = ref.term
+                          return [
+                            _c(
+                              "md-highlight-text",
+                              {
+                                staticStyle: { "text-transform": "capitalize" },
+                                attrs: { "md-term": term }
+                              },
+                              [_vm._v(_vm._s(item.replace("_", " ")))]
+                            )
+                          ]
+                        }
                       }
-                    }),
-                    _vm._v(" "),
-                    !_vm.$v.form.email.required
-                      ? _c("span", { staticClass: "md-error" }, [
-                          _vm._v("Email is required")
-                        ])
-                      : !_vm.$v.form.email.email
-                      ? _c("span", { staticClass: "md-error" }, [
-                          _vm._v("Invalid email")
-                        ])
-                      : !_vm.$v.form.email.maxLength
-                      ? _c("span", { staticClass: "md-error" }, [
-                          _vm._v(
-                            "Email cannot be over " +
-                              _vm._s(_vm.$v.form.email.$params.maxLength.max) +
-                              " characters"
-                          )
-                        ])
-                      : _vm._e()
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "md-field",
-                  { class: _vm.getValidationClass("phone") },
-                  [
-                    _c("label", { attrs: { for: "phone" } }, [_vm._v("Phone")]),
-                    _vm._v(" "),
-                    _c("md-input", {
-                      attrs: {
-                        type: "text",
-                        name: "phone",
-                        id: "phone",
-                        autocomplete: "phone",
-                        disabled: _vm.sending
-                      },
-                      model: {
-                        value: _vm.form.phone,
-                        callback: function($$v) {
-                          _vm.$set(_vm.form, "phone", $$v)
-                        },
-                        expression: "form.phone"
-                      }
-                    }),
-                    _vm._v(" "),
-                    !_vm.$v.form.phone.required
-                      ? _c("span", { staticClass: "md-error" }, [
-                          _vm._v("The phone is required")
-                        ])
-                      : !_vm.$v.form.address.maxLength
-                      ? _c("span", { staticClass: "md-error" }, [
-                          _vm._v(
-                            "Phone cannot be over " +
-                              _vm._s(_vm.$v.form.phone.$params.maxLength.max) +
-                              " characters"
-                          )
-                        ])
-                      : _vm._e()
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "md-field",
-                  { class: _vm.getValidationClass("address") },
-                  [
-                    _c("label", { attrs: { for: "address" } }, [
-                      _vm._v("Address")
                     ]),
-                    _vm._v(" "),
-                    _c("md-textarea", {
-                      attrs: {
-                        name: "address",
-                        id: "address",
-                        autocomplete: "address",
-                        disabled: _vm.sending
+                    model: {
+                      value: _vm.form.status,
+                      callback: function($$v) {
+                        _vm.$set(_vm.form, "status", $$v)
                       },
-                      model: {
-                        value: _vm.form.address,
-                        callback: function($$v) {
-                          _vm.$set(_vm.form, "address", $$v)
-                        },
-                        expression: "form.address"
-                      }
-                    }),
+                      expression: "form.status"
+                    }
+                  },
+                  [
+                    _c("label", [_vm._v("Status")]),
                     _vm._v(" "),
-                    !_vm.$v.form.address.required
-                      ? _c("span", { staticClass: "md-error" }, [
-                          _vm._v("Address is required")
-                        ])
-                      : !_vm.$v.form.address.maxLength
+                    _vm._v(" "),
+                    _vm.$v.form.status.minLength
                       ? _c("span", { staticClass: "md-error" }, [
                           _vm._v(
-                            "Address cannot be over " +
-                              _vm._s(
-                                _vm.$v.form.address.$params.maxLength.max
-                              ) +
+                            "Status must be at least " +
+                              _vm._s(_vm.$v.form.status.$params.minLength.min) +
                               " characters"
                           )
                         ])
                       : _vm._e()
-                  ],
-                  1
-                )
+                  ]
+                ),
+                _vm._v(" "),
+                _c("course-autocomplete", {
+                  on: { "item-selected": _vm.onSelect }
+                }),
+                _vm._v(" "),
+                _c("lecturer-autocomplete", {
+                  on: { "item-selected": _vm.onSelect }
+                })
               ],
               1
             )
@@ -45610,6 +45786,166 @@ var render = function() {
     : _vm.error
     ? _c("error-state", { attrs: { error: _vm.error } })
     : _vm._e()
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/enrolments/autocomplete/CourseAutocomplete.vue?vue&type=template&id=7d541289&":
+/*!****************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/enrolments/autocomplete/CourseAutocomplete.vue?vue&type=template&id=7d541289& ***!
+  \****************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "md-autocomplete",
+    {
+      attrs: { "md-options": _vm.filteredCourses },
+      on: {
+        "md-changed": _vm.getCourses,
+        "md-opened": _vm.getCourses,
+        "md-selected": _vm.selectCourse
+      },
+      scopedSlots: _vm._u([
+        {
+          key: "md-autocomplete-item",
+          fn: function(ref) {
+            var item = ref.item
+            return [
+              _c(
+                "md-highlight-text",
+                { attrs: { "md-term": item.id.toString() } },
+                [_vm._v(_vm._s(item.title))]
+              )
+            ]
+          }
+        },
+        {
+          key: "md-autocomplete-empty",
+          fn: function(ref) {
+            var term = ref.term
+            return [
+              _vm._v(
+                '\n        No courses matching "' +
+                  _vm._s(term) +
+                  '" were found. '
+              ),
+              _c("br"),
+              _vm._v(" "),
+              _c(
+                "md-button",
+                {
+                  staticClass: "md-primary md-raised",
+                  attrs: { to: "/course/new" }
+                },
+                [_vm._v("Create New Course")]
+              )
+            ]
+          }
+        }
+      ]),
+      model: {
+        value: _vm.selectedCourse,
+        callback: function($$v) {
+          _vm.selectedCourse = $$v
+        },
+        expression: "selectedCourse"
+      }
+    },
+    [_c("label", [_vm._v("Courses")])]
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/enrolments/autocomplete/LecturerAutocomplete.vue?vue&type=template&id=4cfb70bc&":
+/*!******************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/enrolments/autocomplete/LecturerAutocomplete.vue?vue&type=template&id=4cfb70bc& ***!
+  \******************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "md-autocomplete",
+    {
+      attrs: { "md-options": _vm.filteredLecturers },
+      on: {
+        "md-changed": _vm.getLecturers,
+        "md-opened": _vm.getLecturers,
+        "md-selected": _vm.selectLecturer
+      },
+      scopedSlots: _vm._u([
+        {
+          key: "md-autocomplete-item",
+          fn: function(ref) {
+            var item = ref.item
+            return [
+              _c(
+                "md-highlight-text",
+                { attrs: { "md-term": item.id.toString() } },
+                [_vm._v(_vm._s(item.name))]
+              )
+            ]
+          }
+        },
+        {
+          key: "md-autocomplete-empty",
+          fn: function(ref) {
+            var term = ref.term
+            return [
+              _vm._v(
+                '\n        No lecturers matching "' +
+                  _vm._s(term) +
+                  '" were found. '
+              ),
+              _c("br"),
+              _vm._v(" "),
+              _c(
+                "md-button",
+                {
+                  staticClass: "md-primary md-raised",
+                  attrs: { to: "/lecturer/new" }
+                },
+                [_vm._v("Create New Lecturer")]
+              )
+            ]
+          }
+        }
+      ]),
+      model: {
+        value: _vm.selectedLecturer,
+        callback: function($$v) {
+          _vm.selectedLecturer = $$v
+        },
+        expression: "selectedLecturer"
+      }
+    },
+    [_c("label", [_vm._v("Lecturers")])]
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -68259,6 +68595,144 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Show_vue_vue_type_template_id_6e8ce3ee_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Show_vue_vue_type_template_id_6e8ce3ee_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/views/enrolments/autocomplete/CourseAutocomplete.vue":
+/*!***************************************************************************!*\
+  !*** ./resources/js/views/enrolments/autocomplete/CourseAutocomplete.vue ***!
+  \***************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _CourseAutocomplete_vue_vue_type_template_id_7d541289___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CourseAutocomplete.vue?vue&type=template&id=7d541289& */ "./resources/js/views/enrolments/autocomplete/CourseAutocomplete.vue?vue&type=template&id=7d541289&");
+/* harmony import */ var _CourseAutocomplete_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CourseAutocomplete.vue?vue&type=script&lang=js& */ "./resources/js/views/enrolments/autocomplete/CourseAutocomplete.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _CourseAutocomplete_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _CourseAutocomplete_vue_vue_type_template_id_7d541289___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _CourseAutocomplete_vue_vue_type_template_id_7d541289___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/views/enrolments/autocomplete/CourseAutocomplete.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/views/enrolments/autocomplete/CourseAutocomplete.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************************!*\
+  !*** ./resources/js/views/enrolments/autocomplete/CourseAutocomplete.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CourseAutocomplete_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./CourseAutocomplete.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/enrolments/autocomplete/CourseAutocomplete.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CourseAutocomplete_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/views/enrolments/autocomplete/CourseAutocomplete.vue?vue&type=template&id=7d541289&":
+/*!**********************************************************************************************************!*\
+  !*** ./resources/js/views/enrolments/autocomplete/CourseAutocomplete.vue?vue&type=template&id=7d541289& ***!
+  \**********************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CourseAutocomplete_vue_vue_type_template_id_7d541289___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./CourseAutocomplete.vue?vue&type=template&id=7d541289& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/enrolments/autocomplete/CourseAutocomplete.vue?vue&type=template&id=7d541289&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CourseAutocomplete_vue_vue_type_template_id_7d541289___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CourseAutocomplete_vue_vue_type_template_id_7d541289___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/views/enrolments/autocomplete/LecturerAutocomplete.vue":
+/*!*****************************************************************************!*\
+  !*** ./resources/js/views/enrolments/autocomplete/LecturerAutocomplete.vue ***!
+  \*****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _LecturerAutocomplete_vue_vue_type_template_id_4cfb70bc___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./LecturerAutocomplete.vue?vue&type=template&id=4cfb70bc& */ "./resources/js/views/enrolments/autocomplete/LecturerAutocomplete.vue?vue&type=template&id=4cfb70bc&");
+/* harmony import */ var _LecturerAutocomplete_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./LecturerAutocomplete.vue?vue&type=script&lang=js& */ "./resources/js/views/enrolments/autocomplete/LecturerAutocomplete.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _LecturerAutocomplete_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _LecturerAutocomplete_vue_vue_type_template_id_4cfb70bc___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _LecturerAutocomplete_vue_vue_type_template_id_4cfb70bc___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/views/enrolments/autocomplete/LecturerAutocomplete.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/views/enrolments/autocomplete/LecturerAutocomplete.vue?vue&type=script&lang=js&":
+/*!******************************************************************************************************!*\
+  !*** ./resources/js/views/enrolments/autocomplete/LecturerAutocomplete.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_LecturerAutocomplete_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./LecturerAutocomplete.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/enrolments/autocomplete/LecturerAutocomplete.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_LecturerAutocomplete_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/views/enrolments/autocomplete/LecturerAutocomplete.vue?vue&type=template&id=4cfb70bc&":
+/*!************************************************************************************************************!*\
+  !*** ./resources/js/views/enrolments/autocomplete/LecturerAutocomplete.vue?vue&type=template&id=4cfb70bc& ***!
+  \************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_LecturerAutocomplete_vue_vue_type_template_id_4cfb70bc___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./LecturerAutocomplete.vue?vue&type=template&id=4cfb70bc& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/enrolments/autocomplete/LecturerAutocomplete.vue?vue&type=template&id=4cfb70bc&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_LecturerAutocomplete_vue_vue_type_template_id_4cfb70bc___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_LecturerAutocomplete_vue_vue_type_template_id_4cfb70bc___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
