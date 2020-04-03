@@ -59,14 +59,14 @@
                         <span>Time</span>
                     </div>
                 </md-list-item>
-                <md-list-item>
+                <md-list-item :to="`/lecturer/show/${enrolment.lecturer.id}`">
                     <md-icon class="md-primary">supervised_user_circle</md-icon>
                     <div class="md-list-item-text">
                         <span>{{enrolment.lecturer.name}}</span>
                         <span>Lecturer</span>
                     </div>
                 </md-list-item>
-                <md-list-item>
+                <md-list-item :to="`/course/show/${enrolment.course.id}`">
                     <md-icon class="md-primary">menu_book</md-icon>
                     <div class="md-list-item-text">
                         <span>{{enrolment.course.title}}</span>

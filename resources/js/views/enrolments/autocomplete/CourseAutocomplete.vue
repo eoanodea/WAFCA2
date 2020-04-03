@@ -34,17 +34,22 @@
 
 
     export default {
+        props: ['edit'],
         data: () => ({
             selectedCourse: null,
             filteredCourses: [],
         }),
+        watch: {
+            edit: function(newVal, oldVal) {
+                if(this.selectedCourse !== newVal.title) this.selectedCourse = newVal.title
+            }
+        },
         methods: {
             selectCourse() {
                 const {selectedCourse} = this
                 this.selectedCourse = selectedCourse.title
                 this.$emit('item-selected', selectedCourse.id, 'course_id')
             },
-
             getCourses(searchTerm) {
                 this.filteredCourses = new Promise(resolve => {
                     window.setTimeout(() => {

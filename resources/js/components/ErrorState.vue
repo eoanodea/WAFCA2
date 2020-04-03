@@ -23,6 +23,7 @@
     },
     methods: {
       convertError() {
+        const {error} = this
         return typeof error !== 'string' ? error.toString() : error
       }
     },

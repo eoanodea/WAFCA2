@@ -34,17 +34,22 @@
 
 
     export default {
+        props: ['edit'],
         data: () => ({
             selectedLecturer: null,
             filteredLecturers: [],
         }),
+        watch: {
+            edit: function(newVal, oldVal) {
+                if(this.selectedLecturer !== newVal.name) this.selectedLecturer = newVal.name
+            }
+        },
         methods: {
             selectLecturer() {
                 const {selectedLecturer} = this
                 this.selectedLecturer = selectedLecturer.name
                 this.$emit('item-selected', selectedLecturer.id, 'lecturer_id')
             },
-
             getLecturers(searchTerm) {
                 this.filteredLecturers = new Promise(resolve => {
                     window.setTimeout(() => {

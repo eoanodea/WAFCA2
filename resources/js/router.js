@@ -65,14 +65,6 @@ export default new Router({
       icon: "input",
     },
     {
-      path: '/profile',
-      name: 'profile',
-      component: User,
-      icon: "account_circle",
-      display: 'top',
-      beforeEnter: (to, from, next) => beforeEnter(to, from, next)
-    },
-    {
       path: '/course',
       name: 'courses',
       component: CourseIndex,
@@ -157,6 +149,14 @@ export default new Router({
       name: 'enrolmentEdit',
       component: EnrolmentEdit,
       icon: "assignment_ind",
+      beforeEnter: (to, from, next) => beforeEnter(to, from, next)
+    },
+    {
+      path: '/profile',
+      name: 'profile',
+      component: User,
+      icon: "account_circle",
+      display: 'top',
       beforeEnter: (to, from, next) => beforeEnter(to, from, next)
     },
   ]

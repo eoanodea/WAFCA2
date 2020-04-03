@@ -6,16 +6,16 @@
         </md-card-header>
         <md-card-content>
         <div class="md-layout md-gutter">
-                <md-datepicker 
-                    color="md-accent"
-                    v-model="form.date" 
-                    :md-disabled-dates="disabledDates"
-                    md-immediately
-                    :class="getValidationClass('date')"
-                >
+            <md-datepicker 
+                color="md-accent"
+                v-model="form.date" 
+                :md-disabled-dates="disabledDates"
+                md-immediately
+                :class="getValidationClass('date')"
+            >
                 <label>Date</label>
                 <span class="md-error" v-if="!$v.form.date.minValue">Date must be greater than today</span>
-                </md-datepicker>
+            </md-datepicker>
             <md-field :class="getValidationClass('time')">
                 <label for="time">Time</label>
                 <md-input type="time" name="time" id="time" autocomplete="time" v-model="form.time" :disabled="sending" />
@@ -48,7 +48,7 @@
 <script>
     import Vue from 'vue'
     //VueX
-    import { mapActions, mapGetters } from 'vuex'
+    import { mapActions } from 'vuex'
     //Validation with vuelidate
     import { validationMixin } from 'vuelidate'
     import {
@@ -89,7 +89,6 @@
     let dateFormat = 'yyyy-MM-dd'
 
     export default {
-        
         name: 'enrolmentAdd',
         mixins: [validationMixin],
         validations: {
@@ -185,16 +184,6 @@
                 addEnrolment: 'enrolment/addEnrolment'
             })
         },
-        computed: {
-            ...mapGetters({
-                courses: 'course/courses',
-                courseLoading: 'course/loading',
-                courseError: 'course/error',
-                lecturers: 'lecturer/lecturers',
-                lecturerLoading: 'lecturer/loading',
-                lecturerError: 'lecturer/error'
-            })
-        },
         components: {
             CourseAutocomplete,
             LecturerAutocomplete
@@ -213,7 +202,4 @@
         right: 0;
         left: 0;
     } 
-    .md-highlight-text {
-        // text-transform: capitalize;
-    }
 </style>
