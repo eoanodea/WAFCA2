@@ -69,6 +69,8 @@
         MdAutocomplete,
         MdMenu
     } from 'vue-material/dist/components'
+    //Date formatting
+    import format from 'date-fns/format'
 
     import CourseAutocomplete from './autocomplete/CourseAutocomplete'
     import LecturerAutocomplete from './autocomplete/LecturerAutocomplete'
@@ -83,7 +85,8 @@
     Vue.use(MdMenu)
     Vue.use(MdAutocomplete)
 
-    const today = Date.now()
+    const today = new Date()
+    let dateFormat = 'yyyy-MM-dd'
 
     export default {
         
@@ -99,7 +102,8 @@
                 date: {
                     required,
                     minValue: value => {
-                        if(value >= today) return true
+                        const now = format(today, dateFormat)
+                        if(value >= now) return true
                         
                         return false
                     }
@@ -114,7 +118,7 @@
         },
         data: () => ({
             form: {
-                date: new Date(today),
+                date: format(today, dateFormat),
                 time: "00:00",
                 status: "",
                 course_id: 0,
@@ -210,6 +214,6 @@
         left: 0;
     } 
     .md-highlight-text {
-        text-transform: capitalize;
+        // text-transform: capitalize;
     }
 </style>
