@@ -2,38 +2,34 @@
     <form novalidate class="signin md-layout" @submit.prevent="validateLecturer">
         <md-card class="md-layout-item md-size-50 md-small-size-100">
         <md-card-header>
-          <div class="md-title">Add Lecturer</div>
+          <div class="md-name">Add Lecturer</div>
         </md-card-header>
         <md-card-content>
         <div class="md-layout md-gutter">
-            <md-field :class="getValidationClass('title')">
-                <label for="title">Title</label>
-                <md-input type="text" name="title" id="title" autocomplete="title" v-model="form.title" :disabled="sending" />
-                <span class="md-error" v-if="!$v.form.title.required">The title is required</span>
-                <span class="md-error" v-else-if="!$v.form.title.maxLength">Title cannot be over {{$v.form.title.$params.maxLength.max}} characters</span>
+            <md-field :class="getValidationClass('name')">
+                <label for="name">Name</label>
+                <md-input type="text" name="name" id="name" autocomplete="name" v-model="form.name" :disabled="sending" />
+                <span class="md-error" v-if="!$v.form.name.required">The name is required</span>
+                <span class="md-error" v-else-if="!$v.form.name.maxLength">Name cannot be over {{$v.form.name.$params.maxLength.max}} characters</span>
             </md-field>
-            <md-field :class="getValidationClass('description')">
-                <label for="description">Description</label>
-                <md-textarea name="description" id="description" autocomplete="description" v-model="form.description" :disabled="sending" />
-                <span class="md-error" v-if="!$v.form.description.required">The description is required</span>
+            <md-field :class="getValidationClass('email')">
+                <label for="email">Email</label>
+                <md-input type="email" name="email" id="email" autocomplete="email" v-model="form.email" :disabled="sending" />
+                <span class="md-error" v-if="!$v.form.email.required">Email is required</span>
+                <span class="md-error" v-else-if="!$v.form.email.email">Invalid email</span>
+                <span class="md-error" v-else-if="!$v.form.email.maxLength">Email cannot be over {{$v.form.email.$params.maxLength.max}} characters</span>
             </md-field>
-            <md-field :class="getValidationClass('code')">
-                <label for="code">Code</label>
-                <md-input type="text" name="code" id="code" autocomplete="code" v-model="form.code" :disabled="sending" />
-                <span class="md-error" v-if="!$v.form.code.required">Code is required</span>
-                <span class="md-error" v-else-if="!$v.form.code.maxLength">Code cannot be over {{$v.form.code.$params.maxLength.max}} characters</span>
+            <md-field :class="getValidationClass('phone')">
+                <label for="phone">Phone</label>
+                <md-input type="text" name="phone" id="phone" autocomplete="phone" v-model="form.phone" :disabled="sending" />
+                <span class="md-error" v-if="!$v.form.phone.required">The phone is required</span>
+                <span class="md-error" v-else-if="!$v.form.address.maxLength">Phone cannot be over {{$v.form.phone.$params.maxLength.max}} characters</span>
             </md-field>
-            <md-field :class="getValidationClass('points')">
-                <label for="points">Points</label>
-                <md-input type="number" name="points" id="points" autocomplete="points" v-model="form.points" :disabled="sending" />
-                <span class="md-error" v-if="!$v.form.points.required">Points are required</span>
-                <span class="md-error" v-else-if="!$v.form.points.maxLength">Points must be between {{$v.form.points.$params.between.min}} and {{$v.form.points.$params.between.max}}</span>
-            </md-field>
-            <md-field :class="getValidationClass('level')">
-                <label for="level">Level</label>
-                <md-input type="number" name="level" id="level" autocomplete="level" v-model="form.level" :disabled="sending" />
-                <span class="md-error" v-if="!$v.form.level.required">Level are required</span>
-                <span class="md-error" v-else-if="!$v.form.level.maxLength">Level must be between {{$v.form.level.$params.between.min}} and {{$v.form.level.$params.between.max}}</span>
+            <md-field :class="getValidationClass('address')">
+                <label for="address">Address</label>
+                <md-textarea name="address" id="address" autocomplete="address" v-model="form.address" :disabled="sending" />
+                <span class="md-error" v-if="!$v.form.address.required">Address is required</span>
+                <span class="md-error" v-else-if="!$v.form.address.maxLength">Address cannot be over {{$v.form.address.$params.maxLength.max}} characters</span>
             </md-field>
         </div>
         </md-card-content>
@@ -59,8 +55,7 @@
     import {
         required,
         maxLength,
-        minLength,
-        between
+        email
     } from 'vuelidate/lib/validators'
     //Vue Material
     import {
@@ -82,34 +77,31 @@
         mixins: [validationMixin],
         validations: {
             form: {
-                title: {
+                name: {
                     required,
                     maxLength: maxLength(50)
                 },
-                code: {
+                address: {
                     required,
-                    maxLength: maxLength(5)
+                    maxLength: maxLength(100)
                 },
-                description: {
-                    required
-                },
-                points: {
+                phone: {
                     required,
-                    between: between(100, 600)
+                    maxLength: maxLength(20)
                 },
-                level: {
+                email: {
                     required,
-                    between: between(7, 10)
+                    email,
+                    maxLength: maxLength(50)
                 }
             }
         },
         data: () => ({
             form: {
-                title: "",
-                code: "",
-                description: "",
-                points: 0,
-                level: 0
+                name: "",
+                address: "",
+                phone: "",
+                email: "",
             },
             sending: false,
             success: false,

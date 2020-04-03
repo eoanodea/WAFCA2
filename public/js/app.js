@@ -3448,10 +3448,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
  //VueX
 
  //Validation with vuelidate
@@ -3470,35 +3466,32 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_material_dist_components__WEB
   mixins: [vuelidate__WEBPACK_IMPORTED_MODULE_2__["validationMixin"]],
   validations: {
     form: {
-      title: {
+      name: {
         required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__["required"],
         maxLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__["maxLength"])(50)
       },
-      code: {
+      address: {
         required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__["required"],
-        maxLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__["maxLength"])(5)
+        maxLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__["maxLength"])(100)
       },
-      description: {
-        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__["required"]
-      },
-      points: {
+      phone: {
         required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__["required"],
-        between: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__["between"])(100, 600)
+        maxLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__["maxLength"])(20)
       },
-      level: {
+      email: {
         required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__["required"],
-        between: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__["between"])(7, 10)
+        email: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__["email"],
+        maxLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__["maxLength"])(50)
       }
     }
   },
   data: function data() {
     return {
       form: {
-        title: "",
-        code: "",
-        description: "",
-        points: 0,
-        level: 0
+        name: "",
+        address: "",
+        phone: "",
+        email: ""
       },
       sending: false,
       success: false,
@@ -3705,10 +3698,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
  //VueX
 
  //Validation with vuelidate
@@ -3727,35 +3716,32 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_material_dist_components__WEB
   mixins: [vuelidate__WEBPACK_IMPORTED_MODULE_2__["validationMixin"]],
   validations: {
     form: {
-      title: {
+      name: {
         required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__["required"],
         maxLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__["maxLength"])(50)
       },
-      code: {
+      address: {
         required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__["required"],
-        maxLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__["maxLength"])(5)
+        maxLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__["maxLength"])(100)
       },
-      description: {
-        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__["required"]
-      },
-      points: {
+      phone: {
         required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__["required"],
-        between: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__["between"])(100, 600)
+        maxLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__["maxLength"])(20)
       },
-      level: {
+      email: {
         required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__["required"],
-        between: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__["between"])(7, 10)
+        email: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__["email"],
+        maxLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__["maxLength"])(50)
       }
     }
   },
   data: function data() {
     return {
       form: {
-        title: "",
-        code: "",
-        description: "",
-        points: 0,
-        level: 0
+        name: "",
+        address: "",
+        phone: "",
+        email: ""
       },
       sending: false,
       success: false,
@@ -4084,6 +4070,13 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -43449,7 +43442,7 @@ var render = function() {
         { staticClass: "md-layout-item md-size-50 md-small-size-100" },
         [
           _c("md-card-header", [
-            _c("div", { staticClass: "md-title" }, [_vm._v("Add Lecturer")])
+            _c("div", { staticClass: "md-name" }, [_vm._v("Add Lecturer")])
           ]),
           _vm._v(" "),
           _c("md-card-content", [
@@ -43459,36 +43452,36 @@ var render = function() {
               [
                 _c(
                   "md-field",
-                  { class: _vm.getValidationClass("title") },
+                  { class: _vm.getValidationClass("name") },
                   [
-                    _c("label", { attrs: { for: "title" } }, [_vm._v("Title")]),
+                    _c("label", { attrs: { for: "name" } }, [_vm._v("Name")]),
                     _vm._v(" "),
                     _c("md-input", {
                       attrs: {
                         type: "text",
-                        name: "title",
-                        id: "title",
-                        autocomplete: "title",
+                        name: "name",
+                        id: "name",
+                        autocomplete: "name",
                         disabled: _vm.sending
                       },
                       model: {
-                        value: _vm.form.title,
+                        value: _vm.form.name,
                         callback: function($$v) {
-                          _vm.$set(_vm.form, "title", $$v)
+                          _vm.$set(_vm.form, "name", $$v)
                         },
-                        expression: "form.title"
+                        expression: "form.name"
                       }
                     }),
                     _vm._v(" "),
-                    !_vm.$v.form.title.required
+                    !_vm.$v.form.name.required
                       ? _c("span", { staticClass: "md-error" }, [
-                          _vm._v("The title is required")
+                          _vm._v("The name is required")
                         ])
-                      : !_vm.$v.form.title.maxLength
+                      : !_vm.$v.form.name.maxLength
                       ? _c("span", { staticClass: "md-error" }, [
                           _vm._v(
-                            "Title cannot be over " +
-                              _vm._s(_vm.$v.form.title.$params.maxLength.max) +
+                            "Name cannot be over " +
+                              _vm._s(_vm.$v.form.name.$params.maxLength.max) +
                               " characters"
                           )
                         ])
@@ -43499,154 +43492,124 @@ var render = function() {
                 _vm._v(" "),
                 _c(
                   "md-field",
-                  { class: _vm.getValidationClass("description") },
+                  { class: _vm.getValidationClass("email") },
                   [
-                    _c("label", { attrs: { for: "description" } }, [
-                      _vm._v("Description")
+                    _c("label", { attrs: { for: "email" } }, [_vm._v("Email")]),
+                    _vm._v(" "),
+                    _c("md-input", {
+                      attrs: {
+                        type: "email",
+                        name: "email",
+                        id: "email",
+                        autocomplete: "email",
+                        disabled: _vm.sending
+                      },
+                      model: {
+                        value: _vm.form.email,
+                        callback: function($$v) {
+                          _vm.$set(_vm.form, "email", $$v)
+                        },
+                        expression: "form.email"
+                      }
+                    }),
+                    _vm._v(" "),
+                    !_vm.$v.form.email.required
+                      ? _c("span", { staticClass: "md-error" }, [
+                          _vm._v("Email is required")
+                        ])
+                      : !_vm.$v.form.email.email
+                      ? _c("span", { staticClass: "md-error" }, [
+                          _vm._v("Invalid email")
+                        ])
+                      : !_vm.$v.form.email.maxLength
+                      ? _c("span", { staticClass: "md-error" }, [
+                          _vm._v(
+                            "Email cannot be over " +
+                              _vm._s(_vm.$v.form.email.$params.maxLength.max) +
+                              " characters"
+                          )
+                        ])
+                      : _vm._e()
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "md-field",
+                  { class: _vm.getValidationClass("phone") },
+                  [
+                    _c("label", { attrs: { for: "phone" } }, [_vm._v("Phone")]),
+                    _vm._v(" "),
+                    _c("md-input", {
+                      attrs: {
+                        type: "text",
+                        name: "phone",
+                        id: "phone",
+                        autocomplete: "phone",
+                        disabled: _vm.sending
+                      },
+                      model: {
+                        value: _vm.form.phone,
+                        callback: function($$v) {
+                          _vm.$set(_vm.form, "phone", $$v)
+                        },
+                        expression: "form.phone"
+                      }
+                    }),
+                    _vm._v(" "),
+                    !_vm.$v.form.phone.required
+                      ? _c("span", { staticClass: "md-error" }, [
+                          _vm._v("The phone is required")
+                        ])
+                      : !_vm.$v.form.address.maxLength
+                      ? _c("span", { staticClass: "md-error" }, [
+                          _vm._v(
+                            "Phone cannot be over " +
+                              _vm._s(_vm.$v.form.phone.$params.maxLength.max) +
+                              " characters"
+                          )
+                        ])
+                      : _vm._e()
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "md-field",
+                  { class: _vm.getValidationClass("address") },
+                  [
+                    _c("label", { attrs: { for: "address" } }, [
+                      _vm._v("Address")
                     ]),
                     _vm._v(" "),
                     _c("md-textarea", {
                       attrs: {
-                        name: "description",
-                        id: "description",
-                        autocomplete: "description",
+                        name: "address",
+                        id: "address",
+                        autocomplete: "address",
                         disabled: _vm.sending
                       },
                       model: {
-                        value: _vm.form.description,
+                        value: _vm.form.address,
                         callback: function($$v) {
-                          _vm.$set(_vm.form, "description", $$v)
+                          _vm.$set(_vm.form, "address", $$v)
                         },
-                        expression: "form.description"
+                        expression: "form.address"
                       }
                     }),
                     _vm._v(" "),
-                    !_vm.$v.form.description.required
+                    !_vm.$v.form.address.required
                       ? _c("span", { staticClass: "md-error" }, [
-                          _vm._v("The description is required")
+                          _vm._v("Address is required")
                         ])
-                      : _vm._e()
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "md-field",
-                  { class: _vm.getValidationClass("code") },
-                  [
-                    _c("label", { attrs: { for: "code" } }, [_vm._v("Code")]),
-                    _vm._v(" "),
-                    _c("md-input", {
-                      attrs: {
-                        type: "text",
-                        name: "code",
-                        id: "code",
-                        autocomplete: "code",
-                        disabled: _vm.sending
-                      },
-                      model: {
-                        value: _vm.form.code,
-                        callback: function($$v) {
-                          _vm.$set(_vm.form, "code", $$v)
-                        },
-                        expression: "form.code"
-                      }
-                    }),
-                    _vm._v(" "),
-                    !_vm.$v.form.code.required
-                      ? _c("span", { staticClass: "md-error" }, [
-                          _vm._v("Code is required")
-                        ])
-                      : !_vm.$v.form.code.maxLength
+                      : !_vm.$v.form.address.maxLength
                       ? _c("span", { staticClass: "md-error" }, [
                           _vm._v(
-                            "Code cannot be over " +
-                              _vm._s(_vm.$v.form.code.$params.maxLength.max) +
+                            "Address cannot be over " +
+                              _vm._s(
+                                _vm.$v.form.address.$params.maxLength.max
+                              ) +
                               " characters"
-                          )
-                        ])
-                      : _vm._e()
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "md-field",
-                  { class: _vm.getValidationClass("points") },
-                  [
-                    _c("label", { attrs: { for: "points" } }, [
-                      _vm._v("Points")
-                    ]),
-                    _vm._v(" "),
-                    _c("md-input", {
-                      attrs: {
-                        type: "number",
-                        name: "points",
-                        id: "points",
-                        autocomplete: "points",
-                        disabled: _vm.sending
-                      },
-                      model: {
-                        value: _vm.form.points,
-                        callback: function($$v) {
-                          _vm.$set(_vm.form, "points", $$v)
-                        },
-                        expression: "form.points"
-                      }
-                    }),
-                    _vm._v(" "),
-                    !_vm.$v.form.points.required
-                      ? _c("span", { staticClass: "md-error" }, [
-                          _vm._v("Points are required")
-                        ])
-                      : !_vm.$v.form.points.maxLength
-                      ? _c("span", { staticClass: "md-error" }, [
-                          _vm._v(
-                            "Points must be between " +
-                              _vm._s(_vm.$v.form.points.$params.between.min) +
-                              " and " +
-                              _vm._s(_vm.$v.form.points.$params.between.max)
-                          )
-                        ])
-                      : _vm._e()
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "md-field",
-                  { class: _vm.getValidationClass("level") },
-                  [
-                    _c("label", { attrs: { for: "level" } }, [_vm._v("Level")]),
-                    _vm._v(" "),
-                    _c("md-input", {
-                      attrs: {
-                        type: "number",
-                        name: "level",
-                        id: "level",
-                        autocomplete: "level",
-                        disabled: _vm.sending
-                      },
-                      model: {
-                        value: _vm.form.level,
-                        callback: function($$v) {
-                          _vm.$set(_vm.form, "level", $$v)
-                        },
-                        expression: "form.level"
-                      }
-                    }),
-                    _vm._v(" "),
-                    !_vm.$v.form.level.required
-                      ? _c("span", { staticClass: "md-error" }, [
-                          _vm._v("Level are required")
-                        ])
-                      : !_vm.$v.form.level.maxLength
-                      ? _c("span", { staticClass: "md-error" }, [
-                          _vm._v(
-                            "Level must be between " +
-                              _vm._s(_vm.$v.form.level.$params.between.min) +
-                              " and " +
-                              _vm._s(_vm.$v.form.level.$params.between.max)
                           )
                         ])
                       : _vm._e()
@@ -43879,36 +43842,36 @@ var render = function() {
               [
                 _c(
                   "md-field",
-                  { class: _vm.getValidationClass("title") },
+                  { class: _vm.getValidationClass("name") },
                   [
-                    _c("label", { attrs: { for: "title" } }, [_vm._v("Title")]),
+                    _c("label", { attrs: { for: "name" } }, [_vm._v("Name")]),
                     _vm._v(" "),
                     _c("md-input", {
                       attrs: {
                         type: "text",
-                        name: "title",
-                        id: "title",
-                        autocomplete: "title",
+                        name: "name",
+                        id: "name",
+                        autocomplete: "name",
                         disabled: _vm.sending
                       },
                       model: {
-                        value: _vm.form.title,
+                        value: _vm.form.name,
                         callback: function($$v) {
-                          _vm.$set(_vm.form, "title", $$v)
+                          _vm.$set(_vm.form, "name", $$v)
                         },
-                        expression: "form.title"
+                        expression: "form.name"
                       }
                     }),
                     _vm._v(" "),
-                    !_vm.$v.form.title.required
+                    !_vm.$v.form.name.required
                       ? _c("span", { staticClass: "md-error" }, [
-                          _vm._v("The title is required")
+                          _vm._v("The name is required")
                         ])
-                      : !_vm.$v.form.title.maxLength
+                      : !_vm.$v.form.name.maxLength
                       ? _c("span", { staticClass: "md-error" }, [
                           _vm._v(
-                            "Title cannot be over " +
-                              _vm._s(_vm.$v.form.title.$params.maxLength.max) +
+                            "Name cannot be over " +
+                              _vm._s(_vm.$v.form.name.$params.maxLength.max) +
                               " characters"
                           )
                         ])
@@ -43919,154 +43882,124 @@ var render = function() {
                 _vm._v(" "),
                 _c(
                   "md-field",
-                  { class: _vm.getValidationClass("description") },
+                  { class: _vm.getValidationClass("email") },
                   [
-                    _c("label", { attrs: { for: "description" } }, [
-                      _vm._v("Description")
+                    _c("label", { attrs: { for: "email" } }, [_vm._v("Email")]),
+                    _vm._v(" "),
+                    _c("md-input", {
+                      attrs: {
+                        type: "email",
+                        name: "email",
+                        id: "email",
+                        autocomplete: "email",
+                        disabled: _vm.sending
+                      },
+                      model: {
+                        value: _vm.form.email,
+                        callback: function($$v) {
+                          _vm.$set(_vm.form, "email", $$v)
+                        },
+                        expression: "form.email"
+                      }
+                    }),
+                    _vm._v(" "),
+                    !_vm.$v.form.email.required
+                      ? _c("span", { staticClass: "md-error" }, [
+                          _vm._v("Email is required")
+                        ])
+                      : !_vm.$v.form.email.email
+                      ? _c("span", { staticClass: "md-error" }, [
+                          _vm._v("Invalid email")
+                        ])
+                      : !_vm.$v.form.email.maxLength
+                      ? _c("span", { staticClass: "md-error" }, [
+                          _vm._v(
+                            "Email cannot be over " +
+                              _vm._s(_vm.$v.form.email.$params.maxLength.max) +
+                              " characters"
+                          )
+                        ])
+                      : _vm._e()
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "md-field",
+                  { class: _vm.getValidationClass("phone") },
+                  [
+                    _c("label", { attrs: { for: "phone" } }, [_vm._v("Phone")]),
+                    _vm._v(" "),
+                    _c("md-input", {
+                      attrs: {
+                        type: "text",
+                        name: "phone",
+                        id: "phone",
+                        autocomplete: "phone",
+                        disabled: _vm.sending
+                      },
+                      model: {
+                        value: _vm.form.phone,
+                        callback: function($$v) {
+                          _vm.$set(_vm.form, "phone", $$v)
+                        },
+                        expression: "form.phone"
+                      }
+                    }),
+                    _vm._v(" "),
+                    !_vm.$v.form.phone.required
+                      ? _c("span", { staticClass: "md-error" }, [
+                          _vm._v("The phone is required")
+                        ])
+                      : !_vm.$v.form.address.maxLength
+                      ? _c("span", { staticClass: "md-error" }, [
+                          _vm._v(
+                            "Phone cannot be over " +
+                              _vm._s(_vm.$v.form.phone.$params.maxLength.max) +
+                              " characters"
+                          )
+                        ])
+                      : _vm._e()
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "md-field",
+                  { class: _vm.getValidationClass("address") },
+                  [
+                    _c("label", { attrs: { for: "address" } }, [
+                      _vm._v("Address")
                     ]),
                     _vm._v(" "),
                     _c("md-textarea", {
                       attrs: {
-                        name: "description",
-                        id: "description",
-                        autocomplete: "description",
+                        name: "address",
+                        id: "address",
+                        autocomplete: "address",
                         disabled: _vm.sending
                       },
                       model: {
-                        value: _vm.form.description,
+                        value: _vm.form.address,
                         callback: function($$v) {
-                          _vm.$set(_vm.form, "description", $$v)
+                          _vm.$set(_vm.form, "address", $$v)
                         },
-                        expression: "form.description"
+                        expression: "form.address"
                       }
                     }),
                     _vm._v(" "),
-                    !_vm.$v.form.description.required
+                    !_vm.$v.form.address.required
                       ? _c("span", { staticClass: "md-error" }, [
-                          _vm._v("The description is required")
+                          _vm._v("Address is required")
                         ])
-                      : _vm._e()
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "md-field",
-                  { class: _vm.getValidationClass("code") },
-                  [
-                    _c("label", { attrs: { for: "code" } }, [_vm._v("Code")]),
-                    _vm._v(" "),
-                    _c("md-input", {
-                      attrs: {
-                        type: "text",
-                        name: "code",
-                        id: "code",
-                        autocomplete: "code",
-                        disabled: _vm.sending
-                      },
-                      model: {
-                        value: _vm.form.code,
-                        callback: function($$v) {
-                          _vm.$set(_vm.form, "code", $$v)
-                        },
-                        expression: "form.code"
-                      }
-                    }),
-                    _vm._v(" "),
-                    !_vm.$v.form.code.required
-                      ? _c("span", { staticClass: "md-error" }, [
-                          _vm._v("Code is required")
-                        ])
-                      : !_vm.$v.form.code.maxLength
+                      : !_vm.$v.form.address.maxLength
                       ? _c("span", { staticClass: "md-error" }, [
                           _vm._v(
-                            "Code cannot be over " +
-                              _vm._s(_vm.$v.form.code.$params.maxLength.max) +
+                            "Address cannot be over " +
+                              _vm._s(
+                                _vm.$v.form.address.$params.maxLength.max
+                              ) +
                               " characters"
-                          )
-                        ])
-                      : _vm._e()
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "md-field",
-                  { class: _vm.getValidationClass("points") },
-                  [
-                    _c("label", { attrs: { for: "points" } }, [
-                      _vm._v("Points")
-                    ]),
-                    _vm._v(" "),
-                    _c("md-input", {
-                      attrs: {
-                        type: "number",
-                        name: "points",
-                        id: "points",
-                        autocomplete: "points",
-                        disabled: _vm.sending
-                      },
-                      model: {
-                        value: _vm.form.points,
-                        callback: function($$v) {
-                          _vm.$set(_vm.form, "points", $$v)
-                        },
-                        expression: "form.points"
-                      }
-                    }),
-                    _vm._v(" "),
-                    !_vm.$v.form.points.required
-                      ? _c("span", { staticClass: "md-error" }, [
-                          _vm._v("Points are required")
-                        ])
-                      : !_vm.$v.form.points.maxLength
-                      ? _c("span", { staticClass: "md-error" }, [
-                          _vm._v(
-                            "Points must be between " +
-                              _vm._s(_vm.$v.form.points.$params.between.min) +
-                              " and " +
-                              _vm._s(_vm.$v.form.points.$params.between.max)
-                          )
-                        ])
-                      : _vm._e()
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "md-field",
-                  { class: _vm.getValidationClass("level") },
-                  [
-                    _c("label", { attrs: { for: "level" } }, [_vm._v("Level")]),
-                    _vm._v(" "),
-                    _c("md-input", {
-                      attrs: {
-                        type: "number",
-                        name: "level",
-                        id: "level",
-                        autocomplete: "level",
-                        disabled: _vm.sending
-                      },
-                      model: {
-                        value: _vm.form.level,
-                        callback: function($$v) {
-                          _vm.$set(_vm.form, "level", $$v)
-                        },
-                        expression: "form.level"
-                      }
-                    }),
-                    _vm._v(" "),
-                    !_vm.$v.form.level.required
-                      ? _c("span", { staticClass: "md-error" }, [
-                          _vm._v("Level are required")
-                        ])
-                      : !_vm.$v.form.level.maxLength
-                      ? _c("span", { staticClass: "md-error" }, [
-                          _vm._v(
-                            "Level must be between " +
-                              _vm._s(_vm.$v.form.level.$params.between.min) +
-                              " and " +
-                              _vm._s(_vm.$v.form.level.$params.between.max)
                           )
                         ])
                       : _vm._e()
@@ -44598,6 +44531,22 @@ var render = function() {
                         _c("span", [_vm._v(_vm._s(_vm.lecturer.phone))]),
                         _vm._v(" "),
                         _c("span", [_vm._v("Phone")])
+                      ])
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "md-list-item",
+                    [
+                      _c("md-icon", { staticClass: "md-primary" }, [
+                        _vm._v("home")
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "md-list-item-text" }, [
+                        _c("span", [_vm._v(_vm._s(_vm.lecturer.address))]),
+                        _vm._v(" "),
+                        _c("span", [_vm._v("Address")])
                       ])
                     ],
                     1

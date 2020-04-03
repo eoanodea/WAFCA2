@@ -67,6 +67,13 @@
                     </div>
                 </md-list-item>
                 <md-list-item>
+                    <md-icon class="md-primary">home</md-icon>
+                    <div class="md-list-item-text">
+                        <span>{{lecturer.address}}</span>
+                        <span>Address</span>
+                    </div>
+                </md-list-item>
+                <md-list-item>
                     <md-icon class="md-primary">access_time</md-icon>
                     <div class="md-list-item-text">
                         <span>{{new Date(lecturer.updated_at).toDateString()}}</span>
