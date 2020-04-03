@@ -19,6 +19,16 @@ import LecturerShow from './views/lecturers/Show'
 import LecturerCreate from './views/lecturers/Create'
 import LecturerEdit from './views/lecturers/Edit'
 
+/**
+ * Enrolment Routes
+ */
+import EnrolmentIndex from './views/enrolments/Index'
+import EnrolmentShow from './views/enrolments/Show'
+import EnrolmentCreate from './views/enrolments/Create'
+import EnrolmentEdit from './views/enrolments/Edit'
+
+
+
 import Signin from './views/auth/Signin'
 import User from './views/auth/User'
 
@@ -118,6 +128,35 @@ export default new Router({
       name: 'lecturerEdit',
       component: LecturerEdit,
       icon: "supervised_user_circle",
+      beforeEnter: (to, from, next) => beforeEnter(to, from, next)
+    },
+    {
+      path: '/enrolment',
+      name: 'enrolments',
+      component: EnrolmentIndex,
+      icon: "assignment_ind",
+      display: 'top',
+      beforeEnter: (to, from, next) => beforeEnter(to, from, next)
+    },
+    {
+      path: '/enrolment/show/:id',
+      name: 'enrolment',
+      component: EnrolmentShow,
+      icon: "assignment_ind",
+      beforeEnter: (to, from, next) => beforeEnter(to, from, next)
+    },
+    {
+      path: '/enrolment/new',
+      name: 'enrolmentCreate',
+      component: EnrolmentCreate,
+      icon: "assignment_ind",
+      beforeEnter: (to, from, next) => beforeEnter(to, from, next)
+    },
+    {
+      path: '/enrolment/edit/:id',
+      name: 'enrolmentEdit',
+      component: EnrolmentEdit,
+      icon: "assignment_ind",
       beforeEnter: (to, from, next) => beforeEnter(to, from, next)
     },
   ]
