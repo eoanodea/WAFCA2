@@ -87,12 +87,18 @@ import { mapGetters } from 'vuex'
 </script>
 
 
-<style lang="scss" scoped>
+<style lang="scss">
     .bottom-bar-container {
         position: fixed;
         bottom: 0;
         width: 100%;
         left: 0;
-        z-index: 10;
+        z-index: 2;
+    }
+    .md-bottom-bar-label {
+        text-transform: uppercase;
+        font-size: 1em;
+        font-weight: 500;
+        color: #307464;
     }
 </style>

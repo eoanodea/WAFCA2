@@ -79,6 +79,15 @@
             :showDialog="showDialog" 
             :id="course.id" 
             v-on:handle-dialog="handleDialog"
+            v-if="!course.enrolments || course.enrolments.length === 0"
+        />
+        <delete-stepper 
+            v-else 
+            :id="course.id"
+            :showDialog="showDialog" 
+            :enrolments="course.enrolments" 
+            v-on:complete="handleBulkDeleteCompleted" 
+            v-on:handle-dialog="handleDialog"
         />
     </div>
     <error-state v-else-if="error" :error="error" />
@@ -90,6 +99,7 @@
     import ErrorState from './../../components/ErrorState'
     import {MdCard, MdList} from 'vue-material/dist/components'
     import CourseDelete from './Delete'
+    import DeleteStepper from './../../components/enrolments/DeleteStepper'
 
     Vue.use(MdCard)
     Vue.use(MdList)
@@ -111,12 +121,19 @@
         methods: {
             handleDialog() {
                 this.showDialog = !this.showDialog
+            },
+            handleBulkDeleteCompleted() {
+                console.log('bulk delete complete!!')
+                this.$router.replace({
+                        name: `courses`
+                })
             }
         },
         components: {
             LoadingIndicator,
             ErrorState,
-            CourseDelete
+            CourseDelete,
+            DeleteStepper
         },
         computed: {
             ...mapGetters({
