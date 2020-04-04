@@ -10,8 +10,9 @@
             >
                 <md-icon class="md-primary">assignment_ind</md-icon>
                 <div class="md-list-item-text">
-                    <span>{{enrolment.id}}</span>
+                    <span>{{enrolment.id}}: <span class="capitalize">{{enrolment.status.replace('_', ' ')}}</span></span>
                     <span>{{enrolment.date}}</span>
+                    <md-divider/>
                 </div>
             </md-list-item>
             <md-button class="md-raised md-primary" :disabled="deleting" @click="bulkDelete">Delete these enrolments</md-button>
@@ -32,11 +33,12 @@
 <script>
     import Vue from 'vue'
     import { mapGetters, mapActions } from 'vuex'
-    import {MdList, MdSubheader, MdButton}  from 'vue-material/dist/components'
+    import {MdList, MdSubheader, MdButton, MdDivider}  from 'vue-material/dist/components'
 
     Vue.use(MdList)
     Vue.use(MdSubheader)
     Vue.use(MdButton)
+    Vue.use(MdDivider)
 
     export default {
         props: ['enrolments'],
@@ -90,3 +92,10 @@
         }
     }
 </script>
+
+<style lang="scss" scoped>
+    .md-list-item-text :nth-child(2) {
+        font-size: 0.7em;
+        color: #f2f2f2bd;
+    }
+</style>

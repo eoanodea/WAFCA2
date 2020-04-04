@@ -7,8 +7,7 @@
             md-sort="name" 
             md-sort-order="asc" 
             md-card 
-            md-fixed-header
-            class="md-layout-item md-medium-size-100 md-small-size-90 md-xsmall-size-90"
+            class="md-layout-item md-medium-size-100 md-small-size-100 md-xsmall-size-100"
             @md-selected="onSelect"
         >
         <md-table-toolbar>
@@ -49,6 +48,7 @@
         </md-table-empty-state>
 
         <md-table-row 
+            v-if="!isMobile"
             slot="md-table-row" 
             slot-scope="{ item }" 
             md-selectable="multiple" 
@@ -59,6 +59,18 @@
             <md-table-cell md-label="Email" md-sort-by="email">{{ item.email }}</md-table-cell>
             <md-table-cell md-label="Enrolments" md-sort-by="enrolments.length">{{ item.enrolments ? item.enrolments.length : 0 }}</md-table-cell>
         </md-table-row>
+        <md-table-row 
+            v-else
+            slot="md-table-row" 
+            slot-scope="{ item }" 
+            md-selectable="multiple" 
+            @click="showDetail(item)"
+            :md-disabled="item.enrolments.length > 0"
+        >
+            <md-table-cell md-label="Name" md-sort-by="name">{{ item.name }}</md-table-cell>
+            <md-table-cell md-label="Enrolments" md-sort-by="enrolments.length">{{ item.enrolments ? item.enrolments.length : 0 }}</md-table-cell>
+        </md-table-row>
+        
         </md-table>
         <error-state v-else :error="error" />
         <md-snackbar :md-active.sync="deleting" :md-duration="Infinity">{{deletingMessage}}</md-snackbar>
@@ -84,7 +96,7 @@
 
     const searchByName = (items, term) => {
         if (term) {
-            return items.filter(item => toLower(item.title).includes(toLower(term)))
+            return items.filter(item => toLower(item.name).includes(toLower(term)) || toLower(item.email).includes(toLower(term)))
         }
 
         return items
@@ -97,7 +109,8 @@
             searched: [],
             selected: [],
             deletingMessage: null,
-            deleting: false
+            deleting: false,
+            isMobile: false
         }),
         methods: {
             searchOnTable () {
@@ -151,7 +164,7 @@
             },
             ...mapActions({
                 bulkDeleteLecturer: 'lecturer/bulkDeleteLecturer'
-            })
+            }),
         },
         created() {
             if(this.lecturers.length < 1) {
@@ -159,6 +172,11 @@
                     this.searched = this.lecturers
                 })
             } else this.searched = this.lecturers
+
+           /**
+            * Detects the screensize and reformats the table accordingly
+            */
+            this.isMobile = window.matchMedia('screen and (max-width: 600px)').matches
         },
         components: {
             LoadingIndicator,

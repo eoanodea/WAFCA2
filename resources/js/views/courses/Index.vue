@@ -7,58 +7,69 @@
             md-sort="name" 
             md-sort-order="asc" 
             md-card 
-            md-fixed-header
             class="md-layout-item md-medium-size-100 md-small-size-90 md-xsmall-size-90"
             @md-selected="onSelect"
         >
-        <md-table-toolbar>
-            <div class="md-toolbar-row">
-            <div class="md-toolbar-section-start">
-            <h1 class="md-title">Courses</h1>
-            </div>
-            <div class="md-toolbar-section-end">
-                <md-button class="md-fab md-primary" to="/course/new">
-                    <md-icon>add</md-icon>
+            <md-table-toolbar>
+                <div class="md-toolbar-row">
+                <div class="md-toolbar-section-start">
+                <h1 class="md-title">Courses</h1>
+                </div>
+                <div class="md-toolbar-section-end">
+                    <md-button class="md-fab md-primary" to="/course/new">
+                        <md-icon>add</md-icon>
+                    </md-button>
+                </div>
+                </div>
+
+                <div class="md-toolbar-row md-toolbar-offset">
+                    <md-field md-clearable>
+                        <md-icon>search</md-icon>
+                        <md-input placeholder="Search by name..." v-model="search" @input="searchOnTable" />
+                    </md-field>      
+                </div>  
+            </md-table-toolbar>
+
+            <md-progress-bar md-mode="indeterminate" v-if="deleting" />
+            <md-table-toolbar slot="md-table-alternate-header" class="md-primary" slot-scope="{ count }">
+                <div class="md-toolbar-section-start">{{ getAlternateLabel(count) }}</div>
+
+                <div class="md-toolbar-section-end">
+                <md-button class="md-fab md-accent" :disabled="deleting" @click="bulkDelete">
+                    <md-icon>delete</md-icon>
                 </md-button>
-            </div>
-            </div>
+                </div>
+            </md-table-toolbar>
 
-            <div class="md-toolbar-row md-toolbar-offset">
-                <md-field md-clearable>
-                    <md-icon>search</md-icon>
-                    <md-input placeholder="Search by name..." v-model="search" @input="searchOnTable" />
-                </md-field>      
-            </div>  
-        </md-table-toolbar>
+            <md-table-empty-state
+                md-label="No courses found"
+                :md-description="`No courses found for this search query. Try a different search term or create a new course.`">
+                <md-button class="md-primary md-raised" to="/course/new">Create New Course</md-button>
+            </md-table-empty-state>
 
-        <md-progress-bar md-mode="indeterminate" v-if="deleting" />
-        <md-table-toolbar slot="md-table-alternate-header" class="md-primary" slot-scope="{ count }">
-            <div class="md-toolbar-section-start">{{ getAlternateLabel(count) }}</div>
-
-            <div class="md-toolbar-section-end">
-            <md-button class="md-fab md-accent" :disabled="deleting" @click="bulkDelete">
-                <md-icon>delete</md-icon>
-            </md-button>
-            </div>
-        </md-table-toolbar>
-
-        <md-table-empty-state
-            md-label="No courses found"
-            :md-description="`No courses found for this search query. Try a different search term or create a new course.`">
-            <md-button class="md-primary md-raised" to="/course/new">Create New Course</md-button>
-        </md-table-empty-state>
-
-        <md-table-row 
-            slot="md-table-row" 
-            slot-scope="{ item }" 
-            md-selectable="multiple" 
-            @click="showDetail(item)"
-            :md-disabled="item.enrolments.length > 0"
-        >
-            <md-table-cell md-label="Title" md-sort-by="title">{{ item.title }}</md-table-cell>
-            <md-table-cell md-label="Points" md-sort-by="points">{{ item.points }}</md-table-cell>
-            <md-table-cell md-label="Enrolments" md-sort-by="enrolments.length">{{ item.enrolments ? item.enrolments.length : 0 }}</md-table-cell>
-        </md-table-row>
+            <md-table-row 
+                v-if="!isMobile"
+                slot="md-table-row" 
+                slot-scope="{ item }" 
+                md-selectable="multiple" 
+                @click="showDetail(item)"
+                :md-disabled="item.enrolments.length > 0"
+            >
+                <md-table-cell md-label="Title" md-sort-by="title">{{ item.title }}</md-table-cell>
+                <md-table-cell md-label="Points" md-sort-by="points">{{ item.points }}</md-table-cell>
+                <md-table-cell md-label="Enrolments" md-sort-by="enrolments.length">{{ item.enrolments ? item.enrolments.length : 0 }}</md-table-cell>
+            </md-table-row>
+            <md-table-row 
+                v-else
+                slot="md-table-row" 
+                slot-scope="{ item }" 
+                md-selectable="multiple" 
+                @click="showDetail(item)"
+                :md-disabled="item.enrolments.length > 0"
+            >
+                <md-table-cell md-label="Title" md-sort-by="title">{{ item.title }}</md-table-cell>
+                <md-table-cell md-label="Enrolments" md-sort-by="enrolments.length">{{ item.enrolments ? item.enrolments.length : 0 }}</md-table-cell>
+            </md-table-row>
         </md-table>
         <error-state v-else :error="error" />
         <md-snackbar :md-active.sync="deleting" :md-duration="Infinity">{{deletingMessage}}</md-snackbar>
@@ -97,7 +108,8 @@
             searched: [],
             selected: [],
             deletingMessage: null,
-            deleting: false
+            deleting: false,
+            isMobile:  false
         }),
         methods: {
             searchOnTable () {
@@ -159,6 +171,11 @@
                     this.searched = this.courses
                 })
             } else this.searched = this.courses
+
+           /**
+            * Detects the screensize and reformats the table accordingly
+            */
+            this.isMobile = window.matchMedia('screen and (max-width: 600px)').matches
         },
         components: {
             LoadingIndicator,
