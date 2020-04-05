@@ -1,12 +1,16 @@
 <template>
   <div>
-    <Header/>
+    <Header
+      :theme="theme"
+    />
     <div class="router-container">
       <transition :name="transitionName" mode="out-in">
         <router-view></router-view>
       </transition>
     </div>
-    <Footer/>
+    <Footer
+      :theme="theme"
+    />
   </div>
 </template>
 <script>
@@ -25,6 +29,7 @@
     data() {
       return {
         transitionName: DEFAULT_TRANSITION,
+        theme: 'teal'
       }
     },
     /**
@@ -45,6 +50,7 @@
         })
 
         this.transitionName = toIndex < fromIndex ? 'slide-right' : 'slide-left'
+        if(to.meta.theme) this.theme = to.meta.theme
       }
     }
   }

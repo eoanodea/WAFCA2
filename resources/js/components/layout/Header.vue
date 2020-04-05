@@ -16,18 +16,20 @@
 
 <template>
     <header class="header-container">
-        <md-toolbar class="md-large md-dense md-primary">
-            <div class="md-toolbar-row">
-                <div class="md-toolbar-section-start">
+        <md-toolbar class="md-large md-dense md-primary" 
+            :md-theme="'bottom-bar-' + theme"
+        >
+            <!-- <div class="md-toolbar-row"> -->
+                <!-- <div class="md-toolbar-section-start"> -->
                     <span class="md-title">My Title</span>
-                </div>
-                <div class="md-toolbar-section-end">
+                <!-- </div> -->
+                <!-- <div class="md-toolbar-section-end">
                     <md-button class="md-icon-button md-primary" @click="open = !open">
                         <md-icon>menu</md-icon>
                     </md-button>
-                </div>
-            </div>
-            <div class="md-toolbar-row">
+                </div> -->
+            <!-- </div> -->
+            <!-- <div class="md-toolbar-row">
                 <md-tabs class="md-primary" md-sync-route>
                         <md-tab 
                             v-for="route in renderRoutes()" 
@@ -39,9 +41,9 @@
                             exact
                         />
                 </md-tabs>
-            </div>
+            </div> -->
         </md-toolbar>
-        <md-drawer class="md-right" :md-active.sync="open">
+        <!-- <md-drawer class="md-right" :md-active.sync="open">
             <md-toolbar class="md-transparent" md-elevation="0">
                 <span class="md-title">Menu</span>
             </md-toolbar>
@@ -57,7 +59,7 @@
                     <span class="md-list-item-text">Sign Out</span>
                 </md-list-item>
             </md-list>
-        </md-drawer>
+        </md-drawer> -->
     </header>
 </template>
 <script>
@@ -74,6 +76,7 @@
 
     export default {
         name: 'Header',   
+        props: ['theme'],
         data() {
             return {
                 open: false,

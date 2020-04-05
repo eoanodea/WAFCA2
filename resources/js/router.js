@@ -56,7 +56,10 @@ export default new Router({
       name: 'home',
       component: Home,
       icon: "home",
-      display: 'top'
+      display: 'top',
+      meta: {
+        theme: 'teal'        
+      }
     },
     {
       path: '/signin',
@@ -70,28 +73,40 @@ export default new Router({
       component: CourseIndex,
       icon: "menu_book",
       display: 'top',
-      beforeEnter: (to, from, next) => beforeEnter(to, from, next)
+      beforeEnter: (to, from, next) => beforeEnter(to, from, next),
+      meta: {
+        theme: 'orange'        
+      }
     },
     {
       path: '/course/show/:id',
       name: 'course',
       component: CourseShow,
       icon: "menu_book",
-      beforeEnter: (to, from, next) => beforeEnter(to, from, next)
+      beforeEnter: (to, from, next) => beforeEnter(to, from, next),
+      meta: {
+        theme: 'orange'        
+      }
     },
     {
       path: '/course/new',
       name: 'courseCreate',
       component: CourseCreate,
       icon: "menu_book",
-      beforeEnter: (to, from, next) => beforeEnter(to, from, next)
+      beforeEnter: (to, from, next) => beforeEnter(to, from, next),
+      meta: {
+        theme: 'orange'        
+      }
     },
     {
       path: '/course/edit/:id',
       name: 'courseEdit',
       component: CourseEdit,
       icon: "menu_book",
-      beforeEnter: (to, from, next) => beforeEnter(to, from, next)
+      beforeEnter: (to, from, next) => beforeEnter(to, from, next),
+      meta: {
+        theme: 'orange'        
+      }
     },
     {
       path: '/lecturer',
@@ -99,28 +114,40 @@ export default new Router({
       component: LecturerIndex,
       icon: "supervised_user_circle",
       display: 'top',
-      beforeEnter: (to, from, next) => beforeEnter(to, from, next)
+      beforeEnter: (to, from, next) => beforeEnter(to, from, next),
+      meta: {
+        theme: 'blue'        
+      }
     },
     {
       path: '/lecturer/show/:id',
       name: 'lecturer',
       component: LecturerShow,
       icon: "supervised_user_circle",
-      beforeEnter: (to, from, next) => beforeEnter(to, from, next)
+      beforeEnter: (to, from, next) => beforeEnter(to, from, next),
+      meta: {
+        theme: 'blue'        
+      }
     },
     {
       path: '/lecturer/new',
       name: 'lecturerCreate',
       component: LecturerCreate,
       icon: "supervised_user_circle",
-      beforeEnter: (to, from, next) => beforeEnter(to, from, next)
+      beforeEnter: (to, from, next) => beforeEnter(to, from, next),
+      meta: {
+        theme: 'blue'        
+      }
     },
     {
       path: '/lecturer/edit/:id',
       name: 'lecturerEdit',
       component: LecturerEdit,
       icon: "supervised_user_circle",
-      beforeEnter: (to, from, next) => beforeEnter(to, from, next)
+      beforeEnter: (to, from, next) => beforeEnter(to, from, next),
+      meta: {
+        theme: 'blue'        
+      }
     },
     {
       path: '/enrolment',
@@ -128,28 +155,40 @@ export default new Router({
       component: EnrolmentIndex,
       icon: "assignment_ind",
       display: 'top',
-      beforeEnter: (to, from, next) => beforeEnter(to, from, next)
+      beforeEnter: (to, from, next) => beforeEnter(to, from, next),
+      meta: {
+        theme: 'red'        
+      }
     },
     {
       path: '/enrolment/show/:id',
       name: 'enrolment',
       component: EnrolmentShow,
       icon: "assignment_ind",
-      beforeEnter: (to, from, next) => beforeEnter(to, from, next)
+      beforeEnter: (to, from, next) => beforeEnter(to, from, next),
+      meta: {
+        theme: 'red'        
+      }
     },
     {
       path: '/enrolment/new',
       name: 'enrolmentCreate',
       component: EnrolmentCreate,
       icon: "assignment_ind",
-      beforeEnter: (to, from, next) => beforeEnter(to, from, next)
+      beforeEnter: (to, from, next) => beforeEnter(to, from, next),
+      meta: {
+        theme: 'red'        
+      }
     },
     {
       path: '/enrolment/edit/:id',
       name: 'enrolmentEdit',
       component: EnrolmentEdit,
       icon: "assignment_ind",
-      beforeEnter: (to, from, next) => beforeEnter(to, from, next)
+      beforeEnter: (to, from, next) => beforeEnter(to, from, next),
+      meta: {
+        theme: 'red'        
+      }
     },
     {
       path: '/profile',
@@ -157,7 +196,10 @@ export default new Router({
       component: User,
       icon: "account_circle",
       display: 'top',
-      beforeEnter: (to, from, next) => beforeEnter(to, from, next)
+      beforeEnter: (to, from, next) => beforeEnter(to, from, next),
+      meta: {
+        theme: 'teal'        
+      }
     },
   ]
 })

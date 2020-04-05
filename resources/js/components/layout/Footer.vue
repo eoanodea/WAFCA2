@@ -19,7 +19,7 @@
 
       <md-bottom-bar 
         md-type="shift" 
-        :md-theme="'bottom-bar-' + 'teal' "
+        :md-theme="'bottom-bar-' + theme"
     >
 
         <md-bottom-bar-item 
@@ -38,15 +38,15 @@
 <script>
     import Vue from 'vue'
     import {MdBottomBar}  from 'vue-material/dist/components'
-import { mapGetters } from 'vuex'
+    import { mapGetters } from 'vuex'
 
     Vue.use(MdBottomBar)
 
     export default {
         name: 'Footer',   
+        props: ['theme'],
         data() {
             return {
-                themeArr: ['teal', 'orange', 'blue', 'red'],
                 routes: this.$router.options.routes,
             }
         },
@@ -66,17 +66,6 @@ import { mapGetters } from 'vuex'
                     return renderedRoutes
                 }
             },
-            // addThemeToRoutes(routes) {
-            //     const {themeArr} = this
-            //     console.log(routes,'routes')
-            //     const result = routes.map((dat, i) => {
-            //         return dat.theme = i > themeArr.length
-            //         ? themeArr[Math.floor(Math.random() * themeArr.length)]
-            //         : themeArr[i]
-            //     })
-
-            //     return result
-            // }
         },
         computed: {
             ...mapGetters({
@@ -99,6 +88,6 @@ import { mapGetters } from 'vuex'
         text-transform: uppercase;
         font-size: 1em;
         font-weight: 500;
-        color: #307464;
+        // color: #307464;
     }
 </style>

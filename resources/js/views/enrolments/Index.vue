@@ -7,7 +7,6 @@
             md-sort="name" 
             md-sort-order="asc" 
             md-card 
-            md-fixed-header
             class="md-layout-item md-medium-size-100 md-small-size-90 md-xsmall-size-90"
             @md-selected="onSelect"
         >
