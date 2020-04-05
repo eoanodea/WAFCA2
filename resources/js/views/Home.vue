@@ -2,18 +2,17 @@
   <div
    class="md-layout md-gutter md-alignment-top-space-around show-grid"
    >
-    <!-- <md-empty-state
+    <md-empty-state
       md-rounded
       md-icon="import_contacts"
       md-label="Welcome"
-      md-description="Creating project, you'll be able to upload your design and collaborate with people."
-    /> -->
-    <md-card class="md-layout-item md-medium-size-45 md-small-size-45 md-xsmall-size-100">
-      <bar-chart />
-    </md-card>
-    <md-card class="md-layout-item md-medium-size-45 md-small-size-45 md-xsmall-size-100">
-      <bar-chart />
-    </md-card>
+      md-description="Mange your courses, lecturers and enrolments all from our cloud based management system."
+    >
+  <div class="md-layout md-gutter">
+    <md-button class="md-layout-item md-raised md-background empty-state-button" to="/signup">Sign up</md-button>
+    <md-button class="md-layout-item md-raised md-primary empty-state-button" to="/signin">Login</md-button>
+  </div>
+    </md-empty-state>
   </div>
 </template>
 <script>
@@ -35,5 +34,9 @@
     }
 }
 </script>
-<style>
+<style lang="scss" scoped>
+  .empty-state-button{
+    margin: 6px 8px!important;
+  }
 </style>
+
