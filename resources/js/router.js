@@ -66,6 +66,9 @@ export default new Router({
       name: 'signin',
       component: Signin,
       icon: "input",
+      meta: {
+        theme: 'blue'        
+      }
     },
     {
       path: '/course',
