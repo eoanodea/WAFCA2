@@ -84,6 +84,7 @@
         <delete-stepper 
             v-else 
             :id="course.id"
+            type="course"
             :showDialog="showDialog" 
             :enrolments="course.enrolments" 
             v-on:complete="handleBulkDeleteCompleted" 

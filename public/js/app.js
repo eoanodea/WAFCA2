@@ -2258,12 +2258,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _BulkDelete__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./BulkDelete */ "./resources/js/components/enrolments/BulkDelete.vue");
 /* harmony import */ var _ErrorState__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./../ErrorState */ "./resources/js/components/ErrorState.vue");
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 //
 //
 //
@@ -2355,7 +2349,7 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_material_dist_components__WEB
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_material_dist_components__WEBPACK_IMPORTED_MODULE_1__["MdEmptyState"]);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_material_dist_components__WEBPACK_IMPORTED_MODULE_1__["MdButton"]);
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['showDialog', 'enrolments', 'id'],
+  props: ['showDialog', 'enrolments', 'id', 'type'],
   name: 'delete-stepper',
   data: function data() {
     return {
@@ -2367,10 +2361,14 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_material_dist_components__WEB
       thirdStepError: null,
       enrolmentSuccess: false,
       courseSuccess: false,
-      deleting: false
+      deleting: false,
+      capitalizedType: ''
     };
   },
-  methods: _objectSpread({
+  mounted: function mounted() {
+    this.capitalizedType = this.type.charAt(0).toUpperCase() + this.type.substring(1);
+  },
+  methods: {
     setDone: function setDone(id, index) {
       this[id] = true;
       this.secondStepError = null;
@@ -2400,13 +2398,14 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_material_dist_components__WEB
 
       var app = this;
       app.deleting = true;
-      app.deleteCourse(this.id).then(function () {
+      this.$store.dispatch(this.type + '/delete' + this.capitalizedType, this.id) // app.deleteItem(this.id)
+      .then(function () {
         app.deleting = false;
         app.courseSuccess = true;
         console.log('bulk delete complete!!');
 
         _this.$router.replace({
-          name: "courses"
+          name: "".concat(app.type, "s")
         });
       })["catch"](function (error) {
         console.log("error!", error);
@@ -2425,10 +2424,18 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_material_dist_components__WEB
       setTimeout(function () {
         app.$emit('complete');
       }, 4000);
-    }
-  }, Object(vuex__WEBPACK_IMPORTED_MODULE_4__["mapActions"])({
-    deleteCourse: 'course/deleteCourse'
-  })),
+    } // ...mapActions({
+    //     deleteItem: `${this.type}/delete${this.capitalizedType}`
+    // })
+
+  },
+  // computed: {
+  //     ...mapState({
+  //         pagination(state, getters) {
+  //             return getters[`${this.collection}/pagination`]
+  //         }
+  //     }),
+  // },
   components: {
     BulkDelete: _BulkDelete__WEBPACK_IMPORTED_MODULE_2__["default"],
     ErrorState: _ErrorState__WEBPACK_IMPORTED_MODULE_3__["default"]
@@ -3635,6 +3642,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
 //
 //
 //
@@ -5597,6 +5605,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_material_dist_components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vue-material/dist/components */ "./node_modules/vue-material/dist/components/index.js");
 /* harmony import */ var vue_material_dist_components__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(vue_material_dist_components__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _Delete__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Delete */ "./resources/js/views/lecturers/Delete.vue");
+/* harmony import */ var _components_enrolments_DeleteStepper__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./../../components/enrolments/DeleteStepper */ "./resources/js/components/enrolments/DeleteStepper.vue");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -5695,6 +5704,17 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 
 
 
@@ -5723,12 +5743,19 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_material_dist_components__WEB
   methods: {
     handleDialog: function handleDialog() {
       this.showDialog = !this.showDialog;
+    },
+    handleBulkDeleteCompleted: function handleBulkDeleteCompleted() {
+      console.log('bulk delete complete!!');
+      this.$router.replace({
+        name: "lecturers"
+      });
     }
   },
   components: {
     LoadingIndicator: _components_LoadingIndicator__WEBPACK_IMPORTED_MODULE_2__["default"],
     ErrorState: _components_ErrorState__WEBPACK_IMPORTED_MODULE_3__["default"],
-    LecturerDelete: _Delete__WEBPACK_IMPORTED_MODULE_5__["default"]
+    LecturerDelete: _Delete__WEBPACK_IMPORTED_MODULE_5__["default"],
+    DeleteStepper: _components_enrolments_DeleteStepper__WEBPACK_IMPORTED_MODULE_6__["default"]
   },
   computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapGetters"])({
     lecturer: 'lecturer/lecturer',
@@ -46640,7 +46667,9 @@ var render = function() {
                   "md-icon": "error",
                   "md-label": "Hold your horses...",
                   "md-description":
-                    "This course cannot be deleted until you delete all enrolments associated with it."
+                    "This " +
+                    _vm.type +
+                    " cannot be deleted until you delete all enrolments associated with it."
                 }
               })
             ],
@@ -46680,7 +46709,7 @@ var render = function() {
             {
               attrs: {
                 id: "third",
-                "md-label": "Delete Course",
+                "md-label": "Delete " + _vm.type,
                 "md-done": _vm.third,
                 "md-error": _vm.thirdStepError
               },
@@ -46706,7 +46735,7 @@ var render = function() {
                     attrs: {
                       "md-rounded": "",
                       "md-icon": "loop",
-                      "md-label": "Deleting course..."
+                      "md-label": "Deleting " + _vm.type + "..."
                     }
                   })
                 : !_vm.courseSuccess && !_vm.thirdStepError
@@ -46717,9 +46746,11 @@ var render = function() {
                       attrs: {
                         "md-rounded": "",
                         "md-icon": "help",
-                        "md-label": "Confirm deleting course",
+                        "md-label": "Confirm deleting " + _vm.type,
                         "md-description":
-                          "Are you sure you want to delete this course? This action cannot be undone."
+                          "Are you sure you want to delete this " +
+                          _vm.type +
+                          "? This action cannot be undone."
                       }
                     },
                     [
@@ -46741,7 +46772,7 @@ var render = function() {
                     attrs: {
                       "md-rounded": "",
                       "md-icon": "check",
-                      "md-label": "Course deleted successfully!",
+                      "md-label": _vm.type + " deleted successfully!",
                       "md-description": "Redirecting you..."
                     }
                   })
@@ -48420,6 +48451,7 @@ var render = function() {
             : _c("delete-stepper", {
                 attrs: {
                   id: _vm.course.id,
+                  type: "course",
                   showDialog: _vm.showDialog,
                   enrolments: _vm.course.enrolments
                 },
@@ -50971,10 +51003,23 @@ var render = function() {
             1
           ),
           _vm._v(" "),
-          _c("lecturer-delete", {
-            attrs: { showDialog: _vm.showDialog, id: _vm.lecturer.id },
-            on: { "handle-dialog": _vm.handleDialog }
-          })
+          !_vm.lecturer.enrolments || _vm.lecturer.enrolments.length === 0
+            ? _c("lecturer-delete", {
+                attrs: { showDialog: _vm.showDialog, id: _vm.lecturer.id },
+                on: { "handle-dialog": _vm.handleDialog }
+              })
+            : _c("delete-stepper", {
+                attrs: {
+                  id: _vm.lecturer.id,
+                  type: "lecturer",
+                  showDialog: _vm.showDialog,
+                  enrolments: _vm.lecturer.enrolments
+                },
+                on: {
+                  complete: _vm.handleBulkDeleteCompleted,
+                  "handle-dialog": _vm.handleDialog
+                }
+              })
         ],
         1
       )

@@ -16,7 +16,7 @@
                     md-rounded
                     md-icon="error"
                     md-label="Hold your horses..."
-                    md-description="This course cannot be deleted until you delete all enrolments associated with it."
+                    :md-description="`This ${type} cannot be deleted until you delete all enrolments associated with it.`"
                 />
             </md-step>
             <md-step 
@@ -34,7 +34,7 @@
             </md-step>
             <md-step 
                 id="third" 
-                md-label="Delete Course" 
+                :md-label="`Delete ${type}`" 
                 :md-done.sync="third"
                 :md-error="thirdStepError" 
             >
@@ -43,15 +43,15 @@
                     class="md-primary"
                     md-rounded
                     md-icon="loop"
-                    md-label="Deleting course..."
+                    :md-label="`Deleting ${type}...`"
                     v-if="deleting"
                 />
                 <md-empty-state
                     class="md-primary"
                     md-rounded
                     md-icon="help"
-                    md-label="Confirm deleting course"
-                    md-description="Are you sure you want to delete this course? This action cannot be undone."
+                    :md-label="`Confirm deleting ${type}`"
+                    :md-description="`Are you sure you want to delete this ${type}? This action cannot be undone.`"
                     v-else-if="!courseSuccess && !thirdStepError"
                 >
                     <md-button class="md-raised md-primary" :disabled="deleting" @click="runDeleteCourse">Confirm</md-button>
@@ -61,7 +61,7 @@
                     class="md-primary"
                     md-rounded
                     md-icon="check"
-                    md-label="Course deleted successfully!"
+                    :md-label="`${type} deleted successfully!`"
                     md-description="Redirecting you..."
                     v-else-if="courseSuccess"
                 />
@@ -84,7 +84,7 @@
     import {MdSteppers, MdButton, MdDialog, MdEmptyState}  from 'vue-material/dist/components'
     import BulkDelete from './BulkDelete'
     import ErrorState from './../ErrorState'
-import { mapActions } from 'vuex'
+    import { mapActions } from 'vuex'
     
     Vue.use(MdSteppers)
     Vue.use(MdDialog)
@@ -92,7 +92,7 @@ import { mapActions } from 'vuex'
     Vue.use(MdButton)
 
     export default {
-        props: ['showDialog', 'enrolments', 'id'],
+        props: ['showDialog', 'enrolments', 'id', 'type'],
         name: 'delete-stepper',
         data: () => ({
             active: 'first',
@@ -103,8 +103,12 @@ import { mapActions } from 'vuex'
             thirdStepError: null,
             enrolmentSuccess: false,
             courseSuccess: false,
-            deleting: false
+            deleting: false,
+            capitalizedType: ''
         }),
+        mounted() {
+            this.capitalizedType = this.type.charAt(0).toUpperCase() + this.type.substring(1)
+        },
         methods: {
             setDone (id, index) {
                 this[id] = true
@@ -130,13 +134,15 @@ import { mapActions } from 'vuex'
             runDeleteCourse() {
                 let app = this
                 app.deleting = true
-                app.deleteCourse(this.id)
+
+                this.$store.dispatch(this.type + '/delete' + this.capitalizedType, this.id)
+                // app.deleteItem(this.id)
                 .then(() => {
                     app.deleting = false
                     app.courseSuccess = true
                     console.log('bulk delete complete!!')
                     this.$router.replace({
-                            name: `courses`
+                            name: `${app.type}s`
                     })
                 })
                 .catch(function(error) {
@@ -157,10 +163,17 @@ import { mapActions } from 'vuex'
                     app.$emit('complete')
                 }, 4000)
             },
-            ...mapActions({
-                deleteCourse: 'course/deleteCourse'
-            })
+            // ...mapActions({
+            //     deleteItem: `${this.type}/delete${this.capitalizedType}`
+            // })
         },
+        // computed: {
+        //     ...mapState({
+        //         pagination(state, getters) {
+        //             return getters[`${this.collection}/pagination`]
+        //         }
+        //     }),
+        // },
         components: {
             BulkDelete,
             ErrorState
