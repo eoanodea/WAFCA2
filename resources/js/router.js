@@ -3,6 +3,8 @@ import Router from 'vue-router'
 import store from './store/index'
 
 import Home from './views/Home'
+import Dashboard from './views/Dashboard'
+
 /**
  * Course Routes
  */
@@ -30,6 +32,7 @@ import EnrolmentEdit from './views/enrolments/Edit'
 
 
 import Signin from './views/auth/Signin'
+import Signup from './views/auth/Signup'
 import User from './views/auth/User'
 
 Vue.use(Router)
@@ -56,7 +59,6 @@ export default new Router({
       name: 'home',
       component: Home,
       icon: "home",
-      display: 'top',
       meta: {
         theme: 'teal'        
       }
@@ -68,6 +70,26 @@ export default new Router({
       icon: "input",
       meta: {
         theme: 'blue'        
+      }
+    },
+    {
+      path: '/signup',
+      name: 'signup',
+      component: Signup,
+      icon: "input",
+      meta: {
+        theme: 'red'        
+      }
+    },
+    {
+      path: '/dashboard',
+      name: 'Dashboard',
+      component: Dashboard,
+      icon: "dashboard",
+      display: 'top',
+      beforeEnter: (to, from, next) => beforeEnter(to, from, next),
+      meta: {
+        theme: 'teal'        
       }
     },
     {

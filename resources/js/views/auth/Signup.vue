@@ -6,6 +6,12 @@
         </md-card-header>
         <md-card-content>
         <div class="md-layout md-gutter">
+            <md-field :class="getValidationClass('name')">
+                <label for="name">Name</label>
+                <md-input type="name" name="name" id="name" autocomplete="name" v-model="form.name" :disabled="sending" />
+                <span class="md-error" v-if="!$v.form.name.required">The name is required</span>
+                <span class="md-error" v-else-if="!$v.form.name.name">Invalid name</span>
+            </md-field>
             <md-field :class="getValidationClass('email')">
                 <label for="email">Email</label>
                 <md-input type="email" name="email" id="email" autocomplete="email" v-model="form.email" :disabled="sending" />
@@ -64,6 +70,10 @@
         mixins: [validationMixin],
         validations: {
             form: {
+                name: {
+                    required,
+                    minLength: minLength(3)
+                },
                 email: {
                     required,
                     email
@@ -76,6 +86,7 @@
         },
         data: () => ({
             form: {
+                name: null,
                 email: null,
                 password: null,
             },
@@ -104,12 +115,12 @@
             saveUser() {
                 let app = this
                 app.sending = true
-                app.signIn(this.form)
+                app.signUp(this.form)
                 .then(() => {
                     app.sending = false
                     app.success = true
                     this.$router.replace({
-                        name: 'profile'
+                        name: 'signin'
                     })
                 })
                 .catch(function(error) {
@@ -120,7 +131,7 @@
                 })
             },
             ...mapActions({
-                signIn: 'auth/signIn'
+                signUp: 'auth/signUp'
             })
         },
     }

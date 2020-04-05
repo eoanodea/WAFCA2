@@ -60,6 +60,17 @@ export default {
             }
         },
 
+        async signUp({ dispatch }, credentials) {
+            try {
+                let response = await axios.post('/api/register', credentials)
+                
+                dispatch('attempt', response.data)
+            } catch(error) {
+                console.log("error store", error)
+                throw error
+            }
+        },
+
         async verifyToken({ dispatch }, token) {
             try {
                 const response = await axios.get('/api/user')

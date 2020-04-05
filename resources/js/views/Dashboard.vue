@@ -17,8 +17,6 @@
   import Vue from 'vue'
   import BarChart from './../components/charts/BarChart'
 
-  Vue.use(MdEmptyState)
-
   export default {
     name: 'dashboard',
     components: {

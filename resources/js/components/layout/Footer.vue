@@ -60,7 +60,7 @@
 
                 if(routes && routes.length > 0) {
                     let renderedRoutes = (user && user.name)
-                    ? routes.filter(dat => dat.display === "top" && dat.name !== "signin")
+                    ? routes.filter(dat => dat.display === "top" && dat.name !== "signin" && dat.name !== "signup" )
                     : routes.filter(dat => !dat.beforeEnter)                    
 
                     return renderedRoutes
