@@ -1,14 +1,13 @@
 <template>
-    <div class="md-layout md-gutter md-alignment-center-space-around index-container">
+    <div class="md-layout-item md-medium-size-80 md-small-size-90 md-xsmall-size-100">
         <loading-indicator v-if="loading" />
         <md-table 
+            md-card
             v-else-if="!error && searched" 
             v-model="searched" 
             md-sort="name" 
             md-sort-order="asc" 
-            md-card 
-            class="md-layout-item md-medium-size-100 md-small-size-90 md-xsmall-size-90"
-            @md-selected="onSelect"
+            @md-selected="onSelect"                
         >
             <md-table-toolbar>
                 <div class="md-toolbar-row">
@@ -48,6 +47,7 @@
             </md-table-empty-state>
 
             <md-table-row 
+                class="md-primary"
                 v-if="!isMobile"
                 slot="md-table-row" 
                 slot-scope="{ item }" 
@@ -61,6 +61,7 @@
             </md-table-row>
             <md-table-row 
                 v-else
+                class="md-primary"
                 slot="md-table-row" 
                 slot-scope="{ item }" 
                 md-selectable="multiple" 
@@ -72,6 +73,7 @@
             </md-table-row>
         </md-table>
         <error-state v-else :error="error" />
+
         <md-snackbar :md-active.sync="deleting" :md-duration="Infinity">{{deletingMessage}}</md-snackbar>
     </div>
 </template>
@@ -109,7 +111,8 @@
             selected: [],
             deletingMessage: null,
             deleting: false,
-            isMobile:  false
+            isMobile:  false,
+            theme: ''
         }),
         methods: {
             searchOnTable () {

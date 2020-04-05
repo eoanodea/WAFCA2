@@ -1,14 +1,13 @@
 <template>
-    <div class="md-layout md-gutter md-alignment-center-space-around index-container">
+    <div class="md-layout-item md-medium-size-80 md-small-size-90 md-xsmall-size-100">
         <loading-indicator v-if="loading" />
         <md-table 
+            md-card
             v-else-if="!error && searched" 
             v-model="searched" 
             md-sort="name" 
             md-sort-order="asc" 
-            md-card 
-            class="md-layout-item md-medium-size-100 md-small-size-100 md-xsmall-size-100"
-            @md-selected="onSelect"
+            @md-selected="onSelect"  
         >
         <md-table-toolbar>
             <div class="md-toolbar-row">

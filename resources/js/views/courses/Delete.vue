@@ -1,6 +1,7 @@
 <template>
     <div>
         <md-dialog 
+            md-card
             :md-active="showDialog"
             @md-clicked-outside="handleDialogClose()"
             >

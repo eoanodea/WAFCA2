@@ -21,7 +21,9 @@
         >
             <!-- <div class="md-toolbar-row"> -->
                 <!-- <div class="md-toolbar-section-start"> -->
-                    <span class="md-title">My Title</span>
+            <router-link to="/">
+                <span class="md-title">My Title</span>
+            </router-link>
                 <!-- </div> -->
                 <!-- <div class="md-toolbar-section-end">
                     <md-button class="md-icon-button md-primary" @click="open = !open">

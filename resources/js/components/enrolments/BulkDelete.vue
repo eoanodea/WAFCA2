@@ -96,6 +96,5 @@
 <style lang="scss" scoped>
     .md-list-item-text :nth-child(2) {
         font-size: 0.7em;
-        color: #f2f2f2bd;
     }
 </style>

@@ -1,5 +1,6 @@
 <template>
      <md-dialog 
+        md-card
         :md-active="showDialog"
         @md-clicked-outside="handleDialogClose()"
         class="bulk-stepper-dialog"

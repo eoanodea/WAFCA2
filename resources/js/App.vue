@@ -1,17 +1,22 @@
 <template>
-  <div>
+  <md-content
+    class="app-container"
+  >
     <Header
       :theme="theme"
     />
-    <div class="router-container">
+    <md-content
+      :md-theme="'elevation-' + theme"
+      class="md-accent router-container md-layout md-gutter md-alignment-center-space-around"
+      >
       <transition :name="transitionName" mode="out-in">
         <router-view></router-view>
       </transition>
-    </div>
+    </md-content>
     <Footer
       :theme="theme"
     />
-  </div>
+  </md-content>
 </template>
 <script>
   import Vue from 'vue'
@@ -33,6 +38,13 @@
       }
     },
     /**
+     * Get the current theme from the current route meta data
+     */
+    mounted() {
+      this.$material.theming.theme = 'bottom-bar-' + this.$router.currentRoute.meta.theme
+      this.theme = this.$router.currentRoute.meta.theme      
+    },
+    /**
      * Watch Router for changes
      * On Update, check if to route index
      * if greater than from route index
@@ -50,18 +62,24 @@
         })
 
         this.transitionName = toIndex < fromIndex ? 'slide-right' : 'slide-left'
-        if(to.meta.theme) this.theme = to.meta.theme
+        if(to.meta.theme) {
+            console.log('theme!!', this.$material.theming.theme)
+            this.$material.theming.theme = 'bottom-bar-' + to.meta.theme
+            this.theme = to.meta.theme
+          }
       }
     }
   }
 </script>
 <style lang="scss" scoped>
+  .app-container {
+    min-height: 100vh;
+  }
   .router-container {
-    margin: 40px auto 100px auto;
+    margin: 40px auto 50px auto;
     display: flex;
     justify-content: center;
   }
-
   .slide-left-enter-active,
   .slide-left-leave-active,
   .slide-right-enter-active,
