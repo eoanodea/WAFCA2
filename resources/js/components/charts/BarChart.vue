@@ -1,15 +1,17 @@
 <script>
-    import { Bar } from 'vue-chartjs'
+    import { Line } from 'vue-chartjs'
     import { mapGetters } from 'vuex'
     
     export default {
         name: 'bar-chart',
-        extends: Bar,
+        extends: Line,
         data: () => ({
             chartData: {
-                labels: [],
-                //['Janurary', 'Feburary'],
-                datasets: [],
+                labels: 
+                [],
+                // ['Janurary', 'Feburary'],
+                datasets:
+                [],
                 // [
                 //     {
                 //         label: 'Data One',
@@ -32,18 +34,42 @@
                    app.populateChart()
                 })
             } else app.populateChart()
+            // this.renderChart(app.chartData)
+
         },
         methods: {
             populateChart() {
                 console.log('runing!!')
                 const {courses} = this
                 let {chartData} = this
-                courses.map(dat => {
-                    chartData.labels.push(dat.title)
-                    chartData.datasets.push({
-                        label: dat.title,
-                        data: [dat.enrolments.length]
-                    })
+                const months = Array.from(Array(11).keys())
+
+                months.map(month => {
+
+                    courses.map((dat, i) => {
+                        // if(i < 5) {
+                            const enrolments = dat.enrolments.filter(enrolment => {
+                                
+                                return enrolment.date.includes(`-${month > 9 ? month : ('0' + month)}-`)
+                            })
+
+                            // if()
+                            chartData.datasets.filter(data => data.label === dat.title).length < 1
+                                ? chartData.datasets.push({
+                                    label: dat.title,
+                                    data: [enrolments.length]
+                                })
+                                : chartData.datasets.map(data => {
+                                    if(data.label === dat.title) {
+                                        console.log('pushing enrolments!', enrolments.length, dat.title, month)
+
+                                        return data.data.push(enrolments.length)
+                                    }
+                                })
+                        // }
+                    })                        
+
+                    chartData.labels.push(month)
                 })
 
                 this.renderChart(chartData)
