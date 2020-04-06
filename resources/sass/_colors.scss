@@ -1,16 +1,20 @@
 
-//Primary
-$primary: #5653fa;
-$primaryLight: #9280ff;
-$primaryDark: #0029c6;
+$teal: md-get-palette-color(teal, A200);
+$teal-dark: #14cba8;
+$teal-compliments: #ff6488;
 
-//Secondary
-$secondary: #101422;
-$secondaryLight: #363a4a;
-$secondaryDark: #000000;
+$orange: #ffc246;
+$orange-dark: #ff9100;
+$orange-compliments: #52a3ff;
 
-$text: #ffffff;
-$error: #f31937;
+$blue: md-get-palette-color(blue, A200);
+$blue-dark: #005ecb;
+$blue-compliments: #ffba44;
 
+$red: md-get-palette-color(pink, 600);
+$red-dark: #a00037;
+$red-compliments: #1bd893;
 
-
+$transparent: #ff000000;
+$text-theme-dark: #ffffff;
+$text-theme-light: #000000de;

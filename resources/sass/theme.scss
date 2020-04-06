@@ -3,81 +3,69 @@
 
 @import 'colors';
 
-$orange-dark: #ff9100;
-$orange-light: #ffc246;
-$orange-compliments: #52a3ff;
 
 @include md-register-theme("bottom-bar-teal", (
-  primary: md-get-palette-color(teal, A200),
-  accent: #ff6488,
-  background: #14cba8,
+  primary: $teal,
+  accent: $teal-compliments,
+  background: $teal-dark,
   text-primary-on-background: #624118
 ));
 
 @include md-register-theme("bottom-bar-orange", (
-  primary: $orange-light,
+  primary: $orange,
   accent: $orange-compliments,
   background: $orange-dark,
   text-primary-on-background: #624118
 ));
 
-
 @include md-register-theme("bottom-bar-blue", (
-  primary: md-get-palette-color(blue, A200),
-  accent: #ffba44,
-  background: #005ecb,
+  primary: $blue,
+  accent: $blue-compliments,
+  background: $blue-dark,
   theme: dark
 ));
 
 @include md-register-theme("bottom-bar-red", (
-  primary: md-get-palette-color(pink, 600),
-  accent: #1bd893,
-  background: #a00037,
+  primary: $red,
+  accent: $red-compliments,
+  background: $red-dark,
   theme: dark
 ));
 
 @include md-register-theme("elevation-teal", (
-  primary: #ff6488,
-  accent: #ff000000,
-  background: md-get-palette-color(teal, A200),
-  background-variant: #14cba8
+  primary: $teal-compliments,
+  accent: $transparent,
+  background: $teal,
+  background-variant: $teal-dark
 ));
 
 @include md-register-theme("elevation-orange", (
   primary: $orange-compliments,
-  accent: #ff000000,
-  background: $orange-light,
+  accent: $transparent,
+  background: $orange,
   background-variant: $orange-dark,
   text-primary-on-background: #000000de
 ));
 
 @include md-register-theme("elevation-blue", (
-  primary: #ffba44,
-  accent: #ff000000,
-  background: md-get-palette-color(blue, A200),
-  background-variant: #005ecb,
-  rowvariant: #005dcb,
-  text-primary-on-background: #fff,
+  primary: $blue-compliments,
+  accent: $transparent,
+  background: $blue,
+  background-variant: $blue-dark,
+  rowvariant: $blue-dark,
+  text-primary-on-background: $text-theme-dark,
   theme: dark
 ));
 
 @include md-register-theme("elevation-red", (
-  primary: #1bd893,
-  accent: #ff000000,
-  background: md-get-palette-color(pink, 600),
-  background-variant: #a00037,
-  rowvariant: #a00037,
+  primary: $red-compliments,
+  accent: $transparent,
+  background: $red,
+  background-variant: $red-dark,
+  rowvariant: $red-dark,
   theme: dark
-  // text-primary-on-background: #161717
 ));
-
 
 @import 'overrides';
 
 @import "~vue-material/dist/theme/all"; // Apply the theme
-
-
-// @import "~vue-material/dist/components/MdContent/theme";
-// @import "~vue-material/dist/components/MdTable/theme";
-// @import "~vue-material/dist/components/MdCard/theme";
-
