@@ -15,8 +15,8 @@
 
 
 <template>
-    <header class="header-container">
-        <md-toolbar class="md-large md-dense md-primary" 
+    <md-app class="md-card header-container" waterfall md-mode="fixed">
+        <md-app-toolbar class="md-large md-dense md-primary" 
             :md-theme="'bottom-bar-' + theme"
         >
             <!-- <div class="md-toolbar-row"> -->
@@ -44,7 +44,7 @@
                         />
                 </md-tabs>
             </div> -->
-        </md-toolbar>
+        </md-app-toolbar>
         <!-- <md-drawer class="md-right" :md-active.sync="open">
             <md-toolbar class="md-transparent" md-elevation="0">
                 <span class="md-title">Menu</span>
@@ -62,11 +62,11 @@
                 </md-list-item>
             </md-list>
         </md-drawer> -->
-    </header>
+    </md-app>
 </template>
 <script>
     import Vue from 'vue'
-    import { MdList, MdDrawer, MdToolbar, MdTabs, MdButton, MdIcon } from 'vue-material/dist/components'
+    import { MdApp, MdList, MdDrawer, MdToolbar, MdTabs, MdButton, MdIcon } from 'vue-material/dist/components'
     import { mapActions, mapGetters } from 'vuex'
 
     Vue.use(MdList)
@@ -75,6 +75,7 @@
     Vue.use(MdButton)
     Vue.use(MdIcon)
     Vue.use(MdDrawer)
+    Vue.use(MdApp)
 
     export default {
         name: 'Header',   
@@ -136,8 +137,13 @@
         }
     }
 </script>
-<style lang="scss">
-    .header-container, html {
-        overflow-x: hidden;
+<style lang="scss" scoped>
+    .header-container {
+        position: fixed!important;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 5!important;
+        border-radius: 0 0 8px 8px;
     }
 </style>

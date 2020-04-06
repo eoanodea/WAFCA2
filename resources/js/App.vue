@@ -71,9 +71,13 @@
     }
   }
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
   .app-container {
     min-height: 100vh;
+    padding: 10vh 0 5vh 0;
+  }
+  html {
+    overflow-x: hidden;
   }
   .router-container {
     margin: 40px auto 50px auto;
