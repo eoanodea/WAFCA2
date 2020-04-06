@@ -18,14 +18,12 @@
 <script>
   import Vue from 'vue'
   import { MdEmptyState } from 'vue-material/dist/components'
-  import BarChart from './../components/charts/BarChart'
 
   Vue.use(MdEmptyState)
 
   export default {
     name: 'home',
     components: {
-      BarChart
     },
     data() {
       return {
