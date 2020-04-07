@@ -69,6 +69,7 @@ export default {
          */
         async loadLecturers({commit}) {
             commit('SET_LOADING', true)
+            commit('SET_ERROR', null)
             
             try {
                 let response = await axios.get('/api/lecturers') 
@@ -90,6 +91,8 @@ export default {
          */
         async loadLecturer({commit}, id) {
             commit('SET_LOADING', true)
+            commit('SET_ERROR', null)
+
             if(id) {
                 try {
                     let response = await axios.get('/api/lecturers/' + id) 
@@ -115,6 +118,8 @@ export default {
          */
         async addLecturer({commit}, lecturer) {
             commit('SET_LOADING', true)
+            commit('SET_ERROR', null)
+
             try {
                 let response = await axios.post('/api/lecturers', lecturer) 
 
@@ -140,6 +145,8 @@ export default {
          */
         async updateLecturer({commit}, param) {
             commit('SET_LOADING', true)
+            commit('SET_ERROR', null)
+
             try {
                 let response = await axios.put('/api/lecturers/' + param[0], param[1]) 
                 
@@ -162,15 +169,19 @@ export default {
          * @param {id} id
          */
         async deleteLecturer({commit}, id) {
+            commit('SET_ERROR', null)
+
             try {
                 let response = await axios.delete('/api/lecturers/' + id) 
                 
                 commit('REMOVE_LECTURER', id)
                 commit('SET_LECTURER', null)
 
+
                 return response.data
             } catch(error) {
-                console.log('Error deleteLecturer', null);
+                console.log('Error deleteLecturer', error);
+                commit('SET_ERROR', error) 
                 throw error
             }
         },

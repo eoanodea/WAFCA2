@@ -69,6 +69,7 @@ export default {
          */
         async loadCourses({commit}) {
             commit('SET_LOADING', true)
+            commit('SET_ERROR', null)
             
             try {
                 let response = await axios.get('/api/courses') 
@@ -90,6 +91,8 @@ export default {
          */
         async loadCourse({commit}, id) {
             commit('SET_LOADING', true)
+            commit('SET_ERROR', null)
+
             if(id) {
                 try {
                     let response = await axios.get('/api/courses/' + id) 
@@ -115,6 +118,8 @@ export default {
          */
         async addCourse({commit}, course) {
             commit('SET_LOADING', true)
+            commit('SET_ERROR', null)
+
             try {
                 let response = await axios.post('/api/courses', course) 
 
@@ -140,6 +145,8 @@ export default {
          */
         async updateCourse({commit}, param) {
             commit('SET_LOADING', true)
+            commit('SET_ERROR', null)
+
             try {
                 let response = await axios.put('/api/courses/' + param[0], param[1]) 
                 
@@ -162,6 +169,9 @@ export default {
          * @param {id} id
          */
         async deleteCourse({commit}, id) {
+            commit('SET_LOADING', true)
+            commit('SET_ERROR', null)
+
             try {
                 let response = await axios.delete('/api/courses/' + id) 
                 
@@ -170,7 +180,9 @@ export default {
 
                 return response.data
             } catch(error) {
-                console.log('Error deleteCourse', null);
+                console.log('Error deleteCourse', error);
+                commit('SET_ERROR', error) 
+
                 throw error
             }
         },

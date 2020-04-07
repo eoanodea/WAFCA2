@@ -68,7 +68,12 @@
                 <md-table-cell md-label="Status" md-sort-by="status">{{ item.status.replace('_', ' ') }}</md-table-cell>
             </md-table-row>
         </md-table>
-        <error-state v-else :error="error" />
+        <error-state 
+            v-else 
+            :error="error" 
+            v-on:retry="retry"
+            canRetry="true"
+        />
 
         <md-snackbar :md-active.sync="deleting" :md-duration="Infinity">{{deletingMessage}}</md-snackbar>
     </div>
@@ -110,6 +115,11 @@
             isMobile:  false
         }),
         methods: {
+            retry() {
+                this.$store.dispatch('enrolment/loadEnrolments').then(() => {
+                    this.searched = this.enrolments
+                })
+            },
             searchOnTable () {
                 this.searched = searchByName(this.enrolments, this.search)
             },
@@ -190,14 +200,6 @@
 </script>
 
 <style lang="scss" scoped>
-    // .index-container {
-    //             max-width: 90%;
-    // }
-    // @media(min-width: 600px) {
-    //     .index-container {
-    //             width: 90%;
-    //     }
-    // }
     .md-input {
         color: #fff;
     }

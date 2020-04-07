@@ -6,7 +6,9 @@
       md-icon="error"
       md-label="Error"
       :md-description="convertError()"
-    />
+    >
+      <md-button v-if="canRetry" class="md-raised md-primary" @click="retry">Try Again</md-button>
+    </md-empty-state>
   </div>
 </template>
 <script>
@@ -16,7 +18,7 @@
   Vue.use(MdEmptyState)
 
   export default {
-    props: ['error'],
+    props: ['error', 'canRetry'],
     name: 'error-state',
     components: {
 
@@ -25,6 +27,9 @@
       convertError() {
         const {error} = this
         return typeof error !== 'string' ? error.toString() : error
+      },
+      retry() {
+        this.$emit('retry')
       }
     },
     data() {

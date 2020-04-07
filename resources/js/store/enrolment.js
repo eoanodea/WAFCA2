@@ -69,7 +69,8 @@ export default {
          */
         async loadEnrolments({commit}) {
             commit('SET_LOADING', true)
-            
+            commit('SET_ERROR', null) 
+
             try {
                 let response = await axios.get('/api/enrolments') 
 
@@ -90,6 +91,8 @@ export default {
          */
         async loadEnrolment({commit}, id) {
             commit('SET_LOADING', true)
+            commit('SET_ERROR', null)
+
             if(id) {
                 try {
                     let response = await axios.get('/api/enrolments/' + id) 
@@ -115,6 +118,8 @@ export default {
          */
         async addEnrolment({commit}, enrolment) {
             commit('SET_LOADING', true)
+            commit('SET_ERROR', null)
+
             try {
                 let response = await axios.post('/api/enrolments', enrolment) 
 
@@ -140,6 +145,8 @@ export default {
          */
         async updateEnrolment({commit}, param) {
             commit('SET_LOADING', true)
+            commit('SET_ERROR', null)
+
             try {
                 let response = await axios.put('/api/enrolments/' + param[0], param[1]) 
                 
@@ -162,6 +169,8 @@ export default {
          * @param {id} id
          */
         async deleteEnrolment({commit}, id) {
+            commit('SET_ERROR', null)
+            
             try {
                 let response = await axios.delete('/api/enrolments/' + id) 
                 

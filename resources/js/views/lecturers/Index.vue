@@ -71,7 +71,12 @@
         </md-table-row>
         
         </md-table>
-        <error-state v-else :error="error" />
+        <error-state 
+            v-else 
+            :error="error" 
+            v-on:retry="retry"
+            canRetry="true"
+        />
         <md-snackbar :md-active.sync="deleting" :md-duration="Infinity">{{deletingMessage}}</md-snackbar>
     </div>
 </template>
@@ -112,6 +117,11 @@
             isMobile: false
         }),
         methods: {
+            retry() {
+                this.$store.dispatch('lecturer/loadLecturers').then(() => {
+                    this.searched = this.lecturers
+                })
+            },
             searchOnTable () {
                 this.searched = searchByName(this.lecturers, this.search)
             },

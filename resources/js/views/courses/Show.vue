@@ -100,7 +100,12 @@
             v-on:handle-dialog="handleDialog"
         />
     </div>
-    <error-state v-else-if="error" :error="error" />
+    <error-state 
+        v-else-if="error" 
+        :error="error"
+        v-on:retry="retry"
+        canRetry="true"        
+    />
 </template>
 <script>
     import Vue from 'vue'
@@ -131,6 +136,9 @@
             }
         },
         methods: {
+            retry() {
+                this.$store.dispatch('course/loadCourse', parseInt(this.$route.params.id))
+            },
             handleDialog() {
                 this.showDialog = !this.showDialog
             },
