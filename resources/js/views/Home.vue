@@ -6,7 +6,7 @@
       md-rounded
       md-icon="import_contacts"
       md-label="Welcome"
-      md-description="Mange your courses, lecturers and enrolments all from our cloud based management system."
+      md-description="Manage your courses, lecturers and enrolments all from our cloud based management system."
     >
   <div class="md-layout md-gutter">
     <md-button class="md-layout-item md-raised md-background empty-state-button" to="/signup">Sign up</md-button>

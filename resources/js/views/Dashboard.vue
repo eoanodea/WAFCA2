@@ -3,7 +3,7 @@
     <div
         class="md-layout md-gutter md-alignment-top-space-around show-grid"
     >
-        <md-card class="md-layout-item md-medium-size-45 md-small-size-45 md-xsmall-size-90">
+        <md-card class="md-layout-item md-large-size-33 md-medium-size-45 md-small-size-45 md-xsmall-size-90">
             <md-card-header>
               <div class="md-title">Top Courses</div>
             </md-card-header>
@@ -11,9 +11,9 @@
             <loading-indicator v-else />
         </md-card>
         
-        <md-card class="md-layout-item md-medium-size-45 md-small-size-45 md-xsmall-size-90">
+        <md-card class="md-layout-item md-large-size-33 md-medium-size-45 md-small-size-45 md-xsmall-size-90">
             <md-card-header>
-              <div class="md-title">Enrolment Status</div>
+              <div class="md-title">Enrolment Breakdown</div>
             </md-card-header>
             <pie-chart v-if="enrolments.length > 0" :enrolments="enrolments" />
             <loading-indicator v-else />
@@ -64,4 +64,6 @@
 }
 </script>
 <style>
+
+
 </style>

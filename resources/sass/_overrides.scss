@@ -1,9 +1,8 @@
 .show-grid {
     margin: 20px!important;   
-}
-.show-grid div {
-    @media (max-width: 600px) {
-        margin: 10px;
+    
+    & .md-layout-item {
+        margin: 10px!important;
     }
 }
 .capitalize {

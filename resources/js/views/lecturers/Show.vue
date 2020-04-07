@@ -82,6 +82,15 @@
                 </md-list-item>
             </md-list>
         </md-card>
+
+        <md-card class="md-layout-item md-medium-size-45 md-small-size-45 md-xsmall-size-100">
+            <md-card-header>
+                <div class="md-title">Enrolment Breakdown</div>
+            </md-card-header>
+            <pie-chart class="card-chart" v-if="lecturer.enrolments.length > 0" :enrolments="lecturer.enrolments" />
+            <md-card-content v-else>This Lecturer has no enrolments</md-card-content>
+        </md-card>
+
         <lecturer-delete 
             :showDialog="showDialog" 
             :id="lecturer.id" 
@@ -108,6 +117,7 @@
     import {MdCard, MdList} from 'vue-material/dist/components'
     import LecturerDelete from './Delete'
     import DeleteStepper from './../../components/enrolments/DeleteStepper'
+    import PieChart from './../../components/charts/PieChart'
 
     Vue.use(MdCard)
     Vue.use(MdList)
@@ -141,7 +151,8 @@
             LoadingIndicator,
             ErrorState,
             LecturerDelete,
-            DeleteStepper
+            DeleteStepper,
+            PieChart
         },
         computed: {
             ...mapGetters({
@@ -158,6 +169,9 @@
         margin: 4px;
         display: inline-block;
         vertical-align: top;
+    }
+    .card-chart {
+        padding: 40px;
     }
     .md-list-item-text {
         flex-direction: column-reverse;

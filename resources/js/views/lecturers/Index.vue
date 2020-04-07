@@ -1,5 +1,5 @@
 <template>
-    <div class="md-layout-item md-medium-size-80 md-small-size-90 md-xsmall-size-100">
+    <div class="md-layout-item md-large-size-80 md-medium-size-80 md-small-size-90 md-xsmall-size-100">
         <loading-indicator v-if="loading" />
         <md-table 
             md-card
