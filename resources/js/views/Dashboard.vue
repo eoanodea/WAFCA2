@@ -12,7 +12,7 @@
         
         <md-card class="md-layout-item md-medium-size-45 md-small-size-45 md-xsmall-size-100">
             <md-card-header>
-              <div class="md-title">Popular Courses this year</div>
+              <div class="md-title">Enrolment Status</div>
             </md-card-header>
             <pie-chart />
         </md-card>

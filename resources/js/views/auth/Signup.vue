@@ -2,7 +2,7 @@
     <form novalidate class="signin md-layout" @submit.prevent="validateUser">
         <md-card class="md-layout-item md-size-50 md-small-size-100">
         <md-card-header>
-          <div class="md-title">Login</div>
+          <div class="md-title">Register</div>
         </md-card-header>
         <md-card-content>
         <div class="md-layout md-gutter">

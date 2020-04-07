@@ -47,7 +47,25 @@ function beforeEnter(to, from, next) {
           name: 'signin'
       })
   }
+
   next()
+}
+
+/**
+ * Redirect users who are logged in from unauthed pages
+ * 
+ * -Home
+ * -Signin
+ * -Signup
+ */
+function redirectAuthedUser(to, from, next) {
+  if(store.getters['auth/authenticated']) {
+    return next({
+      name: 'dashboard'
+    })
+  }
+  next()
+
 }
 
 export default new Router({
@@ -59,6 +77,7 @@ export default new Router({
       name: 'home',
       component: Home,
       icon: "home",
+      beforeEnter: (to, from, next) => redirectAuthedUser(to, from, next),
       meta: {
         theme: 'teal'        
       }
@@ -68,6 +87,7 @@ export default new Router({
       name: 'signin',
       component: Signin,
       icon: "input",
+      beforeEnter: (to, from, next) => redirectAuthedUser(to, from, next),
       meta: {
         theme: 'blue'        
       }
@@ -77,13 +97,14 @@ export default new Router({
       name: 'signup',
       component: Signup,
       icon: "contacts",
+      beforeEnter: (to, from, next) => redirectAuthedUser(to, from, next),
       meta: {
         theme: 'red'        
       }
     },
     {
       path: '/dashboard',
-      name: 'Dashboard',
+      name: 'dashboard',
       component: Dashboard,
       icon: "dashboard",
       display: 'top',
