@@ -28,7 +28,8 @@
       populateChart() {
         const { courses, colours } = this;
         let { chartData } = this;
-        const months = Array.from(Array(7).keys());
+
+        const months = Array.from(Array(5).keys());
 
         months.map(month => {
           courses
