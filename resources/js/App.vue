@@ -69,6 +69,8 @@
           if(dat.name === from.name) fromIndex = i
         })
 
+        window.scrollTo(0 ,0)
+
         this.transitionName = toIndex < fromIndex ? 'slide-right' : 'slide-left'
         if(to.meta.theme) {
             this.$material.theming.theme = 'bottom-bar-' + to.meta.theme
