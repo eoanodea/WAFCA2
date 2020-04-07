@@ -5,6 +5,16 @@
         margin: 10px!important;
     }
 }
+
+@media (max-width: 1903px) {
+    .md-card-content .md-layout.md-gutter {
+        padding: 20px;
+    }
+    form .md-card {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
 .capitalize {
     text-transform: capitalize;
 }
