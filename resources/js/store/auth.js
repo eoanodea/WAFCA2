@@ -64,7 +64,7 @@ export default {
             try {
                 let response = await axios.post('/api/register', credentials)
                 
-                dispatch('attempt', response.data)
+                return response
             } catch(error) {
                 console.log("error store", error)
                 throw error
