@@ -71,7 +71,6 @@
 
         this.transitionName = toIndex < fromIndex ? 'slide-right' : 'slide-left'
         if(to.meta.theme) {
-            console.log('theme!!', this.$material.theming.theme)
             this.$material.theming.theme = 'bottom-bar-' + to.meta.theme
             this.theme = to.meta.theme
           }
