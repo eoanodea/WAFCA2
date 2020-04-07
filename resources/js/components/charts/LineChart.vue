@@ -32,7 +32,7 @@
 
         months.map(month => {
           courses
-            .filter((dat, i) => dat.enrolments.length > 0 && i < 5)
+            .filter((dat, i) => dat.enrolments.length > 0 && i < 4)
             .map((dat, i) => {
               const courseColor =
                 colours.length < i

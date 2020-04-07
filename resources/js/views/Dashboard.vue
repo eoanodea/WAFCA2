@@ -5,13 +5,13 @@
     >
         <md-card class="md-layout-item md-medium-size-45 md-small-size-45 md-xsmall-size-90">
             <md-card-header>
-              <div class="md-title">Popular Courses this year</div>
+              <div class="md-title">Top Courses</div>
             </md-card-header>
             <line-chart v-if="courses.length > 0" :courses="courses" />
             <loading-indicator v-else />
         </md-card>
         
-        <md-card class="md-layout-item md-medium-size-45 md-small-size-45 md-xsmall-size-100">
+        <md-card class="md-layout-item md-medium-size-45 md-small-size-45 md-xsmall-size-90">
             <md-card-header>
               <div class="md-title">Enrolment Status</div>
             </md-card-header>

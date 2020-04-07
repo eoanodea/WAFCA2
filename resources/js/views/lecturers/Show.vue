@@ -153,14 +153,6 @@
     }
 </script>
 <style lang="scss" scoped>
-    .show-grid {
-        margin: 20px!important;   
-    }
-    .show-grid div {
-        @media (max-width: 600px) {
-            margin: 10px;
-        }
-    }
     .md-card {
         width: 320px;
         margin: 4px;
