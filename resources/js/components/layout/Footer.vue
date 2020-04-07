@@ -18,8 +18,9 @@
   <div class="bottom-bar-container">
 
       <md-bottom-bar 
-        md-type="shift" 
+        md-type="shift"
         :md-theme="'bottom-bar-' + theme"
+        md-sync-route
     >
 
         <md-bottom-bar-item 
