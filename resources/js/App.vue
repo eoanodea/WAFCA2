@@ -1,9 +1,10 @@
 <template>
   <md-content
-    class="app-container"
+    :class="`app-container ${isMobile ? 'app-container-mobile' : 'app-container-desktop'}`"
   >
     <Header
       :theme="theme"
+      :isMobile="isMobile"
     />
     <md-content
       :md-theme="'elevation-' + theme"
@@ -15,6 +16,7 @@
     </md-content>
     <Footer
       :theme="theme"
+      v-if="isMobile"
     />
   </md-content>
 </template>
@@ -34,7 +36,8 @@
     data() {
       return {
         transitionName: DEFAULT_TRANSITION,
-        theme: 'teal'
+        theme: 'teal',
+        isMobile: false
       }
     },
     /**
@@ -42,7 +45,12 @@
      */
     mounted() {
       this.$material.theming.theme = 'bottom-bar-' + this.$router.currentRoute.meta.theme
-      this.theme = this.$router.currentRoute.meta.theme      
+      this.theme = this.$router.currentRoute.meta.theme    
+      
+     /**
+      * Detects the screensize and sets it in the state
+      */
+      this.isMobile = window.matchMedia('screen and (max-width: 600px)').matches
     },
     /**
      * Watch Router for changes
@@ -74,7 +82,12 @@
 <style lang="scss">
   .app-container {
     min-height: 100vh;
+  }
+  .app-container-mobile {
     padding: 10vh 0 5vh 0;
+  }
+  .app-container-desktop {
+    padding: 15vh 0 1vh 0;
   }
   html {
     overflow-x: hidden;

@@ -8,14 +8,14 @@
   primary: $teal,
   accent: $teal-compliments,
   background: $teal-dark,
-  text-primary-on-background: #624118
+  text-primary-on-primary: $text-theme-light
 ));
 
 @include md-register-theme("bottom-bar-orange", (
   primary: $orange,
   accent: $orange-compliments,
   background: $orange-dark,
-  text-primary-on-background: #624118
+  text-primary-on-primary: $text-theme-light
 ));
 
 @include md-register-theme("bottom-bar-blue", (
@@ -44,7 +44,7 @@
   accent: $transparent,
   background: $orange,
   background-variant: $orange-dark,
-  text-primary-on-background: #000000de
+  text-primary-on-primary: $text-theme-light
 ));
 
 @include md-register-theme("elevation-blue", (
@@ -53,7 +53,7 @@
   background: $blue,
   background-variant: $blue-dark,
   rowvariant: $blue-dark,
-  text-primary-on-background: $text-theme-dark,
+  text-primary-on-primary: $text-theme-dark,
   theme: dark
 ));
 

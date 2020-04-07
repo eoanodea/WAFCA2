@@ -59,8 +59,8 @@
 
                 if(routes && routes.length > 0) {
                     let renderedRoutes = (user && user.name)
-                    ? routes.filter(dat => dat.display === "top" && dat.name !== "signin" && dat.name !== "signup" )
-                    : routes.filter(dat => dat.meta.notAuthed)                    
+                        ? routes.filter(dat => dat.display === "top" && dat.name !== "signin" && dat.name !== "signup" )
+                        : routes.filter(dat => dat.meta.notAuthed)                    
                     return renderedRoutes
                 }
             },

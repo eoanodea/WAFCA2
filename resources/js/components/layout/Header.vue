@@ -19,20 +19,30 @@
         <md-app-toolbar class="md-large md-dense md-primary" 
             :md-theme="'bottom-bar-' + theme"
         >
-            <!-- <div class="md-toolbar-row"> -->
+            <div class="md-toolbar-row"
+                v-if="!isMobile"
+            >
                 <!-- <div class="md-toolbar-section-start"> -->
             <router-link to="/">
                 <span class="md-title">My Title</span>
             </router-link>
-                <!-- </div> -->
+            </div>
+            <router-link 
+                to="/"
+                v-else
+            >
+                <span class="md-title">My Title</span>
+            </router-link>
                 <!-- <div class="md-toolbar-section-end">
                     <md-button class="md-icon-button md-primary" @click="open = !open">
                         <md-icon>menu</md-icon>
                     </md-button>
                 </div> -->
             <!-- </div> -->
-            <!-- <div class="md-toolbar-row">
-                <md-tabs class="md-primary" md-sync-route>
+            <div class="md-toolbar-row"
+                v-if="!isMobile"
+            >
+                <!-- <md-tabs class="md-primary" md-sync-route>
                         <md-tab 
                             v-for="route in renderRoutes()" 
                             v-bind:key="`tab-${route.name}`" 
@@ -42,8 +52,24 @@
                             :md-icon="route.icon ? route.icon : null"
                             exact
                         />
-                </md-tabs>
-            </div> -->
+                </md-tabs> -->
+                <md-bottom-bar 
+                    md-type="shift" 
+                    :md-theme="'bottom-bar-' + theme"
+                    class="header-bottom-bar"
+                >
+
+                    <md-bottom-bar-item 
+                        v-for="(route, i) in renderRoutes()" 
+                        v-bind:key="`tab-${i}`" 
+                        :id="`tab-${route.name}`" 
+                        :md-label="route.name" 
+                        :to="route.path"
+                        :md-icon="route.icon ? route.icon : null"
+                    />
+
+                </md-bottom-bar>
+            </div>
         </md-app-toolbar>
         <!-- <md-drawer class="md-right" :md-active.sync="open">
             <md-toolbar class="md-transparent" md-elevation="0">
@@ -79,7 +105,7 @@
 
     export default {
         name: 'Header',   
-        props: ['theme'],
+        props: ['theme', 'isMobile'],
         data() {
             return {
                 open: false,
@@ -112,10 +138,9 @@
             renderRoutes() {
                 const {routes, user} = this
 
-                const renderedRoutes = (user && user.name)
-                ? routes.filter(dat => dat.display === "top" && dat.name !== "signin")
-                : routes.filter(dat => !dat.beforeEnter)
-
+                let renderedRoutes = (user && user.name)
+                    ? routes.filter(dat => dat.display === "top" && dat.name !== "signin" && dat.name !== "signup" )
+                    : routes.filter(dat => dat.meta.notAuthed)                    
                 return renderedRoutes
             },
             cleanRoutes() {
@@ -145,5 +170,8 @@
         width: 100%;
         z-index: 5!important;
         border-radius: 0 0 8px 8px;
+    }
+    .header-bottom-bar {
+        box-shadow: none;
     }
 </style>
