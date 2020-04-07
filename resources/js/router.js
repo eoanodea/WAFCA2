@@ -30,7 +30,9 @@ import EnrolmentCreate from './views/enrolments/Create'
 import EnrolmentEdit from './views/enrolments/Edit'
 
 
-
+/**
+ * Auth Routes
+ */
 import Signin from './views/auth/Signin'
 import Signup from './views/auth/Signup'
 import User from './views/auth/User'
@@ -64,8 +66,8 @@ function redirectAuthedUser(to, from, next) {
       name: 'dashboard'
     })
   }
+  
   next()
-
 }
 
 export default new Router({
@@ -79,7 +81,8 @@ export default new Router({
       icon: "home",
       beforeEnter: (to, from, next) => redirectAuthedUser(to, from, next),
       meta: {
-        theme: 'teal'        
+        theme: 'teal',
+        notAuthed: true        
       }
     },
     {
@@ -89,7 +92,8 @@ export default new Router({
       icon: "input",
       beforeEnter: (to, from, next) => redirectAuthedUser(to, from, next),
       meta: {
-        theme: 'blue'        
+        theme: 'blue',
+        notAuthed: true      
       }
     },
     {
@@ -99,7 +103,8 @@ export default new Router({
       icon: "contacts",
       beforeEnter: (to, from, next) => redirectAuthedUser(to, from, next),
       meta: {
-        theme: 'red'        
+        theme: 'red',
+        notAuthed: true     
       }
     },
     {
