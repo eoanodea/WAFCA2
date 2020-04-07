@@ -39,6 +39,9 @@
             selectedCourse: null,
             filteredCourses: [],
         }),
+        mounted() {
+            if(this.edit) this.selectedCourse = this.edit.title
+        },
         watch: {
             edit: function(newVal, oldVal) {
                 if(this.selectedCourse !== newVal.title) this.selectedCourse = newVal.title

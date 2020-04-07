@@ -108,9 +108,10 @@
                 },
                 time: {
                     required,
-                    withParams: value => {
-                        return /^([0-1][0-9]):([0-5][0-9])$/.test(value)
-                    }
+                    //Attempted regex expression which only allows time between 0900 - 1900 
+                    // withParams: value => {
+                    //     return /^([0-1][0-9]):([0-5][0-9])$/.test(value)
+                    // }
                 }
             }
         },

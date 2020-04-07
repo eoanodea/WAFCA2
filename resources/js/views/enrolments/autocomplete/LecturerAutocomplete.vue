@@ -39,6 +39,9 @@
             selectedLecturer: null,
             filteredLecturers: [],
         }),
+        mounted() {
+            if(this.edit) this.selectedLecturer = this.edit.name
+        },
         watch: {
             edit: function(newVal, oldVal) {
                 if(this.selectedLecturer !== newVal.name) this.selectedLecturer = newVal.name
