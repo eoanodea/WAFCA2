@@ -68,7 +68,6 @@
                 @click="showDetail(item)"
                 :md-disabled="item.enrolments.length > 0"
             >
-                <md-tooltip md-direction="top">Top</md-tooltip>
                 <md-table-cell md-label="Title" md-sort-by="title">{{ item.title }}</md-table-cell>
                 <md-table-cell md-label="Enrolments" md-sort-by="enrolments.length">{{ item.enrolments ? item.enrolments.length : 0 }}</md-table-cell>
             </md-table-row>
@@ -86,7 +85,7 @@
 
 <script>
     import Vue from 'vue'
-    import {MdTooltip, MdTable, MdContent, MdRipple, MdCheckbox}  from 'vue-material/dist/components'
+    import {MdTable, MdContent, MdRipple, MdCheckbox}  from 'vue-material/dist/components'
     import { mapGetters, mapActions } from 'vuex'
     import LoadingIndicator from './../../components/LoadingIndicator'
     import ErrorState from './../../components/ErrorState'
@@ -95,7 +94,6 @@
     Vue.use(MdContent)
     Vue.use(MdRipple)
     Vue.use(MdCheckbox)
-    Vue.use(MdTooltip)
 
     const toLower = text => {
         return text.toString().toLowerCase()
