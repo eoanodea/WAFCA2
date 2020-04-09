@@ -4,6 +4,13 @@
     & .md-layout-item {
         margin: 10px auto!important;
     }
+
+    @media(min-width: 1280px) {
+        & .md-layout-item {
+            margin: 10px!important;
+        }   
+    }
+
 }
 
 @media (max-width: 1903px) {
